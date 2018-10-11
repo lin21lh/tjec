@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/demo/workflowTaskQuery.js"></script>
+<title>流程管理示例</title>
+</head>
+<body class='easyui-layout'>
+	<div region='center' fit='true' title=''>
+		<div id='tb' style='background-color:#eee'>
+			
+			&nbsp;
+			KEY：<input type='text' style='width:80px' id='key' />
+			节点ID：<input type='text' style='width:80px' id='actiid' />
+			<a class='easyui-linkbutton' id='query' onclick='initGrid()' iconCls='icon-search' plain='false'>查询</a>
+			<a class="easyui-linkbutton"  onclick="workflowImageView()" iconCls='icon-view' plain='false'>显示流程图</a>
+			<a class='easyui-linkbutton' id='getback' onclick='getback()' iconCls='icon-undo' plain='false'>撤回流程</a>
+			<a class='easyui-linkbutton' id='workflowDebugger' onclick='workflowDebugger()' iconCls='icon-config' plain='true'>工作流调试</a>
+			<a class='easyui-linkbutton' id='workflowDebugger2' onclick='workflowDebugger2()' iconCls='icon-config' plain='true'>工作流调试2</a>
+			<span class='xian' ></span>
+			&nbsp;工作流流向：<input type='text' id='outcome' />
+				<a class='easyui-linkbutton' id='startwf' onclick='completeTask()' iconCls='icon-edit'>处理流程</a>
+		</div>
+		<table id='list'>
+		</table>
+	</div>
+	
+	<div id="img_window" class="easyui-window"  style="width:800px;height:500px" closed="true" title="流程图" >
+	<img id="img_loc" src="" />
+</div>
+</body>
+</html>

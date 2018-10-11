@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="../templates/test/leaveAuditEntry.js"></script>
+<title>流程统一测试页面</title>
+</head>
+<body class="nomargin">
+<div class="easyui-panel" title="请假单审核" fit="true">
+	<div id='tb0' class="toolbar_group">
+		<div class="toolbar_buttons">
+			<a class="easyui-linkbutton" iconCls='icon-view'  plain='true' onclick="viewform()">查看表单</a>
+			<a class="easyui-linkbutton" iconCls='icon-view'  plain='true' onclick="viewchart()">查看流程图</a>
+			<a class="easyui-linkbutton" iconCls='icon-redo'  id='deal' plain='true' onclick="deal('f')">处理</a>
+			<a class="easyui-linkbutton" iconCls='icon-undo'  id='sendback' plain='true' onclick="deal('b')">退回</a>
+			<a class="easyui-linkbutton" iconCls='icon-undo'  id='getback' plain='true' onclick="getback()">撤回</a>
+		</div>
+		<div class="toolbar_querybar">
+			&nbsp;状态： <input type='text' class='easyui-combobox' id='status' />
+			<a class="easyui-linkbutton" iconCls='icon-search'  plain='false' onclick="query()">查询</a>
+		</div>
+	</div>
+	<table id="grid" fit="true">
+	</table>
+</div>
+
+<div id="img_window" class="easyui-window"  style="width:800px;height:500px" closed="true" title="流程图"
+	  minimizable='false'  maximizable='false' collapsible='false'>
+	<img id="img_loc" src="" />
+</div>
+
+
+<div id="form_window" class="easyui-window"  style="width:600px;height:141px" closed="true" title="请假单"
+	  minimizable='false'  maximizable='false' collapsible='false'>
+	<form id='fm1' method='POST' >
+		<table class='list'>
+			<tr>
+				<td>
+					申请人：
+				</td>
+				<td>
+					<input id='applyer' name='applyer'  type='text' />
+				</td>
+				<td>
+					申请原因：
+				</td>
+				<td>
+					<input name='reason' type='text' />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					发起日期：
+				</td>
+				<td>
+					<input name='startdate' class='easyui-datebox' type='text' />
+				</td>
+				<td>
+					状态：
+				</td>
+				<td>
+					<input name='status' type='text' />
+				</td>
+			</tr>
+			<tr>
+				<td colspan='4'	style='text-align:center;background-color:#eee'>
+					<a class="easyui-linkbutton" iconCls='icon-cancel'  plain='false' onclick="closeForm()"	>关闭</a>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+<div id="process_window" class="easyui-window"  style="width:350px;height:150px;text-align:center;padding:10px" 
+	  minimizable='false'  maximizable='false' collapsible='false' closed="true" title="流程处理" >
+	<table>
+	<tr>
+	<td>
+		请选择流程流向： 
+	</td>
+	<td>
+		<input id='outcome_widget'  type='text' />
+	</td>
+	<tr>
+	<td>
+		审核意见：
+	</td>
+	<td>
+		<input id='opinion' type='text' />
+	</td>
+	</tr>
+	</table>
+	<a class="easyui-linkbutton" iconCls='icon-ok'  plain='false' onclick="btnok()">确定</a>
+	<a class="easyui-linkbutton" iconCls='icon-cancel'  plain='false' onclick="btncancel()">取消</a>
+	
+</div>
+</body>
+</html>

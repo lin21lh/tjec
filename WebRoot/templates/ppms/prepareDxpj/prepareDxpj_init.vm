@@ -1,0 +1,88 @@
+<!DOCTYPE>
+<html>
+<!--禁用缓存-->	
+<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<META HTTP-EQUIV="expires" CONTENT="0">
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>VFM定性评价</title>
+<script type="text/javascript" src="$contextpath/templates/ppms/prepareDxpj/js/prepareDxpj_init.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<script type="text/javascript">
+var menuid = "$menuid";
+var xmhj = "$xmhj";
+</script>
+<style type="text/css">
+	.cs-west{
+		width: 50%;
+		padding: 0;
+	}
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+	}
+</style>
+</head>
+<body id="layout" class="easyui-layout">
+	 <div data-options="region:'center',split:false" >
+        <div id="toolbar_center" class="toolbar_group" >
+    		<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+			<div class="toolbar_buttons">
+				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="topQuery()" >查询</a>
+				<span class='xian' ></span>
+    			<a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="dxpjAdd()">新增</a>
+				<span class='xian' ></span>
+    			<a href="#" id="editBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="dxpjEdit()">修改</a>
+				<span class='xian' ></span>
+    			<a href="#" id="sendBtn" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onClick="sendWF()">提交</a>
+				<span class='xian' ></span>
+    			<a href="#" id="backBtn" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="revokeWF()">撤回</a>
+				<span class='xian' ></span>
+    			<a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="dxpjView()">详情</a>
+            </div>
+    		<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;border:0px;">
+				<table  class="list" style='border:0px'>
+                    <tr>
+        				<th style='font-size:12px;border: 0px;text-align:right'>处理状态</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="status" class="easyui-combobox" style='width:150px' panelheight = "auto">
+						</th>
+						<th style='border: 0px;text-align:right' align="right">项目名称</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="proName" class="easyui-textbox"  style='width:150px'>
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>所属行业</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="proTrade" class="easyui-combobox"  style='width:150px' multiple="true">
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right' >项目运作方式</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="proPerate" class="easyui-combobox" style='width:150px'  multiple="true">
+						</th>
+    				</tr>      
+                    <tr> 
+						<th style='font-size:12px;border: 0px;text-align:right'>回报机制</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="proReturn" class="easyui-combobox" style='width:150px'  multiple="true">
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>项目发起类型</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="proSendtype" class="easyui-combobox" style='width:150px'  multiple="true">
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>项目类型</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'> 
+							<input id="proType" class="easyui-combobox" style='width:150px'  multiple="true">
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>项目联系人</th>
+                        <th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="proPerson" class="easyui-textbox" style='width:150px' />
+						</th>
+    				</tr>      
+				</table>
+    		</div>
+		</div>
+		<table id="projectDataGrid"></table>
+	 </div>    
+</body>
+</html>

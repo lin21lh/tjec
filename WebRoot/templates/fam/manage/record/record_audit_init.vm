@@ -1,0 +1,95 @@
+<!DOCTYPE>
+<html>
+    <head>
+        #parse("common/common-v14.vm")
+        #parse("common/extensions-v14.vm")
+        <title>账户变更</title>
+        <script type="text/javascript" src="$contextpath/templates/fam/manage/record/js/record_audit_init.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+        <script type="text/javascript">
+            var menuid = "$menuid";
+            var activityId = "$activityId";
+            var firstNode = "$firstNode";
+			var lastNode = "$lastNode";
+			var allbdgagency = "$allbdgagency";
+        </script>
+        <style type="text/css">
+            .cs-west{
+            width: 50%;
+            padding: 0;
+            }
+            .linkbutton_group{
+            border-bottom: 1px solid #95B8E7;
+            }
+        </style>
+        #**
+        账户变更功能
+        @author  xinpeng 
+        @date 2015年4月14日9:20:29
+        *#
+    </head>
+    <body id="layout" class="easyui-layout">
+        <div data-options="region:'center',split:false" >
+            <div id="toolbar_center" class="toolbar_group" >
+                <!--获取变量值-->
+                <input type="hidden" id="menuid" name="menuid" value="$menuid" />
+                <input type="hidden" id="activityId" name="activityId" value="$activityId" />
+                <input type="hidden" id="firstNode" name="firstNode" value="$firstNode" />
+                <input type="hidden" id="lastNode" name="lastNode" value="$lastNode" />
+                <div class="toolbar_buttons">
+                    <a id="btn_query" href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="downGridQuery()" >查询</a>
+                    <span class='xian' ></span>
+                    <a id="btn_ope" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="operateRecordInfo()">审核</a>
+                    <span class='xian' ></span>
+                    <a id="btn_appro" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="batOperateRecordInfo(true)">批准</a>
+                    <span class='xian' ></span>
+                    <a id="btn_refuse" href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="batOperateRecordInfo(false)">退回</a>
+                    #if($lastNode == 'false')
+    					<span class='xian' ></span>
+                        <a id="btn_revoke" href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="removeRecordInfo()">撤回</a>
+                    #end
+					<span class='xian' ></span>
+                    <a id="btn_detial" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="qryRecordInfo()">详情</a>
+                    <span class='xian' ></span>
+                    <a id="btn_flow" href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">流程信息</a>
+					<span class='xian' ></span>
+    			<a href="#" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onClick="outRecordAppicationForm()">备案申请表</a>
+                </div>
+                <div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;padding:1px" >
+					
+                  <table style='width:100%'>
+                    <tr>
+        				<td style='font-size:12px;text-align:end;width:8%' >处理状态</td>
+        				<td style='font-size:12px;width:13%' ><input id="dealStatus" class="easyui-combobox" style="width:97%;" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%'>处理类型</td>
+        				<td style='font-size:12px;width:13%'> <input id="processedStatus" class="easyui-combobox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%'>预算单位</td>
+        				<td style='font-size:12px;width:20%'><input id="topBdgagency" class="easyui-textbox"  style="width:97%" editable='false'/></td>
+						<td style='font-size:12px;width:247%'> </td>
+					</tr>  
+                    <tr>
+        				<td style='font-size:12px;text-align:end;width:8%'>备案类型</td>
+        				<td style='font-size:12px;width:13%'>
+    						<select  id="type" class="easyui-combobox" style=" width:97%;" multiple ="true" editable='false' >
+            					<option value="1">开立</option> 
+            					<option value="2">变更</option> 
+            					<option value="3">注销</option> 
+    						</select>
+						</td>
+        				<td style='font-size:12px;text-align:end;width:8%'>账户名称</td>
+        				<td style='font-size:12px;width:13%'><input id="topAccountName" class="easyui-textbox"  style="width:97%" /></td>
+						<td style='font-size:12px;text-align:end;width:8%'>备案时间</td>
+        				<td style='font-size:12px;width:20%'>
+							<input id="starttime" class="easyui-datebox" style='width:45%' />至<input id="endtime" class="easyui-datebox" style='width:45%'  />
+						</td>
+						<td style='font-size:12px;width:27%'> </td>
+					</tr>
+                </table>
+                </table>
+									
+                </div>
+            </div>
+            <table id="recordAccountDataGrid"></table>
+        </div>
+    </body>
+</html>

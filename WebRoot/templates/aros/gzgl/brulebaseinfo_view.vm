@@ -1,0 +1,53 @@
+<style type='text/css'>
+ input {
+        border: 0px solid;
+    }
+</style>
+<form id="ruleInfoForm" method="post">
+    <table class="list">
+        <tr>
+            <th>规则名称：</th>
+            <td colspan="3">
+                <input id="ruleName" name="rulename" readonly="true"  />
+            </td>
+        </tr>
+        <tr>
+            <th>表编码：</th>
+            <td>
+                <input id="tabcode" name="tabcode" readonly="true" style="width:250px" />
+            </td>
+            <th>表名称：</th>
+            <td>
+                <input id="tabname" name="tabname"  required="true" readonly="true" />
+            </td>
+        </tr>
+        <tr>
+            <th>字段编码：</th>
+            <td>
+                <input id="fieldcode" name="fieldcode"   readonly="true" style="width:250px" />
+            </td>
+            <th>字段名称：</th>
+            <td>
+                <input id="fieldname" name="fieldname"  readonly="true" style="width:250px" />
+            </td>
+        </tr>
+        <tr>
+            <th>频率：</th>
+            <td>
+                <input id="frequency" name="frequency"   readonly="true" style="width:250px" />
+            </td>
+            <th>期限（天）：</th>
+            <td>
+                <input id="limit" name="limit"  readonly="true" style="width:250px" />
+            </td>
+        </tr>
+        <tr>
+            <th>where条件</th>
+            <td colspan="3">
+                <input id="wherestr" name="wherestr" value="$!{wherestr}"
+                  style="width:250px" readonly="true"
+                 />
+            </td>
+        </tr>
+    </table>
+</form>

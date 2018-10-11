@@ -1,0 +1,220 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+.top {
+	background: url(../image/top_02.gif) repeat-x;
+	
+}
+.title_menu {
+	background: url(../image/top_001.gif) no-repeat;
+	height: 70%;
+	width: 100%;
+}
+.title_menu_user {
+	/* font-size: 12px;
+	font-style: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+	float: left;
+	padding-right: 10px;
+	height: 25px;
+	padding-top: 20px;
+ */	
+	float: right;
+
+	*float: right !important;
+	margin-right: 9%;
+	margin-top: 3%;
+}
+.title_menu_user img {
+	height: 15px;
+	width: 15px;
+	margin-right: 6px;
+}
+.title_menu_user .user {
+	
+	margin-bottom: -3px;
+}
+.title_menu1 {
+	float: right;
+
+	*float: right !important;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+.title_menu1 img {
+	margin-right: 10px;
+}
+img{
+border:0}
+.title_menu_user .hong {
+	color: white;
+	text-decoration: none;
+}
+.title_menu1 ul {
+	list-style-type: none;
+	width: 100%;
+	margin-top: 2px;
+}
+.title_menu1 ul li {
+	float: left;
+	margin-right: 25px;
+	margin-left: -10px;
+}
+.title_menu1 ul li .zhuy {
+	background: url(../image/a_05.gif) no-repeat 12px 5px;
+	
+	
+}
+.title_menu1 ul li a {
+	color: #FFF;
+	text-decoration: none;
+	float: left;
+	white-space: nowrap;
+	height: 30px;
+	padding-top: 30px;	
+}
+.title_menu1 ul li .password {
+	background: url(../image/an_88.png) no-repeat 12px 5px;
+	
+}
+.title_menu1 ul li .exit {
+	background: url(../image/an_11.png) no-repeat 5px 5px;
+}
+.top_menu {
+	height: 30%;
+	/*
+	background-image: url(../images/menubg_11.gif);
+	background-repeat: repeat-x; 
+	background-color:63b8ee
+	*/
+	/*background-color:#ADD8E6;*/
+	background-color:#74CbF6;
+	width: 100%;
+}
+.top .top_menu .nav {
+	margin-top: -10px;
+	float: left;
+	height: 35px;
+	margin-left: 0px;
+	overflow:hidden;
+	width: 93%;
+}
+.top .top_menu .nav ul {
+	float: left;
+	margin-left: 5px;
+	width: 100%;
+	position: relative;
+}
+
+.top .top_menu div.menu_left {
+	background: url(../image/menu_left.png) no-repeat;
+	height: 30px;
+	width: 30px;
+	float: left;
+}
+.top .top_menu div:hover.menu_left {
+	background: url(../image/menu_left2.png) no-repeat;
+}
+
+.top .top_menu .menu_right {
+	float: left;
+	background: url(../images/menu_right.png) no-repeat;
+	height: 30px;
+	width: 30px;
+}
+.top .top_menu div:hover.menu_right {
+	background: url(../image/menu_right2.png);
+}
+.nav ul {
+	list-style-type: none;
+	width:100%;
+	margin:0  auto;
+}
+.nav ul li{
+	float: left;
+	/*
+	background-image: url(../images/menubglibg.gif);
+	background-repeat: no-repeat;
+	*/
+	background-position: center right;
+	-webkit-transition-duration: 0.3s;
+	
+}
+/* .nav ul li:hover{
+	background-color: #2579f7;
+	border-radius:15px;
+	moz-border-radius:15px;
+	webkit-border-radius:15px;
+} */
+
+
+.nav ul li a {
+	/* background-color:#38B0DC; */
+	position:relative;
+	background-image: linear-gradient(bottom, rgb(100,170,30) 0%, rgb(129,212,51) 100%);
+	/* box-shadow: inset 0px 0px 0px #b2f17f, 0px 5px 2px #3d6f0d; */
+	border-radius: 15px;
+	
+	
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	float: left;
+	height: -40px;
+	width: 70px;
+	padding: 10px;
+	font-family: "Î¢ÈíÑÅºÚ";
+	display: block;
+}
+
+/* .nav ul li a:active {
+	top:5px;
+	background-image: linear-gradient(bottom, rgb(100,170,30) 100%, rgb(129,212,51) 0%);
+	box-shadow: inset 0px 1px 0px #b2f17f, inset 0px -1px 0px #3d6f0d;
+	color: #156785;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+	background: rgb(44,160,202);
+}
+
+.nav ul li a:hover::before {
+	background-color:#3d6f0d;
+	content:"";
+	display:block;
+	position:absolute;
+	width:100%;
+	height:100%;
+	margin-left:2px;
+	margin-right:2px;
+	margin-bottom:4px;
+	z-index:-10;
+	border-radius: 0px;
+	box-shadow: 0px 10px 0px #fff;
+}
+
+.nav ul li a:active::before {
+	top:-2px;
+} */
+
+
+/* .nav ul li a {
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	float: left;
+	height: 30px;
+	width: 105px;
+	padding-top: 10px;
+	font-family: "Ðì¾²ÀÙ×ÖÌå";
+	display: block;
+	
+} 
+.nav ul li a:hover{
+	font-size: 16px;
+	font-weight: bold;
+}*/

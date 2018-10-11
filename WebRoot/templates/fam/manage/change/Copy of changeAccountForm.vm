@@ -1,0 +1,199 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<script type="text/javascript">
+function test1(){
+	parent.$.modalDialog.handler.find("bghzhxx").style.display="none";
+}
+</script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="accountChangeForm" method="post">
+	<table class="list">
+        		<!--隐藏属性start
+        			-->
+        		##&nbsp;
+        		<input type="hidden" id="type" name="type" value="$type" />
+        		<input type="hidden" id="bdgagencycode" name="bdgagencycode" />
+				<input type="hidden" id="wfstatus" name="wfstatus"  />
+        		<input type="hidden" id="wfid" name="wfid"/>
+        		<input type="hidden" id="oldBankCode" name="oldBankCode" />
+        		<input type="hidden" id="accountId" name="accountId" />
+        		<input type="hidden" id="applicationId" name="applicationId" />
+        		<input type="hidden" id="createUser" name="createUser" />
+        		<input type="hidden" id="createTime" name="createTime" />
+        		<input type="hidden" id="itemid" name="itemid" /><!--账户档案表id-->
+        		<input type="hidden" id="isback" name="isback" /><!--工作送审标志-->
+        		<input type="hidden" id="workflowflag" name="workflowflag" /><!--区分保存还是保存并发送-->
+        		<input type="hidden" id="menuid" name="menuid"  value="$menuid" /><!--菜单id-->
+        		<input type="hidden" id="activityId" name="activityId" value="$activityId"/><!--节点id-->
+        		<input type="hidden" id="sessionId" name="sessionId" value="$sessionId"/><!--sessionId-->
+        		<input type="hidden" id="formIsEdit" name="formIsEdit" value="$formIsEdit"/><!--表单是否可编辑-->
+				<input id="savephonenumbers" type="hidden" name='savephonenumbers'/><!--消息服务使用-->
+	 			<input id="savemessage" type="hidden" name='savemessage'/><!--消息服务使用-->
+	 			<input id="messageIsUse" type="hidden" name='messageIsUse' value="$messageIsUse"/><!--消息服务是否启用-->
+	 			<input id="backToFirstNode" type="hidden" name='backToFirstNode' value="$backToFirstNode"/><!--退回首节点-->
+        		<!--隐藏属性end
+        		-->
+        		<tr>
+        			<th  style="border-top-width:1px">&nbsp; 单位名称</th>
+        			<td  style="border-top-width:1px;">
+        				<input id="bdgagencyname" class="easyui-textbox" name="bdgagencyname" required="true"  readonly="true" missingMessage="请输入预算单位名称"
+							 data-options="validType:{length:[0,50]}" style='width:200px'/>
+        			</td >
+        			<th  style="border-top-width:1px;"> 单位性质</th>
+        			<td  style="border-top-width:1px;">
+        				<input id="deptNature" class="easyui-textbox" name="deptNature"  required="true" missingMessage="请选择单位性质" style='width:200px' />
+        			</td>
+        			<th >联系人</th>
+        			<td>
+        				<input id="linkman" name="linkman"  class="easyui-textbox"  required="true" missingMessage="请输入单位联系人"  
+							data-options="validType:{length:[0,25]}" style='width:200px'/>
+        			</td>
+        		</tr>
+        		<tr >
+        			<th >联系电话</th>
+        			<td >
+        				<input id="applPhonenumber" name="applPhonenumber" validType='phonesIsRight' required="true" missingMessage="请输入手机号码，多个用,隔开"  
+							 class="easyui-textbox"  style='width:200px'/>
+        			</td>
+        			<th >单位地址</th>
+        			<td colspan="3">
+        				<input id="deptAddress" name="deptAddress"  class="easyui-textbox" required="true" missingMessage="请输入单位地址" 
+							data-options="validType:{length:[0,250]}" style='width:515px'/>
+        			</td>
+                </tr>
+     </table>		
+	  <div  class="easyui-panel" data-options="region:'center',title:'原账户信息', collapsible:true,collapsed:true" style="padding 0 0 0 0;border:0">
+		<table class="list">
+        		<tr>
+        			<th style="border-left-width:1px;border-top-width:1px">账户名称</th>
+        			<td style="border-top-width:1px">
+        				<input id="oldAccountName" name="oldAccountName" data-options="validType:{length:[0,50]}" class="easyui-textbox" 
+							style='width:200px' readonly="true"/>
+        			</td>
+        			<th  style="border-top-width:1px;">银行账号</th>
+        			<td style="border-top-width:1px;">
+        				<input id="oldAccountNumber" name="oldAccountNumber" data-options="validType:{length:[0,50]}" class="easyui-textbox"  
+							style='width:200px' readonly="true"/>
+        			</td>
+        			<th style="border-top-width:1px;">账户开户行</th>
+        			<td style="border-top-width:1px;">
+        				<input id="oldBankName" name="oldBankName" class="easyui-textbox"  style='width:200px' readonly="true"/>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th style="border-left-width:1px;"> 账户性质</th>
+        			<td>
+        				<input id="oldType02Name" name="oldType02Name" readonly ="true"  class="easyui-textbox"  style='width:200px' />
+        			</td>
+        			<th style="width:75px">账户类型</th>
+        			<td >
+        				<input id="oldAccountTypeName" name="oldAccountTypeName"  readonly ="true"  class="easyui-textbox" style='width:200px' />
+        			</td>
+					<th style="width:75px">财务负责人</th>
+        			<td >
+        				<input id="financialOfficer" name="financialOfficer"  readonly ="true"  class="easyui-textbox" style='width:200px' />
+        			</td>
+                </tr>
+				<tr>
+        			<th style="border-left-width:1px;">法人名称</th>
+        			<td >
+        				<input id="legalPerson" name="legalPerson" readonly ="true"  class="easyui-textbox" style='width:200px' />
+        			</td>
+					<th ">身份证号</th>
+        			<td colspan="3">
+        				<input id="idcardno" name="idcardno"  readonly ="true" class="easyui-textbox" style='width:200px' />
+        			</td>
+                </tr>
+    				<tr>
+                    <th style="border-left-width:1px;">核算内容</th>
+        			<td colspan="5">
+        				<input id="accountContent" class="easyui-textbox" readonly ="true"  multiline="true" data-options="validType:{length:[0,250]}" name="accountContent" style='width:705px;height:35px;'/>
+                    </td>
+               </tr>
+        </table>   
+      </div>
+	   <div  class="easyui-panel" data-options="region:'center',title:'变更后账户信息', collapsible:true" style="padding 0 0 0 0;border:0">
+		<table class="list">
+    				<tr>
+            			<th style="border-left-width:1px;border-top-width:1px;">账户名称</th>
+            			<td style="border-top-width:1px;">
+            				<input id="accountName" name="accountName" data-options="validType:{length:[0,50]}" class="easyui-textbox"  style='width:200px' />
+            			</td>
+            			<th style="border-top-width:1px;">银行账号</th>
+            			<td style="border-top-width:1px;">
+            				<input id="accountNumber" name="accountNumber" data-options="validType:{length:[0,50]}" class="easyui-textbox"  style='width:200px' />
+            			</td>
+            			<th style="border-top-width:1px;">账户开户行</th>
+            			<td style="border-top-width:1px;">
+            				<input id="oldBankName" name="oldBankName" class="easyui-textbox"  style='width:200px' />
+            			</td>
+            		</tr>
+            		<tr>
+            			<th style="border-left-width:1px;">账户性质</th>
+            			<td>
+            				<input id="oldType02" name="oldType02"  required="true" missingMessage="请选择账户性质"   class="easyui-textbox"  style='width:200px' />
+            			</td>
+            			<th>账户类型</th>
+            			<td >
+            				<input id="oldAccountType" name="oldAccountType"   required="true" missingMessage="请选择账户类型"   class="easyui-textbox" style='width:200px' />
+            			</td>	
+    					<th>财务负责人</th>
+            			<td >
+            				<input id="financialOfficer" name="financialOfficer"    class="easyui-textbox" style='width:200px' />
+            			</td>
+                    </tr>
+    				<tr>
+            			<th style="border-left-width:1px;">法人名称</th>
+            			<td >
+            				<input id="legalPerson" name="legalPerson"   class="easyui-textbox" style='width:200px' />
+            			</td>
+    					<th>身份证号</th>
+            			<td colspan="3">
+            				<input id="idcardno" name="idcardno"   class="easyui-textbox" style='width:200px' />
+            			</td>
+                    </tr>
+    				<tr>
+                    <th style="border-left-width:1px;">核算内容</th>
+        			<td colspan="5">
+        				<input id="accountContent" class="easyui-textbox" multiline="true" required="true" missingMessage="请输入核算内容" data-options="validType:{length:[0,250]}" name="accountContent" style='width:705px;height:35px;'/>
+                    </td>
+                </tr>
+        </table>
+			</div>
+			<table class="list">	
+        		<tr>
+        			<th >变更事项</th>
+        			<td colspan="7">
+						<input id="oldType02" name="oldType02" editable ="false" class="easyui-textbox"  style='width:200px' />
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>变更原因</th>
+        			<td colspan="7">
+        				<input id="applyReason" class="easyui-textbox" name="applyReason" multiline="true" required="true" missingMessage="请输入变更原因" data-options="prompt:'最多可输入200个汉字',validType:{length:[0,200]}" style="width:665px;height:55px;" />
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>附件</th>
+        			<td colspan="7" style="height:40px">
+        			</td>
+        		</tr>
+				#if($comeFlag == "audit")
+				<tr>
+        			<th>审批意见</th>
+            			<td colspan="7">
+        				<input id="opinion" class="easyui-textbox" name="opinion" multiline="true" required="true" missingMessage="请输入审批意见" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:665px;height:50px;" />
+        			</td>
+        		</tr>
+				#end
+            </table>
+	<div id='messageService'>
+    </div>
+</form>

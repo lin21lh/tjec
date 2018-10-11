@@ -1,0 +1,42 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/common/component/doubleDatagridSelect.js"></script>
+<script type="text/javascript" src="$contextpath/templates/sys/sortfieldset/sortfieldsetEntry.js"></script><title>日志管理</title>
+<style type="text/css">
+	.linkbutton_group {
+        border-bottom: 1px solid #95B8E7;
+        background-color: #eee;
+    }
+</style>
+#**
+	排序字段设置vm脚本
+	@author  maqs 
+	@date 2015年5月20日14:42:20
+*#
+</head>
+<body id="layout" class="easyui-layout">
+	<div region="center" border="false" >
+		<div id="toolbar_sort" class="toolbar_group">
+			<div class="toolbar_buttons">
+				<a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+				<span class='xian' ></span>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="queryParam()">查询</a>
+				<span class='xian' ></span>
+				<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="addSortFieldSet()">新增</a>
+				<span class='xian' ></span>
+				<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="editSortFieldSet()">修改</a>
+				<span class='xian' ></span>
+				<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="deleteSortFieldSet()">删除</a>
+			</div>
+			<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" >
+				&nbsp;排序名称：<input class="easyui-textbox" name="sortname_query" id="sortname_query" style="width:160px" />
+				
+			</div>
+		</div>
+		<table id="datagrid_sortfieldset"></table>
+	</div>
+</body>
+</html>

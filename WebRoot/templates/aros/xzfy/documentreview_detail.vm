@@ -1,0 +1,22 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+//默认加载
+$(function() {
+    var id = "$id";
+    alert(id);
+    $.post(contextpath + "aros/xzfy/controller/CasebaseinfoController/getContentsForDetail.do",
+        {
+            tempid: id,
+            tableFlag: "review"
+        }, function(data){
+            $("#contents").html(data);
+    }, "json");
+});
+</script>
+<table class="list">
+   <tr>
+       <td>
+           <div id="contents" style="width:100%;height:465px;overflow:auto;"></div>
+      </td>
+   </tr>
+</table>

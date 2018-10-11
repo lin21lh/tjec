@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="../../../templates/base/excel/dataImpCfgEntry.js"></script>
+<script type="text/javascript" src="../../../templates/base/excel/dataImpCfgEntry_sheet.js"></script>
+<title>数据导入模板配置</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div class="easyui-layout" fit='true'>
+		<div region="center" border="false" title="模板配置">
+		
+			<div id="toolbar_tmpl" class="toolbar_group">
+				<div class="toolbar_buttons">
+					<a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" 
+							iconCls="icon-collapse" plain="true" ></a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" 
+						onClick="tmpladd()">添加</a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" 
+						onClick="tmpledit()">修改</a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" 
+						onClick="tmpldel()">删除</a>
+								
+				</div>
+				<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" >
+					&nbsp;&nbsp;&nbsp;&nbsp;配置类别：<input class="easyui-textbox" id="cfgcategory" />
+					&nbsp;&nbsp;&nbsp;&nbsp;配置名称：<input class="easyui-textbox" id="cfgname" />
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" 
+						onClick="tmplquery()">查询</a>
+						<!--
+					<a href="#" class="easyui-linkbutton" iconCls="icon-reload" plain="false" 
+						onClick="tmplclear()">清空</a>
+						-->
+				</div>
+			</div>
+			<table id='tmplgrid'>
+			</table>
+		</div>
+		
+		<div region="south" border="true" title="模板工作表配置" style='height:280px'>
+			<div id="toolbar_sheet" class="toolbar_group">
+				<div class="toolbar_buttons">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" 
+						onClick="sheetadd()">添加</a>
+						<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" 
+						onClick="sheetedit()">修改</a>
+						<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" 
+						onClick="sheetdel()">删除</a>
+						<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-parse" plain="true" 
+						onClick="opensheetCfgDetailWindow()">工作表配置明细</a>
+				</div>
+			</div>
+			<table id='sheetgrid'>
+			</table>
+		</div>
+	</div>
+	
+	<div style='display:none'>
+		<!--tmpl form -->
+		<div id='tmplWindow'>
+			<form id='form_3356' method='post'>
+				<table class='list'>
+					<tr>
+						<th>
+							配置类别：
+						</th>
+						<td>
+							<input name='cfgcategory'  type='text' style='width:320px'  />
+						</td>
+					</tr>
+					<tr>
+						<th>
+							配置名称：
+						</th>
+						<td>
+							<input name='cfgname'  type='text' style='width:320px' />
+						</td>
+					</tr>
+					<tr>
+						<th>
+							数据异常处理：
+						</th>
+						<td>
+							<input name='dataexception'  type='text' style='width:320px' />
+						</td>
+					</tr>
+					<tr>
+						<th>
+							个性化处理接口：
+						</th>
+						<td>
+							<input name='classname'  type='text'  style='width:320px' />
+						</td>
+					</tr>
+					<tr>
+						<th>
+							备注：
+						</th>
+						<td >
+							<input name='remark'  type='text' style='width:320px;' />
+							<input type='hidden' name='id' />
+							<input type='hidden' name='status' value='1'/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		
+		<!--sheet form -->
+		
+		<div id='sheetWindow'>
+			<form id='form_3358' method='post'>
+				<table class='list'>
+					<tr>
+						<th>
+							配置名称：
+						</th>
+						<td>
+							<input name='cfgname'  type='text' style='width:320px' />
+						</td>
+					</tr>
+					<tr>
+						<th>
+							工作表索引号
+						</th>
+						<td>
+							<input name='id'  type='text' style='width:320px' />
+						</td>
+					</tr>
+					<tr>
+						<th>
+							工作表名称
+						</th>
+						<td>
+							<input name='name'  type='text' style='width:320px' />
+							<input type='hidden' name='cfgid' />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>

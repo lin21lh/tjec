@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="../templates/test/leaveStartEntry.js"></script>
+<title>流程统一测试页面</title>
+<style type='text/css'>
+.nomargin{
+margin:0px;
+padding:0px;
+}
+</style
+</head>
+<body class="nomargin">
+<div class="easyui-panel" title="请假单发起" fit="true">
+	<div id='tb0' class="toolbar_group">
+		<div class="toolbar_buttons">
+			<a class="easyui-linkbutton" iconCls='icon-add'  plain='true' onclick="add()">新增</a>
+			<a class="easyui-linkbutton" iconCls='icon-edit'  plain='true' onclick="edit()">修改</a>
+			<a class="easyui-linkbutton" iconCls='icon-remove'  plain='true' onclick="del()">删除</a>
+			<a class="easyui-linkbutton" iconCls='icon-redo'  plain='true' onclick="wfstart()">发起流程</a>
+		</div>
+		<div class="toolbar_querybar">
+			<a class="easyui-linkbutton" iconCls='icon-search'  plain='false' onclick="query()">查询</a>
+		</div>
+	</div>
+	<table id="grid" fit="true">
+	</table>
+</div>
+</body>
+</html>

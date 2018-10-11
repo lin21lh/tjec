@@ -1,0 +1,119 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/callback_form.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+
+</style>
+	<input type="hidden" id="caseidinput" value="$!caseid"/>
+<form id="caseIdForm">
+	<input type="hidden" name="caseid" id="caseidForm" value="$!caseid"/>
+</form>
+<div id="div" >
+<div style="float:left;width:100%;">
+  <div style="width:48%;float:left;">
+		<table id ='Table'></table>
+  </div>
+  <div style="width:1%; float:left;text-align:center">
+		&nbsp;
+  </div>
+  <div style="width:50%;float:left;">
+		<div id="toolbar_menu"  class="linkbutton_group  datagrid-toolbar">
+			<a id="linkbutton_save" href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true">保存</a>
+			<span class='xian' ></span>
+			<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  iconCls="icon-undo" plain="true">取消</a>
+		</div>
+		<div id="trial_win" class="easyui-panel" style="width: 100%;">
+			<form id="form" method="post" style="margin: 0px">
+				<input type="hidden" name="ciid" id="ciid"/>
+				<input type="hidden" name="caseid" id="caseid"/>
+				<table class="list" >
+					<tr>
+						<th >受访人：</th>
+						<td>
+							<input id="interviewee" name="interviewee" class="easyui-textbox" data-options="validType:{length:[0,60]}"  style="width:200px" 
+								missingMessage="请输入受访人" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >联系方式：</th>
+						<td>
+							<input id="contactway" name="contactway" class="easyui-textbox" data-options="validType:{length:[0,60]}"  style="width:200px" 
+								missingMessage="请输入受访人联系方式" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th>受访时间：</th>
+						<td >
+							<input id="interviewtime" name="interviewtime" class="easyui-datebox" editable="false" 
+								 missingMessage="请输入受访时间" style='width:200px' required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+				 	<tr>
+			          <th>回访详情：</th>
+			          <td>
+			          <table class="list" >
+						<tr>
+							<th style="text-align:left;">是否热情接待案件当事人，详细耐心解释有关法律法规：</th>
+							<td>
+								<input id="isattitude" name="isattitude" class="easyui-combobox" style="width:50px" 
+									missingMessage="请选择" required="true"/><font color='red'>*</font>
+							</td>
+						</tr>
+						<tr>
+							<th style="text-align:left;">是否中雨事实和法律，严格贪法办理行政复议案件：</th>
+							<td>
+								<input id="islegal" name="islegal" class="easyui-combobox" style="width:50px" 
+									missingMessage="请选择" required="true"/><font color='red'>*</font>
+							</td>
+						</tr>
+						<tr>
+							<th style="text-align:left;">是否有接收当事人请吃、受贿、索取、财物现象：</th>
+							<td>
+								<input id="iscorruption" name="iscorruption" class="easyui-combobox" style="width:50px" 
+									missingMessage="请选择" required="true"/><font color='red'>*</font>
+							</td>
+						</tr>
+						<tr>
+							<th style="text-align:left;">是否有徇私舞弊，枉法裁判现象：</th>
+							<td>
+								<input id="isfavoritism" name="isfavoritism" class="easyui-combobox" style="width:50px"
+									missingMessage="请选择" required="true"/><font color='red'>*</font>
+							</td>
+						</tr>
+						<tr>
+							<th style="text-align:left;">对行政复议工作是否满意：</th>
+							<td>
+								<input id="issatisfaction" name="issatisfaction" class="easyui-combobox" style="width:50px" 
+									missingMessage="请选择" required="true"/><font color='red'>*</font>
+							</td>
+						</tr>
+						</table>
+						</td>
+						</tr>
+					<tr>
+						<th>备注：</th>
+						<td >
+							<input id="remark" name="remark" multiline="true" class="easyui-textbox" data-options="validType:{length:[0,160]}" style="width:100%;height:80px;"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+  </div>
+</div>
+</div>
+<div id="uploadifydiv"></div>

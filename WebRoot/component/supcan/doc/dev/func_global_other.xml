@@ -1,0 +1,176 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+<functions>
+<category name="常用函数">
+ <function name="CancelEvent">
+  <usage>取消执行某些事件</usage>
+  <detail>取消执行某些事件，用于某些"Before..."事件. 以分页为例，如果你在 BeforePager 事件中执行了本函数，下一真正步的分页处理将被取消.</detail>
+ </function>
+ <function name="toJson">
+  <usage>将XML串转换成JSon</usage>
+  <para>XML串</para>
+  <para>可选，可以是串"Recordset"，表示待转换的XML是平面结果集数据，转换后的JSON串是类似这种更简洁的格式：&lt;br&gt;
+　　{"id":"k203", price:"2230.12", "dept":"fin01"}&lt;br&gt;
+如果XML是多条记录，则JSON是数组：&lt;br&gt;
+　　[&lt;br&gt;
+　　　{"id":"k203", price:"2230.12", "dept":"fin01"},&lt;br&gt;
+　　　{"id":"s508", price:"33.00", "dept":"fin02"}&lt;br&gt;
+　　]
+</para>
+  <return>JSON串(注：如果参数1不是XML，则直接返回该参数)</return>
+  <illu>请参见Treelist的 29.查询条件(一)、30.查询条件(二)</illu>
+ </function>
+ <function name="SetMultiLineEnter">
+  <usage>设置多行编辑是否直接以回车换行</usage>
+  <detail>在默认情况下，多行编辑(MultiLineEdit)是以Ctrl+Enter实现换行的。如果设为true，则直接回车就实现换行.</detail>
+  <para>true/false, 默认false</para>
+  <memo>该函数是全局函数，一旦执行，进程内的多行编辑都将生效</memo>
+ </function>
+ <function name="GetMultiLineEnter">
+  <usage>取得多行编辑是否直接以回车换行</usage>
+  <return>1/0</return>
+ </function>
+</category>
+
+<category name="遮罩函数">
+	<function name="GrayWindow">
+		<usage>使控件呈现被遮罩的半透明效果</usage>
+		<detail>使控件呈现被遮罩的半透明效果，用于实现网页模式对话框，可参考Treelist的演示页</detail>
+		<para>是否遮罩, true - 遮罩,控件被Disable并呈半透明的灰色; false - 解除遮罩</para>
+		<para>可选，灰度, 0-255，默认200, 数值越大越明亮</para>
+		<illu>请参见树列表的演示页: 34.遮罩效果</illu>
+	</function>
+</category>
+
+
+<category name="缓存函数">
+	<function name="ClearImageCache">
+		<usage>清理某个Treelist/freeform的图片缓存</usage>
+		<detail>清理某个Treelist/freeform的图片缓存，以便在下次Build或Load时能及时刷新图片</detail>
+		<para>Treelist或Freeform的句柄</para>
+		<memo>句柄是通过GetHandle( )函数获取的</memo>
+	</function>
+	<function name="SaveCache">
+		<usage>将串存入本地缓存</usage>
+		<detail>将串存入本地缓存，缓存的内容在&lt;font color=red&gt;全局有效、且和页面无关(即所有页面均能访问到)&lt;/font&gt;</detail>
+		<para>ID, 可以是任意串</para>
+		<para>内容串，如果是空串，则表示从缓存中移除该ID的内容</para>
+		<para>可选，格式为Persist=[?];TimeOut=[?D/H/M/S], 其中Persist用于指定保存到何处，格式如下：&lt;br&gt;
+1.Persist = &lt;b&gt;Memory&lt;/b&gt;,  默认，表示将内容缓存于内存中，当浏览器进程关闭后内容将遗失.&lt;br&gt;
+2.Persist = &lt;b&gt;File&lt;/b&gt;,  将内容保存在本地文件(在BC目录下的 cache.data 文件).&lt;br&gt;
+TimeOut表示如果超过一段时间无访问，将自动删除该缓存，格式如下：&lt;br&gt;
+TimeOut = &lt;b&gt;?D/?H/?M/?S&lt;/b&gt; - 时间间隔，n天/n小时/n分钟/n秒(D/H/M/S分别表示天数、小时、分钟、秒).</para>
+		<example>
+AF.func("SaveCache", "My.Key1 \r\n MyContent1");  //保存到内存&lt;br&gt;
+AF.func("SaveCache", "My.Key1 \r\n MyContent1 \r\n Persist=File");  //保存到文件，永久有效&lt;br&gt;
+AF.func("SaveCache", "My.Key1 \r\n MyContent1 \r\n TimeOut=3M");  //保存到内存，有效期为3分钟&lt;br&gt;
+AF.func("SaveCache", "My.Key1");  //清除ID为 "My.Key1" 的缓存&lt;br&gt;
+</example>
+		<illu>请参见树列表的演示页:30.查询条件(二)</illu>
+	</function>
+	<function name="ReadCache">
+		<usage>读取缓存内容</usage>
+		<para>ID, 注：ID是大小写敏感的</para>
+		<return>内容串</return>
+		<illu>请参见树列表的演示页:30.查询条件(二)</illu>
+	</function>
+	<function name="GetCacheIDs">
+		<usage>取得所有缓存内容的ID号</usage>
+		<return>ID串，以逗号分隔</return>
+	</function>
+</category>
+<category name="系统函数">
+	<function name="GetLanguage">
+		<usage>取得当前语言</usage>
+		<return>936 - 中文简体，1252 - 英文，950 - 中文繁体</return>
+	</function>
+	<function name="SetLanguage">
+		<usage>切换语言</usage>
+		<para>936 - 中文简体，1252 - 英文，950 - 中文繁体</para>
+		<illu>请参见报表的演示页: 12.多语言(简繁英)</illu>
+	</function>
+	<function name="GetCtlName">
+		<usage>取得组件名</usage>
+		<return>组件名，如treelist、freeform</return>
+	</function>
+	<function name="IsComponentInstalled">
+		<usage>某组件是否已经下载</usage>
+		<para>组件bin包名，如BCV1、LuxForm</para>
+		<return>true/false</return>
+	</function>
+	<function name="GetHandleType">
+		<usage>取得句柄的类型</usage>
+		<para>句柄</para>
+		<memo>句柄是通过GetHandle( )函数获取的</memo>
+		<return>串，可能为treelist、list、freeform、worksheet、validation、dom或空串</return>
+	</function>
+	<function name="GetMac">
+		<usage>取得网卡Mac地址</usage>
+		<return>串(如："1c-6f-65-d6-b8-d1")</return>
+	</function>
+	<function name="GetIP">
+		<usage>取得本机IP地址</usage>
+		<return>串(如："192.168.1.1")</return>
+	</function>
+	<function name="GetComputerName">
+		<usage>取得客户端的计算机名</usage>
+		<return>串</return>
+	</function>
+	<function name="GetPrinters">
+		<usage>取得本地已安装的所有打印机名</usage>
+		<return>以逗号分隔的打印机名，其中的第一个是默认打印机</return>
+	</function>
+	<function name="GetPrinterPapers">
+		<usage>取得某打印机所支持的所有打印纸号</usage>
+		<para>打印机名</para>
+		<return>以逗号分隔的打印纸号，各种打印纸号所对应的打印纸名称及尺寸请参见“附录4:打印纸对照表”</return>
+	</function>
+	<function name="Download">
+		<usage>文件下载</usage>
+		<para>URL，支持Http、Ftp</para>
+		<para>可选，格式为 isOpenDialog=[true/false]; isEcho=[true/false]; toDir=[?]; toFile=[?]; toString=[?]; Ext=[?]; uid=[?]; pwd=[?], 含义为：&lt;br&gt;
+　&lt;b&gt;isOpenDialog&lt;/b&gt; - 是否打开选择本地目录的对话框，默认是true;&lt;br&gt;
+　&lt;b&gt;isEcho&lt;/b&gt; - 下载成功后是否浮现一个提示，默认是true;&lt;br&gt;
+　&lt;b&gt;toDir&lt;/b&gt; - 指定本地目录(绝对路径)，如果路径不存在能自动创建，默认是空;&lt;br&gt;
+　&lt;b&gt;toFile&lt;/b&gt; - 指定本地文件(绝对路径)，如果路径不存在能自动创建，默认是空;&lt;br&gt;
+　&lt;b&gt;Ext&lt;/b&gt; - 对话框中允许选择的文件后缀，若有多个后缀则以逗号分隔;&lt;br&gt;
+　&lt;b&gt;uid&lt;/b&gt; - 登录的用户名;&lt;br&gt;
+　&lt;b&gt;pwd&lt;/b&gt; - 用户口令;&lt;br&gt;
+　&lt;b&gt;toString 或 isToString&lt;/b&gt; - true/false, 是否直接返回取得的内容串，而不保存到文件;&lt;br&gt;
+			</para>
+		<return>本地全文件名，空串表示失败或取消下载. 如果isToString=true则是取得的内容串.</return>
+		<example>//下载一个mp3文件，下载前会打开目的文件对话框&lt;br&gt;
+AF.func("download", "ftp://192.168.1.2:21/mymusic.mp3");&lt;br&gt;
+//下载到指定文件，但仍会打开目的文件对话框&lt;br&gt;
+AF.func("download", "http://localhost/hlp.htm \r\n toFile=d:\\my.htm; ext=htm,html,txt");&lt;br&gt;
+//直接取得文本串&lt;br&gt;
+var xml = AF.func("download", "http://localhost/text.xml \r\n toString=true; isEcho=false");&lt;br&gt;
+</example>
+	</function>
+
+	<function name="PostMessage">
+		<usage>Post一个自定义消息</usage>
+		<detail>以Post方式发送一个消息，相当于在消息队列的末尾添加，在页面的OnEvent( )事件中将能收到一个名为 "UserEvent" 的消息。</detail>
+		<para>格式为 p1=?;p2=?p3=?p4=?, 也允许忽略</para>
+		<example>例如：&lt;br&gt;
+function OnEvent(id, Event, p1, p2, p3, p4)&lt;br&gt;
+{&lt;br&gt;
+　if(Event == 'LooseFocus') {&lt;br&gt;
+　　if(p1=='0' &amp;&amp; p2=='price')&lt;br&gt;
+　　　AF.func('PostMessage', 'p1=kk');&lt;br&gt;
+　}&lt;br&gt;
+　else if(Event == "UserEvent" &amp;&amp; p1=="kk") {&lt;br&gt;
+　　AF.func("SelectCell", "0 \r\n price");&lt;br&gt;
+　}&lt;br&gt;
+}
+</example>
+	</function>
+	<function name="GetChar">
+		<usage>取得某个字符编码所对应的文字</usage>
+		<para>字符的ASC码，如果是中文，则为utf-16的宝马</para>
+		<example>例如：&lt;br&gt;
+var chr = AF.func("GetChar", "20013");  //返回“中”&lt;br&gt;
+var chr = AF.func("GetChar", "97");  //返回“a”&lt;br&gt;
+</example>
+	</function>
+</category>
+</functions>

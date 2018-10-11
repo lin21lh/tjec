@@ -1,0 +1,50 @@
+ #parse("common/common-v14.vm")
+ #parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/zjgl/js/editSpeSugPage.js"></script>
+<div>
+	   <form id="speSugInfoForm" method="post">
+	   <input type="hidden" id="caseid" name="caseid" value="${caseid}"/>
+	   <input type="hidden"  id="groupid" name="groupid" value="${groupid}"/>
+	   
+	   <div class="easyui-panel" title="意见列表">
+	       <table class="list" id="filetable">
+	           <tr>
+		            <th style="width: 100px">相关文件：</th>
+		            <td  class="forfileClass" colspan="3" valign="top" style="height:40px" id="filetd"></td>
+                </tr>
+	       </table>
+	       #if($list.size() > 0)
+		    <table class="list">
+		       <tr>
+		           <td style="background-color: #95B8E7;text-align: center;">意见录入时间：</td>
+		           <td style="background-color: #95B8E7;text-align: center;">内容：</td>
+		       </tr>
+		        #foreach($i in $list)
+		        <tr>
+		            <th style="width: 100px">${i.opttime}</th>
+		            <td colspan="3">
+		                <textarea class="textarea" style="width:95%;height:65px;border: 0" value="$!{i.remark}" readonly="readonly" >$!{i.remark}</textarea>
+		            </td>
+		        </tr>
+		        #end
+		    </table>
+             #end
+			 <table class="list" id="remarkTab">
+				<tr>
+				    <th style="width: 100px">添加意见：</th>
+					<td colspan="3">
+						<input id="remark" class="easyui-textbox" name="remark" multiline="true" missingMessage="请输入处理意见" required="true"
+							data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:95%;height:65px;border: 0px solid;" 
+							/>
+						<font color=red>*</font>
+					</td>
+				</tr>
+		      </table>
+	   </div>
+	   <div style="width:100%;text-align: center;margin-top: 5px">
+	      <a href="javascript:void(0)" id="saveBtn1" style="border: 1px solid #bbb;" class="easyui-linkbutton" iconCls="icon-save" onClick="saveFormInfo()">保存</a>
+       </div>
+	</form>
+ </div>

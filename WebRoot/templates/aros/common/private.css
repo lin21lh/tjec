@@ -1,0 +1,182 @@
+@charset "utf-8";
+
+/*处理按钮 背景*/
+.dis-ui-primary-bg {
+    background:none repeat-x scroll 50% 50% #DFEFFC !important;
+}
+.content-div {
+     margin-top:5px;
+}
+.tc-div {
+    width: 95%;
+    margin: 0px auto;
+    font-size: 14px;
+    font-weight: bold;
+}
+.title-ctrl {
+    width: 95%;
+    height: 35px; 
+    line-height: 35px;
+    vertical-align: middle;
+    border:1px solid #8bd2ef;
+    background:#8bd2ef;
+    margin:0px auto;
+    cursor: pointer;
+    webkit-border-radius: .4em .4em 0 0;
+    -moz-border-radius: .4em .4em 0 0;
+    border-radius: .4em .4em 0 0;
+}
+.warning-bg {
+    background:#f99f1f;
+}
+.eui-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 0 5px;
+    overflow: hidden;
+    background: url(images/eui_icons_20x1400.png) no-repeat;
+}
+.title-ctrl .icon-ctrl {
+    background-position: 0 -966px;
+    cursor: pointer;
+    float: left; 
+    margin-top:10px;
+}
+.title-ctrl .t-ctrl {
+    float: left;
+}
+.t-ctrl h3 {
+    color: #FFF ;
+}
+.title-ctrl .btn-ctrl {
+    float: left;
+    margin-left: 10px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+	vertical-align: middle;
+	padding: 0px;
+	overflow: visible;
+}
+.title-ctrl .msg-ctrl {
+    float: left;
+    margin-left: 40px;
+    line-height: 40px;
+    height: 35px;
+}
+.title-ctrl .ext-ctrl {
+    float: left;
+    margin-left: 40px;
+    line-height: 40px;
+    height: 35px;
+}
+.title-ctrl .msg-ctrl,
+.title-ctrl .msg-ctrl span,
+.title-ctrl .msg-ctrl label,
+.title-ctrl .ext-ctrl,
+.title-ctrl .ext-ctrl span,
+.title-ctrl .ext-ctrl label {
+    font-size:14px ;
+    color:#FFF;
+}
+.content-ctrl {
+}
+.content-ctrl .gdiv-ctrl {
+    border-left: 1px solid #8BD2EF;
+	border-right: 1px solid #8BD2EF;
+	border-radius: 0px 0px 0.4em 0.4em;
+	border-bottom: 1px solid #8BD2EF;
+	width: 95%;
+	margin: 0 auto;
+}
+.content-ctrl .table-ctrl {
+    margin-top:0px;
+    border-bottom:1px solid #8bd2ef;
+    border-left:1px solid #8bd2ef;
+    border-right:1px solid #8bd2ef;
+    -webkit-border-radius: 0 0 .4em .4em;
+    -moz-border-radius: 0 0 .4em .4em;
+    border-radius: 0 0 .4em .4em;
+}
+.content-ctrl .grid-ctrl {
+    width: 95% !important;
+    margin: 0 auto;
+    border-bottom:1px solid #8bd2ef;
+    border-left:1px solid #8bd2ef;
+    border-right:1px solid #8bd2ef;
+    -webkit-border-radius: 0 0 .4em .4em;
+    -moz-border-radius: 0 0 .4em .4em;
+    border-radius: 0 0 .4em .4em;
+}
+/******制定Tabs样式*****/
+.tabs-ctrl .li-ctrl {
+    margin: 0px 1px 0px 2px;
+    padding: 0px 5px 0px 5px;
+    float: left;
+    width: auto;
+    height: 30px;
+    text-align: center;
+    line-height:30px;
+    vertical-align: middle;
+    border-top: 1px solid #8BD2EF;
+    border-left: 1px solid #8BD2EF;
+    border-right: 1px solid #8BD2EF;
+    background: none repeat scroll 0% 0% #8BD2EF;
+    cursor: pointer;
+    border-radius: 0.4em 0.4em 0px 0px;
+}
+.tabs-ctrl .tabs-div {
+    width: 95%;
+    height: 30px;
+    margin: 0px auto;
+}
+.tabs-ctrl .fct-ctrl {
+    border-top: 1px solid #8BD2EF;
+    border-left: 1px solid #8BD2EF;
+    border-right: 1px solid #8BD2EF;
+    border-bottom: 1px solid #8BD2EF;
+    border-radius: 0px 0px 0.4em 0.4em;
+    width: 95%;
+    margin: 0 auto;
+}
+.tabs-div .li-state-default {
+    font-weight: normal;
+    font-size:14px ;
+    color:#FFF;
+    cursor:pointer;
+}
+.tabs-div .li-state-first {
+    margin: 0px 1px 0px -1px;       
+    font-weight: normal;
+    font-size:14px ;
+    color:#FFF;
+    cursor:pointer;
+}
+/******查看页面显示文本样式 *****/
+
+.dv-ta-underline {
+    border-bottom: 1px solid #EDEDED;
+    height: 24px;
+    line-height: 20px;
+    text-align: left;
+    width: 100%;
+    float: left;
+}
+.dv-tf-underline {
+    border-bottom: 1px solid #EDEDED;
+    /**height: 24px;**/
+    line-height: 20px;
+    text-align: left;
+    width: 80%;
+}
+/*下方按钮操作区 div样式  替代之前的operateDiv*/
+.btoperateDiv{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	clear: both;
+}
+html .hmofx {
+	-ms-overflow-x: hidden;
+}

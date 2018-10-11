@@ -1,0 +1,4 @@
+#parse("common/extensions-v14.vm")
+<div style="height:100%">
+    <table id="noticeDataGrid"></table>
+</div>

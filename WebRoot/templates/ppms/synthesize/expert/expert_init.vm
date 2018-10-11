@@ -1,0 +1,67 @@
+<!--expert_init.vm-->
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/ppms/synthesize/expert/js/expert_init.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<title>专家管理</title>
+<script type="text/javascript">
+var menuid = "$menuid";
+</script>
+<style type="text/css">
+	.linkbutton_group {
+        border-bottom: 1px solid #95B8E7;
+        background-color: #eee;
+    }
+</style>
+</head>
+
+<body id="layout" class="easyui-layout">
+	<div data-options="region:'center',split:false" >
+		<div id="toolbar_expert" class="toolbar_group">
+			<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+			<div class="toolbar_buttons">
+				<!--<a id="openclose" onClick="javascript:panelctlForFam(0);" class="easyui-linkbutton" iconCls="icon-collapse" plain="true" ></a>-->
+				<span class='xian' ></span>
+				<a id="btn_query" href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="qryExpert()">查询</a>
+				<span class='xian' ></span>
+				<a id="btn_add" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="addExpert()">新增</a>
+				<span class='xian' ></span>
+				<a id="btn_edit" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="editExpert()">修改</a>
+				<span class='xian' ></span>
+				<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="delExpert()">删除</a>
+				<span class='xian' ></span>
+				<a id="btn_detail" href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="detExpert()">详情</a>
+			</div>
+			<div id="qpanel1" class="easyui-panel collapsable-toolbar " collapsible="true" style="width:100%;padding:1px">
+				<table style='width:100%'>
+                    <tr>
+        				<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap' >评标专业</td>
+        				<td style='font-size:12px;width:18%' ><input id="bidMajors" panelheight = "auto" class="easyui-combobox" style="width:97%;" /></td>
+						<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap'>专家名称</td>
+        				<td style='font-size:12px;width:18%'><input id="expertName" class="easyui-textbox" style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap'>专家类型</td>
+        				<td style='font-size:12px;width:18%'><input id="expertTypes" class="easyui-combobox"  style="width:97%" multiple="true"/></td>
+        				<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap'>最高学位</td>
+        				<td style='font-size:12px;width:18%'><input id="offering" class="easyui-combobox"  style="width:97%"  multiple="true"/></td>
+    				</tr>      
+                    <tr> 
+						<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap'>最高学历</td>
+        				<td style='font-size:12px;width:18%'> <input id="degree" class="easyui-textbox"  style="width:97%" multiple="true"/></td>
+        				<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap'>所属行业</td>
+        				<td style='font-size:12px;width:18%'> <input id="industrys" class="easyui-textbox"  style="width:97%"  multiple="true"/></td>
+        				<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap'>职称 </td>
+        				<td style='font-size:12px;width:18%'> <input id="professional" class="easyui-textbox"  style="width:97%"  multiple="true"/></td>
+        				<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap'>执业资格</td>
+                        <td style='font-size:12px;width:18%'><input id="qualifications" class="easyui-textbox"  style="width:97%" multiple="true"/></td>
+    				</tr>      
+				</table>
+			</div>
+		</div>
+		<table id="datagrid_expert"></table>
+	</div>
+	
+</body>
+</html>

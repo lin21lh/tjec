@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!--By Supcan Report -->
+<Report>
+	<WorkSheet name="Sheet" isDefaultPrint="true">
+		<Properties>
+			<BackGround bgColor="#FFFFFF" arrange="tile" alpha="255" />
+			<DefaultTD>
+				<TD fontIndex="0" textColor="#000000" transparent="true"
+					leftBorder="1" topBorder="1" leftBorderColor="#C0C0C0"
+					leftBorderStyle="solid" topBorderColor="#C0C0C0" topBorderStyle="solid"
+					decimal="2" align="left" vAlign="middle" isProtected="false"
+					isThousandSeparat="true" isRound="true" isPrint="true" />
+			</DefaultTD>
+			<Other isShowZero="true" isRefOriPrecision="true" LineDistance="0"
+				isRowHeightAutoExtendAble="true" />
+		</Properties>
+		<Fonts>
+			<Font faceName="宋体" charSet="134" height="-14" weight="400" />
+			<Font faceName="宋体" charSet="134" height="-14" weight="700" />
+		</Fonts>
+		<Table>
+			<Col width="166" />
+			<Col width="176" />
+			<Col width="148" />
+			<Col width="133" />
+			<Col width="133" />
+			<Col width="133" />
+			<Col width="133" />
+			<Col width="133" />
+			<Col width="133" />
+			<Col width="98" />
+			<Col width="15" />
+			<TR height="24" sequence="0">
+				<TD fontIndex="1" bgColor="#E0E0E0" align="center" datatype="1"
+					formula="=headrow(&apos;ds&apos;)">使用单位名称</TD>
+				<TD fontIndex="1" bgColor="#E0E0E0" align="center" datatype="1">产品名称
+				</TD>
+				<TD fontIndex="1" bgColor="#E0E0E0" align="center" datatype="1">使用人名称
+				</TD>
+				<TD fontIndex="1" bgColor="#E0E0E0" align="center" datatype="1">金额
+				</TD>
+				<TD fontIndex="1" bgColor="#E0E0E0" align="center" datatype="1">查询次数
+				</TD>
+				<TD topBorder="0" />
+			</TR>
+			<TR height="24" sequence="1">
+				<TD align="right" datatype="6" formula="=datarow(&apos;ds&apos;)" />
+				<TD datatype="1" />
+				<TD datatype="1" />
+				<TD align="right" datatype="1" />
+				<TD align="right" datatype="1" />
+				<TD topBorder="0" />
+			</TR>
+			<TR height="24" sequence="2">
+				<TD leftBorder="0" />
+				<TD leftBorder="0" />
+				<TD leftBorder="0" />
+				<TD leftBorder="0" />
+				<TD leftBorder="0" />
+				<TD leftBorder="0" topBorder="0" />
+			</TR>
+		</Table>
+		<PrintPage>
+			<Paper>
+				<Margin left="19" top="25" right="19" bottom="25" />
+			</Paper>
+			<Page>
+				<PageCode>
+					<Font faceName="宋体" charSet="134" height="-14" weight="400" />
+				</PageCode>
+			</Page>
+		</PrintPage>
+		<Summaries>
+			<Summary datasourceID="ds" datasourceXMLNode="" isEnabled="true"
+				isSumAtBottomRight="true" sort="0" isUniteRows="false"
+				isPrintGridLine="false">
+				<Groups>
+					<Group id="deptname" text="小计" align="0" isMergeBorder="true"
+						bgColor="#75BAFF">
+						<Font faceName="宋体" charSet="134" height="-12" weight="400" />
+						<SubTotals>
+							<SubTotal id="price" decimal="0">共@sum元</SubTotal>
+							<SubTotal id="logcount" decimal="0">共@sum次</SubTotal>
+						</SubTotals>
+					</Group>
+					<Group id="prodname" text="小计" align="0" isMergeBorder="true"
+						bgColor="#FFFFAC">
+						<Font faceName="宋体" charSet="134" height="-12" weight="400" />
+						<SubTotals>
+							<SubTotal id="price" decimal="0">共@sum元</SubTotal>
+							<SubTotal id="logcount" decimal="0">共@sum次</SubTotal>
+						</SubTotals>
+					</Group>
+				</Groups>
+			</Summary>
+		</Summaries>
+	</WorkSheet>
+	<DataSources Version="255" isAutoCalculateWhenOpen="false"
+		isSaveCalculateResult="false">
+		<DataSource type="5"><!-- Desc: Supcan Report Component DataSource 
+				Specification -->
+			<Data>
+				<ID>ds</ID>
+				<Version>2</Version>
+				<Type>5</Type>
+				<TypeMeaning>中心数据源</TypeMeaning>
+				<Source>http://127.0.0.1:8080/aros/templates/aros/tjfx/xml/prodlogDS.xml
+				</Source>
+				<Memo>产品使用日志</Memo>
+				<dataID>100000041</dataID>
+				<Columns>
+					<Column>
+						<name>prodname</name>
+						<text>产品名称01</text>
+						<type>string</type>
+						<visible>true</visible>
+						<sequence>2</sequence>
+					</Column>
+					<Column>
+						<name>operatorname</name>
+						<text>使用人名称</text>
+						<type>string</type>
+						<visible>true</visible>
+						<sequence>3</sequence>
+					</Column>
+					<Column>
+						<name>deptname</name>
+						<text>使用单位名称</text>
+						<type>string</type>
+						<visible>true</visible>
+						<sequence>1</sequence>
+					</Column>
+				</Columns>
+			</Data>
+
+		</DataSource>
+	</DataSources>
+</Report>

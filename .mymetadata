@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="aros"
+  id="myeclipse.1409627199676"
+  context-root="/jbf"
+  j2ee-spec="5.0"
+  archive="aros.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

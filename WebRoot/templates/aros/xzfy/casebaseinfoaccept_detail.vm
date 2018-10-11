@@ -1,0 +1,118 @@
+#parse("common/extensions-v14.vm")
+<table class="list">
+	<tr>
+	    <th width="30%">案件编号：</th>
+	    <td width="70%"><span>$!{casebaseinfo.csaecode}</span></td>
+	</tr>
+	<tr>
+	    <th>申请事项：</th>
+	    <td><span>$!{casebaseinfo.appcase}</span></td>
+	</tr>
+	<tr>
+	    <th>申请人：</th>
+	    <td><span>$!{casebaseinfo.appname}</span></td>
+	</tr>
+	<tr>
+	    <th>被申请人：</th>
+	    <td><span>$!{casebaseinfo.defname}</span></td>
+	</tr>   
+	<tr>
+	    <th>第三人：</th>
+	    <td><span>$!{thirdbaseinfo.thname}</span></td>
+	</tr>
+	<tr>
+	    <th>符合受理案件的依据：</th>
+	    <td>
+             <table class="list" style="width:685px;">
+                <tr>
+                    <th width="70%" style="text-align:center;">依据</th>
+                    <th width="30%" style="text-align:center;">是否符合</th>
+                </tr>
+                <tr>
+                    <th style="text-align:left;">复议申请书等材料(身份证、联系方式等)是否完备</th>
+                    <td>
+                        <span>$!{accbasis.b1}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left;">申请人是否具有主体资格</th>
+                    <td>
+                        <span>$!{accbasis.b2}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left;">有无明确的被申请人</th>
+                    <td>
+                        <span>$!{accbasis.b3}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left;">有无明确的复议请求</th>
+                    <td>
+                        <span>$!{accbasis.b4}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left;">有无具体的事实依据</th>
+                    <td>
+                        <span>$!{accbasis.b5}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left;">是否属于行政复议范畴</th>
+                    <td>
+                        <span>$!{accbasis.b6}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left;">是否在法律申请期限内提出,超出期限是否有正当理由</th>
+                    <td>
+                        <span>$!{accbasis.b7}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left;">是否应当由本机关受理</th>
+                    <td>
+                        <span>$!{accbasis.b8}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left;">是否已提起行政诉讼</th>
+                    <td>
+                        <span>$!{accbasis.b9}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left;">是否重新提起行政复议</th>
+                    <td>
+                        <span>$!{accbasis.b10}</span>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <th>承办人意见：</th>
+        <td>
+             <span>$!{agentRemark}</span>
+        </td>
+    </tr>
+    <tr>
+        <th>科室负责人意见：</th>
+        <td>
+            <span>$!{sectionRemark}</span>
+        </td>
+    </tr>
+    <tr>
+        <th>机构负责人意见：</th>
+        <td>
+            <span>$!{organRemark}</span>
+        </td>
+    </tr>
+    <tr>
+        <th>机关负责人意见：</th>
+        <td>
+            <span>$!{officeRemark}</span>
+        </td>
+    </tr>       
+</table>

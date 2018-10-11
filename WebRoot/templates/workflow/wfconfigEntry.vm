@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse('common/common-v14.vm')
+#parse('common/extensions-v14.vm')
+<script type='text/javascript' src='../../templates/workflow/wfconfigEntry.js'></script>
+<script type='text/javascript' src='../../templates/workflow/wfOperationDef.js'></script>
+
+
+<title>工作流定义</title>
+<style type='text/css'>
+.linkbutton_group {
+	border-bottom: 1px solid #95B8E7;
+	background-color: #eee;
+}
+tr{
+	margin:0px;
+	padding:0px
+}
+td{
+	margin:0px;
+	padding:0px
+}
+.datagrid-group {
+	background-color: #E0ECFF;
+}
+
+.datagrid-group-title {
+	font-size: 12px;
+}
+.activity_icon{
+	position: relative;
+  	top: 4px;
+  	margin-right:5px
+}
+
+</style>
+</head>
+<body class='easyui-layout' style="overflow:hidden" fit="true">
+	<div region='west'  title='工作流树' border='false' style='width:300px' split='false' collapsible="false"
+		border='true' collapsible='true'>
+		<div class='easyui-panel' fit='true' border='false'>
+			<div style='margin:2px'>
+				<input id='schbox' class='easyui-searchbox' data-options='searcher:searcher_func,prompt:"请输入工作流名称进行过滤"' style='width:100%;' />
+			</div>
+			<ul id='wftree'></ul>
+		</div>
+	</div>
+
+	<div region='center' border='false' >
+		<div id='panel1' class='easyui-panel' title="工作流分类" closed='true' fit='true'>
+			<div style="margin-top:200px;padding:auto;width:100%;text-align:center;vertical-align:middle;">
+				请从左侧工作流树上选择工作流查看详情!
+			</div>
+		</div>
+		
+		<div id='panel3' class='easyui-panel'  closed='true' 	fit='true'>
+			<div class='easyui-tabs' fit='true' border='false' id="wftab">
+				<div id='tab1' title='工作流基本属性'>
+						<div id='toolbar_menu' class='linkbutton_group' style="width:100%;">
+							<a id='linkbutton_save' href='#' class='easyui-linkbutton'
+								onclick='saveEdit()' iconCls='icon-save' plain='true'>保存</a> 
+							<span class='xian' ></span>
+							<a id='linkbutton_cancel' href='#' class='easyui-linkbutton'
+								onclick='rejectEdit()' iconCls='icon-undo' plain='true'>取消</a>
+						</div>
+						<form id='content' method='post'>
+							<table class='list'>
+								<tr>
+									<th>名称：</th>
+									<td><input id='name' name='name' type='text'
+										class='easyui-textbox' style="width:220px;"
+										data-options="required:true,onChange:form_onchange" />
+									</td>
+									<th>标识：</th>
+									<td><input id='key' name='key' type='text' 
+										class="easyui-textbox"  style="width:220px;"
+										 data-options="required:true,missingMessage:'请输入英文字母标识',onChange:form_onchange" 
+										 />
+									</td>
+								</tr>
+								<tr>
+									<th>
+										数据表：
+									</th>
+									<td>
+										<input id='tabname' name='tabname' type='text'  
+										 class='easyui-searchbox' style="width:222px;"
+										 data-options='required:false,editable:false,onChange:form_onchange' />
+										<input type='hidden' id='deftype' name='type' />
+										<input type='hidden' id='defid' name='id' />
+										<!--
+										<input type='hidden' id='tabid' name='tabid' />
+										-->
+									</td>
+									<th>
+										是否使用默认表单：
+									</th>
+									<td>
+										<input type='checkbox' name='defaultui' id='defaultui' value='1' onchange='form_onchange()'/>
+										<!--
+										是<input type="radio" class="easyui-radio" name="defaultui" required="true" value="1" checked onchange='form_onchange()'/>
+										否<input type="radio" class="easyui-radio" name="defaultui" required="true" value="0" onchange='form_onchange()'/>
+										-->
+									</td>
+								</tr>
+								<tr>
+									<th>状态回调Bean：</th>
+									<td><input id='statusbean' name='statusbean' type='text' class='easyui-textbox' style='width:220px' data-options="onChange:form_onchange" /></td>
+									<th></th>
+									<td></td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					<!-- end tab1 -->
+					<div id='tab2' title='工作流操作定义'>
+					#parse('workflow/wfOperationDef.vm')
+				</div>
+			</div>
+			<!-- end easyui-tabs -->
+		</div>
+		<!-- end panel3 -->
+		
+		
+	
+		
+	</div>
+	
+	<!-- outer window ///////////-->
+	<div id="contextmenu_add" class="easyui-menu" style="width:120px;">
+		<div onclick="menu_add_req()" data-options="iconCls:'icon-add'">添加工作流</div>
+	</div>
+
+	<div id="contextmenu_del" class="easyui-menu" style="width:120px;">
+		<div onclick="menu_del_req()" data-options="iconCls:'icon-remove'">删除</div>
+	</div>
+	<div id="contextmenu_addversion" class="easyui-menu" style="width:120px;">
+		<div onclick="menu_versionadd_req()" data-options="iconCls:'icon-add'">添加新版本</div>
+	</div>
+	
+	
+	
+		<!-- ///////////// end  outer window -->
+</body>
+</html>

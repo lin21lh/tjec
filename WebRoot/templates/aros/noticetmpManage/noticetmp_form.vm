@@ -1,0 +1,38 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/noticetmpManage/js/noticetmp_form.js" ></script>
+<form id="noticetmpForm" method="post">
+     <input id="tempid" name="tempid" type="hidden" />
+     <input id="operator" name="operator" type="hidden" />
+     <input id="opttime" name="opttime" type="hidden" />
+    <table class="list">
+        <tr>
+            <th>文书模板名称：</th>
+            <td>
+                <input id="noticename" name="noticename" class="easyui-textbox" required="true" missingMessage="请输入文书模板名称" 
+                 data-options="validType:{length:[0,60]}" style="width:250px;"/>
+                <span style="color:red">*</span>
+            </td>
+            <th>文书类型：</th>
+            <td>
+                <input id="type" name="type" class="easyui-textbox" panelheight="auto" style="width:250px;" missingMessage="请选择文书类型" />
+            </td>            
+        </tr>
+        <tr>
+           <th>流程类型：</th>
+            <td>
+                <input id="protype" name="protype" class="easyui-textbox" panelheight="auto" style="width:250px;" missingMessage="请选择文书类型" />
+            </td>
+            <th>流程节点：</th>
+            <td>
+                <input id="nodeid" name="nodeid" class="easyui-textbox" panelheight="auto" style="width:250px;" missingMessage="请选择流程节点" />
+            </td>
+        </tr>
+        <tr>
+            <th>内容：</th>
+            <td colspan="3">
+                <textarea id="contentEdit" name="contentEdit" style="width:100%;height:342px;visibility:hidden;"></textarea>
+                <input name="contents" id="contents" type="hidden" />
+            </td>
+        </tr>
+    </table>
+</form>

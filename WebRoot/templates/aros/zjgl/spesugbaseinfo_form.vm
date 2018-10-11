@@ -1,0 +1,50 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript">
+    $(function() {
+    	$("#remarkTab").focus();
+    });
+</script>
+<div class="easyui-tabs">
+	   <div title="案件卷宗" >
+    		<div id="toolbar_list_east" class="toolbar_group" >
+                <a href="#" id="allDownBtn" class="easyui-linkbutton" iconCls="icon-down-arrow" plain="true" >全部下载</a> 
+            </div> 
+            <table id="caseFileTab" ></table>
+	   </div>
+<div title="委员意见">
+	<form id="spesugbaseinfoForm" method="post" style="margin:0px;">
+		
+	   <input type="hidden" id="caseid" name="caseid" value="${caseid}"/>
+	   
+	   <div class="easyui-panel" title="意见列表">
+	       #if($list.size() > 0)
+		    <table class="list">
+		       <tr>
+		           <td style="background-color: #95B8E7;text-align: center;width:20%;">意见录入时间：</td>
+		           <td style="background-color: #95B8E7;text-align: center;width:80%;">内容：</td>
+		       </tr>
+		        #foreach($i in $list)
+		        <tr>
+		            <th style="width:20%;">${i.opttime}</th>
+		            <td style="width:80%;">
+		                <textarea class="textarea" style="width:95%;height:65px;border: 0" value="$!{i.remark}" readonly="readonly" >$!{i.remark}</textarea>
+		            </td>
+		        </tr>
+		        #end
+		    </table>
+             #end
+			 <table class="list" id="remarkTab">
+				<tr>
+				    <th style="width:20%;">委员意见：</th>
+					<td style="width:80%;">
+						<input id="remark" class="easyui-textbox" name="remark" multiline="true" missingMessage="请输入处理意见" required="true"
+							data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:95%;height:65px;border: 0px solid;" />
+						<font color=red>*</font>
+					</td>
+				</tr>
+		      </table>
+		</div>
+	</form>
+ </div>
+</div>

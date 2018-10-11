@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/demo/leaveNoteEntry.js"></script>
+<title>请假单流程示例</title>
+</head>
+<body class='easyui-layout'>
+	<div region='center' fit='true' title=''>
+		<div id='tb' style='background-color:#eee'>
+
+			&nbsp;<a class='easyui-linkbutton' id='query' onclick='initGrid()' iconCls='icon-search'>查询</a>
+			<a class="easyui-linkbutton"  onclick="workflowImageView()" iconCls='icon-search'>查询流程图</a>
+			<a class='easyui-linkbutton' id='getback' onclick='getback()' iconCls='icon-undo'>撤回流程</a>
+			<a class='easyui-linkbutton' id='startwf' onclick='startwf()' iconCls='icon-redo'>启动流程</a>
+			<span class='xian' ></span>
+			&nbsp;工作流流向：<input type='text' id='outcome' />
+			&nbsp;处理意见：<input type='text' id='opinion' />
+				<a class='easyui-linkbutton' id='startwf' onclick='completeTask()' iconCls='icon-edit'>处理流程</a>
+		</div>
+		<table id='list'>
+		</table>
+	</div>
+	
+	<div region='south' style='height:200px' title='用户待办查询示例'>
+		&nbsp;工作流KEY：<input type='text' id='wfkey1' /> 活动节点ID：<input type='text' id='actiid1' />
+		<a class='easyui-linkbutton' id='query1' onclick='query1()' iconCls='icon-search'>待办查询</a>
+		<a class='easyui-linkbutton' id='query2' onclick='query2()' iconCls='icon-search'>历史查询</a><br/>
+		&nbsp;查询结果：<input type='text' id='result' style='width:600px' READONLY />
+	
+	</div>
+	
+	<div id="img_window" class="easyui-window"  style="width:800px;height:500px" closed="true" title="流程图" >
+	<img id="img_loc" src="" />
+</div>
+</body>
+</html>

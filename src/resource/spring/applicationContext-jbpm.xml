@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!--jbpm4.4 工作流spring helpler -->
+	<bean id="springHelper" class="org.jbpm.pvm.internal.processengine.SpringHelper">
+		<property name="jbpmCfg" value="resource/jbpm/jbpm.cfg.xml" />
+	</bean>
+
+	<!-- jbpm4.4 流程引擎 -->
+	<bean id="processEngine" factory-bean="springHelper"
+		factory-method="createProcessEngine" />
+
+	<!-- 协助jbpm取得springbean的帮助工具 -->
+	<bean id="beanFactoryHelper" class=" com.jbf.workflow.common.BeanFactoryHelper" />
+
+	<!-- workflow回退线路建立监听器 在web容器启动时执行 -->
+	<bean class="com.jbf.workflow.listener.WfLineRebuildListener" />
+</beans>

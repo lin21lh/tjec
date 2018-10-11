@@ -1,0 +1,58 @@
+#parse("common/extensions-v14.vm")
+<link rel="stylesheet" type="text/css" href="$contextpath/css/print.css">
+<form id="noticeForm" method="post" style="background:#fff">
+    <input type="hidden" id="noticeid" name="noticeid" value="$!{info.noticeid}" />
+    <div align="center">
+        <table width="90%">
+            <tr>
+                <td>
+                    <div>
+                        <div align="center"><h3>恢复审理通知书</h3></div>
+                        <div align="right"><h5>[<input id="code" name="code" class="css_span" style="width:100px;" type="text" value="$!{info.code}"/>]号</h5></div>
+                    </div>
+                    <table rules="none">
+                        <tr>
+                            <td>
+                                <input id="appName" name="appName" class="css_span" style="width:200px;" type="text" value="$!{info.appName}"/>：<br />
+                                <p>
+                                                                                                你（们／单位）对
+                                <input id="defName" name="defName" class="css_span" style="width:200px;" type="text" value="$!{info.defName}"/>
+                                <input id="appCase" name="appCase" class="css_span" style="width:300px;" type="text" value="$!{info.appCase}"/>
+                                                                                                不服提出的行政复议申请，本机关依法已予受理。因
+                                <input id="reason" name="reason" class="css_span" style="width: 600px;" type="text" value="$!{info.reason}"/>
+                                                                                                ，本机关于
+                                <input id="year" name="year" class="css_span" style="width: 40px;" type="text" value="$!{info.year}"/>年
+                                <input id="month" name="month" class="css_span" style="width: 20px;" type="text" value="$!{info.month}"/>月
+                                <input id="day" name="day" class="css_span" style="width: 20px;" type="text" value="$!{info.day}"/>日
+                                                                                                中止本案审理。现行政复议中止的原因已消除，根据《中 华人民共和国行政复议法实施条例》第四十一条第二款的规定，
+                                                                                                 从即日起恢复该行政复议案件的审理。
+                                <p>特此通知。</p>
+                                <br />
+                                <br />
+                              </p>
+                          </td>
+                        </tr>
+                        <tr> 
+                            <td>
+                                <div align="right" style="line-height: 2em;">
+                                    <input id="systemYear" name="systemYear" readonly="readonly" style="width:40px;border:none;" value="${info.systemYear}"/>年
+                                    <input id="systemMonth" name="systemMonth" readonly="readonly" style="width:20px;border:none;" value="${info.systemMonth}"/>月
+                                    <input id="systemDay" name="systemDay" readonly="readonly" style="width:20px;border:none;" value="${info.systemDay}"/>日 <br />
+                                                                                                    （行政复议机构印章）
+                                </div>
+                            </td>
+                        </tr>
+                        <tr> 
+                            <td>
+                            <p>
+                                                                                    抄送：
+                              <input id="otherName" name="otherName" class="css_span" style="width: 160px;" value="$!{info.otherName}"/>
+                            </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        </div>
+</form>

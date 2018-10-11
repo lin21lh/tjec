@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+    <head>
+    #parse("common/common-v14.vm")
+    #parse("common/extensions-v14.vm")
+    <title>首页</title>
+    <style type="text/css">
+    	.linkbutton_group{
+    		border-bottom: 1px solid #95B8E7;
+    	}
+		.div-a{ float:left;width:49.5%;height:100%;border:0px solid #E0ECFF}
+		.div-m{ float:left;width:0.5%;height:100%;background-color:#E0ECFF}
+		.div-b{ float:right;width:50%;height:100%;border:0px solid #E0ECFF} 
+    </style>
+    <script type="text/javascript" src="$contextpath/component/eCharts/echarts.min3.2.3.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/aros/homepage/js/homepage_init.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+    </head>
+    <body id="layout" class="easyui-layout" >
+		<div data-options="region:'center',split:false" >
+    		<div id="chart_div">
+				<div id="sep1" style="height:25px;background-color: #E0ECFF;">
+					&nbsp;&nbsp;&nbsp;年度&nbsp;&nbsp;<input id="year" class="easyui-textbox" style='width:150px' panelheight = "auto">
+				</div>
+    			<div id="chart12" style="width:100%;padding:0px;">
+                	<div id="chart1" class="div-a" ></div>
+					<div class="div-m"></div>
+                	<div id="chart22" class="div-b" >
+                	   <table id="todo" ></table>
+                	</div>
+            	</div>
+                <div id="sep2" style="height:10px;background-color: #E0ECFF;"></div>
+            	<div id="chart34" style="width:100%;padding:0px;">
+                	<div id="chart3" class="div-a" ></div>
+					<div class="div-m"></div>
+                	<div id="word" class="div-b">
+						<table id="message" ></table>
+					</div>
+            	</div>
+			</div>
+    	</div>
+    </body>
+</html>

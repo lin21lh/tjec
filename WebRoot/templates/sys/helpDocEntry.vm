@@ -1,0 +1,76 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/common/component/doubleDatagridSelect.js" ></script>
+<script type="text/javascript" src="$contextpath/templates/sys/helpDocEntry.js"></script>
+<script type="text/javascript" src="$contextpath/component/ckeditor/ckeditor.js"></script>
+<title>帮助文档维护界面</title>
+
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+	
+</style>
+</head>
+<body class="easyui-layout">
+	<div region="center" border="false" style="width:250px"   split="false" title='帮助文档树'>
+		<ul id="helpDocTree"></ul>
+	</div>
+	
+	<div region="east" border="false" style="width:800px;">
+		<div id="centraltab" class="easyui-tabs" fit="true" border="true" tabPosition="top">
+			<div id='helpdocinfo' title="帮助文档信息">
+				<div id="rolePanel" class="easyui-panel"  border="false" >
+					<div id="toolbar_menu"  class="linkbutton_group">
+						<a id="linkbutton_save" href="#" class="easyui-linkbutton" onclick="saveEdit()"  iconCls="icon-save" plain="true">保存</a>
+						<span class='xian' ></span>
+						<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  onclick="rejectEdit()" iconCls="icon-undo" plain="true">取消</a>
+					</div>
+					<form id="content" method="post">
+						<table class="list">
+							<tr>
+								<th>帮助文档编码：</th>
+								<td><input id="rolename" name="rolename" class='easyui-textbox' style='width:220px'
+									data-options="required:true,missingMessage:'请输入帮助文档编码'" />
+								</td>
+								<th>帮助文档标题：</th>
+								<td><input id="rolecode" name="rolecode" type='text' class='easyui-textbox' style='width:220px'
+									data-options="required:true,missingMessage:'请输入帮助文档标题'"/>
+								</td>
+							</tr>
+							<tr>
+								<td colspan=4>
+									<textarea id="TextArea1" cols="20" rows="10" ></textarea>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+	</div>
+	
+	<div id="contextmenu" class="easyui-menu" style="width:120px;">
+        <div onclick="menu_add_req()" data-options="iconCls:'icon-add'">添加</div>
+        <div onclick="menu_del_req()" data-options="iconCls:'icon-remove'">删除</div>
+        <div class="menu-sep"></div>
+        <div onclick="menu_addtop_req()" data-options="iconCls:'icon-add'">添加一级角色</div>
+         <div class="menu-sep"></div>
+        <div onclick="menu_refresh()" data-options="iconCls:'icon-reload'">刷新</div>
+    </div>
+   
+   
+</body>
+</html>

@@ -1,0 +1,39 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/bztx/js/standBaseInfo_form.js"></script>
+<form id="bztxForm" method="post">
+	<input id="standid" name="standid" hidden="true" />
+	<div>
+    	<table class="list">
+			<tr>
+    			<th>标准名称：</th>
+    			<td colspan="3">
+    				<span>$!{info.standardname}</span>
+    			</td>
+    		</tr>
+			<tr>
+    			<th>阶段类型：</th>
+    			<td>
+    				<span>$!{info.stagetypename}</span>
+    			</td>
+    			<th>体系类型：</th>
+    			<td>
+    				<span>$!{info.systypename}</span>
+    			</td>
+    		</tr>
+			<tr>
+    			<th>内容：</th>
+    			<td colspan="3">
+    				<span>$!{info.remark}</span>
+    			</td>
+    		</tr>
+        </table>
+	</div>
+</form>

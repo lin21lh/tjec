@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="../templates/workflow/wfGeneralProcessPage.js"></script>
+<title>流程统一测试页面</title>
+</head>
+<body class="nomargin">
+<div id='mtab' class="easyui-tabs" fit="true">
+	<div id="todotask" title="待办任务" >
+		<div id="todogrid" class="easyui-datagrid">
+		
+		</div>
+		<div id="todotoolbar" class="toolbar_group">
+			<div class="toolbar_buttons">
+				<a class='easyui-linkbutton' plain='true' onclick="showProcessSelectDialog()" iconCls='icon-add'>发起流程</a>
+				<a class='easyui-linkbutton' id='deal' plain='true' onclick="deal('f')" iconCls='icon-redo'>处理任务</a>
+				<a class='easyui-linkbutton' id='sendback'  plain='true' onclick="deal('b')" iconCls='icon-undo'>退回任务</a>
+				<a class='easyui-linkbutton' plain='true' onclick="displayFormForView()" iconCls='icon-form'>查看表单</a>
+				<a class='easyui-linkbutton' plain='true' onclick="viewchart()" iconCls='icon-workflow'>查看流程图</a>
+			</div>
+			<div class="toolbar_querybar">
+				<a class='easyui-linkbutton' plain='false' onclick="todoquery()" iconCls='icon-search'>查询</a>
+			</div>
+		</div>
+	</div>
+	
+	<div id="candidatetask" title="候选任务" >
+		<div id="candidategrid" class="easyui-datagrid">
+		
+		</div>
+		<div id="candidatetoolbar" class="toolbar_group">
+			<div class="toolbar_buttons">
+				<a class='easyui-linkbutton' plain='true' onclick="takeTask()" iconCls='icon-ok'>接受任务</a>
+			</div>
+			<div class="toolbar_querybar">
+				<a class='easyui-linkbutton' plain='false' onclick="cadidatequery()" iconCls='icon-search'>查询</a>
+			</div>
+		</div>
+	</div>
+	
+	<div id="historytask" title="历史任务" >
+		<div id="historygrid" class="easyui-datagrid">
+		
+		</div>
+		<div id="historytoolbar" class="toolbar_group">
+			<div class="toolbar_buttons">
+				<a class='easyui-linkbutton' plain='true' onclick="getback()" iconCls='icon-undo'>撤回任务</a>
+				<a class='easyui-linkbutton' plain='true' onclick="viewchart_his()" iconCls='icon-workflow'>查看流程图</a>
+			</div>
+			<div class="toolbar_querybar">
+				<a class='easyui-linkbutton' plain='false' onclick="hisQuery()" iconCls='icon-search'>查询</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="img_window" class="easyui-window"  style="width:800px;height:500px" closed="true" title="流程图"
+	  minimizable='false'  maximizable='false' collapsible='false'>
+	<img id="img_loc" src="" />
+</div>
+
+
+<div id="process_window" class="easyui-window"  style="width:350px;height:150px;text-align:center;padding:10px" 
+	  minimizable='false'  maximizable='false' collapsible='false' closed="true" title="流程处理" >
+	<table>
+	<tr>
+	<td>
+		请选择流程流向： 
+	</td>
+	<td>
+		<input id='outcome_widget'  type='text' />
+	</td>
+	<tr>
+	<td>
+		审核意见：
+	</td>
+	<td>
+		<input id='opinion' type='text' />
+	</td>
+	</tr>
+	</table>
+	<a class="easyui-linkbutton" iconCls='icon-ok'  plain='false' onclick="btnok()">确定</a>
+	<a class="easyui-linkbutton" iconCls='icon-cancel'  plain='false' onclick="btncancel()">取消</a>
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/slundertaker_form.js" ></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<style type='text/css'>     
+input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+}
+textarea {
+    display: block;
+}
+</style>
+<form id="form" method="post">
+ 	<input id="caseid" name="caseid" type="hidden"  value="$!{caseInfo.caseid}"/>
+ 	<input id="nodeid" name="nodeid" type="hidden"  value="$!{caseInfo.nodeid}"/>
+ 	<input id="slundertakerid" name="slundertakerid" type="hidden" value="$!{caseInfo.slundertakerid}"/>
+    <table class="list">
+        <tr>
+            <th style="width:50px;">承办人：</th>
+            <td colspan="3">
+                <input id="slundertaker" name="slundertaker" class="easyui-textbox" value="$!{caseInfo.slundertaker}"
+                 readonly="true" missingMessage="请选择承办人"  data-options="prompt:'请选择承办人'" required="true"
+                 style="width:400px;" />
+            </td>
+            <td style="width:90px;">
+              <a href="#" id="choiseBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="choisePerson(1)">选择承办人</a>
+                
+            </td>
+        </tr>
+        <tr>
+            <th style="width:50px;">协办人：</th>
+            <td colspan="3">
+                <input id="slcoorganiser" name="slcoorganiser" class="easyui-textbox" value="$!{caseInfo.slcoorganiser}"
+                 readonly="true" missingMessage="请选择协办人"  data-options="prompt:'请选择协办人'" required="true"
+                 style="width:400px;" />
+            </td>
+            <td style="width:90px;">
+              <a href="#" id="choiseBtn1" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="choisePerson(2)">选择协办人</a>
+            </td>
+        </tr>
+        <tr>
+            <th style="width:50px;">备注：</th>
+            <td colspan="4">
+                <input id="remark" name="remark" class="easyui-textbox" multiline="true" style="width:500px;height:60px;" value="$!{caseInfo.remark}"></input>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<!--选择接收人层-->
+<div id="showPreson"></div>
+

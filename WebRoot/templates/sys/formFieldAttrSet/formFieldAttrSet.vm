@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="${rc.contextPath}/templates/sys/formFieldAttrSet/formFieldAttrSet.js"></script>
+<title>表单字段属性参数设置</title>
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+</style>
+</head>
+<body class="easyui-layout" >
+	<div region="north"  border="false">
+		<div id="toolbar_menu"  class="linkbutton_group">
+			<a id="linkbutton_save" href="#" class="easyui-linkbutton" onclick="saveEdit()"  iconCls="icon-save" plain="true">保存</a>
+			<span class='xian' ></span>
+			<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  onclick="deleteDataRelation()" iconCls="icon-remove" plain="true">删除</a>
+			<span class='xian' ></span>
+			<a id="linkbutton_copy" href="#" class="easyui-linkbutton" onclick="copy()"  iconCls="icon-copy" plain="true">复制</a>
+			
+		</div>
+	</div>
+	<div region="west" border="false" style="width:280px"   split="true">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',split:true,border:false" style="height:400px;">
+				<div title="工作流树" class="easyui-panel"  fit="true" >
+					<ul id="wftree_">
+					</ul>
+				</div>
+			</div>
+        	<div data-options="region:'center',border:false">
+        		<div class="easyui-layout" data-options="fit:true">
+	        		<div id="wfTaskPanel" title="当前工作流节点" class="easyui-panel"  fit="true" data-options="tools:[{iconCls:'icon-reload', handler : function() { reloadWfTask();}}]">
+	        			<table id="wftask_" class="easyui-datagrid" fit ="true"></table>
+	        		</div>
+        		</div>
+        	</div>
+        </div>
+	</div>
+	<div region="center" border="false" fit="true">
+		<div id="fieldAttrTabs" class="easyui-tabs" fit="true" border="false">
+			<div title="基本属性">
+				<div class="easyui-layout" fit="true" >
+					<div data-options="region:'west',split:true,border:false" style="width:440px;">
+						<div class="easyui-panel"  fit="true" >
+							<table id="allfields_"></table>
+						</div>
+					</div>
+					<div data-options="region:'center',split:true,border:false">
+						<form id="fieldAttrForm" method="post">
+							<table class="list" style='width:100%'>
+								<tr>
+									<th width="80px">字段名</th>
+									<td>
+										<input id="fieldcode" class="easyui-textbox" readonly="true" name="fieldcode" style="width:200px;" />
+									</td>
+								</tr>
+								<tr>
+									<th width="80px">是否可编辑</th>
+									<td>
+										<input id="isedit" type="checkbox" name="isedit" value="1" onchange="form_onchange()" checked />
+									</td>
+								</tr>
+								<tr>
+									<th width="80px">是否必填项</th>
+									<td>
+										<input id="notnull" type="checkbox" name="notnull" value="1" onchange="form_onchange()" />
+									</td>
+								</tr>
+								<tr>
+									<th width="80px">缺省值类型</th>
+									<td>
+										<input id='defvaltype' name='defvaltype' data-options="required:true,missingMessage:'请选择缺省值类型'" class="easyui-combobox" editable="false" style='width:200px;'  />
+									</td>
+								</tr>
+								<tr>
+									<th width="80px">缺省值</th>
+									<td>
+										<input id="defvalue" name="defvalue" class="easyui-textbox" style="width:200px;" />
+									</td>
+								</tr>
+								<tr>
+									<th width="80px">级次模式</th>
+									<td>
+										<input id='ordermodel' name='ordermodel' class="easyui-combobox" editable="false" style='width:200px;'  />
+									</td>
+								</tr>
+								<tr>
+									<th width="80px">级次控制</th>
+									<td>
+										<input id="ordercontrol" name="ordercontrol" class="easyui-numberspinner" data-options="min:1,max:10,editable:false" style="width:200px;" onchange="form_onchange()" />
+									</td>
+								</tr>		
+								<tr>
+									<th width="80px">备注：</th>
+									<td>
+										<input id="remark" class="easyui-textbox" name="remark" multiline="true" data-options="validType:{length:[0,100]}" prompt='最多可输入100个汉字' style='width:200px; height:100px;'  
+											onchange="formchanged()" />
+										<input type="hidden" id="attrsetid" name="attrsetid" />
+										<input type="hidden" id="wfkey" name="wfkey" />
+										<input type="hidden" id="wfversion" name="wfversion" />
+										<input type="hidden" id="wfnode" name="wfnode" />	
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div title="定值规则">
+				<div class="easyui-layout" fit="true" >
+					<div data-options="region:'west',split:true,border:false" style="width: 350px;">
+						<div class="easyui-layout" data-options="fit:true">
+							<div data-options="region:'center',split:true,border:false">
+								<div class="easyui-panel"  fit="true" >
+									<table id="sourceelementfields_"></table>
+								</div>
+							</div>
+							<div data-options="region:'south',split:true,border:false" style="height:240px;">
+								<div id="rulePanel" class="easyui-panel"  fit="true" data-options="tools:[{iconCls:'icon-reload', handler : function() { reloadWfTask();}}]">
+				        			<table id="allrules_" class="easyui-datagrid" fit ="true"></table>
+				        		</div>
+							</div>
+				        </div>
+					</div>
+					<div data-options="region:'center',split:true,border:false" style="width: 460px;">
+						<div>
+							<form id="constantValueForm" method="post">
+								<table class="list">
+									<tr>
+										<th width="80px">规则名称</th>
+										<td>
+											<input id="rulename" class="easyui-textbox" data-options="required:true,missingMessage:'请输入规则名称'" name="rulename" style="width:260px;" />
+										</td>
+									</tr>
+									<tr>
+										<th width="80px">值集范围</th>
+										<td>
+											<input id="namelist" class="easyui-searchbox" data-options="required:true,missingMessage:'请输入规则名称'" name="namelist" style="width:260px;" />
+										</td>
+									</tr>
+									<tr>
+										<th width="80px">缺省值</th>
+										<td>
+											<input id="defaultname" class="easyui-searchbox" name="defaultname" style="width:260px;" />
+											<input id="scopemainid" name="scopemainid" type="hidden" />
+										</td>
+									</tr>
+								</table>
+							</form>
+						</div>
+						<div id="toolbar_menu"  class="linkbutton_group">
+		    				<a id="linkbutton_addcondgroup" href="#" class="easyui-linkbutton" onclick="addPanel('360px')"  iconCls="icon-add" plain="true">增加条件项</a>
+		    				<a id="linkbutton_removecondgroup" href="#" class="easyui-linkbutton"  onclick="removePanel()" iconCls="icon-remove" plain="true">删除条件项</a>
+		    				<a id="linkbutton_addcond" href="#" class="easyui-linkbutton" onclick="addCondition('360px')"  iconCls="icon-add" plain="true">增加条件</a>
+		    				<a id="linkbutton_removecond" href="#" class="easyui-linkbutton"  onclick="removeCondition()" iconCls="icon-remove" plain="true">删除条件</a>
+		    			</div>
+					   	<div id="condtions" class="easyui-tabs" style="border:0px;">
+			    		</div>
+					<div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

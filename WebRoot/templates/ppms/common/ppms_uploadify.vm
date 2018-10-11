@@ -1,0 +1,24 @@
+#parse("common/extensions-v14.vm")
+<body>
+	
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+
+<input id="fileItemmids" type="hidden" name='fileItemmids' value='${fileItemmids}'/>
+<input id="sessionId" type="hidden" name='sessionId' value='${sessionId}'/>
+<input id="tdId" type="hidden" name='tdId' value='${tdId}'/>
+<input id="elementcode" type="hidden" name='elementcode' value='${elementcode}'/>
+
+<div class="easyui-panel" style="width:100%;padding:0px;height:55px" >
+    <table class='list' id='uptable' >
+        <tr >
+            <td valign="top">
+                <span id="fileQueue" ></span>
+            </td>
+            <td style='width:100px' valign="top">
+                <input  type="file" name="uploadify" id="uploadify" style='width:100px'/>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>

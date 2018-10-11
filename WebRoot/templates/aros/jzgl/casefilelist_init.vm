@@ -1,0 +1,16 @@
+<head>
+    #parse("common/extensions-v14.vm")
+    <script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+    <title>案件卷宗</title>
+    
+    <script type="text/javascript">
+        var menuid = "$menuid";
+    </script>
+</head>
+
+<body id="layout" class="easyui-layout">
+	<div id="toolbar_list_east" class="toolbar_group" >
+        <a href="#" id="allDownBtn" class="easyui-linkbutton" iconCls="icon-down-arrow" plain="true" >全部下载</a> 
+    </div> 
+    <table id="caseFileTab" ></table>
+</body>

@@ -1,0 +1,52 @@
+<!DOCTYPE>
+<html>
+    <head>
+    	#parse("common/common-v14.vm")
+        #parse("common/extensions-v14.vm")
+    	<meta charset="utf-8"/>
+    	<meta http-equiv="X-UA-Compatible" content="IE=8" >
+    	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" >
+    	<script type="text/javascript" src="$contextpath/templates/fam/manage/common/photos.js"></script>
+    </head>
+    <body onload="Load()" onunload="Unload()">
+    	<form id="protosForm" method="post">
+            <input id="fileItemmids" type="hidden" name='fileItemmids' value='${fileItemmids}'/>
+            <input id="sessionId" type="hidden" name='sessionId' value='${sessionId}'/>
+            <input id="tdId" type="hidden" name='tdId' value='${tdId}'/>
+            <input id="elementcode" type="hidden" name='elementcode' value='${elementcode}'/>
+            <input id="keyid" type="hidden" name='keyid' value='${keyid}'/>
+    		<input id="filepath" type="hidden" name="filepath"/>
+            
+            <div class="easyui-panel" style="width:100%;height:100%;" >
+                <table class='list' id='uptable' style="width:100%;padding:0px;height:80%;">
+                    <tr>
+                        <td valign="top" style="width:70%;">
+                            <object id="view1" type="application/x-eloamplugin" width="600" height="400"  name="view"></object>
+                        </td>
+                        <td valign="top" style="width:30%;">
+        					拍摄文件名称：
+                            <input id="filename" name="filename" class="easyui-textbox" style="width:230px" />
+                            <font color=red>*</font>
+        					<br/>
+        					<br/>
+                            <object id="thumb1" type="application/x-eloamplugin" width="240" height="240" name="thumb"></object>
+                        </td>
+                    </tr>
+                </table>
+        		
+        		<div style="display:none">
+        			<label id="lab1">设备</label>
+                	<select id="device" style="width: 90px" name="device" onchange="changeDev()" ></select> 
+                	<select id="subType" style="width: 90px" name="subType" onchange="changesubType()" ></select> 
+                	<select id="selRes" style="width: 90px" name="selRes" ></select> 
+        		</div>
+        		<div style="text-align:center;padding:20px 0;">
+        			<a href="#" class="easyui-linkbutton" onclick="OpenVideo()" style="width:10%">打开视频</a>
+        			<a href="#" class="easyui-linkbutton" onclick="CloseVideo()" style="width:10%">关闭视频</a>
+        			<a href="#" class="easyui-linkbutton" onclick="Scan()" style="width:10%">拍照</a>
+        			<a href="#" class="easyui-linkbutton" onclick="submitForm()" style="width:10%">上传</a>
+        		</div>
+            </div>
+    	</form>
+    </body>
+</html>

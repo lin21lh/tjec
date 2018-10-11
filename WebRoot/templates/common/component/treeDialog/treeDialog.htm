@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<link rel="stylesheet" type="text/css" href="../../../../../component/jquery-easyui-1.4/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../../../../../component/jquery-easyui-1.4/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../../../../css/common.css">
+<script type="text/javascript" src="../../../../../component/jquery-easyui-1.4/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../../../../../component/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../../../../component/jquery-easyui-1.4/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript">
+var ua = navigator.userAgent.toLowerCase();
+var isChrome=ua.indexOf("chrome")!=-1;
+function init() {
+    $("#layout_agency").layout({
+    	fit:true
+    });
+    
+ 	var agencyCat = $("#agencyCat");
+ 	/**
+	agencyCat.combobox({
+		editable: false
+	});*/
+	
+	var agencyVal = $("#agencyVal");
+
+ 	var btn_query = $("#btn_query");
+		btn_query.linkbutton({
+			onClick: function(){
+				_tree.tree();
+			}
+	});
+	
+	var opts = new Object();
+
+  	if(isChrome){
+  		opts = window.opts;
+  	} else {
+  		opts = window.dialogArguments;
+  	}
+  	window.document.title = opts.title;
+	
+	function recurseTreeNodes(kind, value, nodes, ndata){
+		for(var i=0; i<nodes.length; i++){
+			var node = nodes[i];
+			node.state = "open"; 
+			
+			var flag = true;
+			if(kind == "code"){
+				flag = node[kind].indexOf(value)  == 0;
+			}else{
+				flag = node[kind].indexOf(value) != -1;
+			}
+			
+			if(flag){
+				ndata.push(node);
+				var cdata = null;
+				if(node.children != null){
+					cdata = new Array();
+					recurseTreeNodes(kind, value, node.children, cdata);
+				}
+				node.children = cdata;
+			}else{
+				var cdata = new Array();
+				if(node.children != null){
+					recurseTreeNodes(kind, value, node.children, cdata);
+				}
+				node.children = cdata;
+				if(cdata.length != 0){
+					ndata.push(node);
+				}
+			}
+		}
+	}
+    
+    var _tree = $("#treeID");
+    _tree.tree({
+  		url : "../../../../../sys/dept/sysDeptController/queryDeptTree.do",
+    	method : "post",
+    	animate : true,
+    	dnd : false,
+    	checkbox: true,
+    	cascadeCheck: false,
+    	loadFilter: function(data, parent){
+			var ndata = new Array();
+			var kind = agencyCat.combobox("getValue");
+			var value = agencyVal.textbox("textbox").val();
+			if(value != null && value != ""){
+				recurseTreeNodes(kind, value, data, ndata);
+			} else {
+				ndata = data;
+			}
+				return ndata;
+		},
+		onBeforeLoad : function(node, param) {
+			$.messager.progress({
+	    		msg: "正在加载数据，请稍候..."
+	    	});
+		},
+    	onBeforeSelect: function(node){
+    		if(opts.checkLevs.length != 0 && $.inArray(node.levelno, opts.checkLevs) == -1){
+    			if(node.target && node.children != null){
+    				if(node.expand){
+    					_tree.tree("collapse", node.target);
+    					node.expand = false;
+    				} else {
+    					_tree.tree("expand", node.target);
+    					node.expand = true;
+    				}
+    			}
+    			return false;
+    		}
+    		return true;
+    	},
+    	onClick: function(node){
+    		_tree.tree("check", node.target);
+    	},
+    	onDblClick : function(node) {
+    		if (!opts.dblClickRow){
+    			return ;
+    		}
+    		if(opts.checkLevs.length != 0 && $.inArray(node.levelno, opts.checkLevs) == -1){
+    			return;
+    		}
+    		if (isChrome) {
+    			window.ctrlobj.treeDialogHtml("setText", node.text);
+	    		window.ctrlobj.treeDialogHtml("setValue", node.code);
+    		} else {
+	    		window.returnValue = node;
+    		}
+    		window.close();
+    	},
+    	onLoadSuccess: function(node, data){
+    		$.messager.progress("close");
+    	}
+	});
+}
+
+function fkeydown() {
+	if(event.keyCode==27) {
+		event.returnValue = null;
+		window.returnValue = null;
+		window.close();
+	}
+	
+}
+
+document.onkeydown=fkeydown;
+</script>
+<body onload="init()">
+<div id="layout_agency" class="easyui-layout" >
+	<div region="north" style="height:30px;background-color:#eee;padding: 0px 5px;" border="true">
+		<select id="agencyCat" class="easyui-combobox" panelHeight="auto" name="agencyCat" style="width:auto;">
+			<option value="code" selected>编码</option>
+			<option value="text">名称</option>
+		</select>&nbsp;&nbsp;&nbsp;&nbsp;<input id="agencyVal" type="text" class="easyui-textbox" name="agencyVal" style="margin:1px 3px;heigth:20px;"></input>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a id="btn_query" class="easyui-linkbutton" href="#" iconCls="icon-search">查询</a>
+	</div>
+	<div region="center"><ul id="treeID" ></ul></div>
+</div>
+</body>
+</html>

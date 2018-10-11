@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+	xmlns:p="http://www.springframework.org/schema/p"  
+	xmlns:aop="http://www.springframework.org/schema/aop"   
+	xmlns:context="http://www.springframework.org/schema/context"  
+	xmlns:jee="http://www.springframework.org/schema/jee"  
+	xmlns:tx="http://www.springframework.org/schema/tx"  
+	xsi:schemaLocation="    
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">  
+	<!--数据库连接配置 gov.mof.framework.dao-->
+	<bean id="dataSource" class="com.jbf.common.security.datasource.MultiDataSource">
+		<!--这里是默认连接,value中的值选择map中其中一个entry的key值-->
+		<property name="dsDefault" value="2014;本机新平台开发库" />
+		<property name="dataSources">
+			<map>
+				<!--建库时注意保持队形-->
+				<!--原则上一个县市区在数据库中只有一个数据库用户（命名规则：test_faspXX2013），相应的数据源名称与数据库用户相同-->
+				<!--开发库-->
+				<entry key="2014;本机新平台开发库"  value-ref="localdev_ifmis" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="localdev_ifmis" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="localdev_ifmis" />
+	</bean>
+	<!--数据库连接配置结束-->
+	
+	<!-- 配置session factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.jbf.base,com.jbf.sys,com.jbf.workflow" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
+				<prop key="hibernate.hibernate.connection.SetBigStringTryClob">${hibernate.hibernate.connection.SetBigStringTryClob}</prop>
+				<prop key="hibernate.hibernate.archive.autodetection">${hibernate.hibernate.archive.autodetection}</prop>
+				<prop key="hibernate.hibernate.connection.charSet">${hibernate.hibernate.connection.charSet}</prop>
+				<prop key="hibernate.hibernate.cache.use_query_cache">${hibernate.hibernate.cache.use_query_cache}</prop>
+				<prop key="hibernate.hibernate.cache.use_second_level_cache">${hibernate.hibernate.cache.use_second_level_cache}</prop>
+				<prop key="hibernate.hibernate.ejb.naming_strategy">${hibernate.hibernate.ejb.naming_strategy}</prop>
+			</props>
+		</property>
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:jbpm.repository.hbm.xml</value>
+				<value>classpath:jbpm.execution.hbm.xml</value>
+				<value>classpath:jbpm.history.hbm.xml</value>
+				<value>classpath:jbpm.task.hbm.xml</value>
+				<value>classpath:jbpm.identity.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+
+	
+	<!-- 事务管理定义 支持多数据源的事务，改为用下面JTA的配置 -->
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" />
+	<!-- 使用annotation定义事务 -->  
+	<tx:annotation-driven transaction-manager="transactionManager" />  
+	
+	<!-- 配置hibernateTemplate，用于支持继承自DaoSupport的GenericDao -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+	
+	<!-- cacheManager工厂类 -->
+	<bean id="cacheManagerFactory"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+		p:configLocation="classpath:resource/cache/ehcache.xml" p:shared="false" />
+
+	<!-- 声明cacheManager -->
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+		p:cacheManager-ref="cacheManagerFactory" />
+
+	<!-- Cache提供管理者 -->
+	<bean id="cacheProviderManager" class="com.jbf.common.cache.CacheProviderManager">
+		<property name="manager" ref="cacheManager" />
+	</bean>
+</beans>

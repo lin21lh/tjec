@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="../../templates/test/wfbacktest.js"></script>
+<style type='text/css'>
+	body{
+		font-size:12px;
+	}
+</style>
+</head>
+
+<body>
+
+key:<input type=text id='key' name='key' /><br/>
+
+<input type='button' onclick="start()" value="启动" /><br/>
+
+taskid:<input type='text' id='taskid' name='taskid' /><br/>
+outcome:<input type='text' id='outcome' name='outcome' /><br/>
+<input type='button' onclick="audit()"  value="完成任务" />
+</body>
+</html>

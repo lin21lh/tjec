@@ -1,0 +1,37 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/slundertaker_form.js" ></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<style type='text/css'>     
+input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+}
+textarea {
+    display: block;
+}
+</style>
+ 	<input id="caseid" name="caseid" type="hidden"  value="$!{caseInfo.caseid}"/>
+ 	<input id="nodeid" name="nodeid" type="hidden"  value="$!{caseInfo.nodeid}"/>
+ 	<input id="slundertakerid" name="slundertakerid" type="hidden" value="$!{caseInfo.slundertakerid}"/>
+    <table class="list">
+        <tr>
+            <th style="width:50px;">承办人：</th>
+            <td colspan="3">
+                <span>$!{caseInfo.slundertaker}</span>
+            </td>
+        </tr>
+        <tr>
+            <th style="width:50px;">协办人：</th>
+            <td colspan="3">
+            <span>$!{caseInfo.slcoorganiser}</span>
+            </td>
+        </tr>
+        <tr>
+            <th style="width:50px;">备注：</th>
+            <td colspan="4">
+            <span>$!{caseInfo.remark}</span>
+            </td>
+        </tr>
+    </table>
+
+

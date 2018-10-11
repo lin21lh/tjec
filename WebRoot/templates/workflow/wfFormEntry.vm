@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="../templates/workflow/wfFormEntry.js"></script>
+<title>工作流表单</title>
+</head>
+<body>
+<div class="easyui-panel" fit="true" title="工作流表单管理" >
+	<div id='toolbar' class="toolbar_group">
+		<div class="toolbar_buttons">
+			<a id="linkbutton_view" href="#" class="easyui-linkbutton" onclick="view()"  iconCls="icon-view" plain="true">详情</a>
+			<a id="linkbutton_add" href="#" class="easyui-linkbutton" onclick="add()"  iconCls="icon-add" plain="true">添加</a>
+			<a id="linkbutton_edit" href="#" class="easyui-linkbutton" onclick="edit()"  iconCls="icon-edit" plain="true">修改</a>
+			<a id="linkbutton_del" href="#" class="easyui-linkbutton" onclick="del()"  iconCls="icon-remove" plain="true">删除</a>
+		</div>
+		<div class="toolbar_querybar">
+					&nbsp;表单名称：<input id='q_formname' type='text'/>
+					业务表名：<input id='q_tabname' type='text'/>
+					<a id="linkbutton_query" href="#" class="easyui-linkbutton" onclick="query()"
+						iconCls="icon-search" plain="false">查询</a>
+					<a id="linkbutton_clear" href="#" class="easyui-linkbutton" onclick="clear()"  
+						iconCls="icon-reload" plain="false">清空</a>
+				</div>
+	</div>
+	<table id="mlist">
+	</table>
+</div>
+
+</body>
+</html>

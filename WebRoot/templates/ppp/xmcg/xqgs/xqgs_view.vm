@@ -1,0 +1,104 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppp/common/pppCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppp/xmcg/xqgs/js/xqgs_form.js"></script>
+
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="projectXqgsViewForm" method="post">
+	<table class="list">
+    		<!--隐藏属性start
+    			-->
+			<input type="hidden" id="xqgsid" name="xqgsid"/><!--采购信息idid-->
+			<input type="hidden" id="xmid" name="xmid"/><!--项目id-->
+			<input type="hidden" id="fjkeyid" name="fjkeyid" value='${fjkeyid}'/><!--项目附件id 临时使用-->
+			<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+			<input type="hidden" id="wfid" name="wfid" /><!--工作流id-->
+			<input type="hidden" id="activityId" name="activityId" /><!--工作流节点id-->
+			<input type="hidden" id="workflowflag" name="workflowflag" /><!--保存类型-->
+			<input type="hidden" id="operFlag" name="operFlag" /><!--操作类型-->
+    		<!--隐藏属性end
+    		-->
+    		<tr>
+    			<th >项目名称</th>
+    			<td colspan="3">
+    				<input id="xmmc" class="easyui-textbox" name="xmmc"  readonly='true' style='width:695px' />
+    			</td >
+    		</tr>
+    		<tr>
+    			<th >采购人</th>
+    			<td >
+    				<input id="cgr" class="easyui-textbox" name="cgr"  readonly="true" style='width:250px' />
+    			</td>
+    			<th >地址</th>
+    			<td>
+    				<input id="cgrdz" name="cgrdz"  class="easyui-textbox" readonly="true" style='width:250px'/>
+    			</td>
+    		</tr>
+			<tr>
+    			<th >联系人</th>
+    			<td >
+    				<input id="cglxr" class="easyui-textbox" name="cglxr" readonly="true" style='width:250px' />
+    			</td>
+    			<th >联系方式</th>
+    			<td>
+    				<input id="cgrlxfs" name="cgrlxfs"  class="easyui-textbox" readonly="true" style='width:250px'/>
+    			</td>
+    		</tr>
+    		<tr >
+    			<th >采购项目名称</th>
+    			<td colspan="3">
+    				<input id="cgxmmc" name="cgxmmc"  readonly="true"
+						 class="easyui-textbox" style='width:250px'/>
+    			</td>
+    			
+            </tr>
+			<tr >
+    			<th >采购品目代码（二级）</th>
+    			<td colspan="3">
+    				<input id="cgpmdm" name="cgpmdm"  readonly="true"
+						 class="easyui-textbox" style='width:250px'/>
+    			</td>
+    			
+            </tr>
+			<tr >
+    			<th >采购品目名称（二级）</th>
+    			<td colspan="3">
+    				<input id="cgpmmc" name="cgpmmc"  readonly="true" 
+						 class="easyui-textbox" style='width:250px'/>
+    			</td>
+    			
+            </tr>
+    		<tr>
+    			<th>公示期限</th>
+    			<td >
+					<input id="cgksrq" name="cgksrq" class="easyui-datebox" editable="false" readonly="true" style='width:250px' />
+					至
+					<input id="cgjsrq" name="cgjsrq" class="easyui-datebox" editable="false" readonly="true"  style='width:250px' />
+				</td>	
+    			<th>公示天数</th>
+    			<td >
+    				<input id="gsts" name="gsts"  class="easyui-numberbox" data-options="min:0,precision:0,max:99999999999999" readonly="true" style='width:250px' />
+				</td>
+			</tr>
+			<tr>
+				<th>备注</th>
+    			<td colspan="3">
+    				<input id="bz" name="bz" class="easyui-textbox" readonly="true" style='width:250px' />
+    			</td>
+    		</tr>
+			<tr>
+	            <th>附件</th>
+				<td colspan="3" valign='top' style="height:40px" id="filetd">
+	            </td>
+            </tr>
+    </table>
+		 
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

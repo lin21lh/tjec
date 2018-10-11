@@ -1,0 +1,129 @@
+<!DOCTYPE>
+<html>
+    <head>
+        #parse("common/common-v14.vm")
+        #parse("common/extensions-v14.vm")
+        <title>行政复议</title>
+		<link href="images/sysicon.png" rel="shortcut icon"/>
+		<link rel="stylesheet" type="text/css" href="css/layout.css">
+		<link rel="stylesheet" type="text/css" href="css/top.css">
+		<link rel="stylesheet" href="$contextpath/component/kindeditor/themes/default/default.css" />
+		<script type="text/javascript" src="$contextpath/templates/common/passwordValidate.js"></script>
+		<script charset="utf-8" src="$contextpath/component/kindeditor/kindeditor-min.js"></script>
+		<script charset="utf-8" src="$contextpath/component/kindeditor/lang/zh_CN.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/xzfyDialog.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/xzysDialog.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+        <script type="text/javascript">
+            //菜单ID
+            var menuid = "$menuid";
+            var key = "$key";
+            var _global_usercode_="$usercode"; 
+        </script>
+    </head>
+    <body class="easyui-layout">
+	    <!-- 顶部Logo和Top菜单 -->
+	    <div region="north" split="false" border="false" style="overflow:hidden; height:90px; width:100%; line-height:10px">
+	        <ul id="css3menu" >
+	            #parse("login/top.vm")
+	        </ul>         
+	    </div>
+	    
+	    <!-- 右侧Tab页签 -->
+	    <div id="mainPanle" region="center" border="true" border="false">
+	         <div id="tabs" fit="true" border="false">
+	            <div id="content">
+		            <iframe id="xzfyInit" src="$contextpath/aros/xzfy/controller/CasebaseinfoController/xzfyInit.do?menuid=$menuid&key=$key" 
+		                style="width:100%;height:99%;" scrolling="auto" frameborder="0"></iframe>
+	            </div>
+	        </div>
+	    </div>
+        
+		<div id='div_pswd_edit_form' style='display: none'>
+			<div>
+				<form id='_pswd_edit_form' method='post'>
+					<table>
+						<tr>
+							<th>原密码：</th>
+							<td colspan='3'><input type='password' name='pswdold'
+								id='pswdold' style='width: 150px; border: 1px solid #95B8E7' />
+							</td>
+						</tr>
+						<tr>
+							<th>新密码：</th>
+							<td colspan='3'><input type='password' name='pswdnew'
+								id='pswdnew' style='width: 150px; border: 1px solid #95B8E7' /></td>
+						</tr>
+						<tr>
+							<th>密码强度：</th>
+							<td id="weak" style="width: 20%" style="backgroundColor:'#009900'"></td>
+							<td id="middle" style="width: 20%"></td>
+							<td id="strength" style="width: 20%"></td>
+						</tr>
+						<tr>
+							<th>确认新密码：</th>
+							<td colspan='3'><input type='password' name='pswdnew2'
+								id='pswdnew2' style='width: 150px; border: 1px solid #95B8E7' />
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<div id='div_personalinfo_edit_form' style='display: none'>
+			<div>
+				<form id='_personalinfo_edit_form' method='post'>
+					<table class="list">
+						<tr>
+							<th>用户编码</th>
+							<td><input id="usercode" type="text" readonly="true"
+								name="usercode" style='width: 160px' /></td>
+							<th>用户名称</th>
+							<td><input id="username" type="text" required="true"
+								missingMessage="请输入用户名称" name="username"
+								data-options="validType:{length:[0,25]}" style='width: 160px' />
+							</td>
+						</tr>
+						<tr>
+							<th>机构名称</th>
+							<td><input id="orgname" type="text" readonly="true"
+								name="orgname" style='width: 160px' /></td>
+							<th>创建日期</th>
+							<td><input id="createtime" editable="false" type="text"
+								name="createtime" readonly="true" style='width: 160px' /></td>
+						</tr>
+						<tr>
+							<th>手机号码</th>
+							<td><input type="text" name='phone' id='phone'
+								required="true" missingMessage="请输入手机号" validType='phonesIsRight'
+								data-options="validType:{length:[0,50]}"
+								style='width: 160px; border: 1px solid #95B8E7' /></td>
+							<th>微信</th>
+							<td><input type="text" name='weixin' id='weixin'
+								style='width: 160px; border: 1px solid #95B8E7'
+								data-options="validType:{length:[0,50]}" /></td>
+						</tr>
+						<tr>
+							<th>邮箱</th>
+							<td><input type="text" name='email' id='email'
+								validType='isEmail' data-options="validType:{length:[0,50]}"
+								style='width: 160px; border: 1px solid #95B8E7' /></td>
+							<th>QQ</th>
+							<td><input type="text" name='qq' id='qq'
+								style='width: 160px; border: 1px solid #95B8E7'
+								data-options="validType:{length:[0,50]}" /></td>
+	
+						</tr>
+						<tr>
+							<th>备注</th>
+							<td colspan="3"><input id="remark" type="text" name="remark"
+								multiline="true"
+								data-options="prompt:'最多可输入25个汉字',validType:{length:[0,25]}"
+								style="width: 430px; height: 50px;" /></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+    </body>
+</html>

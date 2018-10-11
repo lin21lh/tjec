@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<excel excelName="user" excelTemplateFile="simpleDemo.xlsx" > <!--  -->
+		<sheets>
+			<sheet sheetName="用户" startrow="10">
+				<bean beanname="com.jbf.base.excel.outexcel.exceute.UserOutExcel" />
+				<!-- 
+				<sql table="app_bdgmain" scenecode="scenecode1" elementcode="elementcode1">
+					<![CDATA[select ]]>
+				</sql>
+				 -->
+				<headers>
+					<header colname="usercode" title="用户编码" width="20"  isNumber="false" isHidden="false" />
+					<header colname="username" title="用户名称" width="30" isNumber="false" isHidden="false" />
+					<header colname="usertype" title="用户类型" width="20" isNumber="false" isHidden="false" />
+					<header colname="orgname" title="机构名称" width="30" isNumber="false" isHidden="false" />
+					<header colname="cnstatus" title="状态" width="12" isNumber="false" isHidden="false" />
+					<header colname="createtime" title="创建日期" width="25" isNumber="false" isHidden="false" />
+					<header colname="updatetime" title="修改日期" width="25" isNumber="false" isHidden="false" />
+				</headers>
+			</sheet>
+		</sheets>
+	</excel>
+</root>

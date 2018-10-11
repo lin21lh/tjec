@@ -1,0 +1,69 @@
+<head>
+    #parse("common/common-v14.vm")
+    #parse("common/extensions-v14.vm")
+    <script type="text/javascript" src="$contextpath/templates/aros/jzgl/js/casefilemanage_init.js"></script>
+    <script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+    <title>卷宗维护</title>
+    
+    <script type="text/javascript">
+        var menuid = "$menuid";
+        // 已归档状态
+        var cantAddFile = "$cantAddFile";
+    </script>
+</head>
+
+<body id="layout" class="easyui-layout">
+    <div title="复议案件列表" region="center" split="false">
+        <div id="toolbar_list" class="toolbar_group" >
+            <div class="toolbar_buttons">
+                <a href="#" id="queryBtn" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="toQuery()">查询</a>
+                <span class='xian' ></span>            
+                <a href="#" id="placeOnFile" class="easyui-linkbutton" iconCls="icon-folder" plain="true" onClick="placeOnFile()">卷宗归档</a>              
+            </div>
+            <div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;border:0px;">
+                <table  class="list" style='border:1px' onclick='document.onkeypress = function (key) { if (key.keyCode == 13) {toQuery(); } }'>
+                    <tr>
+                        <td style='border: 0px;text-align:right' align="right">案件编号:</td>
+                        <td style='font-size:12px;border: 0px;text-align:left'>
+                            <input id="csaecode" class="easyui-textbox"  style='width:150px'>
+                        </td>
+                        <td style='border: 0px;text-align:right' align="right">复议事项类型:</td>
+                        <td style='font-size:12px;border: 0px;text-align:left'>
+                            <input id="casetype" class="easyui-combobox"  style='width:150px' panelheight = "auto">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='font-size:12px;border: 0px;text-align:right'>申请人:</td>
+                        <td style='font-size:12px;border: 0px;text-align:left'>
+                            <input id="appname" class="easyui-textbox" style='width:150px' >
+                        </td>
+                        <td style='border: 0px;text-align:right' align="right">被申请人:</td>
+                        <td style='font-size:12px;border: 0px;text-align:left'>
+                            <input id="defname" class="easyui-textbox"  style='width:150px'>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div> 
+        <!-- 案件信息列表 -->
+        <table id="caseListTab"></table>
+    </div>
+	
+    <div region="east" title='案件卷宗列表' border="false" split="false" style='width:50%'> 
+        <div id="toolbar_list_east" class="toolbar_group" >
+            <span id="addBtnDiv">
+            <a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="fileAdd()">新增</a>
+            <span class='xian' ></span>
+            </span>
+            <a href="#" id="allDownBtn" class="easyui-linkbutton" iconCls="icon-down-arrow" plain="true" >全部下载</a> 
+			<!--
+            <span class='xian' ></span>
+            <a href="#" id="allPrintBtn" class="easyui-linkbutton" iconCls="icon-print" plain="true" onClick="printAllFile()">全部打印</a>
+			-->
+        </div>  
+		
+        <input type="hidden" id="s_caseid" name="s_caseid"/>
+        <!-- 数据列表 -->
+        <table id="caseFileTab" class=""></table>
+   </div>
+</body>

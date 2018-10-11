@@ -1,0 +1,34 @@
+
+
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppms/library/shzbk/js/shzbk_relevance.js"></script>
+
+<div style="overflow:hidden;height:100%;">
+    <form id="shzbkRelevanceForm" method="post" style="height:100%;">
+    	<table  class="list" style='border:0px;height:12%;'>
+            <tr>
+    			<th style='font-size:12px;border: 0px;text-align:right'>社会资本名称</th>
+    			<th style='font-size:12px;border: 0px;text-align:left'>
+    				<input id="re_orgname" class="easyui-textbox" style='width:150px' panelheight = "auto">
+    			</th>
+    			<th style='border: 0px;text-align:right' align="right">联系人</th>
+    			<th style='font-size:12px;border: 0px;text-align:left'>
+    				<input id="re_linkperson" class="easyui-textbox"  style='width:150px'>
+    			</th>
+    			
+    			<th style="border:0;text-align:left;">
+    				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="shzbkRelevanceQuery()" >查询</a>
+    			</th>	
+    		</tr>
+    	</table>
+    	<!-- 隐藏域 -->
+    	<input type="hidden" id="re_socialid" value="$!socialid" /><!--需要关联的记录主键id-->
+    	<input type="hidden" id="re_status" value="$!status" /><!--需要关联的状态-->
+    	
+    	<div style="height:88%;">
+    		<table id="shzbkRelevanceDataGrid" ></table>
+    	</div>
+    </form>    
+</div>
+

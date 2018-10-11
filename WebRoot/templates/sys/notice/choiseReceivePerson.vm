@@ -1,0 +1,32 @@
+#parse("common/extensions-v14.vm")
+<title>选择接收人</title>
+<style type="text/css">
+	.linkbutton_group {
+        border-bottom: 1px solid #95B8E7;
+        background-color: #eee;
+    }
+</style>
+<body>
+	<div id="centraltab" class="easyui-layout" style="width:100%;height:100%;">
+    	<div region='west' split='false' style='width:312px' >
+    		<table id='lgrid'>
+			<div id="tb" style="padding:2px 5px;">
+                <select class="easyui-combobox" id="type" panelHeight="auto" style="width:80px">
+                    <option value="username">用户名称</option>
+                    <option value="usercode">用户编码</option>
+                </select>
+            	<input id="searchVal" class="easyui-textbox" name="searchVal" style="width:120px"/>
+                <a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="doQuery()">查询</a>
+			</div>
+			</table>
+    	</div>
+    	<div region='center' split='true' style='background-color:#eee;text-align:center'>
+    		<div id='space_holder' ></div>
+    		<a class='easyui-linkbutton' iconCls='icon-right-arrow' style='width:30px' id='addBtn' ></a><br/>
+    		<a class='easyui-linkbutton' iconCls='icon-left-arrow' style='width:30px' id='delBtn' ></a>
+    	</div>
+    	<div region='east' split='false' style='width:312px'>
+    		<table id='rgrid'></table>
+    	</div>
+	</div>
+</body>

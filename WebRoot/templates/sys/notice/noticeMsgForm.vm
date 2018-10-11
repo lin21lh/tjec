@@ -1,0 +1,113 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/sys/notice/noticeMsgForm.js" ></script>
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<style type='text/css'>		
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+textarea {
+	display: block;
+}
+
+</style>
+
+<script type="text/javascript">
+	var messageType = "$messageType";
+	var sessionId = "$sessionId";
+</script>
+
+
+<form id="noticeMsgFrom" method="post">
+	<table class="list">
+		<tr>
+			<th style="width:50px;">标题</th>
+			<td colspan="4">
+				#if($messageType == "1")
+					<input id="title" class="easyui-textbox" required="true" missingMessage="请输入标题" data-options="validType:{length:[0,50]}" name="title" style="width:710px;"/>
+                    <span style="color:red">*</span>
+                #end
+				#if($messageType == "2")
+					<input id="title" class="easyui-textbox" required="true" missingMessage="请输入标题" name="title" data-options="validType:{length:[0,50]}" style="width:600px;"/>
+				    <span style="color:red">*</span>
+                #end
+				<input id="usercode" type="hidden" name="usercode"/>
+        		<input id="commentopen" type="hidden" name="commentopen"/>
+        		<input id="readcount" type="hidden" name="readcount"/>
+        		<input id="createtime" type="hidden" name="createtime"/>
+        		<input id="releasetime" type="hidden" name="releasetime"/>
+        		<input id="noticeid"  type="hidden" name="noticeid"/>
+        		<input id="messagetype" type="hidden" name="messagetype"/>
+				<input id="sessionId" type="hidden" name='sessionId' value='$sessionId'/>
+			</td>
+		</tr>
+		#if($messageType == "1")
+		<tr>
+			<th style="width:50px;">重要性</th>
+			<td>
+				<input class="easyui-combobox" id="priorlevel" name="priorlevel" style="width:315px;" required="true" missingMessage="请选择公告级别"/>
+			</td>
+        
+			<th style="width:50px;">有效时间</th>
+			<td colspan="2">
+				<input id="validtime" name="validtime" type="text" class="easyui-datebox" style="width:310px;" data-options="editable:false" required="true" missingMessage="请选择有效时间"/>
+			</td>
+		</tr>
+		#end
+		#if($messageType == "2")
+		<tr>
+			<th style="width:50px;">接收人</th>
+			<td  colspan="3">
+				<input id="receiveusername" class="easyui-textbox" name="receiveusername" multiline="true"  readonly="true"  required="true" missingMessage="请选择接收人"  data-options="prompt:'请选择接收人',validType:{length:[0,2000]}" style="width:600px;height:40px;" />
+			    <span style="color:red">*</span>
+            </td>
+			<td style="width:90px;">
+			  <a href="#" id="choiseBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="choisePerson()">选择接收人</a>
+				<input id="receiveusercode" type="hidden" name="receiveusercode"/>
+			</td>
+		</tr>
+		<tr>
+			<th style="width:50px;">发送短信</th>
+			<td  colspan="4">
+				<input class="easyui-validatebox" name="messageflag" id="messageflag1" type="radio" required="true" value="1">是</input>
+				<input class="easyui-validatebox" name="messageflag" id="messageflag2" type="radio" checked="checked" required="true" value="0">否</input>
+			</td>
+			
+		</tr>
+		#end
+		<tr>
+			<th style="width:50px;">内容</th>
+			<td  colspan="4">
+				<textarea id="contentEdit" name="contentEdit" style="width:710px;height:200px;visibility:hidden;"></textarea>
+				<input type="hidden" name="content" id="content"/>
+			</td>
+			
+		</tr>
+		<tr>
+			<th style="width:50px;">备注</th>
+			<td  colspan="4">
+				<input id="remark" class="easyui-textbox" name="remark" multiline="true" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:712px;height:40px;" />
+		</td>
+		</tr>
+		<tr>
+			<th style="width:50px;height:60px;">附件</th>
+            <td valign='top' id="filetd" colspan="3">
+				
+			</td>
+			<td style="width:90px;height:60px;">
+				<a href="#" id="uploadFileBtn" class="easyui-linkbutton" iconCls="icon-files" plain="true" onClick="uploadFile()">附件上传</a>
+			</td>
+		</tr>
+	</table>
+	
+</form>
+<!--选择接收人层-->
+<div id="showPreson"></div>
+
+<!--上传附件层-->
+<div id='uploadifydiv'></div>
+
+
+

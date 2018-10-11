@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Cols >
+<!-- name值 请使用小写 -->
+	<Col name="prodid"  datatype="double" >产品标识02</Col>
+	<Col name="deptname"   width="180">使用单位名称</Col>
+	<Col name="prodname"  width="80" >产品名称03</Col>
+	<Col name="operatorname" >使用人名称</Col>
+	<Col name="price"  datatype="double" decimal="2">金额</Col>
+	<Col name="logcount"  datatype="double" decimal="2">查询次数</Col>
+	<Col name="operatedate"   width="180"  >使用日期</Col>
+</Cols>

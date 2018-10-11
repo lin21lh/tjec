@@ -1,0 +1,100 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/documentdelivery_detail.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+
+</style>
+	<input type="hidden" id="caseidinput" value="$!caseid"/>
+<form id="caseIdForm">
+	<input type="hidden" name="caseid" id="caseidForm" value="$!caseid"/>
+</form>
+<div id="div" >
+<div style="float:left;width:100%;">
+  <div style="width:58%;float:left;">
+		<table id ='Table'></table>
+  </div>
+  <div style="width:2%; float:left;text-align:center">
+		&nbsp;
+  </div>
+  <div style="width:40%;float:left;">
+		<div id="trial_win" class="easyui-panel" style="width: 100%;">
+			<form id="form" method="post" style="margin: 0px">
+				<input type="hidden" name="cdrid" id="cdrid"/>
+				<input type="hidden" name="caseid" id="caseid"/>
+				<table class="list" >
+					<tr>
+						<th >送达文书名称及编号：</th>
+						<td>
+							<input id="docname" name="docname" class="easyui-textbox" data-options="validType:{length:[0,60]}"  style="width:200px" 
+								missingMessage="请输入送达文书名称及编号" /><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >受送达人：</th>
+						<td>
+							<input id="receiver" name="receiver" class="easyui-textbox" data-options="validType:{length:[0,60]}"  style="width:200px" 
+								missingMessage="请输入受达文人" /><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th>送达时间：</th>
+						<td >
+							<input id="deliverydate" name="deliverydate" class="easyui-datebox" editable="false" 
+								 missingMessage="请输入送达时间" style='width:200px' /><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >送达地点：</th>
+						<td>
+							<input id="deliverysite" name="deliverysite" class="easyui-textbox" data-options="validType:{length:[0,60]}"  style="width:200px" 
+								missingMessage="请输入送达地点" /><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >送达方式：</th>
+						<td>
+							<input id="deliveryway" name="deliveryway" class="easyui-textbox" data-options="validType:{length:[0,60]}"  style="width:200px" 
+								missingMessage="请输入送达方式" /><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >代收人：</th>
+						<td>
+							<input id="processagent" name="processagent" class="easyui-textbox" data-options="validType:{length:[0,60]}"  style="width:200px" 
+								missingMessage="请输入代收人" /><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >送达人：</th>
+						<td>
+							<input id="processserver" name="processserver" class="easyui-textbox" data-options="validType:{length:[0,60]}"  style="width:200px" 
+								missingMessage="请输入送达人" /><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th>备注：</th>
+						<td >
+							<input id="remark" name="remark" multiline="true" class="easyui-textbox" data-options="validType:{length:[0,160]}" style="width:200px;height:80px;"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+  </div>
+</div>
+</div>
+<div id="uploadifydiv"></div>

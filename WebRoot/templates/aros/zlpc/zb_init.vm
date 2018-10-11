@@ -1,0 +1,66 @@
+<!DOCTYPE>
+<html>
+	<head>
+		#parse("common/common-v14.vm")
+		#parse("common/extensions-v14.vm")
+		<title>质量评查指标</title>
+		<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+		<script type="text/javascript" src="$contextpath/templates/aros/zlpc/zb_init.js"></script>
+		<script type="text/javascript">
+			//菜单ID
+			var menuid = "$menuid";
+        </script>
+		<style type="text/css">
+			.cs-west{
+        		width: 50%;
+        		padding: 0;
+        	}
+        	.linkbutton_group{
+        		border-bottom: 1px solid #95B8E7;
+        	}
+        </style>
+    </head>
+	<body id="layout" class="easyui-layout">
+        <div data-options="region:'center',split:false">
+			<div id="toolbar_center" class="toolbar_group">
+				<!-- 隐藏域 -->
+				<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+				
+				<div class="toolbar_buttons">
+					<a id="openclose" onClick="javascript:panelctl_aros(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="zbQuery()">查询</a>
+					<span class='xian'></span>
+					<a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="zbAddForm()">新增</a>
+    				<span class='xian' ></span>
+        			<a href="#" id="editBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="zbUpdateForm()">修改</a>
+    				<span class='xian' ></span>
+        			<a href="#" id="delBtn" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="zbDelete()">删除</a>
+    				<span class='xian' ></span>
+        			<a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-detail" plain="true" onClick="zbDetail()">详情</a>
+				</div>
+				
+				<div id="zbfzbPanel" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%; border:0px;">
+					<table  class="list" style='border:1px'>
+						<tr>
+							<td style="font-size:12px; border:0px; text-align:right">指标名称：</td>
+            				<td style="font-size:12px; border: 0px; text-align:left">
+    							<input id="standardname" class="easyui-textbox" style="width:150px">
+    						</td>
+							<td style="font-size:12px; border:0px; text-align:right;">阶段类型：</td>
+							<td style="font-size:12px; border:0px; text-align:left;">
+								<input id="stagetype" class="easyui-textbox" style='width:150px' multiple="true">
+							</td>
+    						<td style="border: 0px; text-align:right" align="right">指标类型：</td>
+            				<td style="font-size:12px;border: 0px;text-align:left">
+    							<input id="inditype" class="easyui-textbox" style='width:150px' multiple="true">
+    						</td>
+						</tr>
+                    </table>
+				</div>
+			</div>
+			<!-- 列表 -->
+			<table id="dataGrid"></table>
+		</div>
+    </body>
+</html>

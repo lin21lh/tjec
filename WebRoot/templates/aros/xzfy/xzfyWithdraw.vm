@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="$contextpath/templates/aros/xzfy/js/xzfypro.css">
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/xzfyWithdraw.js"></script>
+</head>
+<body>
+<!--复议撤回-->
+<div id="flowDiv" class="easyui-panel" title="案件流程进度" style="width:100%;height:20%;" >
+		<table id="fyWithdrawTable" class="ancestors" border="0">
+			<tbody>
+				<tr >
+					<th id="draw_jd" style="display:none" onclick="fyWithdraw()">复议撤回</th>
+				</tr>
+				<tr id="drawtr"></tr>
+			</tbody>
+		</table>
+</div> 
+</body>
+
+</html>

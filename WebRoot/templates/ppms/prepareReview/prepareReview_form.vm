@@ -1,0 +1,43 @@
+<!--禁用缓存-->	
+<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<META HTTP-EQUIV="expires" CONTENT="0">
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppms/prepareReview/js/selectPszbInit.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="prepareAddForm" method="post">
+	<table class="list">
+		<!--隐藏属性start
+			-->
+		<input type="hidden" id="projectid" name="projectid" /><!--项目id-->
+		<input type="hidden" id="pszbid" name="pszbid" /><!--项目id-->
+		<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+		<input type="hidden" id="status" name="status" /><!--状态-->
+		<input type="hidden" id="xmhj" name="xmhj" /><!--项目环节-->
+		<input type="hidden" id="updateFlag" name="updateFlag" /><!--修改标志-->
+		<!--隐藏属性end
+		-->
+		<tr>
+			<th >是否VFM定量评价</th>
+			<td  >
+				<input id="vfmDlpj" class="easyui-textbox" name="vfmDlpj"  required="true" missingMessage="请选择是否进行VFM定量评价" style='width:250px' />
+			</td>
+		</tr>
+    </table>
+	<table id = 'qualExpert'>
+		<input id="qualExpertData" type="hidden" name='qualExpertData'/>
+    </table>
+	<table id = 'pjzbTable'>
+		<input id="pjzbTableData" type="hidden" name='pjzbTableData'/>
+    </table>
+	<!--指标层-->
+	<div id='dxzbdiv'></div>
+</form>

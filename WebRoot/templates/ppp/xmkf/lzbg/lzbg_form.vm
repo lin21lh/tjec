@@ -1,0 +1,140 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppp/common/pppCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppp/xmcb/js/xmcb_form.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="lzbgAddForm" method="post">
+	<div id="tabList" class="easyui-tabs" >   
+		<div title="论证专家指标">      
+	 	 	<table id = 'pjzj'>
+				<input id="pjzjData" type="hidden" name='pjzjData'/>
+	    	</table>
+			<table id = 'pjzbTable'>
+				<input id="pjzbData" type="hidden" name='pjzbData'/>
+	    	</table>
+		</div>
+		<div title="物有所值评估结果">      
+			<table class="list">
+	    		<!--隐藏属性start-->
+				<input type="hidden" id="xmid" name="xmid"/><!--项目id-->
+				<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+				<input type="hidden" id="wfid" name="wfid" /><!--工作流id-->
+				<input type="hidden" id="activityId" name="activityId" /><!--工作流节点id-->
+				<input type="hidden" id="workflowflag" name="workflowflag" /><!--工作流标识-->
+				<input type="hidden" id="lzbgid" name="lzbgid" /><!--论证报告id-->
+	    		<!--隐藏属性end-->
+	    		<tr>
+	    			<th>项目名称</th>
+	    			<td colspan="3">
+	    				<input id="xmmc" class="easyui-textbox" name="xmmc" readonly='true' style='width:695px'/>
+	    			</td >
+	    		</tr>
+	    		<tr>	
+	    			<th>VFM验证完成时间</th>
+	    			<td colspan="3">
+	    				<input id="wyszyzWcsj" class="easyui-textbox" name="wyszyzWcsj"  style='width:250px'/>
+	    			</td >
+	    		</tr>
+	    		<tr>
+	    			<th>定性评估结果</th>
+	    			<td colspan="3">
+	    				<input id="dxpgJg" class="easyui-textbox" name="dxpgJg"  style='width:250px'/>
+	    			</td >
+    			</tr>
+	    		<tr>
+	    			<th>定性评估结论</th>
+	    			<td colspan="3">
+	    				<input id="dxpgJl" class="easyui-textbox" multiline="true"  name="dxpgJl" style='width:695px;height:55px;'/>
+	    			</td >
+	    		</tr>	
+	    		<tr>
+	    			<th>评估指标专家打分详情</th>
+	    			<td colspan="3">
+	    				<input id="dxpgZjdfxq" class="easyui-textbox" multiline="true"  name="dxpgZjdfxq"  style='width:695px;height:55px;'/>
+	    			</td >
+	    		</tr>
+    			<tr>
+	    			<th>定量评估结果</th>
+	    			<td colspan="3">
+	    				<input id="dlpgJg" class="easyui-textbox"  name="dlpgJg" style='width:250px;'/>
+	    			</td >
+	    		</tr>	
+	    		<tr>
+	    			<th>建设和运营维护净成本</th>
+	    			<td>
+	    				<input id="dlpgYywhjcb" class="easyui-textbox" name="dlpgYywhjcb"  style='width:250px'/>
+	    			</td >
+	    			<th>竞争性中立调整值</th>
+	    			<td>
+	    				<input id="dlpgJzxzltzz" class="easyui-textbox" name="dlpgJzxzltzz"  style='width:250px'/>
+	    			</td >
+	    		</tr>
+	    		<tr>
+	    			<th>项目全部风险成本</th>
+	    			<td>
+	    				<input id="dlpgXmqbfxcb" class="easyui-textbox" name="dlpgXmqbfxcb"  style='width:250px'/>
+	    			</td >
+	    			<th>小计</th>
+	    			<td>
+	    				<input id="dlpgXj" class="easyui-textbox" name="dlpgXj"  style='width:250px'/>
+	    			</td >
+	    		</tr>
+	    		<tr>
+	    			<th>PPP值</th>
+	    			<td>
+	    				<input id="dlpgPpp" class="easyui-textbox" name="dlpgPpp"  style='width:250px'/>
+	    			</td >
+	    			<th>VFM值</th>
+	    			<td>
+	    				<input id="dlpgVfm" class="easyui-textbox" name="dlpgVfm"  style='width:250px'/>
+	    			</td >
+	    		</tr>
+	    		<tr>
+		            <th>相关附件</th>
+					<td colspan="3" valign='top' style="height:40px" id="filetd">
+					<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="clickUploadDiv('WYSZYZ')"/>
+	            	</td>
+           		</tr>	
+	   	 </table>
+			  <font color="red">${fjts}
+			  </font>
+		</div>  
+		<div title="财政承受能力评估" > 
+			<table class="list">
+				<tr>
+	    			<th>验证结果</th>
+	    			<td>
+	    				<input id="czcsnlYzjg" class="easyui-textbox" name="czcsnlYzjg"  style='width:250px'/>
+	    			</td >
+	    			<th>完成时间</th>
+	    			<td>
+	    				<input id="czcsnlWcsj" class="easyui-textbox" name="czcsnlWcsj"  style='width:250px'/>
+	    			</td >
+	    		</tr>
+	    		<tr>
+	    			<th>验证结论</th>
+	    			<td colspan="3">
+	    				<input id="czcsnlYzjl" class="easyui-textbox"  multiline="true"  name="czcsnlYzjl"  style='width:695px;height:55px;'/>
+	    			</td >
+	    		</tr>
+	    		<tr>
+		            <th>相关附件</th>
+					<td colspan="3" valign='top' style="height:40px" id="filetd">
+					<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="clickUploadDiv('CZCSNL')"/>
+	            	</td>
+           		</tr>		
+			</table>
+			<table id = 'financeGrid'>
+				<input id="financeGridData" type="hidden" name='financeGridData'/>
+	    	</table>
+		</div>  
+	</div>	
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/sys/resourceEntry.js"></script>
+<title>功能资源维护界面</title>
+
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+	
+</style>
+</head>
+<body class="easyui-layout">
+	<div region="center" border="false" style="width:250px"  title="资源树"   split="false">
+			<ul id="menutree">
+			</ul>
+	</div>
+	
+	<div region="east" border="false" style="width:800px;">
+		<div class="easyui-tabs" fit="true">
+			<div title="资源基本属性">
+				<div class="easyui-panel"  border="false" >
+					<div id="toolbar_menu"  class="linkbutton_group">
+					
+						<a id="linkbutton_save" href="#" class="easyui-linkbutton" onclick="saveEdit()"  iconCls="icon-save" plain="true">保存</a>
+						<span class='xian' ></span>
+						<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  onclick="rejectEdit()" iconCls="icon-undo" plain="true">取消</a>
+						<!--
+						<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  onclick="showJBOX()" iconCls="icon-search" plain="true">弹出窗口</a>
+						-->
+					</div>
+					<form id="content" method="post">
+						<table class="list">
+							<tr>
+								<th>资源名称：</th>
+								<td><input id="name" name="name" class='easyui-textbox'  style="width:220px"
+									 data-options="required:true,missingMessage:'请输入资源名称',onChange:form_onchange" />
+								</td>
+								<th>图标：</th>
+								<td><input id="iconCls" name="iconCls" type='text' class='easyui-textbox'  style="width:220px"
+									data-options="onChange:form_onchange"/>
+									<a class='easyui-linkbutton' id='resourceIcon' iconCls=''  plain='true' ></a>
+								</td>
+							</tr>
+							<tr>
+								<th>访问路径：</th>
+								<td colspan='3' ><input id="webpath" name="webpath" class='easyui-textbox' style='width:610px'
+									data-options="onChange:form_onchange"/>
+								</td>
+							</tr>
+							<tr>
+								<th>资源类型：</th>
+								<td><input id="restype" name="restype" class="easyui-combobox" style="width:220px"
+									data-options="required:true,missingMessage:'请选择资源类型',onSelect:form_onchange,panelHeight:'auto'"/>
+								</td>
+								<th>数据权限优先模式：</th>
+								<td><input id="datascopemode" name="datascopemode" class='easyui-combobox'  style="width:220px"
+									 data-options="required:true,missingMessage:'请选择数据权限优先模式',onSelect:form_onchange,panelHeight:'auto'"/>
+								</td>
+							</tr>
+							<tr>
+								<th>对应工作流标识：</th>
+								<td>
+									<input class='easyui-searchbox' id='wfkeyname' name='wfkeyname' style="width:220px" />
+								</td>
+								<th>工作流版本号：</th>
+								<td>
+									<input class='easyui-combobox' id='wfversion' data-options="required:true,missingMessage:'请选择工作流版本号'" name='wfversion' style="width:220px" />
+								</td>
+							</tr>
+							<tr>
+								<th>工作流节点：</th>
+								<td>
+									<input class='easyui-searchbox' id='activityname' data-options="required:true,missingMessage:'请选择工作流节点'" name='activityname' style="width:220px" />
+								</td>
+								<th>工作流节点类型：</th>
+								<td colspan="3">
+									<input class='easyui-combobox' id='wftasknode' data-options="required:true,missingMessage:'请选择工作流节点类型'" name='wftasknode' style="width:220px" />
+								</td>
+							</tr>
+							<tr>
+								<th>首页待办设置：</th>
+								<td>
+									<input class='easyui-combobox' id='remindtype' name='remindtype' style="width:220px"
+										 data-options="onSelect:form_onchange" />
+								</td>
+								<th>启用标识：</th>
+								<td>
+									<input type='checkbox' id='status' name='status'  value='1' onchange="form_onchange()" />
+								</td>
+							</tr>
+							<tr>
+								<th>待办固定条件：</th>
+								<td colspan=3>
+									<input id="toRemindWhere" name="toRemindWhere" class='easyui-textbox'
+									data-options="multiline:true,validType:{length:[0, 200]},prompt:'最多可输入200个字符',onChange:form_onchange"
+									style="width:610px;height:40px;" />
+								</td>
+							</tr>
+							<tr>
+								<th>备注：</th>
+								<td colspan=3>
+									<input id="remark" name="remark" class='easyui-textbox'
+									data-options="multiline:true,validType:{length:[0, 100]},prompt:'最多可输入100个汉字',onChange:form_onchange"
+									style="width:610px;height:60px;" />
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" id="resourceid" name="resourceid" />
+						<input type="hidden" id="isleaf" name="isleaf" />
+						<input type="hidden" id="levelno" name="levelno" />
+						<input type="hidden" id="parentresid" name="parentresid" />
+						<input type='hidden' id='resorder' name='resorder' />
+						<input type='hidden' id='createtime' name='createtime' />
+						<!--用于验证 -->
+						<input type="hidden" id="opertype" value="edit" /> 
+					</form>
+				</div>
+			</div>
+			<div title="资源操作">
+				<div class="easyui-layout" fit="true" border='false'>
+					<div region="east" border="true" style="width:430px"   split="true">
+						<div style='background-color:#eee;border-bottom:1px solid #95B8E7'>
+							<a id="oper_save" href="#" class="easyui-linkbutton" onclick="oper_save_func()" 
+								 iconCls="icon-save" plain="true">保存</a>
+						</div>
+						<form id='operform' method='post' >
+							<table class='list'>
+								<tr>
+									<th>
+										操作名称：
+									</th>
+									<td>
+									 	<input id='oper_name' name='name' class='easyui-searchbox'  style='width:180px' data-options="editable:false,prompt:'请选择或输入操作名称',searcher:showPresetOper"/>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										操作编码：
+									</th>
+									<td>
+									 	<input type='text' class='easyui-textbox' required='true' missingMessage="请输入操作编码" name='code' id='oper_code'  style='width:180px' />
+									</td>
+								</tr>
+								<tr>
+									<th>
+										位置：
+									</th>
+									<td>
+									 	<input type='text' class='easyui-textbox' required='true' missingMessage="请输入位置" name='position' id='oper_position' data-options="onChange:form_onchange"  style='width:180px' />
+									</td>
+								</tr>
+								<tr>
+									<th>
+										优先模式：
+									</th>
+									<td>
+									 	<input type='text'  required='true' missingMessage="请选择优先模式" name='opermode' id='oper_opermode'  style='width:180px'/>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										图标：
+									</th>
+									<td>
+									 	<input type='text' class='easyui-combobox' editable="false" required='true' missingMessage="请选择图标" name='iconcls' id='oper_iconcls' data-options="onSelect:form_onchange" style='width:180px'/>
+									 	<a class='easyui-linkbutton' id='resourceOperIcon' iconCls=''  plain='true' ></a>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										备注：
+									</th>
+									<td>
+										<textarea id='remark' name='remark' class="easyui-textbox" data-options="multiline:true,validType:{length:[0, 25]}, prompt:'请输入25个汉字'" style='width:180px;height:40px' ></textarea>
+									 	<input type='hidden' name='custom' id='oper_custom'   />
+									 	<input type='hidden' name='id' id='oper_id'   />
+									 	<input type='hidden' name='resourceid' id='oper_resourceid' />
+									</td>
+								</tr>
+							
+							</table>
+						</form>
+					</div>
+					<div region="center" border="true"  split="true">
+						<div id='opertoolbar'>
+							<a id="oper_add" href="#" class="easyui-linkbutton" onclick="oper_add_func()" 
+								 iconCls="icon-add" plain="true">添加</a>
+							<span class='xian' ></span>
+							
+							<a id="oper_del" href="#" class="easyui-linkbutton" onclick="oper_del_func()" 
+								 iconCls="icon-remove" plain="true">删除</a>
+						</div>
+						<table id='opergrid'>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end tabs -->
+	</div> 
+	<!-- end region center -->
+	
+	<div id="contextmenu" class="easyui-menu" style="width:120px;">
+        <div onclick="menu_add_req()" data-options="iconCls:'icon-add'">添加下级</div>
+        <div onclick="menu_del_req()" data-options="iconCls:'icon-remove'">删除</div>
+        <div class="menu-sep"></div>
+        
+        <div onclick="menu_addtop_req()" data-options="iconCls:'icon-add'">添加</div>
+         <div class="menu-sep"></div>
+        <div onclick="menu_refresh()" data-options="iconCls:'icon-reload'">刷新</div>
+    </div>
+    
+</body>
+</html>

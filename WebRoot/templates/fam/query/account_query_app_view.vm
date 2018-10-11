@@ -1,0 +1,219 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript">
+var wfid = "$wfid";
+ if(wfid != "" &&wfid.indexOf("$")<0){
+	$('#img1')[0].src='$contextpath/workflow/WfProcessDefinitionController/getWorkflowImage.do?instanceid=$wfid&sno='+Math.random();
+ }
+</script>
+<style type='text/css'>
+    input {
+    line-height: 20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="ApplicationViewForm" method="post">
+    <div id="tt" class="easyui-tabs" >
+		 <div title="账户信息" >
+			<table class="list">
+        		<tr>
+        			<th  style="border-top-width:1px;">预算单位</th>
+        			<td  style="border-top-width:1px;">
+        				<input id="bdgagencyname" class="easyui-textbox" name="bdgagencyname"  readonly='true' style='width:250px'/>
+        			</td >
+        			<th  style="border-top-width:1px;">单位性质</th>
+        			<td  style="border-top-width:1px;">
+        				<input id="deptNatureName" class="easyui-textbox" name="deptNatureName"  readonly='true' style='width:250px' />
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>联系人</th>
+        			<td>
+        				<input id="linkman" name="linkman"  class="easyui-textbox"  readonly='true'  style='width:250px'/>
+        			</td>
+        			<th>联系电话</th>
+        			<td colspan="3">
+        				<input id="applPhonenumber" name="applPhonenumber"   class="easyui-textbox"  style='width:250px' readonly='true'/>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>单位地址</th>
+        			<td colspan="5">
+        				<input id="deptAddress" name="deptAddress"  class="easyui-textbox" readonly='true'  style='width:670px'/>
+        			</td>
+                </tr>
+        		<tr>
+        			<th>账户类型</th>
+        			<td>
+        				<input id="accountTypeName" name="accountTypeName"  readonly='true'  class="easyui-textbox" style='width:250px' />
+        			</td>
+        			<th>账户性质</th>
+        			<td>
+        				<input id="type02Name" name="type02Name"  readonly='true'  class="easyui-textbox"  style='width:250px' />
+        			</td>
+                </tr>
+        		<tr>
+        			<th>账户名称</th>
+        			<td>
+        				<input id="accountName" name="accountName"  class="easyui-textbox"  style='width:250px' readonly="true"/>
+        			</td>
+        			<th>银行账号</th>
+        			<td>
+        				<input id="accountNumber" name="accountNumber"  class="easyui-textbox"  style='width:250px' readonly="true"/>
+        			</td>
+        		</tr>
+				<tr>
+        			<th>账户开户行</th>
+        			<td>
+        				<input id="bankName" name="bankName"  class="easyui-textbox"  style='width:250px' readonly="true"/>
+        			</td>
+        			<th>零余额账户</th>
+        			<td>
+        				<input id="iszeroName" name="iszeroName"  class="easyui-textbox"  readonly='true'    style='width:250px' />
+        			</td>
+                </tr>
+				<tr>
+					<th>财务负责人</th>
+        			<td >
+        				<input id="financialOfficer" class="easyui-textbox"  readonly="true"   name="financialOfficer" style='width:250px'/>
+        			</td>
+        			<th >法人名称</th>
+        			<td >
+        				<input id="legalPerson" class="easyui-textbox" readonly="true"  name="legalPerson" style='width:250px'/>
+					</td>
+                </tr>
+				<tr>
+					<th>法人身份证号</th>
+        			<td >
+        				<input id="idcardno" class="easyui-textbox" readonly="true"  name="idcardno" style='width:250px'/>
+        			</td>
+					<th>开户日期</th>
+        			<td>
+						<input id="openTime" class="easyui-textbox" editable="false" readonly='true' name="openTime" style='width:250px'/>
+        			</td>
+                </tr>
+				<tr>
+        			<th>备案类型</th>
+        			<td >
+        				<input id="typeName" name="typeName"  readonly='true'  class="easyui-textbox" style='width:250px' />
+        			</td>
+        			<th>当前状态</th>
+        			<td >
+        				<input id="wfstatusName" name="wfstatusName"  readonly='true'  class="easyui-textbox" style='width:250px' />
+        			</td>
+                </tr>
+        		<tr>
+        			<th>变更原因</th>
+        			<td colspan="5">
+        				<input id="applyReason" class="easyui-textbox" name="applyReason" multiline="true" readonly='true'  style="width:670px;height:50px;" />
+        			</td>
+        		</tr>
+				<tr>
+    			<th>附件</th>
+    			<td colspan="5" valign='top' style="height:40px" id="filetd">
+    			</td>
+    		</tr>
+            </table>
+		 </div>
+		   #if($type==2)
+		  <div title="原账户信息" >
+        		<table class="list">
+        		<tr >
+        			<th >账户名称</th>
+        			<td >
+        				<input id="oldAccountName" name="oldAccountName" readonly='true' class="easyui-textbox"  style='width:250px' />
+        			</td>
+        			<th>银行账号</th>
+        			<td >
+        				<input id="oldAccountNumber" name="oldAccountNumber"  readonly='true' class="easyui-textbox"  style='width:250px'/>
+        			</td>
+        		</tr>
+				<tr>
+        			<th >账户开户行</th>
+        			<td >
+        				<input id="oldBankName" name="oldBankName"  class="easyui-textbox" readonly='true' style='width:250px' />
+        			</td>
+        			<th >账户性质</th>
+        			<td >
+        				<input id="oldType02Name" name="oldType02Name"  class="easyui-textbox" readonly='true' style='width:250px'/>
+        			</td>
+				</tr>
+				<tr>
+					<th>账户类型</th>
+        			<td >
+        				<input id="oldAccountTypeName" name="oldAccountTypeName" readonly='true' class="easyui-textbox" style='width:250px'/>
+        			</td>
+        			<th >零余额账户</th>
+        			<td >
+        				<input id="oldIszeroName" name="oldIszeroName" readonly='true' class="easyui-textbox" style='width:250px'/>
+        			</td>
+                </tr>
+				<tr>
+					<th>财务负责人</th>
+        			<td >
+        				<input id="financialOfficer" class="easyui-textbox"  readonly="true"   name="financialOfficer" style='width:250px'/>
+        			</td>
+        			<th >法人名称</th>
+        			<td >
+        				<input id="legalPerson" class="easyui-textbox" readonly="true"  name="legalPerson" style='width:250px'/>
+					</td>
+                </tr>
+				<tr>
+					<th>法人身份证号</th>
+        			<td colspan="3">
+        				<input id="idcardno" class="easyui-textbox" readonly="true"  name="idcardno" style='width:250px'/>
+        			</td>
+                </tr>
+        		<tr>
+        			<th>核算内容</th>
+        			<td colspan="3">
+        				<input id="oldAccountContent" name="oldAccountContent" readonly='true' class="easyui-textbox"  style='width:660px;height:40px;'/>
+        			</td>
+                </tr>
+        	</table>
+          </div>
+		  #end
+		  #if($wfid != "" && $wfid.indexOf("$"))
+		  <div title="流程图示信息" >
+    		<img id="img1" src=""/>
+		   </div>
+		  <div title="流程明细信息">
+			<table class="list">
+				<tr>
+        			<td style="width:40px;height:35px;align:center">序号</td>
+        			<td style="width:100px;height:35px;align:center">节点名称</td>
+        			<td style="width:100px;height:35px;align:center">动作名称</td>
+        			<td style="width:80px;height:35px;align:center">处理人</td>
+					<td style="width:80px;height:35px;align:center">处理时间</td>
+					<td style="width:100px;height:35px;align:center">处理意见</td>
+        		</tr>
+    			#if($wfList.size() != 0 )
+    				#foreach($i in $wfList)	
+						<tr>
+                			<td  style="width:40px;height:35px">
+            			   $!{velocityCount}
+            			   </td>
+                			<td  style="width:100px;height:35px">
+            				$!{i.actiName}
+            			   </td>
+                			<td  style="width:100px;height:35px">
+            				$!{i.transition}
+            			   </td>
+                			<td  style="width:80px;height:35px">
+            				$!{i.authorName}
+            			   </td>
+                			<td  style="width:80px;height:35px">
+            				$!{i.enddate}
+            			   </td>
+                			<td  style="width:100px;height:35px">
+            				$!{i.opinion}
+            			   </td>
+                		</tr>
+    				#end
+    			#end
+            </table>
+          </div>
+		  #end
+    </div>
+</form>

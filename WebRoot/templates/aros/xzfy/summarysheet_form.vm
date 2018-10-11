@@ -1,0 +1,24 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+// 案件ID
+var caseid = "$caseid";
+//流程类型
+var protype = "$protype";
+// 案件ID
+var nodeid = "$nodeid";
+</script>
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/summarysheet_form.js"></script>
+<form id="summaryForm" method="post" style="margin-bottom:0px;">
+   <input id="caseid" name="caseid" type="hidden" value="$caseid"/>
+   <input id="nodeid" name="nodeid" type="hidden" value="$nodeid"/>
+   <input id="protype" name="protype" type="hidden" value="$protype"/>
+   <input id="id" name="id" type="hidden" value="$!{summary.id}"/>
+   <table style="width:100%">
+       <tr>
+           <td>
+               <textarea id="contentEdit" name="contentEdit" style="width:100%;height:468px;visibility:hidden;"></textarea>
+               <input name="contents" id="contents" type="hidden" />
+          </td>
+       </tr>
+    </table>
+</form>

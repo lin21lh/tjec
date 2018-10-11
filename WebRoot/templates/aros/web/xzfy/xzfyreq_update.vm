@@ -1,0 +1,159 @@
+#parse("common/common-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/web/xzfy/js/xzfyreq_update.js"></script>
+
+<form id="xzfyReqForm" method="post">
+<div>
+	<table class="list">
+		<!--隐藏属性start-->
+			<input type="hidden" id="caseid" name="caseid" value="$!{casebaseinfo.caseid}"/><!--案件ID-->
+		<!--隐藏属性end-->
+		<tr>
+			<th style="font-weight:bold;height:14px;">申请人：</th>
+			<td style="height:14px;">
+				<input id="appname" class="easyui-textbox" name="appname" required="true" 
+					missingMessage="请输入申请人" data-options="validType:{length:[0, 65]}" 
+					style="width:250px" value="$!{casebaseinfo.appname}"/>
+				<span style="color:red;">*</span>
+			</td>
+			<th style="font-weight:bold;height:14px;">申请人类型：</th>
+			<td>
+				<input id="apptype" class="easyui-combobox" name="apptype" required="true" 
+					missingMessage="请选择申请人类型" style="width:250px" value="$!{casebaseinfo.apptype}"/>
+				<span style="color:red;">*</span>
+			</td>
+		</tr>
+		<tr>
+			<th style="font-weight:bold;height:14px;">证件类型：</th>
+			<td>
+				<input id="idtype" class="easyui-textbox" name="idtype" required="true" 
+					missingMessage="请选择证件类型" style="width:250px" value="$!{casebaseinfo.idtype}"/>
+				<span style="color:red;">*</span>
+			</td>
+			<th style="font-weight:bold;height:14px;">证件号码：</th>
+			<td>
+				<input id="idcode" class="easyui-textbox" name="idcode" required="true" 
+					missingMessage="请输入证件号码" data-options="validType:{length:[0, 20]}" 
+					style="width:250px" value="$!{casebaseinfo.idcode}"/>
+				<span style="color:red;">*</span>
+			</td>
+		</tr>
+		<tr>
+			<th style="font-weight:bold;height:14px;">所属区域：</th>
+			<td>
+				<input id="region" class="easyui-textbox" name="region" required="true" 
+					missingMessage="请选择所属区域" style="width:250px" value="$!{casebaseinfo.region}"/>
+			</td>
+			<th style="font-weight:bold;height:14px;">联系手机：</th>
+			<td>
+				<input id="mobile" class="easyui-textbox" name="mobile" 
+					 validType="mobile" style="width:250px" value="$!{casebaseinfo.mobile}"/>
+			</td>
+		</tr>
+		<tr>
+			<th style="font-weight:bold;height:14px;">邮箱：</th>
+			<td>
+				<input id="email" class="easyui-textbox" name="email" 
+					  data-options="validType:{length:[0, 50]}" style="width:250px" value="$!{casebaseinfo.email}"/>
+			</td>
+			<th style="font-weight:bold;height:14px;">邮政编码：</th>
+			<td>
+				<input id="postcode" class="easyui-textbox" name="postcode" validType="zip" 
+					 style="width:250px" value="$!{casebaseinfo.postcode}"/>
+			</td>
+		</tr>
+		<tr>
+			<th style="font-weight:bold;height:14px;">通讯地址：</th>
+			<td colspan="3">
+				<input id="address" class="easyui-textbox" name="address"  
+					data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:695px;" 
+					value="$!{casebaseinfo.address}"/>
+			</td>
+        </tr>
+		<tr>
+			<th style="font-weight:bold;height:14px;">邮寄地址：</th>
+			<td colspan="3">
+				<input id="mailaddress" class="easyui-textbox" name="mailaddress" required="true" 
+					missingMessage="请输入邮寄地址" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" 
+					style="width:695px;" value="$!{casebaseinfo.mailaddress}"/>
+				<span style="color:red;">*</span>
+			</td>
+        </tr>
+		<tr>
+			<th style="font-weight:bold;height:14px;">被申请人：</th>
+			<td>
+				<input id="defname" class="easyui-textbox" name="defname" required="true" missingMessage="请输入被申请人"
+					 data-options="validType:{length:[0, 65]}" style="width:250px" value="$!{casebaseinfo.defname}"/>
+				<span style="color:red;">*</span>
+			</td>
+			<th style="font-weight:bold;height:14px;">被申请人类型：</th>
+			<td>
+				<input id="deftype" class="easyui-textbox" name="deftype" required="true" missingMessage="请选择被申请人类型" 
+					style="width:250px" value="$!{casebaseinfo.deftype}"/>
+				<span style="color:red;">*</span>
+			</td>
+		</tr>
+		<tr>
+			<th style="font-weight:bold;height:14px;">行政管理类型：</th>
+			<td>
+				<input id="admtype" class="easyui-textbox" name="admtype" required="true" missingMessage="请选择被行政管理类型" 
+					style="width:250px" value="$!{casebaseinfo.admtype}"/>
+				<span style="color:red;">*</span>
+			</td>
+			<th style="font-weight:bold;height:14px;">申请复议事项类型：</th>
+			<td>
+				<input id="casetype" class="easyui-textbox" name="casetype" required="true" missingMessage="请输入申请复议事项类型"
+					style="width:250px" value="$!{casebaseinfo.casetype}"/>
+				<span style="color:red;">*</span>
+			</td>
+		</tr>
+		<tr>
+			<th style="font-weight:bold;height:14px;">是否附带行政赔偿：</th>
+			<td>
+				<input id="ifcompensation" class="easyui-textbox" name="ifcompensation" required="true" 
+					missingMessage="请选择是否附带行政赔偿" 
+					style="width:250px" panelheight = "auto" value="$!{casebaseinfo.ifcompensation}"/>
+				<span style="color:red;">*</span>
+			</td>
+			<th style="font-weight:bold;height:14px;">赔偿金额：</th>
+			<td>
+				<input id="amount" class="easyui-numberbox" name="amount" class="easyui-numberbox" 
+					data-options="min:0,precision:2,max:99999999999999.99" style="width:250px" 
+					value="$!{casebaseinfo.amountstr}"/>
+			</td>
+		</tr>
+		<tr>
+			<th style="font-weight:bold;height:14px;">申请事项：</th>
+			<td colspan="3">
+				<input id="appcase" class="easyui-textbox" name="appcase" multiline="true" required="true" missingMessage="请输入申请事项"
+					data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}" style="width:695px;height:50px;" 
+					value="$!{casebaseinfo.appcase}"/>
+				<span style="color:red;">*</span>
+			</td>
+        </tr>
+		<tr>
+			<th style="font-weight:bold;height:14px;">事实和理由：</th>
+			<td colspan="3">
+				<input id="factreason" class="easyui-textbox" name="factreason" multiline="true"  required="true" missingMessage="请输入事实和理由"
+					data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}" style="width:695px;height:50px;" 
+					value="$!{casebaseinfo.factreason}"/>
+				<span style="color:red;">*</span>
+			</td>
+        </tr>
+		<tr>
+            <th style="font-weight:bold;height:14px;">上传附件：</th>
+			<td colspan="3" valign='top' style="height:40px" id="filetd">
+				<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('XZFY')"/>
+            </td>
+        </tr>
+    </table>
+	<div style="text-align: center;padding-top:10px;">
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'" style="width:10%" onclick="submitForm()">提交</a>
+	</div>
+</div>
+</form>
+	
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

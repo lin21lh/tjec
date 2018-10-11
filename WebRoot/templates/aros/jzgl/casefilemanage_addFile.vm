@@ -1,0 +1,24 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script> 
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/jzgl/js/casefilemanage_addFile.js"></script> 
+<form id="addCaseFileForm" method="post">
+    <input type="hidden" name="caseid" id="caseid" value="$!caseid"/>
+    <input type="hidden" name="timeLong" id="timeLong" value="$!timeLong"/>
+    <table class="list">
+        <tr>
+            <td align="right">流程类型</td>
+            <td>
+                <input id="protype" name="protype" class="easyui-combobox" panelHeight="auto" panelWidth="auto" required="true"
+                    missingMessage="请选择流程类型" /> 
+            </td>
+        </tr>
+        <tr>
+            <th>选择文件</th>
+            <td colspan="3" valign="top" style="height:40px" id="filetd">
+                <img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFileDiv()"/>
+            </td>
+        </tr>
+    </table>
+</form>
+<div id="uploadifydiv"></div>

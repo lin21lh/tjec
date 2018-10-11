@@ -1,0 +1,49 @@
+#parse("common/extensions-v14.vm")
+<form id="projectViewForm">
+	<table class="list">
+    		<tr>
+    			<th width="13%">委员名称：</th>
+    			<td width="37%"><span>$!{info.spename}</span></td >
+    			<th width="13%">职称：</th>
+    			<td width="37%"><span>$!{info.titlename}</span></td>
+    		</tr>
+    		<tr>
+    			<th>职务：</th>
+    			<td><span>$!{info.postname}</span></td >
+    			<th>学历：</th>
+    			<td><span>$!{info.degreename}</span></td>
+    		</tr>
+    		<tr>
+    			<th>联系电话：</th>
+    			<td><span>$!{info.phone}</span></td >
+    			<th>通讯地址：</th>
+    			<td><span>$!{info.address}</span></td>
+    		</tr>
+    		<tr>
+    			<th>邮政编码：</th>
+    			<td><span>$!{info.postcode}</span></td >
+                <th>委员类型：</th>
+                <td><span>$!{info.membertypename}</span></td >  
+    		</tr>
+            <tr>
+    			<th>工作单位：</th>
+    			<td colspan="3"><span>$!{info.workunits}</span></td>
+            </tr>
+    		<tr>
+    			<th>专业领域：</th>
+    			<td colspan="3"><span>$!{info.spedesc}</span></td >
+    		</tr>
+			<tr>
+    			<th>简介：</th>
+    			<td colspan="3"><span>$!{info.intro}</span></td >
+    		</tr>
+			<tr>
+				<th>用户编码：</th>
+				<td>
+                    <input name="usercode" style="border:0px"/>
+                </td>
+				<th>机构名称：</th>
+				<td><input name="orgname" style="border:0px; font-family:'微软雅黑'" /></td>
+			</tr>
+    </table>		 
+</form>

@@ -1,0 +1,122 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/fam/manage/revoke/js/revoke_init.js"></script>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<title>注销申请</title>
+<script type="text/javascript">
+var menuid = "$menuid";
+var activityId = "$activityId";
+var type = "$type";
+var allbdgagency ="$allbdgagency";
+var userid ="$userid";
+</script>
+<style type="text/css">
+	.linkbutton_group {
+        border-bottom: 1px solid #95B8E7;
+        background-color: #eee;
+    }
+</style>
+</head>
+
+<body id="layout" class="easyui-layout">
+	<div region="center" >
+		<div id="toolbar_hasrevoke" class="toolbar_group">
+			
+			<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+    		<input type="hidden" id="activityId" name="activityId" value="$activityId" />
+			
+			<div class="toolbar_buttons">
+				<a id="openclose" onClick="javascript:panelctlForFam(0);" class="easyui-linkbutton" iconCls="icon-collapse" plain="true" ></a>
+				<span class='xian' ></span>
+				<a id="btn_query" href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="queryHasRevokeInfo()">查询</a>
+				<span class='xian' ></span>
+				<a id="btn_add" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="addRevokeInfo()">新增</a>
+				<span class='xian' ></span>
+				<a id="btn_edit" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="editRevokeInfo()">修改</a>
+				<span class='xian' ></span>
+				<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="deleteRevokeInfo()">删除</a>
+				<span class='xian' ></span>
+				<a id="btn_submit" href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onClick="submitRevokeInfo()">送审</a>
+				<span class='xian' ></span>
+				<a id="btn_revoke" href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="removeRevokeInfo()">撤回</a>
+				<span class='xian' ></span>
+				<a id="btn_flow" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="queryRevokeInfo()">详情</a>
+				<span class='xian' ></span>
+				<a id="btn_flow" href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">流程信息</a>
+				<span class='xian' ></span>
+    			<a href="#" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onClick="outRegisterApplicationform()">注销申请表</a>
+			</div>
+			<div id="qpanel1" class="easyui-panel collapsable-toolbar " collapsible="true" style="width:100%;padding:1px">
+				<table style='width:100%'>
+                    <tr>
+        				<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap' >处理状态</td>
+        				<td style='font-size:12px;width:10%' ><input id="dealStatus" class="easyui-combobox" style="width:97%;" /></td>
+						<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>处理类型</td>
+        				<td style='font-size:12px;width:17%'><input id="processedStatus" class="easyui-combobox" style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>账户类型</td>
+        				<td style='font-size:12px;width:17%'><input id="oldAccountTypeSearch" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>预算单位</td>
+        				<td style='font-size:12px;width:22%'><input id="bdgagency1" class="easyui-textbox"  style="width:97%" /></td>
+						<td style='font-size:12px;width:3%'></td>
+    				</tr>      
+    				           
+                    <tr> 
+						<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap'>账户性质</td>
+        				<td style='font-size:12px;width:10%'> <input id="oldAccountType02" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>银行账号</td>
+        				<td style='font-size:12px;width:17%'> <input id="oldAccountNumber" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>账户名称 </td>
+        				<td style='font-size:12px;width:17%'> <input id="oldAccountName" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>申请时间</td>
+                        <td style='font-size:12px;width:22%'>
+						<input id="starttime" class="easyui-datebox" style='width:45%' />至<input id="endtime" class="easyui-datebox" style='width:45%'  />
+						</td>
+						<td style='font-size:12px;width:3%'></td>
+    				</tr>      
+				</table>
+				<!-- &nbsp;处理状态<input class="easyui-textbox" id="dealStatus" style='width:90px'/>
+				处理类型 <input class="easyui-textbox" id="processedStatus" style='width:90px'/>
+				预算单位 <input class="easyui-searchbox" id="bdgagency1"  style='width:180px'  editable='false'/>
+				账户类型 <input class="easyui-textbox" id="oldAccountTypeSearch" style='width:140px'/>
+				当前状态：<input class="easyui-textbox" id="wfstatusSearch" style='width:110px'/>-->
+			</div>
+		</div>
+		<table id="datagrid_hasRevoke"></table>
+	</div>
+	
+	<div region="south" border="false" title="可注销账户" style="height:45%" id='noRevoke'>
+		<div id="toolbar_norevoke" class="toolbar_group">
+    		<div id="qpanel2" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;">
+				<table style='width:100%'>
+                    <tr>
+        				<td style='font-size:12px;text-align:end;width:5%' >预算单位</td>
+        				<td style='font-size:12px;width:17%' ><input id="bdgagency2" class="easyui-searchbox" style="width:97%;" /></td>
+        				<td style='font-size:12px;text-align:end;width:5%'>账户类型</td>
+        				<td style='font-size:12px;width:12%'> <input id="accountTypeSearch" class="easyui-combobox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:5%'>账户性质</td>
+        				<td style='font-size:12px;width:8%'>
+    						<input id="type02Search" class="easyui-combobox"  style="width:97%;" />
+						</td>
+        				<td style='font-size:12px;text-align:end;width:5%'>账户名称</td>
+        				<td style='font-size:12px;width:14%'><input id="accountNameSearch" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:5%'>银行账号</td>
+        				<td style='font-size:12px;width:14%'><input id="accountNumberSearch" class="easyui-textbox"  style="width:97%" /></td>
+						<td style='font-size:12px;text-align:end;width:10%;text-align:start'><a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onClick="queryNoRevokeInfo()" >查询</a></td>
+    				</tr>  
+                </table>
+    				<!-- &nbsp;预算单位 <input class="easyui-searchbox" id="bdgagency2" style='width:130px' editable='false'/>
+    				账户类型 <input class="easyui-combobox" id="accountTypeSearch" style='width:120px'/>
+					账户性质 <input class="easyui-combobox" id="type02Search" style='width:100px'/>
+					账户名称 <input class="easyui-textbox" id="accountNameSearch" style='width:150px'/>
+					银行账号 <input class="easyui-textbox" id="accountNumberSearch" style='width:110px'/>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onClick="queryNoRevokeInfo()">查询</a>-->
+    		</div>
+		</div>
+		<table id="datagrid_noRevoke"></table>
+	</div>
+	
+</body>
+</html>

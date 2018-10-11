@@ -1,0 +1,21 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="accountChangeTypeForm" method="post">
+	<table class="list">
+    		<tr>
+    			<th >变更事项</th>
+    			<td >
+					<input id="changetype" name="changetype" editable ="false" class="easyui-textbox"  style='width:250px' required="true" missingMessage="请选择变更事项" />
+    			</td>
+    		</tr>
+            </table>
+	 </div>		
+</form>

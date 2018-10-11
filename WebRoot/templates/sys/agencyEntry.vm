@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/sys/agencyEntry.js"></script>
+<script type="text/javascript">
+	var codeformat = '${modelMap.codeformat}';
+</script>
+<title>机构维护界面</title>
+
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	#agencytab tr th{
+		width: 130px
+	}
+	#extsTab tr th{
+		width: 130px
+	}
+	
+</style>
+</head>
+<body class="easyui-layout" fit="true">
+	<div region="center" border="false" split="false" style="width:360px;">
+		<div title="机构树" class="easyui-panel"  fit="true" >
+			<ul id="agencyTree"></ul>
+		</div>
+	</div>
+	<div region="east" border="true" style="width:800px;">
+		<div class="easyui-panel" border="false" fit="true">
+			<div class='easyui-tabs' fit='true' border='false' id="wftab" fit="true">
+				<div id='tab1' title='机构属性'>
+					<div id="agencyLayout" class="easyui-layout" fit="true">
+						<div region="north" style="height:30px;" border="false">
+							<div id="toolbar_menu"  class="linkbutton_group" style="width:100%;">
+								<a id="linkbutton_save" href="#" class="easyui-linkbutton" onclick="saveEdit()"  iconCls="icon-save" plain="true">保存</a>
+								<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  onclick="rejectEdit()" iconCls="icon-undo" plain="true">取消</a>
+							</div>
+						</div>
+						<div region="center" border="false" split="false"  style="width:600px;">
+							<form id="content" method="post">
+								<table id="agencytab" class="list" >
+									<tr>
+										<th>机构编码：</th>
+										<td><input id="code" name="code" type='text' class='easyui-textbox' style="width:200px;" data-options="required:true,missingMessage:'请输入机构编码',onChange:form_onchange,validType:['remoteIsExist[\'Sys_dept\',\'itemid\']','LayerCodeLegal[\'${modelMap.codeformat}\',\'agencyTree\']']" /><input type="hidden" id="opertype" value="edit"></td>
+										<th>组织机构码：</th>
+										<td><input id="isbncode" name="isbncode" type='text' class='easyui-textbox' data-options="onChange:form_onchange" style="width:200px;"/></td>
+									</tr>
+									<tr>
+										<th>机构名称：</th>
+										<td><input id="name" name="name" type='text' class='easyui-textbox' style="width:200px;" data-options="required:true,missingMessage:'请输入机构名称',onChange:form_onchange"/></td>
+										<th>机构简称：</th>
+										<td><input id="shortname" name="shortname" type='text' class='easyui-textbox' style="width:200px;"  data-options="required:false,onChange:form_onchange"/></td>
+									</tr>
+									<tr>
+										<th>机构全称：</th>
+										<td ><input id="wholename" name="wholename" type='text' class='easyui-textbox' style="width:200px;"  data-options="onChange:form_onchange"/></td>
+										<th>所属区域：</th>
+										<td ><input id="area" name="area" type='text' class='easyui-combobox' style="width:200px;"  data-options="required:true,missingMessage:'请选择所属区域',onSelect:form_onchange"/></td>
+									</tr>
+									<tr>
+										<th>机构类别：</th>
+										<td><input id="agencycat" name="agencycat" class='easyui-combobox' style="width:200px;" data-options="required:true,missingMessage:'请选择机构类别',onChange:form_onchange" /></td>
+										<th>状态：</th>
+										<td><input id="status" name="status" value="0" class='easyui-combobox' style="width:200px;" data-options="required:true,onSelect:form_onchange" /></td>
+									</tr>
+									<tr>
+										<th>启用日期：</th>
+										<td><input id="startdate" name="startdate" value="${modelMap.today}" type='text' class='easyui-datebox' editable="false" style="width:200px;" data-options="required:true,onSelect:form_onchange"/></td>
+										<th>停用日期：</th>
+										<td><input id="enddate" name="enddate" type='text' class='easyui-datebox' style="width:200px;" editable="false" data-options="required:false,onSelect:form_onchange" /></td>
+									</tr>
+									<tr>
+										<th>备注：</th>
+										<td colspan=3>
+											<textarea id="remark" name="remark" class='easyui-textbox' multiline="true"  style="width:600px;height:100px;" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]},onChange:form_onchange"></textarea>
+										</td>
+									</tr>
+								</table>
+								<table id="extsTab" class="list">
+								</table>
+								<input type="hidden" id="itemid" name="itemid" />
+								<input type="hidden" id="superitemid" name="superitemid" />
+							</form>
+						</div>
+					</div>
+				</div>
+				<div  id='tab2' title='机构扩展属性配置'>
+					<div id="roleUserPanel" class="easyui-panel"  border="false" fit="true">
+						<div id="agencyexp_toolbar" style="background-color:#eee;border-bottom:1px solid #95B8E7">
+							<table>
+								<tr>
+									<td>
+										&nbsp;机构类别：<input type="text" id="q_agencycat" class='easyui-textbox' style="width:200px;" />
+										&nbsp;&nbsp;&nbsp;<a id="linkbutton_save" href="#" class="easyui-linkbutton" onclick="savecolExpcfg()"  iconCls="icon-save" plain="true">保存</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div style="float:left; width:320px; height:400px; border-bottom:1px solid #95B8E7;">
+							<div style="margin:5px;height:14px">可选扩展属性：</div>
+							<table id="left_data" class="easyui-datagrid"></table>
+						</div>
+						<div style="float:left;">
+						<table style="width:40px; height:400px;"><tr><td style="text-align:center">
+							<a id="linkbutton_leftAll" href="#" class="easyui-linkbutton" iconCls="icon-right-double-arrow" onclick="leftAllClick()" plain="false" style="width:30px"></a>
+							<div>&nbsp;</div>
+							<a id="linkbutton_left" href="#" class="easyui-linkbutton" iconCls="icon-right-arrow" onclick="leftClick()" plain="false" style="width:30px"></a>
+							<div>&nbsp;</div>
+							<a id="linkbutton_right" href="#" class="easyui-linkbutton" iconCls="icon-left-arrow" onclick="rightClick()" plain="false" style="width:30px"></a>
+							<div>&nbsp;</div>
+							<a id="linkbutton_rightAll" href="#" class="easyui-linkbutton" iconCls="icon-left-double-arrow" onclick="rightAllClick()" plain="false" style="width:30px"></a>
+							<div>&nbsp;</div>
+							<a id="linkbutton_up" href="#" class="easyui-linkbutton" iconCls="icon-up-arrow" onclick="upClick()" plain="false" style="width:30px"></a>
+							<div>&nbsp;</div>
+							<a id="linkbutton_down" href="#" class="easyui-linkbutton" iconCls="icon-down-arrow" onclick="downClick()" plain="false" style="width:30px"></a>
+							</td></tr></table>
+						</div>
+						<div style="float:left; width:320px; height:400px; border-bottom:1px solid #95B8E7;">
+							<div style="margin:5px;height:14px">已选扩展属性：</div>
+							<table id="right_data" class="easyui-datagrid"></table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="contextmenu" class="easyui-menu" style="width:120px;">
+        <div id="addDownbutton" onclick="agency_adddown_req()" data-options="iconCls:'icon-add'">添加下级</div>
+        <div onclick="agency_del_req()" data-options="iconCls:'icon-remove'">删除</div>
+        <div class="menu-sep"></div>
+        
+        <div onclick="agency_add_req()" data-options="iconCls:'icon-add'">添加</div>
+        <div class="menu-sep"></div>
+        <div onclick="agency_refresh()" data-options="iconCls:'icon-reload'">刷新</div>
+    </div>
+</body>
+</html>

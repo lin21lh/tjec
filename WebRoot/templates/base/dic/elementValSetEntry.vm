@@ -1,0 +1,38 @@
+<script type="text/javascript" src="templates/base/dic/util.js"></script>
+<script type="text/javascript" src="templates/base/dic/elementValSetEntry.js"></script>
+<script type="text/javascript">
+var keycolumn = '${modelMap.keycolumn}';
+var tablecode = '${modelMap.tablecode}';
+${modelMap.gridScheme}
+$(function(){
+	
+	//加载数据项值集
+	loadDataFunction();
+	init();
+});
+</script>
+<!-- 数据项值集维护 -->
+<div class="easyui-layout" data-options="fit:true">
+	<div region="north" style="height:31px;">
+		<div id="toolbar_menu"  class="linkbutton_group datagrid-toolbar">
+			<a id="linkbutton_add1" href="#" class="easyui-linkbutton" onclick="addenumitem()"  iconCls="icon-add" plain="true">添加</a>
+			<span class='xian' ></span>
+			<a id="linkbutton_delete" href="#" class="easyui-linkbutton"  onclick="deleteItem()" iconCls="icon-remove" plain="true">删除</a>
+		</div>
+	</div>
+	<div region="west" style="width:400px;">
+        ${modelMap.gridSchemeID}
+    </div>
+    <div region="center">
+		<div id="form_toolbar_menu"  class="linkbutton_group datagrid-toolbar">
+			<a id="elemvalset_save" href="#" class="easyui-linkbutton" onclick="saveEdit()" data-options="disabled:true" iconCls="icon-save" plain="true">保存</a>
+			<span class='xian' ></span>
+			<a id="elemvalset_cancel" href="#" class="easyui-linkbutton"  onclick="rejectEdit()" data-options="disabled:true" iconCls="icon-undo" plain="true">取消</a>
+		</div>
+		<form id="content" method="post">
+			<table class="list" style="width:100%">
+				${modelMap.editScheme}
+			</table>
+		</form>
+    </div>
+</div>

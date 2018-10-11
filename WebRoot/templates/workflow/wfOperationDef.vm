@@ -1,0 +1,18 @@
+	<div class='toolbar_buttons' id='op_toolbar'> 
+			<a id="oper_view" href="#" class="easyui-linkbutton" onclick="oper_view_func()"  
+				iconCls="icon-view" plain="true">详情</a>
+			<span class='xian' ></span>
+			<a id="oper_add" href="#" class="easyui-linkbutton" onclick="oper_add_func()"  
+				iconCls="icon-add" plain="true">添加</a>
+			<span class='xian' ></span>
+				<a id="oper_edit" href="#" class="easyui-linkbutton" onclick="oper_edit_func()"  
+				iconCls="icon-edit" plain="true">修改</a>
+			<span class='xian' ></span>
+			<a id="oper_del" href="#" class="easyui-linkbutton" onclick="oper_del_func()"  
+				iconCls="icon-remove" plain="true">删除</a>
+		</div>
+		<table id='oper_grid' fit='true'>
+		</table>
+
+
+

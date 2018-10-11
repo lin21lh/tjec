@@ -1,0 +1,33 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/sys/logEntry.js"></script>
+<title>日志管理</title>
+<style type="text/css">
+	.linkbutton_group {
+        border-bottom: 1px solid #95B8E7;
+        background-color: #eee;
+    }
+</style>
+
+</head>
+<body id="layout" class="easyui-layout">
+	<div region="center" border="false" >
+		<div id="toolbar_log" class="toolbar_group">
+			<div class="toolbar_buttons">
+				<a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+				<span class='xian' ></span>
+				<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="deleteLog()">删除</a>
+			</div>
+			<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" >
+				&nbsp;操作类型：<input class="easyui-combobox" id="opertype" />
+				操作时间：<input class="easyui-datetimebox" id="starttime" value="${modelMap.starttimeDef}" />&nbsp;至&nbsp;<input class="easyui-datetimebox" id="endtime" value="${modelMap.endtimeDef}" />
+				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onClick="queryLog()">查询</a>
+			</div>
+		</div>
+		<table id="datagrid_log"></table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/common/component/doubleDatagridSelect.js" ></script>
+<script type="text/javascript" src="$contextpath/templates/aros/zjgl/js/ajxz_form.js"></script>
+<script type="text/javascript" src="$contextpath/templates/base/tabsdef/colsDefDialog.js"></script>
+
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+	
+</style>
+
+<body>
+<form id="ajxzForm" method="post">
+
+<div style="float:left;width:100%;">
+  <div style="width:48%;float:left;"><table id = 'kxxzTable'></table></div>
+  <div style="width:4%; float:left;text-align:center">
+		<div id="space_holder" style="height: 48%;"></div>
+		<a class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-right-arrow" style="width: 28px; position: static; display: inline-block; left: auto;margin:2px;" id="addBtn" group=""><span class="l-btn-left l-btn-icon-left" style="margin-top: 0px;"><span class="l-btn-text l-btn-empty">&nbsp;</span><span class="l-btn-icon icon-right-arrow">&nbsp;</span></span></a>
+		<a class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-left-arrow" style="width: 28px; position: static; display: inline-block; left: auto;margin:2px;" id="delBtn" group=""><span class="l-btn-left l-btn-icon-left" style="margin-top: 0px;"><span class="l-btn-text l-btn-empty">&nbsp;</span><span class="l-btn-icon icon-left-arrow">&nbsp;</span></span></a>
+  </div>
+  <div style="width:48%;float:left;"><table id = 'yxxzTable'></table></div>
+</div>
+
+		
+	
+</form>
+</body>

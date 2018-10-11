@@ -1,0 +1,145 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/ajgz/js/bcasetracebaseinfo_form.js"></script>
+
+<form id="projectAddForm" method="post">
+	<div id="tabList" class="easyui-tabs" >
+	<div title="案件基本信息">
+	<table class="list">
+		<!--隐藏属性start-->
+			<input type="hidden" id="id" name="id" value="$!{ct.id}"/><!--案件ID-->
+			<input type="hidden" id="caseid" name="caseid" value="$!{po.caseid}"/><!--案件ID-->
+			<input type="hidden" id="fjkeyid" name="fjkeyid" value="${fjkeyid}"/><!--附件keyid-->
+		<!--隐藏属性end-->
+			
+		<tr>
+			<th>申请人：</th>
+			<td>
+				$!{po.appname}
+			</td>
+			<th>申请人类型：</th>
+			<td>
+				$!{po.apptypename}
+			</td>
+		</tr>
+		<tr>
+			<th>证件类型：</th>
+			<td>
+				$!{po.idtypename}
+			</td>
+			<th>证件号码：</th>
+			<td>
+				$!{po.idcode}
+			</td>
+		</tr>
+		<tr>
+			<th>联系电话：</th>
+			<td>
+				$!{po.phone}
+			</td>
+			<th>邮政编码：</th>
+			<td>
+				$!{po.postcode}
+			</td>
+		</tr>
+		<tr>
+			<th>通讯地址：</th>
+			<td colspan="3" class="td1">
+				$!{po.address}
+			</td>
+        </tr>
+		<tr>
+			<th>被申请人：</th>
+			<td>
+				$!{po.defname}
+			</td>
+			<th>被申请人类型：</th>
+			<td>
+				$!{po.deftypename}
+			</td>
+		</tr>
+		<tr>
+			<th>被申请人联系电话：</th>
+			<td>
+				$!{po.defphone}
+			</td>
+			<th>被申请人邮政编码：</th>
+			<td>
+				$!{po.defpostcode}				
+			</td>
+		</tr>
+		<tr>
+			<th>被申请人通讯地址：</th>
+			<td colspan="3" class="td1">
+				$!{po.defaddress}				
+			</td>
+        </tr>
+		<tr>
+			<th>行政管理类型：</th>
+			<td>
+				$!{po.admtypename}				
+			</td>
+			<th>申请复议事项类型：</th>
+			<td>
+				$!{po.casetypename}				
+			</td>
+		</tr>
+		<tr>
+			<th>是否附带行政赔偿：</th>
+			<td>
+				$!{po.ifcompensationname}				
+			</td>
+			<th>赔偿金额：</th>
+			<td>
+				$!{po.amount}				
+			</td>
+		</tr>
+		<tr>
+			<th>申请事项：</th>
+			<td colspan="3" class="td1">
+				$!{po.appcase}				
+			</td>
+        </tr>
+		<tr>
+			<th>事实和理由：</th>
+			<td colspan="3" class="td1">
+				$!{po.factreason}
+			</td>
+        </tr>
+		<tr>
+            <th>相关附件：</th>
+			<td colspan="3" class="td1" valign='top' style="height:40px" id="filetd">
+            </td>
+        </tr>
+    </table>
+	</div>
+	<div title="案件跟踪情况" selected="true">
+	<table class="list">
+		<tr>
+			<th>被申请人执行情况：</th>
+			<td colspan="3" class="td1">
+				<input id="exectype" class="easyui-textbox" name="exectype" value="$!{ct.exectype}" required="true" missingMessage="请选择被申请人执行情况" style="width:250px" /><font color='red'>*</font>
+			</td>
+		</tr>
+		<tr>
+			<th>执行情况说明：</th>
+			<td colspan="3" class="td1">
+				<input id="remark" class="easyui-textbox" name="remark" value="$!{ct.remark}" multiline="true" required="true" missingMessage="请输入执行情况说明"
+					data-options="prompt:'最多可输入300个汉字',validType:{length:[0,300]}" style="width:680px;height:65px;" /><font color='red'>*</font>
+			</td>
+		</tr>
+		<tr>
+            <th>相关附件：</th>
+            <td colspan="3" valign='top' style="height:40px" id="caseTraceFile">
+                <img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="clickUploadDiv('ANGZ', 'caseTraceFile')"/>
+            </td>
+        </tr>
+    </table>
+	</div>
+	</div>
+</form>
+<!--上传附件层-->
+<div id="uploadifydiv"></div>
+

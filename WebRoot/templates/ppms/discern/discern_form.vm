@@ -1,0 +1,160 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="projectAddForm" method="post">
+	<div id="tabList" class="easyui-tabs" >  
+	<div title="项目基本信息" > 
+		<table class="list">
+        		<!--隐藏属性start
+        			-->
+				<input type="hidden" id="workflowflag" name="workflowflag" /><!--区分保存还是保存并发送-->
+				<input type="hidden" id="projectduct" name="projectduct" /><!--产出物json-->
+				<input type="hidden" id="projectid" name="projectid" /><!--项目id-->
+				<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+				<input type="hidden" id="proTrade" name="proTrade" /><!--菜单id-->
+				<input type="hidden" id="wfid" name="wfid" /><!--工作流id-->
+				<input type="hidden" id="activityId" name="activityId" /><!--工作流节点id-->
+        		<!--隐藏属性end
+        		-->
+        		<tr>
+        			<th  >项目名称</th>
+        			<td  >
+        				<input id="proName" class="easyui-textbox" name="proName" required="true"   missingMessage="请输入项目名称"
+							 data-options="validType:{length:[0,50]}" style='width:250px'/>
+        			</td >
+        			<th >项目类型</th>
+        			<td  >
+        				<input id="proType" class="easyui-textbox" name="proType"  required="true" missingMessage="请选择项目类型" style='width:250px' />
+        			</td>
+        		</tr>
+        		<tr >
+        			<th >项目总投资（万元）</th>
+        			<td>
+        				<input id="amount" name="amount"  class="easyui-numberbox" required="true" missingMessage="请输入投资金额"  
+							data-options="min:0,precision:2,max:99999999999999.99" style='width:250px'/>
+        			</td>
+        			<th >拟合作期限（年）</th>
+        			<td >
+        				<input id="proYear" name="proYear"  required="true" missingMessage="请输入合作期限"  
+							 class="easyui-numberbox" data-options="min:0,precision:0,max:99"   style='width:250px'/>
+        			</td>
+                </tr>
+        		<tr>
+        			<th>所属行业</th>
+        			<td >
+        				<input id="proTradeName" name="proTradeName"   required="true" missingMessage="请选择所属行业"   class="easyui-textbox" style='width:250px' />
+        			</td>	
+        			<th >项目运作方式</th>
+        			<td>
+        				<input id="proPerate" name="proPerate"  required="true" missingMessage="请选择运作方式"   class="easyui-textbox"  style='width:250px' />
+        			</td>
+				</tr>
+				<tr>
+        			<th >回报机制</th>
+        			<td >
+        				<input id="proReturn"  name="proReturn" class="easyui-textbox"  required="true" missingMessage="请选择回报机制"  style='width:250px' data-options="validType:{length:[0,50]}"/>
+					</td>
+        			<th >项目发起时间</th>
+        			<td >
+        				<input id="proSendtime" name="proSendtime" class="easyui-datebox" editable="false" required="true" missingMessage="请选择项目发起时间"  style='width:250px' />
+        			</td>
+        		</tr>
+				<tr>
+        			<th >项目发起类型</th>
+        			<td >
+        				<input id="proSendtype" class="easyui-textbox" name="proSendtype" style='width:250px'  required="true" missingMessage="请选择项目发起类型" />
+					</td>
+					<th>项目发起人名称</th>
+        			<td >
+        				<input id="proSendperson" name="proSendperson" class="easyui-textbox" data-options="validType:{length:[0,50]}"  required="true" missingMessage="请输入项目发起人名称"   style='width:250px'/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >项目联系人</th>
+        			<td >
+        				<input id="proPerson" name="proPerson" class="easyui-textbox" data-options="validType:{length:[0,25]}" style='width:250px'  required="true" missingMessage="请选择项目联系人"/>
+					</td>
+					<th>联系人电话</th>
+        			<td >
+						<input id="proPhone" name="proPhone"   required="true" missingMessage="请输入联系人电话，多个用,隔开"  
+							 class="easyui-textbox" data-options="validType:{length:[0,50]}"   style='width:250px'/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >示范项目</th>
+        			<td >
+        				<input id="sfxm" name="sfxm" class="easyui-textbox" required="true" missingMessage="请选择示范项目类型" style='width:250px'/>
+					</td>
+					<th>推介项目</th>
+        			<td >
+						<input id="tjxm" name="tjxm" required="true" missingMessage="请选择是否推介项目" style='width:250px'/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >申请补贴</th>
+        			<td >
+        				<input id="sqbt" name="sqbt" class="easyui-textbox" required="true" missingMessage="请选择是否申请补贴" style='width:250px'/>
+					</td>
+					<th>补贴金额（万元）</th>
+        			<td >
+						<input id="btje" name="btje"    class="easyui-numberbox"  data-options="precision:2,max:99999999999999.99"   style='width:250px'/>
+        			</td>
+                </tr>
+				<tr>
+					<th >项目概况</th>
+					<td colspan="3">
+						<input id="proSituation" class="easyui-textbox" name="proSituation" multiline="true" required="true" missingMessage="请输入项目概况" data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:695px;height:45px;" />
+					</td>
+				</tr>	
+				<tr>
+					<th >初步实施方案描述</th>
+					<td colspan="3">
+						<input id="proScheme" class="easyui-textbox" name="proScheme" multiline="true" required="true" missingMessage="请输入项目概况" data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:695px;height:45px;" />
+					</td>
+				</tr>
+				<tr>
+        			<th >初步实施方案附件</th>
+        			<td  id="ssfa" style="height:31px">
+        				<input id="proSchemepath" type="hidden" name="proSchemepath"/>
+						<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('ssfa','proSchemepath',30)"/>
+					</td>
+					<th>可行性研究报告附件</th>
+        			<td id="kxxyj" style="height:31px">
+						<input id="proReportpath" type="hidden" name="proReportpath"/>
+						<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('kxxyj','proReportpath',30)"/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >立项报告附件</th>
+        			<td id="hpbg" style="height:31px">	
+						<input id="proConditionpath" type="hidden" name="proConditionpath"/>
+						<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('hpbg','proConditionpath',30)"/>
+					</td>
+					<th >项目产出物附件</th>
+					<td id="xmccw" style="height:31px">
+						<input id="proArticlepath" type="hidden" name="proArticlepath"/>
+						<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('xmccw','proArticlepath',30)"/>
+					</td>
+                </tr>
+				<tr>
+					<th >项目产出物说明</th>
+					<td colspan="3">
+						<input id="proArticle" class="easyui-textbox" name="proArticle" multiline="true" required="true" missingMessage="请输入项目概况" data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:695px;height:45px;" />
+					</td>
+				</tr>
+        </table>
+    </div>
+	<div title="年度产出计划" > 
+		<table id="projectAddGrid"></table>
+    </div>	
+    </div>
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

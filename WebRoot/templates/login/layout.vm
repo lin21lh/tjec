@@ -1,0 +1,179 @@
+<!DOCTYPE>
+<html>
+<head>
+<!-- fileName:layout.vm -->
+<script type="text/javascript">
+	var username = "$username";
+	document.title="行政复议综合管理系统 - "+username;
+	var menus = '${menu_json}';
+	menus=eval("("+menus+")");
+	var menuid = "$menuid";
+	var _global_usercode_="$usercode"; 
+</script>
+<style type="text/css">
+
+.unvisited{
+ color:#00BBFF;
+ TEXT-DECORATION: none
+}
+
+.visited{
+color:#DDDDDD;
+TEXT-DECORATION: none
+}
+</style>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<link href="images/sysicon.png" rel="shortcut icon"/>
+<link rel="stylesheet" type="text/css" href="css/layout.css">
+<link rel="stylesheet" type="text/css" href="css/top.css">
+<link rel="stylesheet" href="$contextpath/component/kindeditor/themes/default/default.css" />
+<script type="text/javascript" src="$contextpath/templates/login/layout.js"></script>
+<script type="text/javascript" src="$contextpath/templates/common/passwordValidate.js"></script>
+<script charset="utf-8" src="$contextpath/component/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="$contextpath/component/kindeditor/lang/zh_CN.js"></script>
+
+<title>PPP项目管理系统</title>
+</head>
+<body class="easyui-layout">
+	
+	<!-- 顶部Logo和Top菜单 -->
+	<div region="north" split="false" border="false" style="overflow: hidden; height: 90px;width:100%;line-height: 10px">
+	    <ul id="css3menu" >
+			#parse("login/top.vm")
+		</ul>		  
+	</div>
+	
+	<!-- 左侧导航菜单 -->
+	<div region="west" border="true" split="true" title="导航菜单" class="cs-west">
+		<!-- div class="easyui-accordion" fit="false" border="false">
+			<div title="权限管理" selected="true">
+			</div>
+		</div -->
+		<ul id="mt"></ul>	
+	</div>
+	
+	<!-- 右侧Tab页签 -->
+	<div id="mainPanle" region="center" border="true" border="false">
+		 <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
+            <div id="home" title="首页提醒" data-options="">
+			</div>
+        </div>
+	</div>
+
+	<!-- 底部版权信息
+	<div region="south" border="false" id="south" class="cs-south-copyright"><center>@Copyright</center></div>
+	 -->
+	<!-- Tab页签上的右键菜单 -->
+	<div id="mm" class="easyui-menu cs-tab-menu">
+		<div id="mm-tabupdate">刷新</div>
+		<div class="menu-sep"></div>
+		<div id="mm-tabclose">关闭</div>
+		<div id="mm-tabcloseother">关闭其他</div>
+		<div id="mm-tabcloseall">关闭全部</div> 
+	</div>
+	
+	<ul id="corner_menu_items"  class="corner_menu_items">
+		<li id="cm_logout" iconCls="icon-logout"  onclick="logoutSystem()" >注销</li>
+		<li id="cm_editpswd" iconCls="icon-password"  onclick="editPassword()">修改密码</li>
+		<li id="cm_editpsninfo" iconCls="icon-info"  onclick="editPersonalInfo()">信息维护</li>
+		<li id="cm_returnhome" iconCls="icon-rtnhome" onclick="selectHomeTab()">返回首页</li>
+		<li id="cm_returnhome" iconCls="icon-rtnhome" onclick="showAboutWindow()">关于</li>
+	</ul>
+	<div id='div_pswd_edit_form' style='display:none'>
+		<div>
+			<form id='_pswd_edit_form' method='post'>
+				<table>
+					<tr>
+						<th>
+						原密码：
+						</th>
+						<td colspan='3'>
+							<input type='password' name='pswdold' id='pswdold' style='width:150px;border:1px solid #95B8E7 ' />
+						</td>
+					</tr>
+					<tr>
+						<th>
+						新密码：
+						</th>
+						<td colspan='3'>
+							<input type='password' name='pswdnew' id='pswdnew' style='width:150px;border:1px solid #95B8E7'/>
+						</td>
+					</tr>
+					<tr>
+						<th>
+						密码强度：
+						</th>
+						<td id="weak" style="width:20%" style="backgroundColor:'#009900'"></td>
+						<td id="middle" style="width:20%"></td>
+						<td id="strength" style="width:20%"></td>
+					</tr>
+					<tr>
+						<th>
+						确认新密码：
+						</th>
+						<td colspan='3'>
+							<input type='password' name='pswdnew2' id='pswdnew2' style='width:150px;border:1px solid #95B8E7'/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div id='div_personalinfo_edit_form' style='display:none'>
+		<div>
+			<form id='_personalinfo_edit_form' method='post'>
+				<table class="list">
+					<tr>
+        				<th>用户编码</th>
+        				<td>
+        					<input id="usercode" type="text" readonly="true"  name="usercode" style='width:160px' />
+        				</td>
+        				<th>用户名称</th>
+        				<td>
+        					<input id="username" type="text" required="true" missingMessage="请输入用户名称" name="username" data-options="validType:{length:[0,25]}" style='width:160px'/>
+        				</td>
+        			</tr>
+        			<tr>
+        				<th>机构名称</th>
+        				<td>
+        					<input id="orgname" type="text" readonly="true"  name="orgname" style='width:160px' />
+        				</td>
+						<th>创建日期</th>
+        				<td>
+        					<input id="createtime"  editable="false" type="text" name="createtime"  readonly="true" style='width:160px'/>
+        				</td>
+        			</tr>
+					<tr>
+						<th>手机号码</th>
+						<td>
+							<input type="text" name='phone' id='phone'  required="true" missingMessage="请输入手机号" validType='phonesIsRight' data-options="validType:{length:[0,50]}"  style='width:160px;border:1px solid #95B8E7 ' />
+						</td>
+						<th>微信</th>
+						<td>
+							<input type="text" name='weixin' id='weixin' style='width:160px;border:1px solid #95B8E7 '  data-options="validType:{length:[0,50]}" />
+						</td>
+					</tr>
+					<tr>
+						<th>邮箱</th>
+						<td>
+							<input type="text" name='email' id='email' validType='isEmail'  data-options="validType:{length:[0,50]}" style='width:160px;border:1px solid #95B8E7 ' />
+						</td>
+						<th>QQ</th>
+						<td>
+							<input type="text" name='qq' id='qq'  style='width:160px;border:1px solid #95B8E7 '  data-options="validType:{length:[0,50]}" />
+						</td>
+						
+					</tr>
+        			<tr>
+        				<th>备注</th>
+        				<td colspan="3">
+        					<input id="remark" type="text" name="remark" multiline="true" data-options="prompt:'最多可输入25个汉字',validType:{length:[0,25]}" style="width:430px;height:50px;" />
+            			</td>
+                    </tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>按行政管理类型统计</title>
+<script type="text/javascript" src="$contextpath/templates/aros/tjfx/js/caseanalysis_state.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/common/component/gridToExcel.js"></script>
+<script type="text/javascript">
+	var menuid = "$menuid";
+</script>
+<style type="text/css">
+	.cs-west{
+		width: 50%;
+		padding: 0;
+	}
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+	}
+	
+	
+	
+</style>
+</head>
+<body id="layout" class="easyui-layout">
+	 <div data-options="region:'center',split:false" >
+        <div id="toolbar_center" class="toolbar_group" >
+    		<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+    		<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;border:0px;">
+				<table  class="list" style='border:1px' onclick='document.onkeypress = function (key) { if (key.keyCode == 13) {projectQuery(); } }'>
+                    <tr>
+						<td style='border: 0px;text-align:left' align="left">年度：
+							<input id="startyear" class="easyui-combobox" value="${startyear}" style='width:150px' panelheight = "auto">年
+							<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="projectQuery()" >查询</a>
+							<span class='xian' ></span>
+			    			<a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onClick="outExcel()">导出</a>
+						</td>   
+        				
+    				</tr>     
+                    
+				</table>
+    		</div>
+		</div>
+		<table id="projectDataGrid"></table>
+	 </div>    
+</body>
+</html>

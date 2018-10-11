@@ -1,0 +1,27 @@
+<!DOCTYPE>
+<html>
+    <head>
+    #parse("common/common-v14.vm")
+    #parse("common/extensions-v14.vm")
+    <title>行政事项统计</title>
+    <style type="text/css">
+    	.linkbutton_group{
+    		border-bottom: 1px solid #95B8E7;
+    	}
+    </style>
+    <script type="text/javascript" src="$contextpath/component/eCharts/echarts.min3.2.3.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/aros/homepage/js/fychart4_init.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+    </head>
+    <body id="layout" class="easyui-layout" >
+		<div data-options="region:'center',split:false" >
+    		<div id="chart_div">
+				<div id="sep1" style="height:25px;background-color: #E0ECFF;">
+					&nbsp;&nbsp;&nbsp;年度&nbsp;&nbsp;<input id="year" class="easyui-textbox" style='width:150px' panelheight = "auto">
+				</div>
+				<div id="chart4" style="width:100%;height:100%;" ></div>
+    			
+			</div>
+    	</div> 
+    </body>
+</html>

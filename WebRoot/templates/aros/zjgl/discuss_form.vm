@@ -1,0 +1,42 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/common/component/doubleDatagridSelect.js" ></script>
+<script type="text/javascript" src="$contextpath/templates/base/tabsdef/colsDefDialog.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script> 
+
+<form id="zjxzForm" method="post">
+	
+    <input type="hidden" id="caseid" name="caseid" value="${caseid}" />
+	
+    <div>
+	   <div style="width:48%;float:left;">
+           <table id = 'zjTable'></table>
+       </div>
+	   <div style="width:4%; float:left;text-align:center">
+			<div id="space_holder" style="height: 48%;"></div>
+			<a class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-right-arrow" 
+				style="width: 28px; position: static; display: inline-block; left: auto;margin:2px;" 
+				id="addBtn" group="">
+				
+				<span class="l-btn-left l-btn-icon-left" style="margin-top: 0px;">
+    				<span class="l-btn-text l-btn-empty">&nbsp;</span>
+    				<span class="l-btn-icon icon-right-arrow">&nbsp;</span>
+				</span>
+			</a>
+			<a class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-left-arrow" 
+				style="width: 28px; position: static; display: inline-block; left: auto;margin:2px;" 
+				id="delBtn" group="">
+				
+				<span class="l-btn-left l-btn-icon-left" style="margin-top: 0px;">
+					<span class="l-btn-text l-btn-empty">&nbsp;</span>
+					<span class="l-btn-icon icon-left-arrow">&nbsp;</span>
+				</span>
+			</a>
+	   </div>
+	   
+       <div style="width:48%;float:left;">
+			<table id='zjxzTable'></table>
+	   </div>
+    </div>
+	
+	<input type="hidden" id="speids" name="speids" />
+</form>

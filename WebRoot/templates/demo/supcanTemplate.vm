@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+#parse("common/common-v14.vm")
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="$contextpath/templates/demo/supcanTemplate.js"></script>
+<script type="text/javascript" src="$contextpath/component/supcan/binary/dynaload.js?20"></script>
+<title>报表模板管理</title>
+</head>
+<body id="layout" class="easyui-layout">
+	<div region="center" border="false" >
+		<div id="toolbar_log" class="toolbar_group">
+			<div class="toolbar_buttons">
+				<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="deleteLog()">添加</a>
+			</div>
+			<div class="easyui-panel collapsable-toolbar-w" collapsible="false" >
+				&nbsp;操作类型：<input class="easyui-combobox" id="opertype" />
+				操作时间：<input class="easyui-datetimebox" id="starttime" />&nbsp;至&nbsp;<input class="easyui-datetimebox" id="endtime" />
+				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onClick="queryLog()">查询</a>
+			</div>
+		</div>
+		<div style="position:relative;width:98%;height:500px">
+	    	<script>insertReport('AF', '', '400px')</script>
+		</div>
+	</div>
+</body>
+</html>

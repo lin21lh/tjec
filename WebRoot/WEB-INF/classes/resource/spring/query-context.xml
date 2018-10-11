@@ -1,0 +1,75 @@
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx = "http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springframework.org/schema/cache 
+	http://www.springframework.org/schema/cache/spring-cache.xsd">
+<bean id="freework.queryData.sqlFactory" class="com.freework.queryData.compileSQL.simpleSQL.SimpleCmpleSQLFty"/>
+<bean id="base.queryData.dao.QueryPageDao" class="com.freework.queryData.dao.QueryPageDao"/>
+<bean id="base.queryData.dao.QueryDao" class="com.freework.queryData.dao.QueryDao" />
+<bean id="queryData.servcie.DefaultQueryService" class="com.freework.queryData.servcie.DefaultQueryService" p:pageDao-ref="base.queryData.dao.QueryPageDao"  p:dao-ref="base.queryData.dao.QueryDao"></bean><!-- 默认查询方法 -->
+	<bean  id="queryData.tree.BornTreeRootNodeService" class="com.freework.queryData.servcie.tree.BornTreeRootNodeService"/>
+  	
+	<bean  id="queryData.servcie.TreeDataService"  class="com.freework.queryData.servcie.tree.TreeDataService"
+ 					 p:dao-ref="base.queryData.dao.QueryDao"  
+ 					 p:bornTreeRoot-ref="queryData.tree.BornTreeRootNodeService" />
+ 					 
+	<bean  id="queryData.servcie.TreeCheckDataService"  class="com.freework.queryData.servcie.tree.TreeCheckDataService"
+ 					 p:dao-ref="base.queryData.dao.QueryDao"  
+ 					 p:bornTreeRoot-ref="queryData.tree.BornTreeRootNodeService" />
+ 					 
+ 					 
+	<bean  id="queryData.servcie.TreeSQLDataService"  class="com.freework.queryData.servcie.tree.TreeSQLDataService"
+ 					 p:dao-ref="base.queryData.dao.QueryDao"  
+ 					 p:bornTreeRoot-ref="queryData.tree.BornTreeRootNodeService" />
+	<bean id="queryData.servcie.TreeParserFactory" class="com.freework.queryData.servcie.tree.TreeParserFactory" >
+		<property name="treeServices">
+			<map>
+				<entry key="treeService" value-ref="queryData.servcie.TreeDataService"/>
+				<entry key="treeCheckService" value-ref="queryData.servcie.TreeCheckDataService"/>
+				<entry key="treeSQLService" value-ref="queryData.servcie.TreeSQLDataService"/>
+				
+			</map>
+		</property>
+	</bean>
+	 
+	 
+	<bean id="queryData.servcie.SQLParser" class="com.freework.queryData.servcie.QuerySQLParser"/><!-- 用于加载sql文件 -->
+	<bean id="queryData.servcie.DicParser" class="com.freework.queryData.servcie.QueryDicParser"/><!-- 用于加载字典文件 -->
+	<bean id="queryData.servcie.TreeParser" class="com.freework.queryData.servcie.QueryTreeParser" p:factory-ref="queryData.servcie.TreeParserFactory"/><!-- 用于加载字典文件 -->
+	<bean  id="queryData.LoadFile" class="com.freework.queryData.servcie.LoadFile"
+	  	 p:debug="false"
+	  	 p:defaultQueryService-ref="queryData.servcie.DefaultQueryService"/>
+	<bean id="freework.queryData" class="com.freework.queryData.servcie.QueryData">
+		<property name="files">
+			<list>
+
+				<bean parent="queryData.LoadFile" p:prefix="com"
+					p:parser-ref="queryData.servcie.SQLParser" p:configLocation="classpath:resource/spring/common-sql.xml" />
+
+			</list>
+		</property>
+	</bean>
+		   
+	
+		  
+</beans>
+
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>津南区恶臭在线监测系统</title>
+        <link href="images/sysicon.png" rel="shortcut icon"/>
+        <link href="css/login.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="component/jquery-easyui-1.4/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="templates/login/login.js"></script>
+       
+        <script>
+        	#*是否启用验证码*#
+        	var verificationcodeEnabled = "$!{viewMap.verificationcodeEnabled}";
+            var datasources = [
+            #if($!{viewMap.isEnabledMultiDS} == "true")
+            	#foreach( $finaceYear in $!{viewMap.finaceYear})
+            		{name:"$finaceYear.displayDSName",value:"$finaceYear.all"}
+            		#if($velocityHasNext)
+            			,
+            		#end
+            	#end
+            #end
+            ];
+        	
+        	function init(){
+        	if ($!{viewMap.isEnabledMultiDS} == true) {
+        		var olength=datasources.length;
+        		if(olength>0){
+        			var yearSelect=document.getElementById("loginFinaceYear");
+        			yearSelect.options.length=olength;
+        			for (var i = 0; i < olength; i++) {
+        				yearSelect.options[i].value =datasources[i].value;
+        				yearSelect.options[i].text =datasources[i].name;
+        			}
+        		}
+        	} else {
+        		finaceYearDiv.style.display = "none";
+        	}
+        }
+        </script>
+    </head>
+    <body>
+        <form name="loginForm" action="j_spring_security_login.do" method="post">
+			<div class="wrap">
+				<h1 style="font-size:33px">津南区恶臭在线监测系统</h1>
+				<h3></h3>
+				<div class="box">
+                    <h2>用户登录 LOGIN</h2>
+                    <div class="line">
+                      <span class="icon icon_a"></span>
+					  <input type="text" placeholder="用户名" class="inp gph" name="username" value="admin"/>
+                    </div>
+                    <div class="line">
+                      <span class="icon icon_b"></span>
+					  <input type="password" placeholder="密码" class="inp gph" name="password" value="123456"/>
+                    </div>
+                    <div class="line">
+                      <span class="icon icon_c"></span>
+					  <input type="text" placeholder="验证码" class="inp2 gph" name="verifyCode" value="2222"/> <img id="verifyCodeImg" name="verifyCodeImg"  
+                		              		src="exclude/verfiyCode.do" style="cursor:hand" align="top" onClick="javascript:changeVerifyCode()" />
+                    </div>
+                    <div class="line_b">
+						<!--提示信息-->
+						<div id="msg_div" style='color:red;'>$!{viewMap.get("errorMsg")} </div>
+						<!--
+                      <input name="" type="checkbox" value="" /> 记住密码 <span><a href="#">忘记密码?</a></span>
+					  -->
+                    </div>
+                    <div class="line">
+						
+                      <input name="" class="btn_login" value="登录" onclick="submitButton();"/>
+					  
+                    </div>
+				</div>
+			</div>
+        </form>
+    </body>
+</html>

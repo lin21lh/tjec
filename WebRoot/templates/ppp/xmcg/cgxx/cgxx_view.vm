@@ -1,0 +1,94 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppp/common/pppCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppp/xmcg/cgxx/js/cgxx_form.js"></script>
+
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="projectCgxxAddForm" method="post">
+	<table class="list">
+    		<!--隐藏属性start
+    			-->
+			<input type="hidden" id="cgxxid" name="cgxxid"/><!--采购信息idid-->
+			<input type="hidden" id="xmid" name="xmid"/><!--项目id-->
+			<input type="hidden" id="fjkeyid" name="fjkeyid" value='${fjkeyid}'/><!--项目附件id 临时使用-->
+			<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+			<input type="hidden" id="workflowflag" name="workflowflag" /><!--保存类型-->
+			<input type="hidden" id="operFlag" name="operFlag" /><!--操作类型-->
+			<input type="hidden" id="dljgid" name="dljgid" /><!--代理机构id-->
+    		<!--隐藏属性end
+    		-->
+    		<tr>
+    			<th >项目名称</th>
+    			<td colspan="3">
+    				<input id="xmmc" class="easyui-textbox" name="xmmc" readonly='true' style='width:695px' />
+    			</td >
+    		</tr>
+    		<tr>
+    			<th >采购联系人</th>
+    			<td >
+    				<input id="cglxr" class="easyui-textbox" name="cglxr" style='width:250px' readonly='true' />
+    			</td>
+    			<th >联系电话</th>
+    			<td>
+    				<input id="lxrdh" name="lxrdh"  class="easyui-textbox" style='width:250px' readonly='true'/>
+    			</td>
+    		</tr>
+    		<tr >
+    			<th >预算金额</th>
+    			<td >
+    				<input id="ysje" name="ysje"    
+						 class="easyui-numberbox" data-options="min:0,precision:2,max:99999999999999.99"   style='width:250px' readonly='true'/>
+    			</td>
+    			<th >采购方式</th>
+    			<td>
+    				<input id="cgfs" name="cgfs"  class="easyui-textbox"  style='width:250px' readonly='true'/>
+    			</td>
+            </tr>
+    		<tr>
+    			<th>代理机构</th>
+    			<td >
+    				<input id="dljg" name="dljg" class="easyui-textbox" style='width:250px' readonly='true'/>
+    			</td>	
+    			<th >&nbsp;</th>
+    			<td >
+    				&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<th>主管部门意见</th>
+    			<td colspan="3">
+    				<input id="zgbmyj" name="zgbmyj" class="easyui-textbox" multiline="true"  readonly='true'
+    				  style="width:695px;height:65px;" />
+    			</td>
+    		</tr>
+			<tr>
+    			<th >PPP中心意见</th>
+    			<td colspan="3">
+    				<input id="pppyj" class="easyui-textbox" name="pppyj" multiline="true" readonly='true'
+    				 style="width:695px;height:65px;"/>
+				</td>
+            </tr>
+			<tr>
+    			<th >政府采购管理科意见</th>
+    			<td colspan="3">
+    				<input id="zfcgglkyj" name="zfcgglkyj" class="easyui-textbox" multiline="true" readonly='true'
+    				 style="width:695px;height:65px;"/>
+				</td>
+            </tr>	
+			<tr>
+	            <th>附件</th>
+				<td colspan="3" valign='top' style="height:40px" id="filetd">
+				
+	            </td>
+            </tr>
+    </table>
+		 
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

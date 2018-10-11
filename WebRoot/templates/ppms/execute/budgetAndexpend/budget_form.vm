@@ -1,0 +1,20 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="budgetAddForm" method="post">
+		<!--隐藏属性start
+			-->
+		<input type="hidden" id="budgetType" name="budgetType" /><!--预算标志-->
+		<input type="hidden" id="projectid" name="projectid" /><!--项目id-->
+		<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+		<input type="hidden" id="budgetGrid" name="budgetGrid" /><!--预算或支出的列表-->
+		<!--隐藏属性end
+		-->
+	<table id="budgetAddGrid"></table>
+</form>

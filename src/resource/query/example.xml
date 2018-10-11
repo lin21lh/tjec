@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queryMapping>
+	<query name="TEST_QUERY1" type="HQL" remark="测试查询1">
+			<![CDATA[
+				from table1 t where [ t.name like :name ] [ and t.code = :code]
+				order by t.code
+			]]>
+	</query>
+	<query name="TEST_QUERY2" type="SQL" remark="测试查询2">
+			<![CDATA[
+				select a.name.a.code,b.* from t_tablea a ,t_tableb b where a.code=b.code
+				[ and a.name like :name]
+			]]>
+	</query>
+</queryMapping>

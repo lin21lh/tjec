@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/common/component/gridToExcel.js"></script>
+<script type="text/javascript" src="$contextpath/templates/fam/archives/account/js/archives_init.js"></script>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<script type="text/javascript">
+var menuid = "$menuid";
+var allbdgagency ="$allbdgagency";
+var userid ="$userid";
+</script>
+<title>账户档案管理</title>
+<style type="text/css">
+	.linkbutton_group {
+        border-bottom: 1px solid #95B8E7;
+        background-color: #eee;
+    }
+</style>
+</head>
+
+<body id="layout" class="easyui-layout">
+	<div region="center" >
+		<div id="toolbar_archives" class="toolbar_group">
+			<div class="toolbar_buttons">	
+				<a id="btn_query" href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="queryArchivesInfo()">查询</a>
+				<span class='xian' ></span>
+				<a id="btn_flow" href="#" class="easyui-linkbutton" iconCls="icon-files" plain="true" onClick="optFile()">附件管理</a>
+				<span class='xian' ></span>
+				<a id="btn_flow" href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="queryFileInfo()">附件详情</a>
+				<span class='xian' ></span>
+			</div>
+			<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;" >
+    				&nbsp;预算单位 <input class="easyui-searchbox" id="bdgagency" style='width:180px' editable='false'/>
+					账户名称 <input class="easyui-textbox" id="accountNameSearch" style='width:150px'/>
+					银行账号 <input class="easyui-textbox" id="accountNumberSearch" style='width:150px'/>
+    		</div>
+		</div>
+		<table id="datagridArchives"></table>
+	</div>
+</body>
+</html>

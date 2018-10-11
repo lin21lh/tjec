@@ -1,0 +1,27 @@
+	<!--头部开始-->
+	<div class="top">
+		<!-- 去掉标题栏 -->
+	  <div id="top_title_menu" class="title_menu">
+			<div id="top_title_menu_logo" class="logo"></div>
+    		<div id="top_title_menu1" class="title_menu1">
+    			<ul>
+    				<li>
+    					<a name="xxwh" class="xxwh" menuid="" href="#" onclick="editPersonalInfo()" title="信息维护" >信息维护</a>
+                    </li>
+    				<li>
+    					<a name="password" class="password" menuid="" href="#" title="修改密码" onclick="editPassword()">修改密码</a>
+                    </li>
+    				<li>
+    					<a name="exit" style="width:48px" class="exit" menuid="" href="#" title="退出" onclick="logoutSystem()">退出</a>
+    				</li>
+    				
+                </ul>
+    		</div>
+    		<div id="top_title_user" class="title_menu_user">
+                <img src="images/welcome/gly.png" alt="管理员" class="user"/>
+    			<span class="hong">
+					您好，$!{username}<span >&nbsp;&nbsp;</span> #if($!{deptname}!="")单位：$!{deptname}#end
+    			</span>
+            </div>
+        </div>
+	</div>

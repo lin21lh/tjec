@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+#l-map{height:100%;width:100%;float:left;border-right:2px solid #bcbcbc;}
+#r-result{height:100%;width:20%;float:left;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=QfT1nxn0agjht4lGTgCfV4zD"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+<script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+<title></title>
+</head>
+<body>
+	<div id="allmap">
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+//GPS坐标
+var xx = '119.16076102604866';
+var yy = '36.711980753707884';
+var gpsPoint = new BMap.Point(xx,yy);
+
+//地图初始化
+var map = new BMap.Map("allmap");
+map.centerAndZoom(gpsPoint, 15);
+map.enableScrollWheelZoom();
+
+//添加谷歌marker和label
+//var markergps = new BMap.Marker(gpsPoint);
+//bm.addOverlay(markergps); //添加GPS标注
+//var labelgps = new BMap.Label("我是GPS标注哦",{offset:new BMap.Size(20,-10)});
+//markergps.setLabel(labelgps); //添加GPS标注
+//坐标转换完之后的回调函数
+translateCallback = function (point){
+//    var marker = new BMap.Marker(point);
+//    map.addOverlay(marker);
+//    var label = new BMap.Label("${bean.name}",{offset:new BMap.Size(20,-10)});
+//    marker.setLabel(label); //添加百度label
+    map.setCenter(point);
+    var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
+    				'名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：11 <br/>'+
+                    //'<img src="../img/baidu.jpg" alt="" style="float:right;zoom:1;overflow:hidden;width:100px;height:100px;margin-left:3px;"/>' +
+                    '地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：11<br/>'+
+                    '电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：11' +
+                  '</div>';
+	 //创建检索信息窗口对象
+    var searchInfoWindow = null;
+	searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+			title  : "潍坊市政府单位",      //标题
+			width  : 290,             //宽度
+			height : 105,              //高度
+			panel  : "panel",         //检索结果面板
+			enableAutoPan : false,     //自动平移
+			searchTypes   :[
+				BMAPLIB_TAB_SEARCH,   //周边检索
+				BMAPLIB_TAB_TO_HERE,  //到这里去
+				BMAPLIB_TAB_FROM_HERE //从这里出发
+			]
+		});
+    var marker = new BMap.Marker(point); //创建marker对象
+    //marker.enableDragging(); //marker可拖拽
+    marker.addEventListener("click", function(e){
+	    searchInfoWindow.open(marker);
+    })
+    map.addOverlay(marker); //在地图中添加marker
+}
+BMap.Convertor.translate(gpsPoint,0,translateCallback);     //真实经纬度转成百度坐标
+</script>

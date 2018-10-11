@@ -1,0 +1,87 @@
+<!-- 表定义的基本属性表单 -->
+<form id="tabForm" method="post">
+	<table class="list" style='width:100%'>
+		<tr>
+			<th>表名：</th>
+			<td>
+				<input class="easyui-validatebox" required="true" name="tablecode"  style='width:175px'/>
+				<input type="hidden" name="tableid" />
+			</td>
+			<th>中文名称：</th>
+			<td>
+				<input class="easyui-validatebox" required="true" name="tablename" style='width:175px'/>
+			</td>
+		</tr>
+		<tr>
+			<th>表类型：</th>
+			<td>
+				<select class="easyui-combobox" name="tabletype" required="true" style="width:177px;" panelHeight="100">
+                    <option value="0">字典表</option>
+                    <option value="1">业务表</option>
+                  	<!--  <option value="2">业务表</option> -->
+                </select>
+			</td>
+			<th>是否缓存：</th>
+			<td>
+				是<input type="radio" class="easyui-radio" name="iscache" required="true" value="1"/>
+				否<input type="radio" class="easyui-radio" name="iscache" required="true" value="0" checked/>
+			</td>
+		</tr>
+		<tr class='onlyview'>
+			<th>关键字字段名：</th>
+			<td>
+				<input type='text' id='keycolumn' name='keycolumn' class='easyui-validatebox' style='width:175px;background-color:#eee;border:1px solid #a9a9a9' READONLY />
+			</td>
+			<th>	编码字段名：</th>
+			<td>
+				<input type='text' id='codecolumn' name='codecolumn' class='easyui-validatebox' style='width:175px;background-color:#eee;border:1px solid #a9a9a9' READONLY />
+			</td>
+		</tr>
+		<tr class='onlyview'>
+			<th>名称字段名：</th>
+			<td>
+				<input type='text' id='namecolumn' name='namecolumn' class='easyui-validatebox' style='width:175px;background-color:#eee;border:1px solid #a9a9a9' READONLY />
+			</td>
+			<th>上级流水号字段名：</th>
+			<td>
+				<input type='text' id='supercolumn' name='supercolumn' class='easyui-validatebox' style='width:175px;background-color:#eee;border:1px solid #a9a9a9' READONLY />
+			</td>
+		</tr>
+		<tr class='onlyview'>
+			<th>级次字段名：</th>
+			<td>
+				<input type='text' id='levelnocolumn' name='levelnocolumn' class='easyui-validatebox' style='width:175px;background-color:#eee;border:1px solid #a9a9a9' READONLY />
+			</td>
+			<th>是否末级字段名：</th>
+			<td>
+				<input type='text' id='isleafcolumn' name='isleafcolumn' class='easyui-validatebox' style='width:175px;background-color:#eee;border:1px solid #a9a9a9' READONLY />
+			</td>
+		</tr>
+		<tr class='onlyview'>
+			<th>状态字段名：</th>
+			<td>
+				<input type='text' id='statuscolumn' name='statuscolumn' class='easyui-validatebox' style='width:175px;background-color:#eee;border:1px solid #a9a9a9' READONLY />
+			</td>
+			<th>启用日期字段名：</th>
+			<td>
+				<input type='text' id='startdatecolumn' name='startdatecolumn' class='easyui-validatebox' style='width:175px;background-color:#eee;border:1px solid #a9a9a9' READONLY />
+			</td>
+		</tr>
+		<tr class='onlyview'>
+			<th>停用日期字段名：</th>
+			<td>
+				<input type='text' id='enddatecolumn' name='enddatecolumn' class='easyui-validatebox' style='width:175px;background-color:#eee;border:1px solid #a9a9a9' READONLY />
+			</td>
+			<th>
+			</th>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<th>备注：</th>
+			<td colspan="5">
+				<textarea class="easyui-textarea" name="remark" style='width:555px' rows="3"></textarea>
+			</td>
+		</tr>
+	</table>
+</form>

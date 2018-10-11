@@ -1,0 +1,30 @@
+#parse("common/extensions-v14.vm")
+<body>
+	
+    <link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+    <script type="text/javascript" src="$contextpath/templates/aros/web/file/js/uploadify.js"></script>
+    
+    <input id="fileItemmids" type="hidden" name='fileItemmids' value='${fileItemmids}'/>
+    <input id="sessionId" type="hidden" name='sessionId' value='${sessionId}'/>
+    <input id="tdId" type="hidden" name='tdId' value='${tdId}'/>
+    <input id="elementcode" type="hidden" name='elementcode' value='${elementcode}'/>
+    <input id="keyid" type="hidden" name='keyid' value='${keyid}'/>
+    
+    <div class="easyui-panel" style="width:100%;padding:0px;height:42px" >
+        <table class='list' id='uptable' >
+            <tr >
+                <td valign="top">
+                    <span id="fileQueue" style='height:290px'></span>
+                </td>
+                <td style='width:100px' valign="top">
+                    <input type="file" name="uploadify" id="uploadify" style='width:100px'/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="easyui-panel" style="width:100%;height:180px;overflow:auto">
+        <table class='list' id='fileTable' style='TBBLE-LBYOUT: fixed'></table>
+    </div>
+</body>

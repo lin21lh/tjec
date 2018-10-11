@@ -1,0 +1,187 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+	
+<form id="ysajReqForm" method="post">
+	<div id="tt" class="easyui-tabs" style="width:100%;height:auto;">
+		<div id="tab_1" title="案件基本信息">
+        	<table class="list">
+        		<!--隐藏属性start-->
+        			<input type="hidden" id="acaseid" name="acaseid" value="$!{acaseid}"/><!--案件ID-->
+					<input type="hidden" id="caseid" name="caseid" value="$!{admlitbaseinfo.acaseid}"/><!--案件ID-->
+					<input type="hidden" id="resultmsg" name="resultmsg" value="$!{resultmsg}"/><!--结果内容-->
+        		<!--隐藏属性end-->
+        		<tr>
+        			<th width="13%">审理阶段：</th>
+        			<td width="37%">
+        				<span>$!{admlitbaseinfo.stage}</span>
+        			</td>
+        			<th width="13%">关联案件号：</th>
+        			<td width="37%">
+        				<span>$!{admlitbaseinfo.relaacaseid}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>本机关案号：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.lcasecode}</span>
+        			</td>
+        			<th>司法机关案号：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.rcasecode}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>收案方式：</th>
+        			<td colspan="3">
+        				<span>$!{admlitbaseinfo.rectype}</span>
+        			</td>
+                </tr>
+        		<tr>
+        			<th>收案人：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.receiver}</span>
+        			</td>
+        			<th>收案时间：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.rectime}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>受案法院：</th>
+        			<td colspan="3">
+        				<span>$!{admlitbaseinfo.rdeptname}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>案由：</th>
+        			<td colspan="3">
+        				<span>$!{admlitbaseinfo.casereason}</span>
+        			</td>
+                </tr>
+        		<tr>
+        			<th>当事人类型：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.partytype}</span>
+        			</td>
+        			<th>原告（上诉人）：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.plaintiff}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>第三人（上诉人）：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.thirdname}</span>
+        			</td>
+        			<th>第一被告（上诉人）：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.defendant}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>开庭地点：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.hearplace}</span>
+        			</td>
+        			<th>开庭时间：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.heartime}</span>
+        			</td>
+        		</tr>
+				<tr>
+        			<th>承办人：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.undertaker}</span>
+        			</td>
+        			<th>协办人：</th>
+        			<td>
+        				<span>$!{admlitbaseinfo.assessor}</span>
+        			</td>
+        		</tr>
+				<tr>
+                    <th>相关附件：</th>
+					<td colspan="3" valign='top' style="height:40px" id="auditfiletd"></td>
+                </tr>
+            </table>
+		</div>
+		
+		#if($admlitbaseinfo.courthead != "")
+    		<div id="tab_2" title="案件处理信息">
+            	<table class="list">
+    				<tr>
+                        <th width="13%">出庭负责人：</th>
+    					<td width="37%">
+    						<span>$!{admlitbaseinfo.courthead}</span>
+    					</td>
+    					<th width="13%">出庭负责人职务：</th>
+    					<td width="37%">
+    						<span>$!{admlitbaseinfo.headpost}</span>
+    					</td>
+                    </tr>
+    				<tr>
+                        <th>委托律师：</th>
+    					<td colspan="3">
+    						<span>$!{admlitbaseinfo.lawyer}</span>
+    					</td>
+                    </tr>
+    				<tr>
+                        <th>相关附件：</th>
+            			<td colspan="3" valign='top' style="height:40px" id="disposefiletd"></td>
+                    </tr>
+                </table>
+    		</div>
+		#end
+		
+		#if($auditResult != "")
+    		<div id="tab_3" title="审批信息">
+            	<table class="list">
+            		<tr>
+            			<th width="13%">审批结果：</th>
+            			<td colspan="3" width="87%">
+    						<span>$!{auditResult}</span>
+            			</td>
+            		</tr>
+            		<tr>
+            			<th>审批意见：</th>
+            			<td colspan="3">
+    						<span>$!{auditRemark}</span>
+            			</td>
+            		</tr>
+    				<tr>
+                        <th>相关附件：</th>
+    					<td colspan="3" valign='top' style="height:40px" id="auditfiletd"></td>
+                    </tr>
+                </table>
+    		</div>
+		#end
+		
+		#if($result != "")
+    		<div id="tab_4" title="应诉结果信息"> 
+            	<table class="list">
+            		<tr>
+            			<th width="13%">应诉结果：</th>
+    					<td width="37%"><span>$!{resultmsg}</span></td>
+    					<th width="13%">负责人是否出庭：</th>
+    					<td width="37%"><span>$!{admlitbaseinfo.ifincourt}</span></td>
+            		</tr>
+            		<tr>
+            			<th>案件说明：</th>
+    					<td colspan="3"><span>$!{resultRemark}</span></td>
+            		</tr>
+    				<tr>
+                        <th>相关附件：</th>
+            			<td colspan="3" valign='top' style="height:40px" id="resultfiletd"></td>
+                    </tr>
+                </table>
+    		</div>
+		#end
+	</div>
+</form>

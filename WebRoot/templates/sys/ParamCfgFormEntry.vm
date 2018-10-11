@@ -1,0 +1,53 @@
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="paramCfgForm" method="post">
+	<table class="list">
+		<tr>
+			<th>区域代码：</th>
+			<td>
+				<input id="admivcode" class="easyui-numberbox" required="true" value="0" missingMessage="请输入区域代码" name="admivcode" style='width:160px'/>
+				<input type="hidden" id="paramid" name="paramid" />
+			</td>
+			<th>子系统或模块：</th>
+			<td>
+				<input id="scenecode" class="easyui-combobox" required="true" missingMessage="请选择子系统或模块" name="scenecode" style='width:160px'/>
+			</td>
+		</tr>
+		<tr>
+			<th>参数编码：</th>
+			<td>
+                <input id="paramcode" class="easyui-textbox" required="true" missingMessage="请输入参数编码" name="paramcode" style="width:160px" />
+			</td>
+			<th>参数名称：</th>
+			<td>
+				<input id="paramname" class="easyui-textbox" required="true" missingMessage="请输入参数名称" name="paramname" style='width:160px' />
+			</td>
+		</tr>
+		<tr>
+			<th>参数值：</th>
+			<td>
+            	<input id="paramvalue" class="easyui-textbox" required="true" missingMessage="请输入参数值" name="paramvalue" style="width:160px" />
+			</td>
+			<th>是否启用：</th>
+			<td>
+            	<input id="status" class="easyui-combobox" name="status" required="true" missingMessage="请选择是否启用" value="1" data-options="valueField:'val',textField:'text',data:[{val:0,text:'否'}, {val:'1',text:'是'}],panelHeight:'auto'" style="width:160px" />
+			</td>
+		</tr>
+		<tr>
+			<th>参数描述：</th>
+			<td colspan="3">
+				<input id="paramdesc" class="easyui-textbox" multiline="true" required="true" missingMessage="请输入参数描述" data-options="prompt:'最多可输入200个汉字',validType:{length:[0,200]}" style="width:465px;height:80px;" name="paramdesc" />
+			</td>
+		</tr>
+		<tr>
+		<th>备注：</th>
+			<td colspan="3">
+				<input id="remark" class="easyui-textbox" multiline="true" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:465px;height:50px;" name="remark" />
+			</td>
+		</tr>
+	</table>
+</form>

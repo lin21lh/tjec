@@ -1,0 +1,44 @@
+<!DOCTYPE>
+<html>
+    <head>
+    #parse("common/common-v14.vm")
+    #parse("common/extensions-v14.vm")
+    <title>首页</title>
+    <style type="text/css">
+    	
+    	.linkbutton_group{
+    		border-bottom: 1px solid #95B8E7;
+    	}
+		.div-a{ float:left;width:50%;height:100%;border:0px solid #F00} 
+		.div-b{ float:right;width:50%;height:100%;border:0px solid #000} 
+    </style>
+
+    <script type="text/javascript" src="$contextpath/component/eCharts/echarts.min.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/ppms/indexPage/js/indexPage_init.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+    </head>
+    <body id="layout" class="easyui-layout" >
+		<div id="west" region="west" style="width:75%;height:100%;overflow:hidden;">
+        	<div id="" style="height:25px;background-color: #E0ECFF;">
+				&nbsp;年度
+				<input id="year" class="easyui-textbox" style='width:150px' panelheight = "auto">
+			</div>
+			<div id="chart" style="width:100%;padding:0px;">
+            	<div id="chart1" class="div-a" ></div>
+            	<div id="chart2" class="div-b" ></div>    	
+        	</div>
+            <div style="height:25px;background-color: #E0ECFF;"></div>
+        	<div id="chart3" style="width:100%;"></div>
+    	</div>
+    	<div region="east" style="width:25%;height:100%" >
+    		<div class="easyui-panel" data-options="region:'north',border:false,collapsible:true" title="待办事项" style="height:50%;padding:0px;">
+				<table id="waitworkDatagrid" width='100%'></table>
+        	</div>
+			<div class="easyui-panel" data-options="region:'south',border:false,collapsible:true" title="留言公告" style="height:50%;padding:0px;">
+                <table id="showMessageAndNoticegrid" width='100%'></table>
+        	</div>
+			
+    	</div>
+    	
+    </body>
+</html>

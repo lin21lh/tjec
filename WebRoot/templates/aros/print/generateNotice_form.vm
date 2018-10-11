@@ -1,0 +1,11 @@
+<form id="generateNoticeForm" method="post">
+    <table class="list">
+        <tr>
+            <td align="right">通知书类型</td>
+            <td>
+                <input id="doctype" name="doctype" class="easyui-combobox" panelHeight="auto" panelWidth="auto"
+                 style="width:200px"  required="true" missingMessage="请选择通知书类型" />  
+            </td>
+        </tr>
+    </table>
+</form>

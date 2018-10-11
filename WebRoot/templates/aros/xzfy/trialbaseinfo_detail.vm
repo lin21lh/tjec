@@ -1,0 +1,92 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/trialbaseinfo_detail.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+
+</style>
+	<input type="hidden" id="caseidinput" value="$!caseid"/>
+<form id="caseIdForm">
+	<input type="hidden" name="caseid" id="caseidForm" value="$!caseid"/>
+	<input type="hidden" name="reviewtype" id="reviewtypeForm" value="$!reviewtype"/>
+</form>
+<div id="trialDiv" >
+<div style="float:left;width:100%;">
+  <div style="width:50%;float:left;">
+		<table id ='trialTable'></table>
+  </div>
+  <div style="width:1%; float:left;text-align:center">
+		&nbsp;
+  </div>
+  <div style="width:48%;float:left;">
+		<div id="trial_win" class="easyui-panel" style="width: 100%;">
+			<form id="trialForm" method="post" style="margin: 0px">
+				<input type="hidden" name="trialtype" id="trialtype"/>
+				<input type="hidden" name="trialid" id="trialid"/>
+				<input type="hidden" name="caseid" id="caseid"/>
+				<table class="list" >
+					<tr>
+						<th>时间：</th>
+						<td >
+							<input id="trialtime" name="trialtime" class="easyui-datetimebox" editable="false" 
+								 missingMessage="请输入庭审时间" style='width:200px' readonly="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >地点：</th>
+						<td>
+							<input id="trialplace" name="trialplace" class="easyui-textbox" data-options="validType:{length:[0,60]}"  style="width:200px" 
+								missingMessage="请输入庭审地点" readonly="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th>记录人：</th>
+						<td >
+							<input id="recorder" name="recorder" class="easyui-textbox" data-options="validType:{length:[0,60]}" style="width:200px"
+								missingMessage="请输入记录人员" readonly="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >参加人：</th>
+						<td>
+							<input id="joiner" name="joiner"  readonly="true" class="easyui-textbox" data-options="validType:{length:[0,25]}" style="width:200px" />
+						</td>
+					</tr>
+					<tr >
+						<th>事项：</th>
+						<td>
+							<input id="matters" name="matters"  readonly="true" multiline="true"  class="easyui-textbox" style="width:200px;height:80px;" />
+						</td>
+					</tr>
+					<tr>
+						<th>内容：</th>
+						<td >
+							<input id="contents" name="contents"  readonly="true" multiline="true" class="easyui-textbox" data-options="validType:{length:[0,160]}" style="width:200px;height:80px;"/>
+						</td>
+						
+					</tr>
+					<tr>
+						 <th>附件：</th>
+			            <td colspan="3" valign="top" style="height:90px" id="filetd">
+			            </td>
+					</tr>
+				</table>
+			</form>
+		</div>
+  </div>
+</div>
+</div>
+<div id="uploadifydiv"></div>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/demo/workflowManage.js"></script>
+<title>流程管理示例</title>
+</head>
+<body class='easyui-layout'>
+	<div region='center' fit='true' title=''>
+		<div id='tb' style='background-color:#eee'>
+			工作流选择：<input type='text' id='wfsel' />
+			流程变量A值：<input type='text' id='paramA' />
+			流程变量B值：<input type='text' id='paramB' />
+			<a class='easyui-linkbutton' id='startwf' onclick='startWf()'>启动流程</a>
+			<a class='easyui-linkbutton' id='query' onclick='query()'>查询实例</a>
+	
+		</div>
+		<table id='list'>
+		</table>
+	</div>
+</body>
+</html>

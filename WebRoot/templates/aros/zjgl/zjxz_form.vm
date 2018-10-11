@@ -1,0 +1,62 @@
+
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/common/component/doubleDatagridSelect.js" ></script>
+<script type="text/javascript" src="$contextpath/templates/aros/zjgl/js/zjxz_form.js"></script>
+<script type="text/javascript" src="$contextpath/templates/base/tabsdef/colsDefDialog.js"></script>
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script> 
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script> 
+
+
+<form id="zjxzForm" method="post">
+    <input type="hidden" id="caseid" name="caseid" value="${caseid}" />
+    <input type="hidden" id="timeLong" name="timeLong" value="${timeLong}"/>
+    <table class="list">
+			<tr>
+    			<th >复议主题：</th>
+    			<td colspan="3">
+    				<input id="defaddress" class="easyui-textbox" name="defaddress" required="true" missingMessage="请输入复议主题"
+    					 data-options="prompt:'最多可输入200个汉字',validType:{length:[0,50]}" style="width:690px;"/>
+    			</td>
+    			
+    		</tr>
+    		<tr>
+                <th>相关附件：</th>
+    			<td colspan="3" valign='top' style="height:40px" id="filetd">
+					<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="clickUploadFileDiv()"/>
+                </td>
+            </tr>
+
+
+    </table>
+    <div class="easyui-tabs">
+	   <div style="float:left;width:100%;" title="委员选择">
+	       <div style="width:48%;float:left;">
+	           <table id = 'zjTable'></table>
+	       </div>
+		   <div style="width:4%; float:left;text-align:center">
+				<div id="space_holder" style="height: 48%;"></div>
+				<a class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-right-arrow" style="width: 28px; position: static; display: inline-block; left: auto;margin:2px;" id="addBtn" group=""><span class="l-btn-left l-btn-icon-left" style="margin-top: 0px;"><span class="l-btn-text l-btn-empty">&nbsp;</span><span class="l-btn-icon icon-right-arrow">&nbsp;</span></span></a>
+				<a class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-left-arrow" style="width: 28px; position: static; display: inline-block; left: auto;margin:2px;" id="delBtn" group=""><span class="l-btn-left l-btn-icon-left" style="margin-top: 0px;"><span class="l-btn-text l-btn-empty">&nbsp;</span><span class="l-btn-icon icon-left-arrow">&nbsp;</span></span></a>
+		   </div>
+	       <div style="width:48%;float:left;"><table id ='zjxzTable'></table></div>
+	   </div>
+	   <div title="卷宗选择">
+	       <div style="width:48%;float:left;">
+               <table id = 'jzTable'></table>
+           </div>
+           <div style="width:4%; float:left;text-align:center">
+                <div id="jz_space_holder" style="height: 48%;"></div>
+                <a class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-right-arrow" style="width: 28px; position: static; display: inline-block; left: auto;margin:2px;" id="jz_addBtn" group=""><span class="l-btn-left l-btn-icon-left" style="margin-top: 0px;"><span class="l-btn-text l-btn-empty">&nbsp;</span><span class="l-btn-icon icon-right-arrow">&nbsp;</span></span></a>
+                <a class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-left-arrow" style="width: 28px; position: static; display: inline-block; left: auto;margin:2px;" id="jz_delBtn" group=""><span class="l-btn-left l-btn-icon-left" style="margin-top: 0px;"><span class="l-btn-text l-btn-empty">&nbsp;</span><span class="l-btn-icon icon-left-arrow">&nbsp;</span></span></a>
+           </div>
+           <div style="width:48%;float:left;"><table id ='jzyxTable'></table></div>
+	   </div>
+    </div>
+	<input type="hidden" id="speids" name="speids" />
+	<input type="hidden" id="jzids"  name="zjids" />
+</form>
+<!--上传附件层-->
+<div id="uploadifydiv"></div>
+
+
+

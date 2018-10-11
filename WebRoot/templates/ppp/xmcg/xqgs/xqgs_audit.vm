@@ -1,0 +1,84 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>需求公示审核</title>
+<script type="text/javascript" src="$contextpath/templates/ppp/xmcg/xqgs/js/xqgs_audit.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppp/common/pppCommon.js"></script>
+<script type="text/javascript">
+var menuid = "$menuid";
+var activityId = "$activityId";
+var firstNode = "$firstNode";
+var lastNode = "$lastNode";
+</script>
+<style type="text/css">
+	.cs-west{
+		width: 50%;
+		padding: 0;
+	}
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+	}
+</style>
+</head>
+<body id="layout" class="easyui-layout">
+	 <div data-options="region:'center',split:false" >
+        <div id="toolbar_center" class="toolbar_group" >
+    		<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+			<div class="toolbar_buttons">
+				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="topQuery()" >查询</a>
+				<span class='xian' ></span>
+    			<a href="#" id="auditBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="projectXqgsAudit()">审核</a>
+				<span class='xian' ></span>
+    			<a href="#" id="backBtn" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="projectXqgsBack()">退回</a>
+				<span class='xian' ></span>
+    			<a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="projectXqgsView()">详情</a>
+				<span class='xian' ></span>
+    			<a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">流程信息</a>
+            </div>
+    		<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;border:0px;">
+				<table  class="list" style='border:1px'>
+                    <tr>
+        				<th style='font-size:12px;border: 0px;text-align:right'>处理状态</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="xqstatus" class="easyui-combobox" style='width:150px' panelheight = "auto">
+						</th>
+						<th style='border: 0px;text-align:right' align="right">项目名称</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="xmmc" class="easyui-textbox"  style='width:150px'>
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>所属行业</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="sshy" class="easyui-combobox"  style='width:150px' multiple="true">
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right' >项目运作方式</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="yzfs" class="easyui-combobox" style='width:150px'  multiple="true">
+						</th>
+    				</tr>      
+                    <tr> 
+						<th style='font-size:12px;border: 0px;text-align:right'>回报机制</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="hbjz" class="easyui-combobox" style='width:150px'  multiple="true">
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>项目发起类型</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="fqlx" class="easyui-combobox" style='width:150px'  multiple="true">
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>项目类型</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'> 
+							<input id="xmlx" class="easyui-combobox" style='width:150px'  multiple="true">
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>项目联系人</th>
+                        <th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="xmlxr" class="easyui-textbox" style='width:150px' />
+						</th>
+    				</tr>      
+				</table>
+    		</div>
+		</div>
+		<table id="projectDataGrid"></table>
+	 </div>    
+</body>
+</html>

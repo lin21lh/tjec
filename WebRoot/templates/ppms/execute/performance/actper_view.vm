@@ -1,0 +1,26 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="actper_form" method="post">
+    <input id="projectid" type="hidden" name='projectid'/>
+    <input id="subStr" type="hidden" name='subStr'/>
+    <table class="list">
+		<tr>
+            <th>项目名称</th>
+            <td>
+                <input id="proName" class="easyui-textbox" required="true" missingMessage="请选择项目名称" name="proName" style='width:250px' readonly='true'/>
+            </td>
+            <th>项目类型</th>
+            <td >
+                <input id="proTypeName" class="easyui-textbox" required="true" missingMessage="请输入项目类型" name="proTypeName" style='width:250px' readonly='true' />
+            </td>
+        </tr>
+    </table>
+	<table id="advance_organ"></table>
+</form>

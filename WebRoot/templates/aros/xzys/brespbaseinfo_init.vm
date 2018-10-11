@@ -1,0 +1,62 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>行政应诉</title>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/xzys/js/brespbaseinfo_init.js"></script>
+<script type="text/javascript">
+var menuid = "$menuid";
+</script>
+</head>
+<body id="layout" class="easyui-layout">
+    <div id="caseDiv" class="easyui-panel" title="应诉案件列表" style="width:100%;height:80%;">
+	 <div data-options="region:'center',split:false" >
+        <div id="toolbar_center" class="toolbar_group" >
+    		<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+            <input type="hidden" id="flag" name="flag" value="$flag" />
+    			<div class="toolbar_buttons">
+                    <a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+                    <span class='xian' ></span>
+                    <a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="xzysQuery()">查询</a>
+                    <span class='xian'></span>
+                    <a href="#" id="LABtn"  class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="xzysReceive()">收案登记</a>
+                    <span class='xian'></span>
+                    <a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">流程信息</a>
+                    <span class='xian' ></span>
+                    <a href="#" id="SLBtn"  class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="xzfyDelete()">删除</a>
+                </div>
+    		<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;border:0px;">
+				<table  class="list" style='border:1px'>
+                    <tr>
+        				<td style='font-size:12px;border: 0px;text-align:right'>案号：</td>
+        				<td style='font-size:12px;border: 0px;text-align:left'>
+							<input id="lawid" class="easyui-textbox" style='width:150px'>
+						</td>
+                        <td style='border: 0px;text-align:right' align="right">原告情况：</td>
+                        <td style='font-size:12px;border: 0px;text-align:left'>
+                            <input id="suerequest" class="easyui-textbox"  style='width:150px'>
+                        </td>
+						<td style='border: 0px;text-align:right' align="right">收案时间：</td>
+                        <td>
+                            <input id="srecdate" name="srecdate" class="easyui-datebox" 
+                                editable="false" style='font-size:12px;border: 0px;text-align:left' /> -
+                             <input id="erecdate" name="erecdate" class="easyui-datebox" 
+                                editable="false" style='font-size:12px;border: 0px;text-align:left' />
+                        </td>
+                        
+                        
+                        
+					</tr>
+				</table>
+    		</div>
+		  </div>
+        </div>
+        <div style="height:100%;width:100%;">
+            <table id="projectDataGrid"></table>
+        </div>
+	 </div>  
+	 #parse("aros/xzys/xzysStop.vm")
+</body>
+</html>

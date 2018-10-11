@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/test/target.js"></script>
+<script type="text/javascript">
+	var resourceid = "${modelMap.resourceid}";
+	//var columnSet = "${modelMap.columnSet}";
+	$(function(){
+		loadDataGrid(resourceid);
+		$(".datagrid-pager > table").hide();
+	});
+
+</script>
+<style type="text/css">
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+	}
+</style>
+</head>
+<body class="easyui-layout" border="false">
+	<!-- 数据项列表  -->
+	<div title="指标加载"  region="center" class="cs-center"  border="false">
+		<table id="test_target" style="width:700px;height:300px" ></table>
+	</div>
+</body>
+</html>

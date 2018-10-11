@@ -1,0 +1,91 @@
+	#parse("common/extensions-v14.vm")
+	<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+	
+	<style type='text/css'>
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+	</style>
+	<script type="text/javascript">
+        var messageType = "$messageType";
+    </script>
+	<div class="easyui-layout" style="width:100%;height:100%;" id="layoutDiv">	
+		<div  data-options="region:'center'" >
+			<form  id="readNoticeForm" method="post">
+        		<table class="list">
+        			<tr>
+        				<th>标题</th>
+        				<td  colspan="3">
+        					<input id="title" class="easyui-textbox" name="title" style="width:700px;" readonly="true"/>
+        					<input id="usercode" type="hidden" name="usercode"/>
+        					<input id="readcount" type="hidden" name="readcount"/>
+        					<input id="createtime" type="hidden" name="createtime"/>
+        					<input id="receiveusername" type="hidden" name="receiveusername"/>
+        					<input id="noticeid" type="hidden" name="noticeid"/>
+        					<input id="receiveusercode" type="hidden" name="receiveusercode"/>
+        					<input id="receiveid" type="hidden" name="receiveid"/>
+        					<input id="receiveuser" type="hidden" name="receiveuser"/>
+        					<input id="readflag" type="hidden" name="readflag"/>
+        					<input id="readtime" type="hidden" name="readtime"/>
+        					<input id="fileCount" type="hidden" name="fileCount" value="$fileCount"/>
+        					
+        				</td>
+        			</tr>
+        			#if($messageType == "1")
+        			<tr>
+        				<th>重要性</th>
+        				<td>
+        					<input id="priorlevelname" name="priorlevelname" class='easyui-textbox' style="width:300px" readonly="true"/>
+        				</td>
+        				<th>有效时间</th>
+        				<td >
+        					<input id="validtime" name="validtime" class="easyui-textbox"  style="width:300px" readonly="true"/>
+        				</td>
+        			</tr>
+        			#end
+        			#if($messageType == "2")
+        			<tr>
+        				<th>发布人</th>
+        				<td>
+        					<input id="username" class="easyui-textbox" name="username" style='width:300px' readonly="true"/>
+        				</td>
+        				<th>发布时间</th>
+        				<td >
+        					<input id="releasetime" class="easyui-textbox" name="releasetime" style='width:300px' readonly="true"/>
+        				</td>
+        			</tr>
+        			#end
+            		<tr>
+            			<th>内容</th>
+        				<td  colspan="3">
+        					<div id="contentEdit" name="contentEdit" style="width:700px;height:150px;overflow:auto;border: 1px solid #95B8E7;"></div>
+        					<input type="hidden" name="content" id="content"/>
+        				</td>
+        			</tr>
+        			<tr>
+        				<th>备注</th>
+        				<td  colspan="3">
+        					<input id="remark" class="easyui-textbox" name="remark" multiline="true" style="width:700px;height:40px;" readonly="true"/>
+        				</td>
+            		</tr>
+        			#if($fileCount > 0)
+        			<tr>
+        				<th>附件</th>
+        			    <td colspan="3" valign='top' style="height:40px" id="filetd">
+        			
+        			    </td>
+        			</tr>
+        			#end
+            	</table>
+    		</form>
+        </div>
+		<div data-options="region:'south',title:'反馈历史',split:true,collapsible:true" style=#if($fileCount > 0)"height:34%;"#else"height:42%;"#end>
+			<table id="commonlist" />
+        </div>
+    </div>
+	<div id='commontService'></div>
+		
+	

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<excel excelName="account" excelTemplateFile="outAccountExcel.xls" > <!--  -->
+		<sheets>
+			<sheet sheetName="账户" startrow="2">
+				<bean beanname="com.wfzcx.fam.query.account.outexcel.outAccountExcel" />
+				<headers>
+					<header colname="xh" title="序号" width="4"  isNumber="false" isHidden="false" />
+					<header colname="bdgagencycn" title="预算单位" width="20"  isNumber="false" isHidden="false" />
+					<header colname="dept_nature_name" title="单位性质" width="30" isNumber="false" isHidden="false" />
+					<header colname="account_name" title="账户名称" width="20" isNumber="false" isHidden="false" />
+					<header colname="account_number" title="银行账号" width="30" isNumber="false" isHidden="false" />
+					<header colname="bank_name_cn" title="开户行名称" width="12" isNumber="false" isHidden="false" />
+					<header colname="account_type_name" title="账户类型" width="25" isNumber="false" isHidden="false" />
+					<header colname="type02_name" title="账户性质" width="25" isNumber="false" isHidden="false" />
+					<header colname="iszero_name" title="零余额账户" width="25" isNumber="false" isHidden="false" />
+					<header colname="status_name" title="状态" width="25" isNumber="false" isHidden="false" />
+					<header colname="dept_address" title="单位地址" width="25" isNumber="false" isHidden="false" />
+					<header colname="linkman" title="联系人" width="25" isNumber="false" isHidden="false" />
+					<header colname="phonenumber" title="联系人电话" width="25" isNumber="false" isHidden="false" />
+					<header colname="remark" title="注释" width="25" isNumber="false" isHidden="false" />
+					<header colname="create_user_name" title="创建人" width="25" isNumber="false" isHidden="false" />
+					<header colname="createtime" title="创建时间" width="25" isNumber="false" isHidden="false" />
+					<header colname="update_user_name" title="修改人" width="25" isNumber="false" isHidden="false" />
+					<header colname="update_time" title="修改时间" width="25" isNumber="false" isHidden="false" />
+				</headers>
+			</sheet>
+		</sheets>
+	</excel>
+</root>

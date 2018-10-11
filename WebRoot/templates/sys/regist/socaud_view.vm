@@ -1,0 +1,84 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="socaud_form" method="post">
+    <input id="socialid" type="hidden" name='socialid'/>
+    <input id="userpswd" type="hidden" name='userpswd'/>
+    <input id="auditTime" type="hidden" name='auditTime'/>
+    <input id="auditUser" type="hidden" name='auditUser'/>
+
+    <table class="list">
+		<tr>
+            <th>用户编码</th>
+            <td >
+                <input id="usercode" class="easyui-textbox"  name="usercode" style='width:250px' readonly='true'/>
+            </td>
+			<th>用户名称</th>
+            <td>
+                <input id="username" class="easyui-textbox"  name="username" style='width:250px' readonly='true' />
+            </td>
+        </tr>
+        <tr>
+			<th>联系人</th>
+            <td>
+                <input id="linkperson" class="easyui-textbox"  name="linkperson" style='width:250px' readonly='true' />
+            </td>
+            <th>联系人手机</th>
+            <td>
+                <input id="linkphone"  class="easyui-textbox"   name="linkphone" style='width:250px' readonly='true'/>
+            </td>
+            
+        </tr>
+        <tr>
+			<th>组织机构代码</th>
+            <td>
+                <input id="orgcode" class="easyui-textbox"   name="orgcode" style='width:250px'  readonly='true'/>
+            </td>
+            <th>社会资本名称</th>
+            <td>
+                <input id="orgname" class="easyui-textbox"  name="orgname" style='width:250px' readonly='true'/>
+            </td>
+           
+        </tr>
+        <tr>
+			 <th>是否是联合体</th>
+            <td>
+                <input id="iscombo" class="easyui-textbox"  name="iscombo" style='width:250px' readonly='true'/>
+            </td>
+            <th>申请时间</th>
+            <td >
+                <input id="applicationTime" class="easyui-textbox"  name="applicationTime" style='width:250px' readonly='true'/>
+            </td>
+			
+        </tr>
+        <tr>
+			 <th>所属行业</th>
+            <td>
+                <input id="categoryName" class="easyui-textbox"  name="categoryName" style='width:250px' readonly='true'/>
+            </td>
+            <th>投资偏好</th>
+            <td >
+                <input id="preferencesName" class="easyui-textbox"    name="preferencesName" style='width:250px' readonly='true'/>
+            </td>
+        </tr>
+		<tr>
+			 <th>状态</th>
+            <td colspan='3'>
+                <input id="status" class="easyui-textbox"    name="status" style='width:250px' readonly='true'/>
+            </td>
+        </tr>
+		
+		<tr>
+            <th>备注</th>
+            <td  colspan="3">
+                <input id="remark" class="easyui-textbox"  multiline="true"  name="remark" style='width:670px;height:50px;' readonly='true'/>
+            </td>
+        </tr>
+    </table>
+</form>

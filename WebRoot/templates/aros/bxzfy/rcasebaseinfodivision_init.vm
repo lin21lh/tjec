@@ -1,0 +1,82 @@
+<!DOCTYPE>
+<html>
+	<head>
+		#parse("common/common-v14.vm")
+		#parse("common/extensions-v14.vm")
+		<title>分案审批</title>
+		
+		<script type="text/javascript" src="$contextpath/templates/aros/bxzfy/js/rcasebaseinfodivision_init.js"></script>
+		<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+		<script type="text/javascript">
+			//菜单ID
+			var menuid = "$menuid";
+			//附件ID
+			var activityId = "$activityId";
+        </script>
+		<style type="text/css">
+			.cs-west{
+        		width: 50%;
+        		padding: 0;
+        	}
+        	.linkbutton_group{
+        		border-bottom: 1px solid #95B8E7;
+        	}
+        </style>
+    </head>
+	
+	<body id="layout" class="easyui-layout">
+        <div data-options="region:'center',split:false">
+			<div id="toolbar_center" class="toolbar_group">
+				
+				<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+				
+				<div class="toolbar_buttons">
+					<a id="openclose" onClick="javascript:panelctl_aros(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="bxzfyDivisionQuery()">查询</a>
+					<span class="xian"></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="editBxzfyDivision()">处理</a>
+					<span class="xian"></span>
+        			<a href="#" id="sendBtn" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onClick="sendWF()">发送</a>
+    				<span class="xian"></span>
+					<a href="#" id="returnBtn" class="easyui-linkbutton" iconCls="icon-back" plain="true" onClick="bxzfyDivisionReturn()">退回</a>
+    				<span class="xian"></span>
+					<a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-detail" plain="true" onClick="bxzfyDivisionView()">详情</a>
+    				<span class='xian' ></span>
+        			<a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">流程信息</a>
+				</div>
+				
+				<div id="bxzfyDivisionPanel" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%; border:0px;">
+					<table class="list" style='border:1px'>
+						<tr>
+							<td style="font-size:12px; border:0px; text-align:right">处理标志：</td>
+            				<td style="font-size:12px; border:0px; text-align:left">
+    							<input id="opttype" class="easyui-combobox" style="width:150px" panelheight = "auto">
+    						</td>
+							<td style="font-size:12px; border:0px; text-align:right">本机关案号：</td>
+            				<td style="font-size:12px; border: 0px; text-align:left">
+    							<input id="rcasecode" class="easyui-textbox" style="width:150px">
+    						</td>
+							<td style="font-size:12px; border:0px; text-align:right;">复议机关案号：</td>
+							<td style="font-size:12px; border:0px; text-align:left;">
+								<input id="lcasecode" class="easyui-textbox" style='width:150px'>
+							</td>
+						</tr>
+						<tr>
+							<td style="border: 0px; text-align:right" align="right">复议机关：</td>
+            				<td style="font-size:12px;border: 0px;text-align:left">
+    							<input id="rdeptname" class="easyui-textbox" style='width:150px'>
+    						</td>
+    						<td style="border: 0px; text-align:right" align="right">申请人：</td>
+            				<td style="font-size:12px;border: 0px;text-align:left">
+    							<input id="appname" class="easyui-textbox" style='width:150px'>
+    						</td>
+						</tr>
+                    </table>
+				</div>
+			</div>
+			
+			<table id="bxzfyDivisionDataGrid"></table>
+		</div>
+    </body>
+</html>

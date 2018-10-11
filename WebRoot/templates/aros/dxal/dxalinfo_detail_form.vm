@@ -1,0 +1,70 @@
+#parse("common/extensions-v14.vm")
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    	
+    }
+</style>
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+	
+<form id="dxalForm" method="post">
+	<div>
+    	<table class="list">
+    		<!--隐藏属性start-->
+    			<input type="hidden" id="id" name="id"/><!--案例ID-->
+    		<!--隐藏属性end-->
+			<tr>
+    			<th>案件标题</th>
+    			<td>
+    				<input id="casetitle" class="easyui-textbox" name="casetitle" readonly="true" required="true" data-options="validType:{length:[0, 50]}" style="width:250px" missingMessage="请填写标题"/>
+    			    <font color=red>*</font>
+				</td>
+    			<th>是否发布</th>
+    			<td>
+    				<input id="ifpublish" class="easyui-textbox" name="ifpublish" readonly="true" required="true" style="width:250px"/>
+					<font color=red>*</font>
+				</td>
+    		</tr>
+			
+			<tr>
+    			<th>发布开始日期</th>
+    			<td>
+    				<input id="startdate" class="easyui-datebox" name="startdate" readonly="true" required="true" missingMessage="请选择发布开始日期"
+						style="width:250px" editable="false" />
+					<font color=red>*</font>
+    			</td>
+    			<th>发布到期日期</th>
+    			<td>
+    				<input id="enddate" class="easyui-datebox" name="enddate" readonly="true" required="true" missingMessage="请选择发布到期日期" 
+    					style="width:250px" editable="false" />
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+			
+    		<tr>
+    			<th>操作人</th>
+    			<td>
+    				<input id="operator" class="easyui-textbox" name="operator" readonly="true" required="true" missingMessage="请选择操作人" data-options="validType:{length:[0, 40]}" style="width:250px"/>
+					<font color=red>*</font>
+    			</td>
+    			<th>操作时间</th>
+    			<td>
+    				<input id="opttime" class="easyui-datebox" name="opttime" readonly="true" required="true" missingMessage="请选择操作时间" 
+    					style="width:250px" />
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>案件描述</th>
+    			<td colspan="3">
+    				<input id="casedesc" class="easyui-textbox" name="casedesc" multiline="true" readonly="true"  required="true" missingMessage="请输入案件描述"
+    					data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:690px;height:200px;" />
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+        </table>
+	</div>
+</form>

@@ -1,0 +1,20 @@
+<!DOCTYPE>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="$contextpath/templates/aros/xzfy/js/xzfypro.css">
+<script type="text/javascript" src="$contextpath/templates/aros/xzys/js/xzysStop.js"></script>
+</head>
+<body>
+<!--行政应诉-->
+<div id="flowDiv" class="easyui-panel" title="案件流程进度" style="width:100%;height:20%;" >
+		<table id="fyStpTable" class="ancestors" border="0">
+			<tbody>
+				<tr >
+					<th id="stp_jd" style="display:none" onclick="resproces()">行政应诉</th>
+				</tr>
+				<tr id="stptr"></tr>
+			</tbody>
+		</table>
+</div> 
+</body>
+</html>

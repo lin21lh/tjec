@@ -1,0 +1,81 @@
+#parse("common/extensions-v14.vm")
+<form id="xzfyhearForm" method="post">
+    <table class="list">
+      <!--隐藏属性start-->
+          <input type="hidden" id="caseid" name="caseid" value="${caseid}" /><!--案件ID-->
+      <!--隐藏属性end-->
+      <tr>
+          <th>案件编号：</th>
+          <td><span>$!{casebaseinfo.csaecode}</span></td>
+      </tr>
+      <tr>
+          <th>案由：</th>
+          <td><span>$!{casebaseinfo.factreason}</span></td>
+      </tr>
+      <tr>
+          <th>申请人：</th>
+          <td><span>$!{casebaseinfo.appname}</span></td>
+      </tr>
+      <tr>
+          <th>被申请人：</th>
+          <td><span>$!{casebaseinfo.defname}</span></td>
+      </tr>   
+      <tr>
+          <th>第三人：</th>
+          <td><span>$!{thirdnames}</span></td>
+      </tr>
+      <tr>
+          <th>基本案情：</th>
+          <td><span>$!{casebaseinfo.appcase}</span></td>
+      </tr>
+      <tr>
+          <th>案件程序：</th>
+          <td>
+              <input id="casesort" name="casesort" readonly="readonly" class="easyui-combobox" value="$!{casebaseinfo.casesort}" readonly="readonly"
+               style="width:250px;" missingMessage="请选择案件程序" required="true"/>
+          </td>
+      </tr>
+      <tr id="isreviewtr">
+          <th>是否委员审议：</th>
+          <td>
+              <input id="isreview" name="isreview" readonly="readonly" class="easyui-combobox" value="$!{casebaseinfo.isreview}" readonly="readonly"
+               style="width:250px;" missingMessage="请选择是否委员审议"/>
+          </td>
+      </tr>
+      <tr id="isdiscusstr">
+      		<th>是否集体讨论：</th>
+          	<td>
+              <input id="isdiscuss" name="isdiscuss" readonly="readonly" class="easyui-combobox" value="$!{casebaseinfo.isdiscuss}" readonly="readonly"
+               style="width:250px;" missingMessage="请选择是否集体讨论"/>
+         	 </td>
+      </tr>
+      <tr>
+          <th>承办人意见：</th>
+          <td>
+              <input id="agentRemark" name="agentRemark" readonly="readonly" class="easyui-textbox" multiline="true" value="$!{agentRemark}" 
+               style="width:685px; height:65px;" missingMessage="请输入承办人意见" />
+          </td>
+      </tr>
+      <tr>
+          <th>科室负责人意见：</th>
+          <td>
+              <input id="sectionRemark" name="sectionRemark" readonly="readonly" class="easyui-textbox" multiline="true" value="$!{sectionRemark}"
+               style="width:685px; height:65px;" missingMessage="请输入科室负责人意见" />
+          </td>
+      </tr>
+      <tr>
+          <th>机构负责人意见：</th>
+          <td>
+              <input id="organRemark" name="organRemark" readonly="readonly" class="easyui-textbox" multiline="true" value="$!{organRemark}"
+               style="width:685px; height:65px;" missingMessage="请输入机构负责人意见" />
+          </td>
+      </tr>
+      <tr>
+          <th>机关负责人意见：</th>
+          <td>
+              <input id="officeRemark" name="officeRemark" readonly="readonly" class="easyui-textbox" multiline="true" value="$!{officeRemark}"
+               style="width:685px; height:65px;" missingMessage="请输入机关负责人意见" />
+          </td>
+      </tr>       
+  </table>
+</form>

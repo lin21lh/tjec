@@ -1,0 +1,69 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+// 案件ID
+var caseid = "$caseid";
+// 流程类型
+var protype = "$protype";
+// 流程节点编号
+var nodeid = "$nodeid";
+</script>
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/textproduction_form.js"></script>
+<div style="width:100%;float:left;">
+  <div style="width:40%;float:left;">
+        <div>
+	       <div id="toolbar_list" class="toolbar_group">
+	            <div id="notice_toolbar" class="toolbar_buttons">
+	                <a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="noticeAdd(parent.$('#noticeTmp'))">新增</a>
+	                <span class='xian' ></span>            
+	                <a href="#" id="delBtn" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onClick="delNotice()">删除</a>
+	               <!-- <span class='xian' ></span>
+	                <a href="#" id="backBtn" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="returnNotice()">回退</a>     -->    
+	            </div>
+	        </div> 
+	         <!-- 已有文书列表 -->
+	        <div id="notice">
+	           <table id="noticeDataGrid" class="easyui-datagrid" title="已有文书列表" style="height:473px;"></table>
+	        </div>
+	    </div>
+  </div>
+  <div style="width:60%;float:left;">
+    <div>
+       <div id="toolbar_list" class="toolbar_group">
+            <div class="toolbar_buttons">
+                <a href="#" id="saveBtn" disabled=true class="easyui-linkbutton" iconCls="icon-save" plain="true" onClick="saveNotice()">保存</a>
+                <span class='xian'></span>            
+                <a href="#" id="cancelBtn" disabled=true class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onClick="cancel()">取消</a>
+            </div>
+        </div>         
+        <form id="noticeForm" method="post" style="margin-bottom:0px;">
+            <input id="id" name="id" type="hidden" />
+            <input id="tempid" name="tempid" type="hidden" />
+            <input id="protype" name="protype" type="hidden" value="$protype"/>
+            <input id="caseid" name="caseid" type="hidden" value="$caseid" />
+            <input id="nodeid" name="nodeid" type="hidden" value="$nodeid" />
+            <table class="list">
+                <tr>
+                    <th>文书名称: </th>
+                    <td>
+                        <input id="noticename" name="noticename" class="easyui-textbox" style="width:390px;" />
+                    </td >
+                </tr>
+                <tr>
+                    <th>文书编号: </th>
+                    <td>
+                        <input id="noticecode" name="noticecode" class="easyui-textbox" style="width:390px;" />
+                    </td >
+                </tr>
+				<tr>
+				    <th>文书内容：</th>
+				    <td>
+				        <textarea id="contentEdit" name="contentEdit" style="width:100%;height:375px;visibility:hidden;"></textarea>
+				        <input name="contents" id="contents" type="hidden" />
+				   </td>
+		        </tr>
+             </table>
+         </form>
+    </div>
+  </div>
+</div>
+<div id="noticeTmp"></div>

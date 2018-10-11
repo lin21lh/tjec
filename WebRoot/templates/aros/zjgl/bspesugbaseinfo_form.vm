@@ -1,0 +1,120 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<style type='text/css'>
+    input {
+    	line-height:12px;
+    	border:none; 
+    }
+</style>
+<script>
+ var caseid = '${caseid}';
+</script>
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/zjgl/js/bspesugbaseinfo_form.js"></script>
+<div id="speSugTabs" class="easyui-tabs" style="height: 100%" >
+    <div title="案件基本信息">
+    <form id="caseInfo" method="post" style="height: 97%">
+    <input type="hidden" id="caseid" name="caseid"/>
+	<table class="list" >
+		<tr>
+			<th>案件收文日期：</th>
+			<td>
+				<input id="receivedate" name="receivedate" readonly="true"
+					style="width:250px"/>
+			</td>
+			<th>收文方式：</th>
+			<td>
+				<input id="receivewayname" name="receivewayname" readonly="true" 
+					style="width:250px" />
+			</td>
+		</tr>
+		<tr>
+			<th>申请人：</th>
+			<td>
+				<input id="appname"  name="appname" readonly="true" style="width:250px" />
+			</td>
+			<th>申请人类型：</th>
+			<td>
+				<input id="apptype"  name="apptypeMc" readonly="true"
+					style="width:250px" />
+			</td>
+		</tr>
+		<tr>
+			<th>证件类型：</th>
+			<td>
+				<input id="idtype"  name="idtypeMc" readonly="true" style="width:250px" />
+			</td>
+			<th>证件号码：</th>
+			<td>
+				<input id="idcode"  name="idcode" readonly="true" 
+					  style="width:250px"/>
+			</td>
+		</tr>
+		<tr>
+			<th>被申请人：</th>
+			<td>
+				<input id="defname"  name="defname" readonly="true"
+					style="width:250px"/>
+			</td>
+			<th>被申请人类型：</th>
+			<td>
+				<input id="deftype"   name="deftypeMc" readonly="true" 
+					style="width:250px" />
+			</td>
+		</tr>
+		<tr>
+			<th>行政管理类型：</th>
+			<td>
+				<input id="admtype"   name="admtypeMc" readonly="true" 
+					style="width:250px" />
+			</td>
+			<th>申请复议事项类型：</th>
+			<td>
+				<input id="casetypeMc"   name="casetypeMc" readonly="true"
+					style="width:250px"/>
+			</td>
+		</tr>
+		<tr>
+			<th>是否附带行政赔偿：</th>
+			<td>
+				<input id="ifcompensation"   name="ifcompensationMc" readonly="true" 
+					style="width:250px" />
+			</td>
+			<th>赔偿金额：</th>
+			<td>
+				<input id="amount" name="amount" readonly="true"
+					style="width:250px"/>
+			</td>
+		</tr>
+		<tr>
+			<th>申请事项：</th>
+			<td colspan="3">
+				<input id="appcase"   name="appcase" multiline="true" readonly="true" 
+					style="width:700px;height:65px;" />
+			</td>
+        </tr>
+		<tr>
+			<th>事实和理由：</th>
+			<td colspan="3">
+				<input id="factreason"   name="factreason" multiline="true" readonly="true" 
+					style="width:700px;height:65px;" />
+			</td>
+        </tr>
+		<tr>
+            <th>相关附件：</th>
+			<td colspan="3" valign="top" style="height:40px" id="filetd"></td>
+        </tr>
+    </table>
+    </form>
+	</div>
+	<div title="录入意见" selected="true">
+	       <div style="width:40%;float:left;height: 99%">
+	           <table id ="ztdataTable"></table>
+	       </div>
+	       <div id ="iframeid" style="width:59%;float:left;height: 99%">
+	   		<iframe id="iframe" scrolling="auto" src="" width="100%" height="99%" style="border: 0px"></iframe>
+	       </div>
+	   </div>
+	   
+</div>

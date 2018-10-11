@@ -1,0 +1,3 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/sqbl/js/applyRecordInfo_list.js"></script>
+<table id="datalist"></table>

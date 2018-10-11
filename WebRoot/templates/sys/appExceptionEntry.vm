@@ -1,0 +1,84 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/common/component/doubleDatagridSelect.js" ></script>
+<title>自定义异常管理</title>
+<style type="text/css">
+	.cs-west{
+		width: 50%;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+	}
+</style>
+</head>
+<body id="layout" class="easyui-layout">
+	<div title="自定义异常列表" region="center" split="false">
+		<!-- 菜单工具栏 -->
+		<div id="toolbar_appexception" class="toolbar_group">
+			<div>
+				<a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+				<span class='xian' ></span>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="addAppException()">添加</a>
+				<span class='xian' ></span>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="delTable()">删除</a>
+			</div>
+			<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" >
+				&nbsp;表名：<input id="crit_tablecode" class="easyui-textbox"  style="width:120px;" />
+				中文名称：<input id="crit_tablename" class="easyui-textbox" style="width:120px;" />
+				表类型：<input id="crit_tabletype" class="easyui-combobox" editable="false" style="width:120px;" />
+				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onClick="queryTables()" >查询</a>
+			</div>
+		</div>
+		<!-- 数据列表 -->
+		<table id="datagrid_appexception"></table>
+	</div>
+	<div region="east" title='自定义异常信息' border="false" split="false" style='width:400px' collapsible="false">
+		<div class='datagrid-toolbar' >
+			<a href="#"  id='btn_save' class="easyui-linkbutton" iconCls="icon-save" plain="true" onClick="saveTable()">保存</a>
+			<span class='xian' ></span>
+			<a href="#" id='btn_cancel' class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="cancelEdit()">取消</a>
+		</div>
+		<!-- 表定义的基本属性表单 -->
+		<form id="appexForm" method="post">
+			<table class="list" style='width:100%'>
+				<tr>
+					<th>自定义异常代码：</th>
+					<td>
+						<input id="excode" class="easyui-textbox" required="true" name="excode"  onchange="formchanged()"
+							missingMessage="请输入异常代码"
+							style='width:170px;border-width:1px;line-height:18px;'/>
+					</td>
+				</tr>
+				<tr>
+					<th>自定义异常信息：</th>
+					<td>
+						<input id="exmsg" class="easyui-textbox" required="true" name="exmsg" onchange="formchanged()"
+							missingMessage="请输入异常信息" tipPosition="right"
+							style='width:170px;border-width:1px;line-height:18px;'/>
+					</td>
+				</tr>
+				<tr>
+					<th>自定义异常类型：</th>
+					<td>
+						<input id='extype' name='extype' class="easyui-combobox" missingMessage="请选择异常类型" required="true" editable="false" style='width:170px;'  />
+					</td>
+				</tr>
+								
+				<tr>
+					<th>备注：</th>
+					<td>
+						<input id="remark" class="easyui-textbox" name="remark" multiline="true" data-options="validType:{length:[0,100]}" prompt='最多可输入100个汉字' style='width:170px; height:100px;'  
+							onchange="formchanged()" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,66 @@
+<form id="sendForm" method="post">
+    <input type="hidden" id="noticeid" name="noticeid" />
+    <input type="hidden" id="id" name="id" />
+    <table class="list">
+        <tr>
+            <th>案件名称：</th>
+            <td nowrap="nowrap">
+                <input id="intro" name="intro" class="easyui-textbox"
+                 style="width:250px" readonly="readonly"/>
+            </td>
+            <th>通知书类型：</th>
+            <td>
+                <input id="doctypename" name="doctypename" class="easyui-textbox"
+                 style="width:250px" readonly="readonly" />
+            </td>
+        </tr> 
+        <tr>
+            <th>通知书名称：</th>
+            <td nowrap="nowrap">
+                <input id="noticename" name="noticename" value="$!{info.noticename}"
+                 class="easyui-textbox" style="width:250px" data-options="validType:{length:[0,30]}"
+                 missingMessage="请输入通知书名称" required="true" />
+                <font color='red'>*</font>
+            </td>
+            <th>受送达人：</th>
+            <td>
+                <input id="orgperson" name="orgperson" value="$!{info.orgperson}" class="easyui-textbox"
+                 style="width:250px" missingMessage="请输入受送达人"
+                  data-options="validType:{length:[0,30]}" required="true" />
+                <font color='red'>*</font>
+            </td>
+        </tr>
+        <tr>
+            <th>送达人：</th>
+            <td nowrap="nowrap">
+                <input id="sender" name="sender"  class="easyui-textbox" missingMessage="请输入送达人" 
+                    style="width:250px" value="$!{info.sender}" 
+                    data-options="validType:{length:[0,30]}" required="true"/>
+                <font color='red'>*</font>
+            </td>
+            <th>送达地点：</th>
+            <td>
+                <input id="place" name="place" class="easyui-textbox" missingMessage="请输入送达地点" 
+                    style="width:250px" value="$!{info.place}"
+                    data-options="validType:{length:[0,70]}" required="true" />
+                <font color='red'>*</font>
+            </td>
+        </tr>
+        <tr>
+            <th>送达方式：</th>
+            <td nowrap="nowrap">
+                <input id="deliverytype" name="deliverytype"  class="easyui-textbox"
+                    required="true" missingMessage="请选择送达方式" 
+                    style="width:250px" value="$!{info.deliverytype}" /><font color='red'>*</font>
+            </td>
+            <th>递送单号：</th>
+            <td>
+                <input id="couriernum" name="couriernum" class="easyui-textbox"
+                  required="true" missingMessage="请输入递送单号" validType="couriernum"
+                  data-options="validType:{length:[0,100]}" style="width:250px" value="$!{info.couriernum}" />
+                <font color='red'>*</font>
+                <a href="http://www.ems.com.cn" target="_blank" class="easyui-linkbutton" iconCls="icon-search" plain="true" >查询物流信息</a>
+            </td> 
+        </tr>
+    </table>
+</form>

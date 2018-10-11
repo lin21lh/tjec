@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/component/eCharts/dist/echarts.js"></script>
+<script type="text/javascript" src="$contextpath/templates/demo/eCharts/lineChart.js"></script>
+<title>eCharts折线图示例</title>
+</head>
+<body>
+	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px;"></div>
+</body>
+</html>

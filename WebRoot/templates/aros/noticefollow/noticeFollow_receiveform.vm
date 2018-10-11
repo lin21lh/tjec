@@ -1,0 +1,41 @@
+<form id="receiveForm" method="post">
+    <input type="hidden" id="id" name="id" />
+    <table class="list">
+        <tr>
+            <th>案件名称：</th>
+            <td nowrap="nowrap">
+                <input id="intro" name="intro" class="easyui-textbox"
+                 style="width:250px" readonly="readonly"/>
+            </td>
+            <th>通知书类型：</th>
+            <td>
+                <input id="doctypename" name="doctypename" class="easyui-textbox"
+                 style="width:250px" readonly="readonly" />
+            </td>
+        </tr> 
+        <tr>
+            <th>接收人：</th>
+            <td nowrap="nowrap">
+                <input id="receiver" name="receiver" class="easyui-textbox"
+                 required="true" missingMessage="请输入接收人" 
+                 data-options="validType:{length:[0,30]}" style="width:250px" value="$!{info.receiver}" />
+                <font color='red'>*</font>
+            </td>
+            <th>送达日期：</th>
+            <td>
+                <input id="deliverydate" name="deliverydate" class="easyui-datebox"
+                 missingMessage="请选择送达时间" required="true" editable="false"
+                 style="width:250px" value="$!{info.deliverydate}" />
+                <font color='red'>*</font>
+            </td>
+        </tr> 
+        <tr>
+            <th>说明：</th>
+            <td colspan="3">
+                <input id="remark" name="remark"  class="easyui-textbox" missingMessage="请输入说明" 
+                    style="width:645px; height:100px"
+                    data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" multiline="true" value="$!{info.remark}" />
+            </td>
+        </tr> 
+    </table>
+</form>

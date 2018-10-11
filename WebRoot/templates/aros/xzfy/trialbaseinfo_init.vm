@@ -1,0 +1,99 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/trialbaseinfo_init.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+
+</style>
+	<input type="hidden" id="caseidinput" value="$!caseid"/>
+<form id="caseIdForm">
+	<input type="hidden" name="caseid" id="caseidForm" value="$!caseid"/>
+	<input type="hidden" name="reviewtype" id="reviewtypeForm" value="$!reviewtype"/>
+</form>
+<div id="trialDiv" >
+<div style="float:left;width:100%;">
+  <div style="width:50%;float:left;">
+		<table id ='trialTable'></table>
+  </div>
+  <div style="width:1%; float:left;text-align:center">
+		&nbsp;
+  </div>
+  <div style="width:49%;float:left;border:none;height: 100%;">
+		<div id="toolbar_menu"  class="linkbutton_group  datagrid-toolbar">
+			<a id="linkbutton_save" href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true">保存</a>
+			<span class='xian' ></span>
+			<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  iconCls="icon-undo" plain="true">取消</a>
+		</div>
+		<div id="trial_win" class="easyui-panel">
+			<form id="trialForm" method="post" style="margin: 0px">
+				<input type="hidden" name="trialtype" id="trialtype" value="$!reviewtype"/>
+				<input type="hidden" name="trialid" id="trialid"/>
+				<input type="hidden" name="caseid" id="caseid"/>
+				<input type="hidden" name="fjkeyid" id="fjkeyid"/>
+				<table class="list" >
+					<tr>
+						<th>时间：</th>
+						<td >
+							<input id="trialtime" name="trialtime" class="easyui-datebox" editable="false" 
+								 missingMessage="请输入庭审时间" style='width: 95%' required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >地点：</th>
+						<td>
+							<input id="trialplace" name="trialplace" class="easyui-textbox" data-options="validType:{length:[0,60]}"  style="width: 95%" 
+								missingMessage="请输入庭审地点" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th>记录人：</th>
+						<td >
+							<input id="recorder" name="recorder" class="easyui-textbox" data-options="validType:{length:[0,60]}" style="width: 95%"
+								missingMessage="请输入记录人员" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >参加人：</th>
+						<td>
+							<input id="joiner" missingMessage="请输入参加人" name="joiner"  required="true" class="easyui-textbox" data-options="validType:{length:[0,25]}" style="width:95%" />
+						</td>
+					</tr>
+					<tr >
+						<th>事项：</th>
+						<td>
+							<input id="matters" missingMessage="请输入事项" name="matters"  required="true" multiline="true"  class="easyui-textbox" style="width:95%;height:120px;" />
+						</td>
+					</tr>
+					<tr>
+						<th>内容：</th>
+						<td >
+							<input id="contents" missingMessage="请输入内容" name="contents"  required="true" multiline="true" class="easyui-textbox" data-options="validType:{length:[0,160]}" style="width:95%;height:120px;"/>
+						</td>
+						
+					</tr>
+					<tr>
+						 <th>附件：</th>
+			            <td colspan="3" valign="top" style="height:40px" id="filetd">
+			                <img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFileDiv()"/>
+			            </td>
+					</tr>
+				</table>
+			</form>
+		</div>
+  </div>
+</div>
+</div>
+<div id="uploadifydiv"></div>

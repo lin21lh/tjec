@@ -1,0 +1,211 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/ysaj/js/admlitbaseinforeq_form.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#stage').combobox({
+			onSelect:function(param){
+				var stage = $('#stage').combobox('getValue');
+				if (stage == '01') {	//一审
+					$("#relaacaseidTr").hide();
+				} else {
+					$("#relaacaseidTr").show();
+				}
+			}
+		});
+		
+		$('#partytype').combobox({
+			onSelect:function(param){
+				var partytype = $('#partytype').combobox('getValue');
+				if (partytype == '01') {	//单独被告
+					$("#defendantTh").hide();
+					$("#defendantTd").hide();
+				} else {
+					$("#defendantTh").show();
+					$("#defendantTd").show();
+				}
+			}
+		});
+		
+		//关联业务ID
+		var relaacaseid = $("#relaacaseno").val();
+		if (relaacaseid == '' || relaacaseid == "null"){
+			$("#relaacaseidTr").hide();
+		} else {
+			$("#relaacaseidTr").show();
+		}
+		
+		//第一被告
+		var defendant = $("#defendantno").val();
+		if (defendant == '' || defendant == "null") {	
+			$("#defendantTh").hide();
+			$("#defendantTd").hide();
+		} else {
+			$("#defendantTh").show();
+			$("#defendantTd").show();
+		}
+        //判断收案日期
+        $('#rectime').datebox({
+                    onSelect: function(date){
+                        var myDate = new Date();
+                        var currentDate = myDate.toLocaleDateString();     //获取当前日期
+                        var curDate = currentDate.replace("/","").replace("/",""); //替换掉日期中间的"/"
+                        var rectime=$('#rectime').datebox('getValue');   //获取输入框的日期
+                        var recDate = rectime.replace("-","").replace("-",""); //替换掉日期中间的"-"
+                        if(recDate > curDate ){
+                            easyui_warn("收案时间大于当前时间 !");
+                            $('#rectime').datebox('setValue', '');    //清空日期文本框值
+                            return false;
+                        }
+                    }
+
+                });
+        
+        
+	});
+</script>
+<form id="ysajReqForm" method="post">
+	<div>
+    	<table class="list">
+    		<!--隐藏属性start-->
+    			<input type="hidden" id="acaseid" name="acaseid"/><!--案件ID-->
+    			<input type="hidden" id="fjkeyid" name="fjkeyid" value="${fjkeyid}"/><!--附件keyid-->
+				<input type="hidden" id="relaacaseno" name="relaacaseno" value="$!{relaacaseid}"/><!--关联案件ID-->
+				<input type="hidden" id="defendantno" name="defendantno" value="$!{defendant}"/>
+    		<!--隐藏属性end-->
+			
+			<tr>
+    			<th>审理阶段：</th>
+    			<td colspan="3">
+    				<input id="stage" class="easyui-combobox" name="stage"  
+						style="width:250px" required="true" missingMessage="请选择审理阶段"/>
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+			<tr id="relaacaseidTr" style="display:none;">
+				<th>关联案件号：</th>
+    			<td colspan="3">
+    				<input id="relaacaseid" class="easyui-textbox" name="relaacaseid" 
+						data-options="validType:{length:[0, 50]}" 
+						style="width:250px" readonly="true"/>
+					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" 
+						style="width:100px;" onclick="selectCase(parent.$('#relaacaseidDiv'))">选择</a>
+    			</td>
+			</tr>
+			<tr>
+    			<th>本机关案号：</th>
+    			<td>
+    				<input id="lcasecode" class="easyui-textbox" name="lcasecode" data-options="validType:{length:[0, 30]}" 
+						style="width:250px" required="true" missingMessage="请输入本机关案号"/>
+					<font color=red>*</font>
+    			</td>
+    			<th>司法机关案号：</th>
+    			<td>
+    				<input id="rcasecode" class="easyui-textbox" name="rcasecode" data-options="validType:{length:[0, 30]}" 
+						style="width:250px" required="true" missingMessage="请输入复议机关案号"/>
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+			<tr>
+    			<th>收案方式：</th>
+    			<td colspan="3">
+					<input id="rectype" class="easyui-combobox" name="rectype"  
+						style="width:250px" required="true" missingMessage="请选择收案方式"/>
+					<font color=red>*</font>
+    			</td>
+            </tr>
+			<tr>
+				<th>收案人：</th>
+    			<td>
+    				<input id="receiver" class="easyui-textbox" name="receiver" data-options="validType:{length:[0, 30]}" 
+						style="width:250px" required="true" missingMessage="请输入收案人"/>
+					<font color=red>*</font>
+    			</td>
+    			<th>收案时间：</th>
+    			<td>
+    				<input id="rectime" class="easyui-datebox" name="rectime" required="true" missingMessage="请选择收案时间"
+						style="width:250px" editable="false" />
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+			<tr>
+    			<th>受案法院：</th>
+    			<td colspan="3">
+    				<input id="rdeptname" class="easyui-textbox" name="rdeptname" data-options="validType:{length:[0, 30]}" 
+						style="width:250px" required="true" missingMessage="请输入受案法院"/>
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+			<tr>
+    			<th>案由：</th>
+    			<td colspan="3">
+    				<input id="casereason" class="easyui-textbox" name="casereason" multiline="true"  
+						required="true" missingMessage="请输入案由"
+    					data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}" style="width:700px;height:65px;" />
+					<font color=red>*</font>
+    			</td>
+            </tr>
+			<tr>
+				<th>当事人类型：</th>
+    			<td>
+    				<input id="partytype" class="easyui-combobox" name="partytype"  
+						style="width:250px" required="true" missingMessage="请选择当事人类型"/>
+					<font color=red>*</font>
+    			</td>
+    			<th>原告（上诉人）：</th>
+    			<td>
+    				<input id="plaintiff" class="easyui-textbox" name="plaintiff" data-options="validType:{length:[0, 65]}" 
+						style="width:250px" required="true" missingMessage="请选输入原告（上诉人）"/>
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+			<tr>
+				<th>第三人（上诉人）：</th>
+    			<td>
+    				<input id="thirdname" class="easyui-textbox" name="thirdname" data-options="validType:{length:[0, 65]}" 
+						style="width:250px" />
+    			</td>
+    			<th id="defendantTh">第一被告（上诉人）：</th>
+    			<td id="defendantTd">
+    				<input id="defendant" class="easyui-textbox" name="defendant" data-options="validType:{length:[0, 65]}" 
+						style="width:250px" />
+    			</td>
+    		</tr>
+			<tr>
+				<th>开庭地点：</th>
+    			<td>
+    				<input id="hearplace" class="easyui-textbox" name="hearplace" data-options="validType:{length:[0, 65]}" 
+						style="width:250px" required="true" missingMessage="请输入开庭地点"/>
+					<font color=red>*</font>
+    			</td>
+    			<th>开庭时间：</th>
+    			<td>
+    				<input id="heartime" class="easyui-datebox" name="heartime" required="true" missingMessage="请选择开庭时间"
+						style="width:250px" editable="false" />
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+    		<tr>
+                <th>相关附件：</th>
+    			<td colspan="3" valign='top' style="height:40px" id="filetd">
+					<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" 
+						onClick="clickUploadDiv('REQ')"/>
+                </td>
+            </tr>
+        </table>
+	</div>
+</form>
+	
+<!--上传附件层-->
+<div id='uploadifydiv'></div>
+	
+<!--案件信息层-->
+<div id='relaacaseidDiv'></div>

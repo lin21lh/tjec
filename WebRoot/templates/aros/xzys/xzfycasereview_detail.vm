@@ -1,0 +1,30 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+  //案件ID
+    var id = "$id";
+    //节点ID
+    var nodeid = "$nodeid";
+</script>
+<script type="text/javascript" src="$contextpath/templates/aros/xzys/js/xzfycasereview_detail.js"></script>
+	<div style="width:100%;height:auto;">
+        <form id="xzysAjsc">
+        	<table class="list">
+				<tr>
+        			<th>案件事实：</th>
+        			 <td colspan="3"><span>$!{respreviewinfo.caseact}</span></td>
+                </tr>
+    			<tr>
+        			<th>争议焦点：</th>
+        			 <td colspan="3"><span>$!{respreviewinfo.casefocus}</span></td>
+                </tr>
+                <tr>
+                    <th>证件证据及法律依据：</th>
+                     <td colspan="3"><span>$!{respreviewinfo.remark}</span></td>
+                </tr>
+            </table>
+          </form>
+	</div>
+    <!-- 附件管理 -->
+    <div style="width:100%;height:70%;">
+        <table id="fileDataGrid"></table>
+    </div>

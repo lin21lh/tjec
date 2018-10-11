@@ -1,0 +1,90 @@
+<!DOCTYPE>
+<html>
+	<head>
+		#parse("common/common-v14.vm")
+		#parse("common/extensions-v14.vm")
+		<title>质量评查</title>
+		<script type="text/javascript" src="$contextpath/templates/aros/zlpc/score_init.js"></script>
+		<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+		<script type="text/javascript">
+			//菜单ID
+			var menuid = "$menuid";
+        </script>
+    </head>
+	<body id="layout" class="easyui-layout">
+		<div id="caseDiv" class="easyui-panel" title="复议案件列表" style="width:100%;height:75%;">
+            <div data-options="region:'center',split:false">
+    			<div id="toolbar_center" class="toolbar_group">
+    				<!-- 隐藏域 -->
+    				<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+    				
+    				<div class="toolbar_buttons" id="fom">
+    					<a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+    					<span class='xian' ></span>
+    					<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="xzfyViewQuery()">查询</a>
+						<span class='xian'></span>
+    					<a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="scoreAddForm()">新增</a>
+        				<span class='xian' ></span>
+            			<a href="#" id="editBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="scoreUpdateForm()">修改</a>
+        				<span class='xian' ></span>
+            			<a href="#" id="delBtn" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="scoreDelete()">删除</a>
+        				<span class='xian' ></span>
+            			<a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-detail" plain="true" onClick="scoreDetail()">详情</a>
+    				</div>
+    				<div id="xzfyViewPanel" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%; border:0px;">
+    					<table class="list" style='border:1px' onclick='document.onkeypress = function (key) {if (key.keyCode == 13) {xzfyViewQuery(); } }'>
+    						<tr>
+    							<td style="font-size:12px; border:0px; text-align:right;">案件编号：</td>
+    							<td style="font-size:12px; border:0px; text-align:left;">
+    								<input id="csaecode" class="easyui-textbox" style='width:200px'/>
+    							</td>
+        						<td style="border: 0px; text-align:right" align="right">年度：</td>
+                				<td style="font-size:12px;border: 0px;text-align:left">
+        							<input id="yearstart" class="easyui-datebox" style='width:94px'/>-
+        							<input id="yearend" class="easyui-datebox" style='width:94px'/>
+        						</td>
+								<td style="border: 0px; text-align:right" align="right">申请人：</td>
+                				<td style="font-size:12px;border: 0px;text-align:left">
+        							<input id="appname" class="easyui-textbox" style='width:200px'/>
+        						</td>
+    						</tr>
+    						<tr>
+    							<td style="font-size:12px; border:0px; text-align:right;">被申请人：</td>
+    							<td style="font-size:12px; border:0px; text-align:left;">
+    								<input id="defname" class="easyui-textbox" style='width:200px'/>
+    							</td>
+    							<td style="font-size:12px; border:0px; text-align:right;">是否重大案件：</td>
+    							<td style="font-size:12px; border:0px; text-align:left;">
+    								<input id="isbigcase" class="easyui-combobox" style='width:200px' panelheight = "auto"/>
+    							</td>
+								<td style="font-size:12px; border:0px; text-align:right">事项类型：</td>
+                				<td style="font-size:12px; border: 0px; text-align:left">
+        							<input id="casetype" class="easyui-combobox" style="width:200px" panelheight = "auto" />
+        						</td>
+    						</tr>
+							<tr>
+        						<td style="border: 0px; text-align:right" align="right">案件状态：</td>
+                				<td style="font-size:12px;border: 0px;text-align:left">
+        							<input id="casestatus" class="easyui-combobox" style='width:200px' panelheight = "auto"/>
+        						</td>
+        						<td style="font-size:12px; border:0px; text-align:right;">行政管理类型：</td>
+    							<td style="font-size:12px; border:0px; text-align:left;">
+    								<input id="admtype" class="easyui-combobox" style="width:200px;"  panelheight = "200px" />
+    							</td>
+								<td style="font-size:12px; border:0px; text-align:right;">收案日期：</td>
+    							<td style="font-size:12px; border:0px; text-align:left;">
+    								<input id="appdatestart" class="easyui-datebox" style='width:94px'/>-
+    								<input id="appdateend" class="easyui-datebox" style='width:94px'/>
+    							</td>
+    						</tr>
+                       	</table>
+    				</div>
+    			</div>
+				<div style="height:100%;width:100%;">
+					<table id="xzfyViewDataGrid"></table>
+				</div>
+    		</div>
+		</div>
+		#parse("aros/xzfy/xzfydetail.vm")
+    </body>
+</html>

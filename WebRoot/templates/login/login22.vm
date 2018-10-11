@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>PPP项目管理系统-登录</title>
+<!-- <link href="images/sysicon.png" rel="shortcut icon"/> -->
+<link href="css/login.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="component/jquery-easyui-1.4/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="templates/login/login.js"></script>
+<script>
+	#*是否启用验证码*#
+	var verificationcodeEnabled = "$!{viewMap.verificationcodeEnabled}";
+    var datasources = [
+    #if($!{viewMap.isEnabledMultiDS} == "true")
+    	#foreach( $finaceYear in $!{viewMap.finaceYear})
+    		{name:"$finaceYear.displayDSName",value:"$finaceYear.all"}
+    		#if($velocityHasNext)
+    			,
+    		#end
+    	#end
+    #end
+    ];
+	
+	function init(){
+	if ($!{viewMap.isEnabledMultiDS} == true) {
+		var olength=datasources.length;
+		if(olength>0){
+			var yearSelect=document.getElementById("loginFinaceYear");
+			yearSelect.options.length=olength;
+			for (var i = 0; i < olength; i++) {
+				yearSelect.options[i].value =datasources[i].value;
+				yearSelect.options[i].text =datasources[i].name;
+			}
+		}
+	} else {
+		finaceYearDiv.style.display = "none";
+	}
+}
+</script>
+</head>
+
+<body onload="init()">
+<form name="loginForm" action="j_spring_security_login.do" method="post">
+    <div class="login">
+      <h1  class="title"></h1>
+      <div class="dlbg">
+        <div class="table_div">
+          <table id="stdlogin" class="login_table"  style="display:">
+            <tr>
+              <td style="width:100px;white-space:nowrap; ">用户名：</td>
+              <td colspan="2"><input name="username" type="text"  value="" size="24"  class="login_input" style="width:150px"/></td>
+            </tr>
+            <tr>
+              <td>密&nbsp;&nbsp;码：</td>
+              <td colspan="2"><input name="password" type="password"  value="" size="24" class="login_input" style="width:150px"/></td>
+            </tr>
+			<!--
+            <tr>
+              <td >验证码：</td>
+              <td >
+              			<input name="verifyCode" type="text"  class="login_input yzsize" />
+		              <span class="yz">
+		              	<a><img id="verifyCodeImg" name="verifyCodeImg"  
+		              		src="exclude/verfiyCode.do" style="cursor:hand" align="top" onClick="javascript:changeVerifyCode()"/>
+		              	</a>
+		              	</span>
+              </td>
+            </tr>
+			-->
+             <tr>
+              <td class="loginbtn_td"><a id='download'  href='javascript:pluginsDownload();' class="fzword">资料下载</a></td>
+              <td  style='text-align:center'><a href="javascript:submitButton();"  class="dl"></a></td>
+			  <td><a target="_blank"  href="regist.do"  class="zc"></a></td>
+            </tr>
+            <tr>
+	            <td colspan='3'>
+	            	<!--提示信息-->
+	        		<div id="msg_div" >$!{viewMap.errorMsg}</div>
+	            </td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="fz_dl">
+          <table >
+           
+          </table>
+        </div>
+		<div id="finaceYearDiv">
+			<select name="finaceYear" id="loginFinaceYear" />
+		</div>
+        
+      </div>
+    </div>
+    <div class="bt"></div>
+</form>
+
+<!--
+<script>
+    var message="$!{viewMap.errorMsg}";
+	if(message!='')alert(message);
+</script>
+-->
+</body>
+</html>

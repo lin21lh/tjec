@@ -1,0 +1,33 @@
+<style type='text/css'>
+    input {
+        border: 0px solid;
+    }
+    textarea {
+     width: 100%;
+     height:60px;
+	 border: 0px solid;
+    }
+    textarea:focus{
+        border: 0px solid;
+    }
+</style>
+<form id="ruleInfoForm" method="post">
+    <table class="list">
+        <tr>
+            <th>消息类型：</th>
+            <td>
+                <input id="msgtype" name="msgtype" readonly="true" />
+            </td>
+            <th>生成时间：</th>
+            <td>
+                <input id="gnetime" name="gnetime" readonly="true" />
+            </td>
+        </tr>
+        <tr>
+            <th>内容</th>
+            <td colspan="3">
+                <textarea id="msgcontent" name="msgcontent" readonly="true" />
+            </td>
+        </tr>
+    </table>
+</form>

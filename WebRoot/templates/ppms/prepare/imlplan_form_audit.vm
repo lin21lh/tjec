@@ -1,0 +1,281 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+	
+	fieldset {
+    	padding:10px;
+    	margin:5px;
+    	color:#333; 
+    	border:#06c dotted 1px;
+	}
+} 
+</style>
+<form id="imlplan_form" method="post">
+    <input id="projectid" type="hidden" name='projectid'/>
+    <input id="solutionid" type="hidden" name='solutionid'/>
+    <input id="createuser" type="hidden" name='createuser'/>
+    <input id="createtime" type="hidden" name='createtime'/>
+    <input id="updateuser" type="hidden" name='updateuser'/>
+    <input id="updatetime" type="hidden" name='updatetime'/>
+    <input id="wfid" type="hidden" name='wfid'/>
+    <input id="status" type="hidden" name='status'/>
+    <input id="datatype" type="hidden" name='datatype'/>
+    <input id="orgcode" type="hidden" name='orgcode'/>
+	<div id="tabList" class="easyui-tabs" >  
+	<input type="hidden" id="vomid" name="vomid" />
+	<div title="实施方案">
+    <table class="list">
+		<tr>
+            <th>项目名称</th>
+            <td>
+                <input id="proName" class="easyui-textbox" required="true" missingMessage="请选择项目名称" name="proName" style='width:250px' readonly='true'/>
+            </td>
+            <th>项目类型</th>
+            <td >
+                <input id="proTypeName" class="easyui-textbox" required="true" missingMessage="请输入项目类型" name="proTypeName" style='width:250px' readonly='true' />
+            </td>
+        </tr>
+        <tr>
+            <th>风险分配框架</th>
+            <td colspan="3">
+                <input id="riskAllocation" class="easyui-textbox" required="true" multiline="true" missingMessage="请输入风险分配框架" name="riskAllocation" style='width:697px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" readonly='true'/>
+            </td>
+		</tr>
+		<tr>	
+            <th>项目融资结构</th>
+            <td colspan="3">
+                <input id="projectFinance" class="easyui-textbox" required="true" multiline="true" missingMessage="请输入项目融资结构" name="projectFinance" style='width:697px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"  readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>回报机制</th>
+            <td colspan="3">
+                <input id="repayMechanism" class="easyui-textbox" required="true"  multiline="true" missingMessage="请输入回报机制" name="repayMechanism" style='width:697px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" readonly='true'/>
+            </td>
+		</tr>
+		<tr>
+            <th>配套安排</th>
+            <td colspan="3">
+                <input id="suitedPlan" class="easyui-textbox" required="true" multiline="true" missingMessage="请输入配套安排" name="suitedPlan" style='width:697px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>项目合同体系</th>
+            <td colspan="3">
+                <input id="contractSystem" class="easyui-textbox"  required="true" multiline="true" missingMessage="请选择项目合同体系"   name="contractSystem" style='width:697px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" readonly='true'/>
+            </td>
+        </tr>
+		<tr>
+            <th>项目合同核心内容</th>
+            <td  colspan="3">
+                <input id="contractCoreContent" class="easyui-textbox" editable="true" multiline="true"  required="true" missingMessage="请输入项目合同核心内容" name="contractCoreContent" style='width:697px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" readonly='true'/>
+            </td>
+        </tr>
+		<tr>
+            <th>监管架构</th>
+            <td  colspan="3">
+                <input id="supervisoryRegime" class="easyui-textbox" editable="true" multiline="true"  required="true" missingMessage="请输入监管架构" name="supervisoryRegime" style='width:697px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" readonly='true'/>
+            </td>
+        </tr>
+		<tr>
+            <th>实施方案附件</th>
+            <td  colspan="3" id='imlplanfile' style='height:31px'>
+                <input id="implementationPlanPath" type="hidden"  name="implementationPlanPath" />
+			</td>
+        </tr>
+		 <tr>
+            <th>拟预审公告发布时间</th>
+            <td>
+                <input id="advancePublishTime" class="easyui-textbox" required="true"  missingMessage="请输入预审公告发布时间" name="advancePublishTime" style='width:250px' readonly='true'/>
+            </td>
+            <th>拟采购公告发布时间</th>
+            <td>
+                <input id="purchaseNoticeTime" class="easyui-textbox" required="true" missingMessage="请输入采购公告发布时间" name="purchaseNoticeTime" style='width:250px' readonly='true'/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div title="物有所值定性分析验证" >
+		<table class="list">
+				<tr>
+        			<th >定性分析描述</th>
+        			<td colspan='3'>
+        				<input id="qualConclusion" class="easyui-textbox" editable="true" multiline="true"  required="true" missingMessage="定性评价描述" name="qualConclusion" style='width:632px;height:40px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+					</td>
+                </tr>
+				<tr>
+        			<th >定性分析结果</th>
+        			<td >
+        				<input id="qualResult"   class="easyui-textbox"  name="qualResult" style='width:240px'  required="true" missingMessage="请选择定性分析结果" />
+					</td>
+					<th >定性评估报告附件</th>
+        			<td id='dxfx' style='width:260px'>
+						 <input id="qualPath" type="hidden"  name="qualPath" />
+						 <img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('dxfx','qualPath',20)"/>
+        			</td>
+                </tr>
+				<tr>
+					<th >定性分析验证完成时间</th>
+        			<td colspan='3'>
+        				<input id="qualVerifytime" class="easyui-datebox" name="qualVerifytime" editable='false' style='width:240px' required="true" missingMessage="请输入验证完成时间"/>
+					</td>
+				</tr>
+        </table>
+		<table id = 'qualExpert'>
+			<input id="qualExpertData" type="hidden" name='qualExpertData'/>
+        </table>
+        <table id = 'qualUnit'>
+			<input id="qualUnitData" type="hidden" name='qualUnitData'/>
+		</table>
+</div>
+<div title="物有所值定量分析验证" > 
+	<fieldset> 
+		<legend>量值</legend> 
+		   	<table class="list" style='border-top:1px solid #99CCFF;border-left:1px solid #99CCFF;'>
+				<tr>
+        			<th >建设和运营维护净成本（万元）</th>
+        			<td >
+        				<input id="vomNetcost"   class="easyui-numberbox"  name="vomNetcost" style='width:240px'  data-options="min:0,precision:2,max:99999999999999.99" required="true" missingMessage="请输入建设和运营维护净成本" />
+					</td>
+					<th>竞争性中立调整值（万元）</th>
+        			<td >
+        				<input id="vomAdjust" class="easyui-numberbox"  name="vomAdjust" style='width:240px'  data-options="min:0,precision:2,max:99999999999999.99" required="true" missingMessage="请输入竞争性中立调整值" />
+        			</td>
+                </tr>
+				<tr>
+        			<th >项目全部风险成本（万元）</th>
+        			<td >
+        				<input id="vomRiskcost" class="easyui-numberbox" name="vomRiskcost" style='width:240px'  data-options="min:0,precision:2,max:99999999999999.99" required="true" missingMessage="请输入项目全部风险成本" />
+					</td>
+					<th>PSC值合计（万元）</th>
+        			<td >
+        				<input id="vomPsc" class="easyui-numberbox"  name="vomPsc" style='width:240px' readonly ='true'data-options="min:0,precision:2,max:99999999999999.99"   />
+        			</td>
+                </tr>
+				<tr>
+        			<th >PPP值（万元）</th>
+        			<td >
+        				<input id="vomPpp" class="easyui-numberbox" name="vomPpp" style='width:240px'  data-options="min:0,precision:2,max:99999999999999.99" required="true" missingMessage="请输入PPP值" />
+					</td>
+					<th>VFM值（万元）</th>
+        			<td >
+        				<input id="vomVfm" class="easyui-numberbox"  name="vomVfm" style='width:240px' readonly ='true'data-options="min:-99999999999999.99,precision:2,max:99999999999999.99"  />
+					</td>
+                </tr>
+            </table>
+            <span style='color:red'>
+			a.PSC值 = 建设和运营维护净成本（初始PSC值） + 竞争性中立调整值 + 项目全部风险成本<br>
+			b.VFM值 = PSC值 - PPP值
+			</span>
+			
+    </fieldset>
+				<table class="list" style='border-top:1px solid #99CCFF;border-left:1px solid #99CCFF;'>
+				<tr>
+        			<th >定量分析描述</th>
+        			<td colspan='3'>
+        				<input id="vomConclusion" class="easyui-textbox" editable="true" multiline="true"  required="true" missingMessage="定性评价描述" name="vomConclusion" style='width:632px;height:40px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+					</td>
+                </tr>
+				<tr>
+        			<th >定量分析结果</th>
+        			<td >
+        				<input id="vomResult" class="easyui-combobox" name="vomResult" style='width:240px' required="true" missingMessage="请选择物有所值验证结果"/>
+					</td>
+					<th>定量评估报告附件</th>
+        			<td id='dlfx' style='width:260px'>
+						 <input id="vomAttachment" type="hidden"  name="vomAttachment" />
+						 <img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('dlfx','vomAttachment',20)"/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >定量分析验证完成时间</th>
+        			<td colaspan='3'>
+        				<input id="vomVerifytime" class="easyui-datebox" name="vomVerifytime" editable='false' style='width:240px' required="true" missingMessage="请输入验证完成时间"/>
+					</td>
+                </tr>
+		   </table>
+		   	<!--第三方机构-->
+			 <table id="thirdOrganGrid"><input id="thirdOrganGridData" type="hidden" name='thirdOrganGridData'/></table> 
+		</div>   
+		<div title="财政承受能力验证" > 
+			 	<table class="list">
+				<tr>
+					<th >财政承受能力评价</th>
+					<td colspan="3">
+						<input id="fcEvaluate" class="easyui-textbox" name="fcEvaluate" multiline="true"style="width:685px;height:50px;"
+						 required="true" missingMessage="请输入财政承受能力评价" data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"  />
+					</td>
+				</tr>
+				<tr>
+        			<th >财政承受能力验证结果</th>
+        			<td>
+        				<input id="fcResult" class="easyui-textbox" name="fcResult" style='width:240px' required="true" missingMessage="请选择财政承受能力验证结果"/>
+					</td>
+					<th>评价报告</th>
+					<td id="czcsnlbg" style="height:31px;width:320px">
+        				<input id="fcAttachment" type="hidden" name="fcAttachment" />
+						<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('czcsnlbg','fcAttachment',20)"/>
+					</td>
+                </tr>
+				<tr>
+        			<th >验证完成时间</th>
+        			<td colspan="3">
+        				<input id="fcVerifytime" class="easyui-datebox" name="fcVerifytime" style='width:240px' editable ="false" required="true" missingMessage="请选择验证完成时间"/>
+					</td>
+                </tr>
+		   </table>
+		   	<!--财政预算情况-->
+			 <table id="financeGrid"><input id="financeGridData" type="hidden" name='financeGridData'/></table> 
+			 
+			 <table id="financeUnit"><input id="financeUnitData" type="hidden" name='financeUnitData'/></table> 
+		</div>
+		<div title="审批意见" > 
+			<table class="list">
+				<tr>
+        			<th>财政审批结果</th>
+        			<td colspan="3">
+        				<input id="czResult" class="easyui-textbox" name="czResult" style='width:240px' required="true" missingMessage="请选择财政审批结果"/>
+					</td>
+                </tr>
+				<tr>
+					<th>财政审批意见</th>
+					<td colspan="3">
+						<input id="czOpinion" class="easyui-textbox" name="czOpinion" multiline="true" style="width:685px;height:50px;"
+						 required="true" missingMessage="请输入财政审批意见" data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"  />
+					</td>
+				</tr>
+				<tr>
+        			<th>本级政府审核时间</th>
+        			<td colspan="3">
+        				<input id="zfVerifytime" class="easyui-datebox" name="zfVerifytime" style='width:240px' editable='false' required="true" missingMessage="请选择本级政府审核时间"/>
+					</td>
+				</tr>
+				<tr>
+					<th>政府审核公文</th>
+					<td id="zfshgw" style="height:31px" colspan="3">
+        				<input id="zfAttachment" type="hidden" name="zfAttachment" />
+						<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('zfshgw','zfAttachment',56)"/>
+					</td>
+                </tr>
+				<tr>
+					<th>政府审批意见</th>
+					<td colspan="3">
+						<input id="zfOpinion" class="easyui-textbox" name="zfOpinion" multiline="true" style="width:685px;height:50px;"
+						 required="true" missingMessage="请输入政府审批意见" data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"  />
+					</td>
+				</tr>
+				
+			  </table>	
+		</div>
+    </div>
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

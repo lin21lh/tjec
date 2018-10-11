@@ -1,0 +1,21 @@
+ #parse("common/extensions-v14.vm")
+<script type="text/javascript">
+    //案件ID
+    var caseid = "$caseid";
+    //节点ID
+    var nodeid = "$nodeid";
+</script>
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/casebaseinforeceive_detail.js"></script>
+<div>
+	<table class="list">
+	    <tr>
+	        <th>案件编号：</th>
+	        <td><span>$!{casebaseinfo.csaecode}</span></td>
+	    </tr>
+	</table>
+</div>
+
+<!-- 附件管理 -->
+<div style="width:100%;height:90%;">
+     <table id="fileDataGrid"></table>
+</div>

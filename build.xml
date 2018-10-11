@@ -1,0 +1,76 @@
+<project name="fam" default="compile" basedir=".">
+
+    <property file="build.properties"/>
+    <property file="${user.home}/build.properties"/>
+
+    <property name="build.home"    value="WebRoot"/>
+
+    <property name="compile.debug"       value="true"/>
+    <property name="compile.deprecation" value="true"/>
+    <property name="compile.optimize"    value="true"/>
+
+    <path id="compile.classpath">
+
+        <pathelement location="${build.home}/WEB-INF/classes"/>
+        <fileset dir="${build.home}/WEB-INF/lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean"
+        description="Clean compiled classes">
+
+        <delete>
+            <fileset dir="${build.home}/WEB-INF/classes" includes="**/*.class"/>
+        </delete>
+
+    </target>
+
+    <target name="compile" depends="prepare"
+        description="Compile Java sources">
+
+        <!-- Compile Java classes as necessary -->
+        <mkdir    dir="${build.home}/WEB-INF/classes"/>
+        <javac srcdir="src"
+            source="1.6"
+            destdir="${build.home}/WEB-INF/classes"
+            debug="${compile.debug}"
+            deprecation="${compile.deprecation}"
+            optimize="${compile.optimize}"
+            encoding="utf-8"
+        	fork="true"
+        	memoryMaximumSize="512m">
+            <classpath refid="compile.classpath"/>
+            <include name="com/**/*.java"/>
+        </javac>
+
+    </target>
+
+    <target name="prepare">
+
+        <mkdir   dir="${build.home}/WEB-INF/classes"/>
+        <copy  todir="${build.home}/WEB-INF/classes">
+            <fileset dir="src"> 
+                <include name="**/*.properties"/> 
+                <include name="**/*.xml"/>
+            	<include name="**/*.sql"/>
+            	<include name="**/*.xls"/>
+            </fileset> 
+        </copy>
+
+    </target>
+
+    <target name="java">
+        <exec dir="util" executable="python">
+            <arg line="strutstool.py -c jsp -d oracle -e gbk"/>
+        </exec>
+    </target>
+
+    <target name="jsp">
+        <exec dir="util" executable="python">
+            <arg line="strutstool.py -d oracle -e gbk"/>
+        </exec>
+    </target>
+
+</project>
+

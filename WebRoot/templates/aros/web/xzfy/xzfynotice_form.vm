@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html>
+    <head>
+        #parse("common/common-v14.vm")
+		#parse("common/extensions-v14.vm")
+        <title>复议申请须知</title>
+		<link href="$contextpath/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="$contextpath/css/yangshi.css" rel="stylesheet" type="text/css" />
+        <link href="$contextpath/images/sysicon.png" rel="shortcut icon"/>
+    </head>
+	
+    <body >
+    	 <div class="box">
+        	<div class="header">
+        		<div class="top"></div>
+        		<div class="edge"></div>
+        	</div>
+        	
+        	<div class="article">
+        		<div class="article_box">
+        			<div class="title">
+        				<div class="name">复议申请须知</div>
+        				<div class="return"><a href="/aros">返回首页</a></div>
+        			</div>
+        			
+        			<!--文本开始-->
+        			<div class="text">
+        				<p style="text-indent:2em">为开辟行政复议申请新的途径，提高行政复议工作效率，淄博市人民政府法制办公室在本网站特开辟该栏目，以方便公民、法人和其他组织申请行政复议。请申请人以严肃和负责任的态度，认真地填写《行政复议申请书》，并留下通讯地址和联系方式。我办将及时与申请人联系并核实有关情况，行政复议申请时间以我办核实的时间为准。
+        				</p>
+        				<p>一、申请人应当是与具体行政行为有利害关系的行政管理相对人，有民事权利能力和民事行为能力，并以自己名义提出申请。有权申请行政复议的公民死亡的，其近亲属可以申请行政复议。</p>
+        				<p>二、申请人应当自知道具体行政行为之日起60日内提出行政复议申请，法律规定的申请期限超过60日的除外。因不可抗力或者其他正当理由耽误法定申请期限的，申请期限自障碍消除之日起继续计算。</p>
+        				<p>三、属于申请行政复议范围。</p>
+        				<p>四、属于市人民政府管辖范围。对区人民政府或者市人民政府部门的具体行政行为不服的，可以向市人民政府申请行政复议。</p>
+        				<p>五、人民法院未立案受理。人民法院已立案的，市人民政府不再受理。</p>
+        				<p>六、有具体的复议请求、事实根据和理由。</p>
+        				<p>七、申请人在申请书中应留下通讯地址、方式，以便行政复议机关核实有关情况。</p>
+        				<p>八、收到申请时间以行政复议机关核实的时间为准。</p>
+        			</div>
+        			
+        			<!--文本结束-->
+        			<div class="button">
+        				<div class="ann">
+        					<a href="$contextpath/CbiWebController_addInit.do"><img src="$contextpath/images/xyb.jpg" width="90" height="35" /></a>
+        				</div>
+        			</div>
+        		</div>
+           </div>
+           
+           <div class="footer">
+               <p>版权所有：中财信科技（北京）有限公司</p>
+          </div>
+        </div>
+    </body>
+</html>

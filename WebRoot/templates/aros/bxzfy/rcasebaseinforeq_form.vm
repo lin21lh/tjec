@@ -1,0 +1,112 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/bxzfy/js/rcasebaseinforeq_form.js"></script>
+
+<script type="text/javascript">  //判断收案日期
+ $(function(){
+                $('#rectime').datebox({
+                    onSelect: function(date){
+                        var myDate = new Date();
+                        var currentDate = myDate.toLocaleDateString();     //获取当前日期
+                        var curDate = currentDate.replace("/","").replace("/",""); //替换掉日期中间的"/"
+                        var rectime=$('#rectime').datebox('getValue');   //获取输入框的日期
+                        var recDate = rectime.replace("-","").replace("-",""); //替换掉日期中间的"-"
+                        if(recDate > curDate ){
+                            easyui_warn("收案时间大于当前时间");
+                            $('#rectime').datebox('setValue', '');    //清空日期文本框值
+                            return false;
+                        }
+                    }
+
+                });
+
+            });
+</script>
+	
+<form id="bxzfyReqForm" method="post">
+	<div>
+    	<table class="list">
+    		<!--隐藏属性start-->
+    			<input type="hidden" id="rcaseid" name="rcaseid"/><!--案件ID-->
+    			<input type="hidden" id="fjkeyid" name="fjkeyid" value="${fjkeyid}"/><!--附件keyid-->
+    		<!--隐藏属性end-->
+			
+			<tr>
+    			<th>本机关案号：</th>
+    			<td>
+    				<input id="lcasecode" class="easyui-textbox" name="lcasecode" data-options="validType:{length:[0, 50]}" 
+						style="width:250px" required="true" missingMessage="请输入本机关案号"/>
+					<font color=red>*</font>
+    			</td>
+    			<th>复议机关案号：</th>
+    			<td>
+    				<input id="rcasecode" class="easyui-textbox" name="rcasecode" data-options="validType:{length:[0, 50]}" 
+						style="width:250px" required="true" missingMessage="请输入复议机关案号"/>
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+			<tr>
+    			<th>申请人：</th>
+    			<td>
+    				<input id="appname" class="easyui-textbox" name="appname" data-options="validType:{length:[0, 50]}" 
+						style="width:250px" required="true" missingMessage="请输入申请人"/>
+					<font color=red>*</font>
+    			</td>
+    			<th>第三人：</th>
+    			<td>
+    				<input id="thirdname" class="easyui-textbox" name="thirdname" data-options="validType:{length:[0, 50]}" 
+						style="width:250px" />
+    			</td>
+    		</tr>
+			<tr>
+    			<th>复议机关：</th>
+    			<td colspan="3">
+    				<input id="rdeptname" class="easyui-textbox" name="rdeptname" data-options="validType:{length:[0, 30]}" 
+						style="width:250px" required="true" missingMessage="请输入复议机关"/>
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+			<tr>
+				<th>收案人：</th>
+    			<td>
+    				<input id="receiver" class="easyui-textbox" name="receiver" data-options="validType:{length:[0, 30]}" 
+						style="width:250px" required="true" missingMessage="请输入收案人"/>
+					<font color=red>*</font>
+    			</td>
+    			<th>收案时间：</th>
+    			<td>
+    				<input id="rectime" class="easyui-datebox" name="rectime" required="true" missingMessage="请选择收案时间"
+						style="width:250px" editable="false" />
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>事实和理由：</th>
+    			<td colspan="3">
+    				<input id="casereason" class="easyui-textbox" name="casereason" multiline="true"  
+						required="true" missingMessage="请输入事实和理由"
+    					data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:690px;height:65px;" />
+					<font color=red>*</font>
+    			</td>
+            </tr>
+    		<tr>
+                <th>相关附件：</th>
+    			<td colspan="3" valign='top' style="height:40px" id="filetd">
+					<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" 
+						onClick="clickUploadDiv('BXZFYREQ')"/>
+                </td>
+            </tr>
+        </table>
+	</div>
+</form>
+	
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

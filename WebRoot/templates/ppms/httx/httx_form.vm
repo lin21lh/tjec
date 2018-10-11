@@ -1,0 +1,120 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="httxAddForm" method="post">
+	<table class="list">
+		<!--隐藏属性start
+			-->
+		<input type="hidden" id="httxid" name="httxid" />
+		
+		<!--隐藏属性end
+		-->
+		<tr>
+			<th >项目名称</th>
+			<td colspan="3">
+				<input id="xmmc" name="xmmc" class="easyui-textbox"  style='width:250px'  required="true" missingMessage="请选择项目"/>
+				<input id="projectid" name="projectid" type="hidden"/>
+			</td>
+		</tr>
+		<tr>
+			<th >合同名称</th>
+			<td >
+				<input id="htmc" name="htmc" class="easyui-textbox" data-options="validType:{length:[0,50]}" style='width:250px'  required="true" missingMessage="请输入合同名称"/>
+			</td>
+			<th >合同类别</th>
+			<td >
+				<input id="htlb" name="htlb" class="easyui-textbox"  style='width:250px'  required="true" missingMessage="请选择合同类别"/>
+			</td>
+        </tr>
+		<tr>
+			
+			<th >甲方（采购单位）</th>
+			<td >
+				<input id="jfmc" name="jfmc" class="easyui-textbox" data-options="validType:{length:[0,50]}" style='width:250px'  required="true" missingMessage="请输入甲方（采购单位）"/>
+			</td>
+			<th >甲方联系人</th>
+			<td >
+				<input id="jflxr" name="jflxr" class="easyui-textbox" data-options="validType:{length:[0,25]}" style='width:250px'  required="true" missingMessage="请输入甲方联系人"/>
+			</td>
+        </tr>
+		<tr>
+			<th >甲方联系人电话</th>
+			<td >
+				<input id="jflxrdh" name="jflxrdh" class="easyui-textbox" data-options="validType:{length:[0,25]}" style='width:250px'  required="true" missingMessage="请输入甲方联系人电话"/>
+			</td>
+			<th >甲方地址</th>
+			<td >
+				<input id="jfdz" name="jfdz" class="easyui-textbox" data-options="validType:{length:[0,50]}" style='width:250px'  required="true" missingMessage="请输入甲方地址"/>
+			</td>
+        </tr>
+		<tr>
+			<th >乙方（供货单位）</th>
+			<td >
+				<input id="yfmc" name="yfmc" class="easyui-textbox" data-options="validType:{length:[0,50]}" style='width:250px'  required="true" missingMessage="请输入乙方（供货单位）"/>
+			</td>
+			<th >乙方联系人</th>
+			<td >
+				<input id="yflxr" name="yflxr" class="easyui-textbox" data-options="validType:{length:[0,25]}" style='width:250px'  required="true" missingMessage="请输入乙方联系人"/>
+			</td>
+        </tr>
+		<tr>
+			<th >乙方联系人电话</th>
+			<td >
+				<input id="yflxrdh" name="yflxrdh" class="easyui-textbox" data-options="validType:{length:[0,25]}" style='width:250px'  required="true" missingMessage="请输入乙方联系人电话"/>
+			</td>
+			<th >乙方地址</th>
+			<td >
+				<input id="yfdz" name="yfdz" class="easyui-textbox" data-options="validType:{length:[0,50]}" style='width:250px'  required="true" missingMessage="请输入乙方地址"/>
+			</td>
+        </tr>
+		<tr>
+			<th >合同签订日期</th>
+			<td >
+				<input id="htqdrq" name="htqdrq" class="easyui-datebox" style='width:250px' editable="false" required="true" missingMessage="请选择合同签订日期"/>
+			</td>
+			<th >合同状态</th>
+			<td >
+				<input id="htzt" name="htzt" class="easyui-textbox"  style='width:250px' required="true" missingMessage="请选择合同状态"/>
+			</td>
+        </tr>
+		<tr>
+			<th >合同执行开始日期</th>
+			<td >
+				<input id="htzxksrq" name="htzxksrq" class="easyui-datebox"  style='width:250px' editable="false" required="true" missingMessage="请选择合同执行开始日期"/>
+			</td>
+			<th >合同执行结束日期</th>
+			<td >
+				<input id="htzxjsrq" name="htzxjsrq" class="easyui-datebox"  style='width:250px' editable="false" required="true" missingMessage="请选择合同执行结束日期"/>
+			</td>
+			
+        </tr>
+		<tr>
+			<th >合同金额（元）</th>
+			<td >
+				<input id="htje" name="htje" class="easyui-numberbox"  data-options="precision:2,max:99999999999999.99" style='width:250px'  required="true" missingMessage="请输入合同金额"/>
+			</td>
+			<th >合同附件</th>
+			<td id="htfjtd" >
+				<input id="htfj" name="htfj" type="hidden" />
+				<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('htfjtd','htfj',30)"/>
+			</td>
+        </tr>
+		<tr>
+			<th >合同内容</th>
+			<td colspan="3">
+				<input id="htnr" name="htnr" class="easyui-textbox" data-options="validType:{length:[0,500]}"
+				multiline="true" style='width:695px;height:45px;' required="true" missingMessage="请输入合同内容"/>
+			</td>
+        </tr>
+    </table>
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>
+

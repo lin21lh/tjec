@@ -1,0 +1,84 @@
+	<!--头部开始-->
+<div class="top">
+	<!-- 去掉标题栏 -->
+	  <!--<div class="logo"></div>
+	  <div class="topyou">
+	    <table  class="toptable">   
+	      <tr height="40">
+	      	<input id="msgpasser" type="hidden" value="" onchange="innerReq(this)" />
+	        <td class="pr15 we">欢迎：$!{username} &nbsp;&nbsp;&nbsp;&nbsp;</td>
+	        <td class="pr15"><a href="successLogin.do"  title="首页"><img src="images/returnzm.png" width="33" height="35" alt="首页"  title="首页"/></a></td>
+	        <td class="pr15"><a href_url="$base/userpwdentry.action" title="修改密码" href="#" onclick="editPassword()"><img src="images/modifycode.png" width="33" height="35"  alt="修改密码" title="修改密码"/></a></td>
+	        <td>
+				<a href="$contextpath/j_spring_security_logout.do" title="注销用户" onclick="return confirm('确定要退出系统吗？');">
+					<img src="images/zxuser.png" width="33" height="35" alt="注销用户" title="注销用户"/>
+				</a>
+			</td>
+	      </tr>
+	    </table>
+	  </div>-->
+	  <div id="top_title_menu" class="title_menu">
+			<div id="top_title_menu_logo" class="logo"></div>
+    		<div id="top_title_menu1" class="title_menu1">
+    			<ul>
+    				<li>
+    					<a name="zhuy" class="zhuy" menuid="" href="successLogin.do" title="返回首页" onclick="">返回首页</a>
+                    </li>
+					<li>
+    					<a name="xxwh" class="xxwh" menuid="" href="#" onclick="editPersonalInfo()" title="信息维护" onclick="">信息维护</a>
+                    </li>
+    				<li>
+    					<a name="password" class="password" menuid="" href="#" title="修改密码" onclick="editPassword()">修改密码</a>
+                    </li>
+					<li>
+    					<a name="onlinehelp" class="onlinehelp"  menuid="" href="#" title="在线帮助" onclick="onlineHelp()">在线帮助</a>
+                    </li>
+    				<li>
+    					<a name="exit" style="width:48px" class="exit" menuid="" href="#" title="退出" onclick="logoutSystem()">退出</a>
+    				</li>
+    				
+                </ul>
+    		</div>
+    		<div id="top_title_user" class="title_menu_user">
+                <img src="images/welcome/gly.png" alt="管理员" class="user"/>
+    			<span class="hong">
+					您好，$!{username}<span >&nbsp;&nbsp;</span> #if($!{deptname}!="")单位：$!{deptname}#end
+    			</span>
+            </div>
+        </div>
+	
+	<!--menu列表-->
+	<div id="left_menu_10" class="top_menu">
+	  <!--#if($menus.size()> 10)
+	  <div href="javascript:void(0);" class="menu_left" onmousedown='scroll(-80)' onmouseup='scroll(0)' ></div>
+	  #end-->
+	  <div  id="nav" class="nav">
+		  <ul>
+			#if($!{key} != "LA")
+				#foreach($menu in $menus)
+	    	       #if($menu.pid=="0")
+	    	       <li><a name="topMenu_$!{menu.id}" menuid="$menu.id" href="#" title="$!menu.text">$!menu.text</a></li>	
+	    	       #end
+				#end
+			#else
+				<div style="padding:5px;">
+            		<a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-edit'">
+						<span style="font-size: 13px;font-weight: bold;">请选择案件办理程序</span>
+					</a>
+            	</div>
+			#end
+		  </ul>
+	  </div>
+	  <!--#if($menus.size()> 10)
+	  <div class="menu_right" onmousedown='scroll(80)' onmouseup='scroll(0)'></div>
+	  #end-->
+	  <!--<div id="corner_button" class="top_menu_corner_button"></div>-->
+	</div>
+</div>
+<div id="mm2" style="width:100px;">
+	#if($pronodebaseinfos.size() > 0 )
+    	#foreach($pronodebaseinfo in $pronodebaseinfos)
+		   <div id="$pronodebaseinfo.protype" onclick="changeFrame(this.id)">$pronodebaseinfo.proname</div>
+		#end
+	#end
+</div>	

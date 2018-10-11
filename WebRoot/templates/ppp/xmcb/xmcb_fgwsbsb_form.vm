@@ -1,0 +1,167 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppp/common/pppCommon.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="projectAuditForm" method="post">
+	<div id="tabList" class="easyui-tabs" >   
+		<div title="项目申报信息">      
+			<table class="list">
+    		<!--隐藏属性start
+    			-->
+			<input type="hidden" id="xmid" name="xmid"/><!--项目id-->
+			<input type="hidden" id="fjkeyid" name="fjkeyid" value='${fjkeyid}'/><!--项目附件id 临时使用-->
+			<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+			<input type="hidden" id="wfid" name="wfid" /><!--工作流id-->
+			<input type="hidden" id="activityId" name="activityId" /><!--工作流节点id-->
+			<input type="hidden" id="workflowflag" name="workflowflag" /><!--工作流标识-->
+			<input type="hidden" id="sshy" name="sshy" /><!--所属行业-->
+			<input type="hidden" id="lastNode" name="lastNode" />
+    		<!--隐藏属性end
+    		-->
+    		<tr>
+    			<th >项目名称</th>
+    			<td colspan="3">
+    				<input id="xmmc" class="easyui-textbox" name="xmmc" readonly='true' style='width:695px'/>
+    			</td >
+    		</tr>
+    		<tr>
+    			<th >项目类型</th>
+    			<td >
+    				<input id="xmlxMc" class="easyui-textbox" name="xmlxMc" readonly='true' style='width:250px' />
+    			</td>
+    			<th >项目总投资(万元)</th>
+    			<td>
+    				<input id="xmzje" name="xmzje"  class="easyui-numberbox" readonly='true' style='width:250px'/>
+    			</td>
+    		</tr>
+    		<tr >
+    			<th >拟合作期限(年)</th>
+    			<td >
+    				<input id="hznx" name="hznx" class="easyui-textbox" readonly='true' style='width:250px'/>
+    			</td>
+    			<th >项目运作方式</th>
+    			<td>
+    				<input id="yzfsMc" name="yzfsMc" class="easyui-textbox"   readonly='true' style='width:250px' />
+    			</td>
+            </tr>
+    		<tr>
+    			<th>所属行业</th>
+    			<td >
+    				<input id="sshyMc" name="sshyMc"  class="easyui-textbox"  readonly='true'   class="easyui-textbox" style='width:250px' />
+    			</td>	
+    			<th >回报机制</th>
+    			<td >
+    				<input id="hbjzMc"  name="hbjzMc" class="easyui-textbox"  readonly='true'  style='width:250px' />
+				</td>
+			</tr>
+			<tr>
+				<th>项目发起人名称</th>
+    			<td >
+    				<input id="fqrmc" name="fqrmc" class="easyui-textbox"  readonly='true'  style='width:250px'/>
+    			</td>
+    			<th >项目发起时间</th>
+    			<td >
+    				<input id="fqsj" name="fqsj" class="easyui-textbox"  readonly='true' style='width:250px' />
+    			</td>
+    		</tr>
+			<tr>
+    			<th >项目发起类型</th>
+    			<td >
+    				<input id="fqlxMc" class="easyui-textbox" name="fqlxMc" style='width:250px' readonly='true'/>
+				</td>
+    			<th >所属县区</th>
+    			<td >
+    				<input id="ssxqMc" class="easyui-textbox" name="ssxqMc" style='width:250px' readonly='true'/>
+				</td>
+            </tr>
+			<tr>
+    			<th >项目联系人</th>
+    			<td >
+    				<input id="xmlxr" name="xmlxr" class="easyui-textbox"  readonly='true' style='width:250px' />
+				</td>
+				<th>联系人电话</th>
+    			<td >
+					<input id="lxrdh" name="lxrdh"    readonly='true' class="easyui-textbox"   style='width:250px'/>
+    			</td>
+            </tr>
+			<tr>
+    			<th >示范项目</th>
+    			<td >
+    				<input id="sfxmMc" name="sfxmMc" class="easyui-textbox" readonly='true'  style='width:250px'/>
+				</td>
+				<th>推介项目</th>
+    			<td >
+					<input id="sftjxmMc" name="sftjxmMc"  class="easyui-textbox"  readonly='true'  style='width:250px'/>
+    			</td>
+            </tr>
+			<tr>
+    			<th >申请补贴</th>
+    			<td >
+    				<input id="sfsqbtMc" name="sfsqbtMc" class="easyui-textbox"  readonly='true'  style='width:250px'/>
+				</td>
+				<th>补贴金额(万元)</th>
+    			<td >
+					<input id="btje" name="btje"  class="easyui-numberbox"  readonly='true'  style='width:250px'/>
+    			</td>
+            </tr>
+			<tr>
+    			<th >政府资源支出</th>
+    			<td>
+    				<input id="zfzyzcMc" name="zfzyzcMc" class="easyui-textbox"  readonly='true'  style='width:250px'/>
+				</td>
+				<th >项目申请单位</th>
+    			<td >
+    				<input id="orgname" name="orgname" class="easyui-textbox"  readonly='true'  style='width:250px'/>
+				</td>
+            </tr>
+        	<tr>
+				<th>项目申请人</th>
+    			<td >
+					<input id="cjrMc" name="cjrMc"  class="easyui-textbox"  readonly='true'  style='width:250px'/>
+    			</td>
+				<th >申请时间</th>
+    			<td colspan="3">
+    				<input id="cjsj" name="cjsj" class="easyui-textbox"  readonly='true'  style='width:250px'/>
+				</td>
+            </tr>
+			<tr>
+				<th>项目概况</th>
+				<td colspan="3">
+					<input id="xmgk" class="easyui-textbox" name="xmgk" multiline="true"  readonly='true'  style="width:695px;height:55px;" />
+				</td>
+			</tr>	
+			<tr>
+				<th>初步实施方案描述</th>
+				<td colspan="3">
+					<input id="cbssfa" class="easyui-textbox" name="cbssfa" multiline="true"  readonly='true' style="width:695px;height:55px;" />
+				</td>
+			</tr>
+			<tr>
+	            <th>相关附件</th>
+				<td colspan="3" valign='top' style="height:40px" id="filetd">
+	            </td>
+            </tr>
+        </table>
+		<table id="projectAddGrid"></table>    
+		</div>
+		<div title="项目审核信息" > 
+			<table class="list">
+				<tr>
+					<th>审核意见</th>
+					<td style="height:31px" colspan="3">
+					<input id="spyj" class="easyui-textbox" name="spyj1" multiline="true" 
+					style="width:695px;height:65px;"  required="true" missingMessage="请填写审批意见"/>
+					</td>
+                </tr>
+			  </table>	
+		</div>
+	</div>
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

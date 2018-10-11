@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/sys/sysTaskEntry.js"></script>
+<title>定时任务管理</title>
+<style type="text/css">
+	.linkbutton_group {
+        border-bottom: 1px solid #95B8E7;
+        background-color: #eee;
+    }
+</style>
+
+</head>
+<body id="layout" class="easyui-layout">
+	<div region="center" border="false" >
+		<div id="toolbar_task" class="toolbar_group">
+			<div class="toolbar_buttons">
+				<a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+				<span class='xian' ></span>
+				<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-paused" plain="true" onClick="pauseTask()">暂停</a>
+				<span class='xian' ></span>
+				<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-resume" plain="true" onClick="resumeTask()">恢复</a>
+				<span class='xian' ></span>
+				<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="removeTask()">移除</a>
+			</div>
+			<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" >
+				&nbsp;定时任务模块：<input class="easyui-textbox" id="group" />
+				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onClick="queryTask()">查询</a>
+			</div>
+		</div>
+		<table id="datagrid_task"></table>
+	</div>
+</body>
+</html>

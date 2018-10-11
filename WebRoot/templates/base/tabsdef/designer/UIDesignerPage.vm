@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script src='$contextpath/templates/base/tabsdef/designer/formdesigner/js/formdesigner.js'></script>
+<script src='$contextpath/templates/base/tabsdef/designer/formdesigner/js/formdesigner_paint.js'></script>
+<script src='$contextpath/templates/base/tabsdef/designer/formdesigner/js/formdesigner_event.js'></script>
+<script src='$contextpath/templates/base/tabsdef/designer/formdesigner/js/formdesigner_xml.js'></script>
+
+<script src='$contextpath/templates/base/tabsdef/designer/UIDesignerPage.js'></script>
+<title>表单设计器</title>
+<style type="text/css">
+</style>
+<script>
+
+var tablecode='$!{tablecode}';
+var uischemaid='$!{uischemaid}';
+</script>
+</head>
+<body class='easyui-layout' border='false'>
+	<div region='north' style='height:180px' border='false'>
+		<div class='easyui-layout' fit='true' border='false'>
+			<div region='north' border='false'>
+				<div class='easyui-panel' style='background-color:#eee;' border='false'>
+					<div style='background-color:#eeeeee'>
+						<a class='easyui-linkbutton' plain='true' iconCls='icon-add' onclick='addUI()' >添加</a>
+						<span class='xian' ></span>
+						<a class='easyui-linkbutton' plain='true' iconCls='icon-remove' onclick='deleteUI()'>删除</a>
+						<span class='xian' ></span>
+						<a class='easyui-linkbutton' plain='true' iconCls='icon-copy' onclick='copyUI()'>复制</a>
+						<span class='xian' ></span>
+						<a class='easyui-linkbutton' id='btn_save' plain='true' iconCls='icon-save' data-options="disabled:true" onclick='saveUI()'>保存</a>
+						<span class='xian' ></span>
+						<a class='easyui-linkbutton' id='btn_cancel' plain='true' iconCls='icon-undo' data-options="disabled:true" onclick='cancelUI()'>取消</a>
+					</div>
+				</div>
+			</div>
+			<div region='center'>
+				<table id='schemalist'>
+				</table>
+			</div>
+			<div region='east'  style='width:400px' split='false'>
+				<form id='uiForm' method='post'>
+						<table class='list'>
+							<tr>
+								<th>
+									界面名称：
+								</th>
+								<td>
+									<input id='schemename' type='text' class='easyui-textbox' style='width:200px;border-width:1px;line-height:18px;'  required='true' missingMessage='请输入界面名称' name='schemename' onchange="formchanged()" />
+								</td>
+							</tr>
+							<tr>
+								<th>
+									启用标识：
+								</th>
+								<td>
+									<input type='checkbox' name='used' value='1' onchange="formchanged()" />
+								</td>
+							</tr>
+							<tr>
+								<th>说明：</th>
+								<td><input id='remark' class="easyui-textbox" name="remark" multiline="true" data-options="validType:{length:[0,100]}" prompt='最多可输入100个汉字' style='width:200px; height:80px;' onchange="formchanged()" />
+								<input type='hidden' name='schemeid' />
+								<input type='hidden' name='tablecode' />
+								<input type='hidden' name='listscheme' />
+								<input type='hidden' name='formscheme' />
+								</td>
+							</tr>
+						</table>
+					</form>
+			</div>
+		</div>
+	</div>
+	<div region='center'>
+		<div class='easyui-tabs' id='designertab' border='false' fit='true'>
+			<div title='表单设计器' border='false'>
+				<div class='easyui-layout' fit='true' border='false'>	
+					<div region='center'>
+						<div id='cavnas_div' class='easyui-panel' fit='true' border='false'
+							style='overflow:auto'>
+							<canvas id='fcanvas' width='2000' height='1200'>
+								</canvas>
+						</div>
+					</div>
+					<div region='east' style='width:220px' title='属性' split='true'>
+						<div class='easyui-panel' fit='true' border='false'>
+							<table id='prop'></table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div title='列表设计器'>
+				<div class='easyui-layout' fit='true' border='false' >
+        			<div data-options="region:'west',title:'字段列表'" split="true" style="width:150px;" border='true'>
+        				<ul id='columnfields' ></ul>
+        			</div>
+        			<div data-options="region:'center'"  border='true'>
+        				<div class='easyui-panel' fit='true'>
+        					<table id='datagrid_UIDesign'></table>
+        				</div>
+        			</div>
+        		</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="easyui-window" id="xmlDialog" title="界面方案XML" closed='true'
+			style="width:534px;height:400px;overflow:hidden" minimizable='false'
+			maximizable='false' collapsible='false'>
+			<textarea id="xmltext" style="width:520px;height:365px" readonly>
+			</textarea>
+		</div>
+	
+	
+</body>
+</html>

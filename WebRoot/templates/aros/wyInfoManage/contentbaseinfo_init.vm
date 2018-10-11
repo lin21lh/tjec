@@ -1,0 +1,79 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>管理</title>
+<script type="text/javascript">
+    // 菜单ID
+    var menuid = "$menuid";
+    // 类型
+    var contype = "$contype";
+    // 类型字典
+    var contypename = "$contypename";
+</script>
+<script type="text/javascript" src="$contextpath/templates/aros/wyInfoManage/js/contentbaseinfo_init.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+</head>
+<body id="layout" class="easyui-layout">
+	<input id="contype" name="contype" type="hidden" value="$contype" />
+     <div data-options="region:'center',split:false" >
+     	<div id="caseDiv" class="easyui-panel" title="$contypename" style="width:100%;height:100%;border:0px;">
+	        <div id="toolbar_center" class="toolbar_group" style="border:0px;">
+	            <input type="hidden" id="menuid" name="menuid" value="$menuid" />
+	            <div class="toolbar_buttons" style="border:0px;">
+	            	<a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+	                <a href="#" id="queryBtn" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="doQuery()">查询</a>
+	                <span class='xian' ></span>
+	                <a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="addContent()">新增</a>
+	                <span class='xian' ></span>
+	                <a href="#" id="upBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="editContent()">修改</a>
+	                <span class='xian' ></span>
+	                <a href="#" id="delBtn" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="delContent()">删除</a>
+	                <span class='xian' ></span>
+	                <a href="#" id="showDetailBtn" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="showContent()">详情</a>
+	                <span class='xian' ></span>
+	                <a href="#" id="sendBtn" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onClick="sendContent()">发布</a>
+	                <span class='xian' ></span>
+	                <a href="#" id="backBtn" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="backContent()" >撤消</a>
+	            </div>
+	            <div id="queryPanel" class="easyui-panel collapsable-toolbar-w" collapsible="true"  style="border:0px;">
+	                 <table class="list" style="border:0px;font-size:12px;">
+	                    <tr>
+	                        <td style='border:0px;text-align:right'>状态：</td>
+	                        <td style='border:0px;text-align:left'>
+	                            <input id="status" class="easyui-combobox" style='width:150px'>
+	                        </td>
+	                        #if ($contype == '02' || $contype == '03')
+	                        <td style='border:0px;text-align:right'>名称： </td>
+	                        <td style='border:0px;text-align:left'>
+	                            <input id="title" class="easyui-textbox" style='width:150px'>
+	                        </td>
+	                        <td style='border:0px;text-align:right'>类型： </td>
+	                        <td style='border:0px;text-align:left'>
+	                            <input id="type" class="easyui-combobox" style='width:150px'>
+	                        </td>
+	                        #end
+	                        #if ($contype != '02' && $contype != '03')
+	                        <td style='border:0px;text-align:right'>标题： </td>
+	                        <td style='border:0px;text-align:left'>
+	                            <input id="title" class="easyui-textbox" style='width:150px'>
+	                        </td>
+	                        #end
+	                       
+	                        
+	                        <td style='border:0px;text-align:right'>创建日期：</td>
+	                        <td style='border:0px;text-align:left'>
+	                            <input id="starttime" class="easyui-datebox" style='width:110px'  editable="false">
+	                            —
+	                            <input id="endtime" class="easyui-datebox" style='width:110px'  editable="false">
+	                        </td>
+	                    </tr>
+	                </table>
+	            </div>
+	        </div>
+	        <table id="contentDataGrid"></table>
+	     </div>
+     </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="shzbkDetailForm" method="post">
+	<table class="list">
+        		<!--隐藏属性start
+        			-->
+				
+				<input type="hidden" id="socialid" name="socialid" /><!--社会资本id-->
+				<input type="hidden" id="status" name="status" />
+				
+        		<!--隐藏属性end
+        		-->
+        		<tr>
+					<th >社会资本名称</th>
+					<td >
+						<input id="orgname" name="orgname" class="easyui-textbox" readonly="true"  style='width:250px'  required="true" />
+					</td>
+        			<th >联系人</th>
+        			<td >
+        				<input id="linkperson" name="linkperson" class="easyui-textbox" readonly="true" style='width:250px'  required="true" />
+					</td>
+					
+                </tr>
+				<tr>
+					<th >联系人号码</th>
+        			<td >
+						<input id="linkphone" name="linkphone"   required="true" readonly="true"
+							 class="easyui-textbox" style='width:250px'/>
+        			</td>
+        			<th >组织机构代码</th>
+        			<td >
+        				<input id="orgcode" name="orgcode"    readonly="true"
+							 class="easyui-textbox"   style='width:250px'/>
+					</td>
+                </tr>
+				<tr>
+        			<th >是否联合体</th>
+        			<td >
+        				<input id="iscombo" name="iscombo"  readonly="true"
+							 class="easyui-textbox"  style='width:250px'/>
+					</td>
+					<th >所属行业</th>
+        			<td >
+						
+        				<input id="categoryName" name="categoryName"  readonly="true"
+							 class="easyui-textbox"   style='width:250px'/>
+					</td>
+                </tr>
+				<tr>
+					<th>投资偏好</th>
+        			<td >
+						
+        				<input id="preferencesName" name="preferencesName"  readonly="true"
+							class="easyui-textbox" style='width:250px' />
+        			</td>
+					<th >用户关联</th>
+        			<td >
+						<input id="relevanceUserName" name="relevanceUserName"  readonly="true"
+							 class="easyui-textbox"   style='width:250px'/>
+						
+        			</td>
+				</tr>
+				<tr>
+					<th>微信标识</th>
+        			<td colspan="3">
+        				<input id="weixin" name="weixin"  readonly="true"
+							class="easyui-textbox" style='width:250px' />
+        			</td>
+				</tr>	
+				<tr>
+        			<th >备注</th>
+        			<td colspan="3">
+        				<input id="remark" name="remark"  readonly="true" multiline="true"
+							 class="easyui-textbox"   style='width:695px;height:45px;'/>
+					</td>
+					
+                </tr>
+        </table>
+		
+</form>
+

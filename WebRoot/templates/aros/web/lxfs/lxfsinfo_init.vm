@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+    <head>
+        #parse("common/common-v14.vm")
+        #parse("common/extensions-v14.vm")
+        <title>联系方式</title>
+        <link href="$contextpath/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="$contextpath/css/yangshi.css" rel="stylesheet" type="text/css" />
+        <link href="$contextpath/images/sysicon.png" rel="shortcut icon"/>
+        <style type="text/css">
+            .cs-west{
+                width: 50%;
+                padding: 0;
+            }
+            .linkbutton_group{
+                border-bottom: 1px solid #95B8E7;
+            }
+        </style>
+        <script type="text/javascript">
+            //菜单ID
+            var menuid = "$menuid";
+        </script>
+        <script type="text/javascript" src="$contextpath/templates/aros/web/lxfs/js/lxfsinfo_init.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/login/layout.js"></script>
+    </head>
+    
+    <body>
+        <div class="easyui-layout" style="width:100%;height:100%;">
+            <div data-options="region:'west'" title="联系方式" style="width:40%;">
+                <table id="lxfsDataGrid"></table>
+            </div>
+            
+            <div id="map" data-options="region:'center'" title="地图">
+                <iframe id="mapIframe" frameborder="0" width="100%" height="100%" marginheight="0" marginwidth="0" scrolling="no" src="templates/aros/web/lxfs/map.html">
+            </div>
+        </div>
+    </body>
+</html>

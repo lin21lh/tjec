@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!--By Supcan Report -->
+<Report>
+	<WorkSheet name="用户报表" isDefaultPrint="true">
+		<Properties>
+			<BackGround bgColor="#FFFFFF" arrange="tile" alpha="255"/>
+			<DefaultTD>
+				<TD fontIndex="0" textColor="#000000" transparent="true" leftBorder="1" topBorder="1" leftBorderColor="#000000" leftBorderStyle="solid" topBorderColor="#000000" topBorderStyle="solid" decimal="2" align="left" vAlign="middle" isProtected="false" isThousandSeparat="true" isRound="true" isPrint="true"/>
+			</DefaultTD>
+			<Other isShowZero="true" isRefOriPrecision="true" AutoBreakLine="2" LineDistance="0" isRowHeightAutoExtendAble="false"/>
+		</Properties>
+		<Fonts>
+			<Font faceName="微软雅黑" charSet="134" height="-14" weight="400"/>
+			<Font faceName="微软雅黑" charSet="134" height="-14" weight="700"/>
+		</Fonts>
+		<Table>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="15"/>
+			<TR height="24" sequence="0">
+				<TD fontIndex="1" align="center" datatype="1" formula="=headrow(&apos;ds1&apos;)">用户编码</TD>
+				<TD fontIndex="1" align="center" datatype="1">用户名称</TD>
+				<TD fontIndex="1" align="center" datatype="1">机构名称</TD>
+				<TD fontIndex="1" align="center" datatype="1">状态</TD>
+				<TD fontIndex="1" align="center" datatype="1">创建时间</TD>
+				<TD fontIndex="1" align="center" datatype="1">创建人</TD>
+				<TD fontIndex="1" align="center" datatype="1">备注</TD>
+				<TD topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="1">
+				<TD datatype="1" formula="=datarow(&apos;ds1&apos;)" alias="usercode"/>
+				<TD datatype="1" alias="username"/>
+				<TD datatype="1" alias="usertype"/>
+				<TD datatype="1"/>
+				<TD datatype="1" alias="cnstatus"/>
+				<TD datatype="1" alias="startdate"/>
+				<TD datatype="1" alias="enddate"/>
+				<TD topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="2">
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="3">
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="4">
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD/>
+				<TD topBorder="0"/>
+			</TR>
+			<TR height="15" sequence="5">
+				<TD leftBorder="0"/>
+				<TD leftBorder="0"/>
+				<TD leftBorder="0"/>
+				<TD leftBorder="0"/>
+				<TD leftBorder="0"/>
+				<TD leftBorder="0"/>
+				<TD leftBorder="0"/>
+				<TD leftBorder="0" topBorder="0"/>
+			</TR>
+		</Table>
+		<PrintPage>
+			<Paper>
+				<Margin left="19" top="25" right="19" bottom="25"/>
+			</Paper>
+			<Page>
+				<PageCode>
+					<Font faceName="微软雅黑" charSet="134" height="-14" weight="400"/>
+				</PageCode>
+			</Page>
+		</PrintPage>
+	</WorkSheet>
+	<DataSources Version="255" isAutoCalculateWhenOpen="false" isSaveCalculateResult="false">
+		<DataSource type="4"><!-- Desc: Supcan Report Component DataSource Specification -->
+<Data>
+	<ID>ds1</ID>
+	<Version>2</Version>
+	<Type>4</Type>
+	<TypeMeaning>JSON</TypeMeaning>
+	<Source>query.do</Source>
+	<XML_RecordAble_Nodes>
+		<Node>
+			<name>jsonobject</name>
+		</Node>
+	</XML_RecordAble_Nodes>
+	<Columns>
+		<Column>
+			<name>jsonobject\cnstatus</name>
+			<text>状态</text>
+			<type>string</type>
+			<visible>true</visible>
+			<sequence>4</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\createtime</name>
+			<text>创建时间</text>
+			<type>string</type>
+			<visible>true</visible>
+			<sequence>5</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\createuser</name>
+			<text>创建人</text>
+			<type>string</type>
+			<visible>true</visible>
+			<sequence>6</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\grpcode</name>
+			<text>grpcode</text>
+			<type>string</type>
+			<visible>false</visible>
+			<sequence>8</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\isca</name>
+			<text>isca</text>
+			<type>string</type>
+			<visible>false</visible>
+			<sequence>9</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\modifytime</name>
+			<text>modifytime</text>
+			<type>string</type>
+			<visible>false</visible>
+			<sequence>10</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\modifyuser</name>
+			<text>modifyuser</text>
+			<type>string</type>
+			<visible>false</visible>
+			<sequence>11</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\orgcode</name>
+			<text>orgcode</text>
+			<type>string</type>
+			<visible>false</visible>
+			<sequence>12</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\orgname</name>
+			<text>机构名称</text>
+			<type>string</type>
+			<visible>true</visible>
+			<sequence>3</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\overduedate</name>
+			<text>overduedate</text>
+			<type>string</type>
+			<visible>false</visible>
+			<sequence>13</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\remark</name>
+			<text>备注</text>
+			<type>string</type>
+			<visible>true</visible>
+			<sequence>7</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\status</name>
+			<text>status</text>
+			<type>string</type>
+			<visible>false</visible>
+			<sequence>14</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\updatetime</name>
+			<text>updatetime</text>
+			<type>string</type>
+			<visible>false</visible>
+			<sequence>15</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\usercode</name>
+			<text>用户编码</text>
+			<type>string</type>
+			<visible>true</visible>
+			<sequence>1</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\userid</name>
+			<text>userid</text>
+			<type>string</type>
+			<visible>false</visible>
+			<sequence>16</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\username</name>
+			<text>用户名称</text>
+			<type>string</type>
+			<visible>true</visible>
+			<sequence>2</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\userpswd</name>
+			<text>userpswd</text>
+			<type>string</type>
+			<visible>false</visible>
+			<sequence>17</sequence>
+		</Column>
+		<Column>
+			<name>jsonobject\usertype</name>
+			<text>usertype</text>
+			<type>string</type>
+			<visible>false</visible>
+			<sequence>18</sequence>
+		</Column>
+	</Columns>
+</Data>
+
+		</DataSource>
+	</DataSources>
+</Report>

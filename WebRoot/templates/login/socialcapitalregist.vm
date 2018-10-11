@@ -1,0 +1,366 @@
+    <!DOCTYPE html>
+	<html>
+	<head>
+		#parse("common/common-v14.vm")
+		#parse("common/extensions-v14.vm")
+		<script type="text/javascript" src="templates/login/scrollable.js"></script>
+		<script type="text/javascript" src="templates/login/socialcapitalregist.js"></script>
+    <title>社会资本注册</title>
+    <style type="text/css">
+        #wizard {border: 5px solid #488cf3;font-size: 12px;height: auto !important;height:610px;min-height:610px;margin: 20px auto;width: 1020px;overflow:hidden;position: relative;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
+        #wizard .items {width: 20000px;height: 8000px;clear: both;position: absolute;}
+        #wizard .right {float: right;}
+        #wizard #status {height: 35px;background: #488cf3;padding-left: 25px !important;}
+        #top,#footer { margin:0 auto;padding:0; border:0px solid #F00;height:180px;}
+        #status li {float: left;color: #fff;padding: 10px 30px;width: 180px;font-size:14px;}
+        #status li.active {background-color: #169;font-weight: normal;width: 150px;}
+        .input {width: 230px;height: 16px;font-size:13px;margin: 1px auto;line-height: 15px;border: 1px solid #d3d3d3;padding: 2px;}
+        .input2 {border: 0px solid #d3d3d3;font-size:14px;}
+        .td1 {border:1px solid #d3d3d3;font-size:13px;text-aglin:center;}
+        .td2 {width:5%;;border: 1px solid #d3d3d3;font-size:13px;text-aglin:center;height: 12px;}
+        .page {padding: 20px 30px;width: 950px;height: 500px;float: left;}
+        .table {width:100%;border:none;border-collapse:collapse;align:center;border: 0px;}
+        .page h3 {height: 42px;font-size: 16px;border-bottom: 1px dotted #ccc;margin-bottom: 20px;padding-bottom: 5px;}
+        .page h3 em {font-size: 12px;font-weight: 500;font-style: normal;}
+        .page p {line-height: 24px;}
+        .page p label {font-size: 14px;display: block;}
+        .btn_nav {height: 36px;line-height: 36px;margin: 30px auto;}
+        .prev, .next {width: 100px;height: 32px;line-height: 32px;border: 1px solid #d3d3d3;cursor: pointer;}
+        .code_box {
+            background-image:url(../images/checkcodeback.png);
+            width:120px;
+            height:30px;
+            padding-top:1px;
+            padding-bottom:1px;
+            font-size:21px;
+            background-repeat:no-repeat;
+            border: #666666 solid 1px;
+            text-align:center;
+            text-decoration: line-through;
+            color: #999999;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            position:relative;
+        }
+        a:link {
+            text-decoration: none;
+            color:#000000;
+        }
+        a:visited {
+            text-decoration: none;
+            color:#000000;
+        }
+        a:hover {
+            color:#E13A00;
+        }
+        a:active {
+            text-decoration: none;
+            color:#E13A00;
+        }
+		.text_cursor{
+			 color: blue;
+			 cursor: pointer;
+		}
+		.yz{
+			cursor: pointer;
+		}
+    </style>
+    <script language="javascript">
+        var gonext = false;
+        var cCode = 0;
+        var isSave = true;
+        var ip = "123.133.28.226";
+        var flag = 0;
+        var yydz ="";
+        document.onkeydown = function () {  //tab键失效
+            if (event.keyCode == 9) {
+                event.keyCode = 0;
+                event.returnValue = false;
+                return false;
+            }
+        };
+        function init(){
+            checkIe();
+            //要初始化的东西
+            var map = {};
+            map["tbnames"]="AREA_CODE";
+            map["key"]="code,name";
+            getAreaInfoAgent(map);
+        };
+        function goback() {
+            if (!confirm("返回上一级将丢失目前进行的所有操作，确定继续吗？")) 
+			{return;}else{
+			window.location.href="login.do"; 
+			}
+			
+        }
+        function nextstep() {
+            gonext = true;
+        }
+        
+        function getAreaInfoAgent(map){
+            dwrmng.queryWithoutUi(2, map, rtnDArea);
+        }
+        var rtnDArea = function (data) {
+            try {
+                if (data != null && data.rsltCode > 0) {
+                    if (data.rsltObject != null) {
+                        //取出map值
+                        for(var i=0;i<data.rsltObject.length;i++){
+                            $("#REG_ADDRESSES").append("<option value='"+data.rsltObject[i].code+"'>&nbsp;&nbsp;"+data.rsltObject[i].name+"&nbsp;&nbsp;</option>");
+                        }
+                    }
+                }
+            } catch (ex) {
+            }
+            finally {
+
+            }
+        }
+        function before(){
+            $("#inputCode").val("");
+            $("#msg").html("");
+            createIdentifyCode();
+        }
+        function checkIe(){
+            var flag = false;
+            if (checkBrowser()=="IE:11.0") {
+                flag = true;
+            }else if(checkBrowser()=="IE:9.0") {
+                flag = true;
+            }else if(checkBrowser()=="IE:8.0") {
+                flag = true;
+            }else if(checkBrowser()=="IE:7.0") {
+                flag = true;
+            }else{
+                alert("系统提示：请使用Microsoft Internet Explorer软件登录系统，推荐版本IE V11.0；其他版本IE浏览器显示效果欠佳；非IE浏览器部分功能无法使用！");
+                flag = false;
+            }
+            if(flag){
+                alert("您确定要注册成“代理机构”么？");
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+<form id="msgForm" method="post">
+<div id="wizard">
+<!--上方步骤导航区域-->
+<ul id="status">
+    <li class="active"><strong>1.</strong>服务条款
+    </li>
+    
+    <li><strong>2.</strong>社会资本信息
+    </li>
+    
+    <li><strong>3.</strong>用户信息
+    </li>
+    
+    <li><strong>4.</strong>确认信息
+    </li>
+    
+</ul>
+<!--主要显示区域-->
+<div class="items" id="div1">
+<div class="page">
+    <table align="center" width="90%" border="0" cellspacing="0">
+        <tbody><tr>
+            <td colspan="4" valign="top" bordercolor="#0099FF" height="400" border="0">
+                <fieldset style="height:100%;">
+                    <legend>服务条款</legend>
+                    <iframe name="服务条款" style="height:100%; width: 100%; z-index: 1" scrolling="auto" frameborder="0" src="templates/login/protrol1.html"></iframe>
+                </fieldset>
+            </td>
+        </tr>
+    </tbody></table>
+
+    <div class="btn_nav">
+        <input type="button" class="next right" value="我同意" onclick="javascript:nextstep();">
+        <input type="button" class="prev disabled" value="我不同意" onclick="javascript:goback();">
+    </div>
+</div>
+
+
+<div class="page" id="div2" style="overflow-y:auto;">
+    <table width="80%" border="1" bordercolor="#488cf3" cellpadding="2" cellspacing="0" align="center">
+        <tbody>
+		<tr>
+            <td height="20px" width="30%" bgcolor="#e4e5f3" class="input3" colspan="2">社会资本名称</td>
+            <td colspan="2" class="input3" width="70%"> <input class="input" type="text" name="ORGNAME" title="请输入社会资本的名称" id="ORGNAME" maxlength="200" data-options="validType:{length:[0,50]}">
+                <span class="NOTE" id="TIPORGNAME" style="color:#ff0000">&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td height="20px" bgcolor="#e4e5f3" class="input3" colspan="2">组织机构代码</td>
+            <td colspan="2" class="input3"> <input class="input" type="text" name="ORGCODE" title="请输入代理机构的组织机构代码" id="ORGCODE" maxlength="9">
+                <span class="NOTE" id="TIPORGCODE" style="color:#ff0000">&nbsp;</span>
+            </td>
+        </tr>
+
+        
+        <tr>
+            <td bgcolor="#e4e5f3" class="input3" colspan="2">联合体</td>
+            <td class="input3">
+				<select name="ISCOMBO"  title="是否是联合体" id="ISCOMBO" > 
+                    <option value="0" selected='selected'>否</option> 
+                    <option value="1">是</option> 
+                </select> 
+                <span class="NOTE" id="TIPISCOMBO" style="color:#ff0000"></span>
+            </td>
+        </tr>
+		<tr>
+            <td bgcolor="#e4e5f3" class="input3" colspan="2">所属行业</td>
+            <td class="input3">
+					<select name="category"   title="选择所属行业" id="category" > 
+                    #foreach($cate in ${viewMap.cateList})
+							#if ($velocityCount==1)
+								<option value="$cate.code" selected='selected'>$cate.name</option> 
+							#else 
+								<option value="$cate.code" >$cate.name</option> 
+							#end
+							
+						 #end  
+                </select> 
+                <span class="NOTE" id="tcategory" style="color:#ff0000"></span>
+            </td>
+        </tr>
+		<tr>
+            <td bgcolor="#e4e5f3" class="input3" colspan="2">投资偏好</td>
+            <td class="input3">
+					<select name="preferences"   title="选择投资偏好" id="preferences" style='width:236px'> 
+						 #foreach($pref in ${viewMap.prefList})
+							#if ($velocityCount==1)
+								<option value="$pref.code" selected='selected'>$pref.name</option> 
+							#else 
+								<option value="$pref.code" >$pref.name</option> 
+							#end
+							
+						 #end  
+                    
+                </select> 
+                <span class="NOTE" id="tpreferences" style="color:#ff0000"></span>
+            </td>
+        </tr>
+		<tr>
+            <td bgcolor="#e4e5f3" class="input3" colspan="2">联系人</td>
+            <td class="input3"><input class="input" type="text" name="linkperson" title="请输入联系人" id="linkperson" maxlength="200" colspan="2">
+                <span class="NOTE" id="tiplinkperson" style="color:#ff0000">&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#e4e5f3" class="input3" colspan="2">手机号</td>
+            <td class="input3"><input class="input" type="text" name="ORGTEL" title="请输入手机号" id="ORGTEL" maxlength="200" colspan="2">
+                <span class="NOTE" id="TIPORGTEL" style="color:#ff0000">&nbsp;</span>
+            </td>
+        </tr>
+		
+		<tr>
+            <td bgcolor="#e4e5f3" class="input3" colspan="2" style='height:50px'>备注</td>
+            <td class="input3">
+                <textarea class="input" name="REMARK" title="请输入备注" id="REMARK" maxlength="200" colspan="2" style='height:50px'> </textarea>
+				
+               <span class="NOTE" id="TIPREMARK" style="color:#ff0000"></span>
+            </td>
+        </tr>
+    </tbody></table>
+    <div class="btn_nav">
+        <input type="button" class="next right" id="agent" name="agent" value="下一步" onclick="javascript:nextstep();">
+        <input type="button" class="prev disabled" value="上一步" onclick="">
+    </div>
+</div>
+
+<div class="page" id="div3">
+    <div id="footer">
+        <table align="center" cellpadding="1" cellspacing="0" border="0" width="100%" bordercolor="#0099FF">
+            <tbody>
+			<tr> <td height="30" align="center" colspan='2' ><font style="font-size:14px;color:#ff0000">提示：用户名形式为“A_XXXXXX”，以“A_”（大写A+下划线）开头，用户只需要输入下划线之后的6~10位字母或数字或其组合</font></td> </tr>
+            <tr> <td height="30" align="center" colspan='2'></td></tr>
+            <tr>
+                <td height="30" align="right" width='38%'><font style="font-size:13px">用户名：</font></td><td>
+                    <input class="input" type="text" name="nameflag" id="nameflag" style="color:#ff0000;border-right:0px;width:13px" value="A_" title="请在此处输入登录名" disabled="true"><input class="input" type="text" name="codes" id="codes" style="width:212px;border-left:0px" title="请在此处输入登录名">
+                    <span class="NOTES" id="codesnote" style="color:#ff0000">&nbsp;</span>
+                </td>
+            </tr>
+            <tr>
+                <td height="30" align="right"><font style="font-size:13px">密码：</font></td><td>
+                    <input class="input" type="password" name="pwds" title="请在此处输入密码" id="pwds">
+                    <span class="NOTES" id="pwdsnote" style="color:#ff0000">&nbsp;</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td height="30" align="right"><font style="font-size:13px">确认密码：</font></td><td>
+                    <input class="input" type="password" name="pwds2" title="请在此处确认密码" id="pwds2" onpaste="return false">
+                    <span class="NOTES" id="pwds2note" style="color:#ff0000">&nbsp;</span>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+    <div class="btn_nav">
+        <input type="button" class="prev disabled" style="float:left" value="上一步" onclick="">
+        <input type="button" class="next right" id="agent1" name="agent1" value="下一步" onclick="javascript:nextstep();">
+    </div>
+</div>
+
+<div class="page" id="div4">
+    <table border="1" bordercolor="#488cf3" width="80%" cellpadding="5" cellspacing="0" align="center">
+        <tbody><tr>
+            <td class="td1">用户名：<input type="text" name="namecode" id="NAMECODE" class="GODB" readonly="readonly" style="border:0px"></td>
+            <td class="td1">社会资本名称：<input type="text" name="AGENT_CODE#^#AGENT_USER_CODE$^$NAME$^$1#^#A" id="NAME" class="GODB" readonly="readonly" style="border:0px">
+            </td>
+        </tr>
+        <tr>
+            <td class="td1">组织机构代码：<input type="text" name="AGENT_CODE$^$AGENT_ORGCODE$^$1" id="ORGCODES" class="GODB" size="17" readonly="readonly" style="border:0px"></td>
+            <td class="td1">联合体：<input type="text" name="AGENT_CODE$^$LEADER$^$1" id="ISCOMBOS" class="GODB" readonly="readonly" style="border:0px">
+            </td>
+        </tr>
+		<tr>
+            <td class="td1" >所属行业：<input type="text" name="categoryName" id="categoryName" class="GODB" size="17" readonly="readonly" style="border:0px"></td>
+            <td class="td1" >投资偏好：<input type="text" name="preferencesName" id="preferencesName" class="GODB" size="17" readonly="readonly" style="border:0px"></td>
+            
+        </tr>
+        <tr>
+            <td class="td1">联系人姓名：<input type="text" id="LINK_MAN" name="AGENT_CODE$^$LINK_MAN$^$1" class="GODB" readonly="readonly" style="border:0px"></td>
+            <td class="td1">联系人手机:<input type="text" name="AGENT_CODE$^$CELLPHONE$^$1" id="ORGTELS" class="GODB" readonly="readonly" style="border:0px"></td>
+        </tr>
+		
+        <tr>
+            <td class="td1" colspan='2'>备注：<textarea type="text" name="AGENT_CODE$^$CELLPHONE$^$1" id="REMARKS" class="GODB" readonly="readonly" style="border:0px"></textarea></td>
+        </tr>
+        <tr>
+            <td class="td1" colspan="2">
+                <table cellspacing="0" cellpadding="0" border="0" align="center">
+                    <tbody><tr>
+                        <td>请输入验证码：</td>
+                        <td><input name="verifyCode" type="text"  class="login_input yzsize" /></td>
+                        <td><span id="msg" style="color:red;">看不清可按鼠标左键点击图片上的验证码</span></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td style='height:32px'>
+							<span class="yz">
+        		              	<a><img id="verifyCodeImg" name="verifyCodeImg"  
+        		              		src="exclude/verfiyCode.do" style="cursor:hand" align="top" onClick="javascript:changeVerifyCode()"/>
+        		              	</a>
+							</span>
+						</td>
+                        <td><span class="text_cursor" id="toGetRandom" onClick="javascript:changeVerifyCode()">看不清？换一个</span></td>
+                    </tr>
+                </tbody></table>
+            </td>
+        </tr>
+    </tbody></table>
+    <!--<span class="NOTE" ID="INFONOTE" style="color:#ff0000"></span>-->
+    <div class="btn_nav">
+        <input type="button" class="prev disabled" style="float:left" value="上一步" onclick="javascript:before();">
+        <input type="button" class="next right" id="agent2" name="agent2" value="确定" onclick="javascript:nextstep();">
+    </div>
+</div>
+
+</div>
+</div>
+</form>
+<br>
+
+<iframe src="javascript:void(0)" frameborder="0" scrolling="no" style="display: none; position: absolute; z-index: 19700;"></iframe></body></html>

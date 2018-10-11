@@ -1,0 +1,59 @@
+<style type="text/css">
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+</style>
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="${rc.contextPath}/templates/workflow/wfDataScopeEntry.js"></script>
+<script type="text/javascript">
+	var tasknames = "${modelMap.tasknames}";
+	var wfkey = "${modelMap.wfkey}";
+	var wfversion = "${modelMap.wfversion}";
+	var decisionname = "${modelMap.decisionname}";
+	$(function() {
+		loadwfTaskTree(tasknames, wfkey, wfversion, decisionname)
+	})
+</script>
+<div class="easyui-layout" data-options="fit:true" >
+	<div data-options="region:'north'" style="height:30px;">
+		<div id="toolbar_menu"  class="linkbutton_group">
+			<a id="linkbutton_save" href="#" class="easyui-linkbutton" onclick="saveCondition()"  iconCls="icon-save" plain="true">保存</a>
+			<span class='xian' ></span>
+			<a id="linkbutton_save" href="#" class="easyui-linkbutton" onclick="saveCondition()"  iconCls="icon-remove" plain="true">删除</a>
+		</div>
+	</div>
+	<div data-options="region:'west',split:false" style="width:240px;border:1px 0px 0px 0px">
+		<div class="easyui-layout" data-options="fit:true">
+			<div region='north'  title="任务节点" border="false" style="height:286px;border:0px" collapsible="false">
+				<ul id="wfTasksTree"  style="border:0px;">
+			</div>
+			<!--
+			<div data-options="region:'center'" title="关联角色用户功能菜单" style="height:500px;border:0px">
+				<table id="userroleresdatagrid" class="easyui-datagrid" style="border:0px">
+					<thead>
+				    	<tr>
+				        	<th data-options="field:'rolecode',width:120">角色</th>
+				      		<th data-options="field:'usercode',width:120">用户</th>
+				            <th data-options="field:'resourcecode',width:120,align:'right'">功能菜单</th>
+				        </tr>
+				    </thead>
+				</table>
+			</div>
+			-->
+		</div>
+	</div>
+	<div data-options="region:'center',iconCls:'icon-ok',border:true"  style="border-width:0px 0px 0px 1px;">
+		<div class="easyui-panel" data-options="fit:true"  style="border:0px;">
+			<div id="toolbar_menu"  class="linkbutton_group">
+				<a id="linkbutton_addcondgroup" href="#" class="easyui-linkbutton" onclick="addPanel('470px')"  iconCls="icon-add" plain="true">增加条件项</a>
+				<a id="linkbutton_removecondgroup" href="#" class="easyui-linkbutton"  onclick="removePanel()" iconCls="icon-remove" plain="true">删除条件项</a>
+				<a id="linkbutton_addcond" href="#" class="easyui-linkbutton" onclick="addCondition('470px')"  iconCls="icon-add" plain="true">增加条件</a>
+				<a id="linkbutton_removecond" href="#" class="easyui-linkbutton"  onclick="removeCondition()" iconCls="icon-remove" plain="true">删除条件</a>
+			</div>
+		    <div id="condtions" class="easyui-tabs"  style="border:0px;">
+		    	<input name="scopemainid" type="hidden" class="easyui-validbox">
+    		</div>
+		</div>
+	</div>
+</div>

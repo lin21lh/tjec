@@ -1,0 +1,70 @@
+#parse("common/extensions-v14.vm")
+<style type='text/css'>     
+input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+}
+textarea {
+    display: block;
+}
+</style>
+<script type="text/javascript" src="$contextpath/templates/aros/xwgl/js/contentbaseinfo_form.js" ></script>
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script> 
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+
+<form id="contentForm" method="post">
+     <input id="conid" name="conid" type="hidden" />
+     <input id="status" name="status" type="hidden" />
+     <input id="operator" name="operator" type="hidden" />
+     <input id="opttime" name="opttime" type="hidden" />
+     <input id="userid" name="userid" type="hidden" />
+     <input id="contype" name="contype" type="hidden" value="$contype" />
+     <input type="hidden" id="fjkeyid" name="fjkeyid" value="${fjkeyid}"/><!--附件keyid-->
+    <table class="list">
+        <tr>
+            <th>标题:</th>
+            <td>
+                <input id="title" name="title" class="easyui-textbox" required="true" missingMessage="请输入标题" 
+                 data-options="validType:{length:[0,100]}" style="width:250px;"/>
+                 <span style="color:red">*</span>
+            </td>
+            <th>发布时间:</th>
+              <td> 
+                   <input id="releasetime" class="easyui-datebox" name="releasetime" required="true" missingMessage="请选择发布时间" style="width:250px" editable="false" />
+                   <span style="color:red">*</span>
+              </td> 
+        </tr>
+        <tr>
+              <th>来源:</th>
+              <td>
+                <input id="newssources" class="easyui-textbox" name="newssources" required="true" missingMessage="请填写新闻来源" data-options="validType:{length:[0, 40]}" style="width:250px"/>
+                <span style="color:red">*</span>
+              </td>  
+              <th>作者:</th>
+              <td>
+                <input id="newsauthor" class="easyui-textbox" name="newsauthor" required="true" missingMessage="请填写新闻作者" data-options="validType:{length:[0, 40]}" style="width:250px"/>
+                <span style="color:red">*</span>
+              </td>  
+              
+        </tr>
+        <tr>
+            <th style="width:50px;">内容:</th>
+            <td colspan="4">
+                <textarea id="contentEdit" name="contentEdit" style="width:700px;height:320px;visibility:hidden;"></textarea>
+                <input name="content" id="content"  required="true" type="hidden" />
+            </td>
+        </tr>
+        <tr>
+            <th>附件:</th>
+            <td colspan="4" valign='top' style="height:40px" id="files">
+                <img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="clickUpload('XW', 'files')"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<!--上传附件层-->
+<div id='uploadifydiv'></div>
+
+

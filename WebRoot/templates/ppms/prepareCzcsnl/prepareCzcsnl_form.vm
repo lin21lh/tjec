@@ -1,0 +1,74 @@
+<!--禁用缓存-->	
+<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<META HTTP-EQUIV="expires" CONTENT="0">
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+fieldset {
+    	padding:10px;
+    	margin:5px;
+    	color:#333; 
+    	border:#06c dotted 1px;
+	}
+} 
+</style>
+</style>
+<form id="prepareAddForm" method="post">
+		<!--隐藏属性start
+			-->
+		<input type="hidden" id="projectid" name="projectid" /><!--项目id-->
+		<input type="hidden" id="pszbid" name="pszbid" /><!--项目id-->
+		<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+		<input type="hidden" id="dxpjid" name="dxpjid" /><!--菜单id-->
+		<input type="hidden" id="dlpjid" name="dlpjid" /><!--菜单id-->
+		<input type="hidden" id="czcsnlid" name="czcsnlid" /><!--财政承受能力id-->
+		<input type="hidden" id="status" name="status" /><!--状态-->
+		<input type="hidden" id="xmhj" name="xmhj" /><!--项目环节-->
+		<input type="hidden" id="updateFlag" name="updateFlag" /><!--修改标志-->
+		<!--隐藏属性end
+		-->
+			<table class="list">
+				<tr>
+        			<th >财政承受能力验证结果</th>
+        			<td >
+        				<input id="fcResult" class="easyui-textbox" name="fcResult" style='width:240px' required="true" missingMessage="请选择财政承受能力验证结果"/>
+					</td>
+					<th >验证完成时间</th>
+        			<td >
+        				<input id="fcVerifytime" class="easyui-datebox" name="fcVerifytime" style='width:240px' editable ="false" required="true" missingMessage="请选择验证完成时间"/>
+					</td>
+                </tr>
+				<tr>
+					<th >定性评论描述</th>
+					<td colspan="3">
+						<input id="fcConclusion" class="easyui-textbox" name="fcConclusion" multiline="true" style="width:663px;height:50px;"
+						 required="true" missingMessage="请输入定性评论描述" data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"  />
+					</td>
+				</tr>
+				<tr>
+					<th >财政承受能力评价</th>
+					<td colspan="3">
+						<input id="fcEvaluate" class="easyui-textbox" name="fcEvaluate" multiline="true"style="width:663px;height:50px;"
+						 required="true" missingMessage="请输入财政承受能力评价" data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"  />
+					</td>
+				</tr>
+				<tr>
+					<th>评价报告</th>
+					<td id="czcsnlbg" style="height:31px" colspan="3">
+        				<input id="fcAttachment" type="hidden" name="fcAttachment" />
+						<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('czcsnlbg','fcAttachment',50)"/>
+					</td>
+                </tr>
+		   </table>
+		   	<!--财政预算情况-->
+		 <table id="financeGrid"></table> 
+		 <input id="financeGridData" type="hidden" name='financeGridData'/>
+<div id='uploadifydiv'></div>
+</form>

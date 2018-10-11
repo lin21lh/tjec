@@ -1,0 +1,166 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+</script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="accountRegisterForm" method="post">
+	<table class="list">
+		<input type="hidden" id="applicationId" name="applicationId" />
+		<input type="hidden" id="bdgagencycode" name="bdgagencycode" value="${modelMap.bdgagencycode}" />
+		<input type="hidden" id="workflowflag" name="workflowflag" /><!--区分保存还是保存并发送-->
+		<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+		<input type="hidden" id="activityId" name="activityId" /><!--节点id-->
+		<input type="hidden" id="type" name="type" value="$type" />
+		<input type="hidden" id="wfid" name="wfid" />
+		<input type="hidden" id="isback" name="isback" /><!--审批退回标志-->
+		<input type="hidden" id="formIsEdit" name="formIsEdit" value="${modelMap.formIsEdit}" /><!--表单编辑标志-->
+		<input type="hidden" id="sessionId" name="sessionId" value="${modelMap.sessionId}" /><!--sessionId-->
+	    <input id="savephonenumbers" type="hidden" name='savephonenumbers'/>
+	    <input id="savemessage" type="hidden" name='savemessage'/>
+		<tr>
+			<th>单位名称</th>
+			<td>
+				<input id="bdgagencyname" class="easyui-searchbox"  data-options="validType:{length:[0,50]}" name="bdgagencyname" style='width:250px' value="${modelMap.bdgagencyname}" required="true" missingMessage="请选择单位" />
+			</td>
+			<th>单位性质</th>
+			<td>
+				<input id="deptNature" class="easyui-combobox" required="true" missingMessage="请选择单位性质" name="deptNature" value="${modelMap.deptNature}" style='width:250px' />
+			</td>
+		</tr>
+		<tr>
+			<th>联系人</th>
+    			<td>
+    				<input id="linkman" name="linkman"  class="easyui-textbox"  data-options="validType:{length:[0,25]}" value="${modelMap.linkman}"  required="true" missingMessage="请输入单位联系人"  style='width:250px'/>
+    			</td>
+			<th>联系人手机</th>
+			<td>
+				<input id="applPhonenumber"  name="applPhonenumber"  class="easyui-textbox" validType='phonesIsRight'  required="true" value="${modelMap.phonenumber}" missingMessage="请输入联系人手机" style='width:250px'/>
+			</td>
+		</tr>
+		<tr>
+			<th>单位地址</th>
+			<td colspan="3">
+				<input id="deptAddress" class="easyui-textbox"  data-options="validType:{length:[0,250]}"
+					 required="true" missingMessage="请输入单位地址"  name="deptAddress" value="${modelMap.deptDddress}" style='width:705px' />
+			</td>
+        </tr>
+		#if(${modelMap.zhxxdisplay}=='Y')
+		<tr>
+            <th>账户类型</th>
+            <td>
+				<input id="accountType" class="easyui-combobox" required="true" missingMessage="请选择账户类型" editable="false" name="accountType" style='width:250px'/>
+			</td>
+			<th>账户性质</th>
+			<td>
+				<input id="type02" class="easyui-combobox" editable="false" required="true" missingMessage="请选择账户性质"  name="type02" style='width:250px'/>
+			</td>
+        </tr>
+		<tr>
+            <th >账户名称</th>
+            <td >
+				<input id="accountName" class="easyui-textbox"  required="true" missingMessage="请输入账户名称"  name="accountName" style='width:250px' data-options="validType:{length:[0,50]}"/>
+				<input type="hidden" id="accountId" name="accountId" />
+			</td>
+			<th>账户开户行</th>
+            <td>
+				<input id="bank" class="easyui-searchbox" editable="false" name="bankNameCn" style='width:250px'  required="true" missingMessage="请选择账户开户行" />
+			</td>
+        </tr>
+		<tr>
+			<th>法定代表人</th>
+			<td>
+				<input id="legalPerson" class="easyui-textbox" required="true" data-options="validType:{length:[0,25]}" missingMessage="请输入法定代表人名称"  name="legalPerson" style='width:250px'/>
+			</td>
+            <th>法人身份证号</th>
+            <td>
+				<input id="idcardno" class="easyui-textbox" required="true" data-options="validType:{length:[0,25]}" missingMessage="请输入法人身份证号"  name="idcardno" style='width:250px'/>
+			</td>
+        </tr>
+		<tr>
+			<th>财务负责人</th>
+			<td colspan="3">
+				<input id="financialOfficer" class="easyui-textbox" data-options="validType:{length:[0,25]}"  required="true" missingMessage="请输入财务负责人名称"  name="financialOfficer" style='width:250px'/>
+			</td>
+        </tr>
+		<tr>
+            <th >核算内容</th>
+			<td colspan="3">
+				<input id="accountContent" class="easyui-textbox" multiline="true" required="true" missingMessage="请输入核算内容" data-options="validType:{length:[0,250]}" name="accountContent" style='width:705px;height:35px;'/>
+            </td>
+        </tr>
+		#end
+	    <tr>
+			<th>开户原因</th>
+			<td colspan="3">
+				<input id="applyReason" class="easyui-textbox" multiline="true" name="applyReason" required="true" missingMessage="请输入申请理由" data-options="prompt:'最多可输入200个汉字',validType:{length:[0,200]}" style="width:705px;height:55px;" />
+			</td>
+		</tr>
+		<tr>
+            <th >附件</th>
+			<td colspan="3" valign='top' style="height:40px" id="filetd">
+            </td>
+            </tr>
+		</tr>
+		<!--
+		#if(${modelMap.comeFlag} == "audit")
+			<tr>
+    			<th>审批意见</th>
+        			<td colspan="5">
+    				<input id="opinion" class="easyui-textbox" name="opinion" multiline="true" value="同意。" required="true" missingMessage="请输入审批意见" 
+						data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:705px;height:50px;" />
+					</td>
+    		</tr>
+		#end
+		-->
+    </table>
+	#if(${modelMap.comeFlag} == "audit")
+    <div style="width:100%;height:150px;overflow:auto">
+    	<table class="list">
+				<tr>
+        			<td style="width:40px;height:25px;align:center">序号</td>
+        			<td style="width:60px;height:25px;align:center">节点名称</td>
+        			<td style="width:100px;height:25px;align:center">动作名称</td>
+        			<td style="width:200px;height:25px;align:center">处理人</td>
+					<td style="width:120px;height:25px;align:center">处理时间</td>
+					<td style="width:100px;height:25px;align:center">处理意见</td>
+        		</tr>
+    			#if($wfList.size() != 0 )
+    				#foreach($i in ${modelMap.wfList})	
+						<tr>
+                			<td  style="width:40px;height:25px">
+            			   $!{velocityCount}
+            			   </td>
+                			<td  style="width:100px;height:25px">
+            				$!{i.actiName}
+            			   </td>
+                			<td  style="width:100px;height:25px">
+            				$!{i.transition}
+            			   </td>
+                			<td  style="width:80px;height:25px">
+            				$!{i.authorName}
+            			   </td>
+                			<td  style="width:80px;height:25px">
+            				$!{i.enddate}
+            			   </td>
+                			<td  style="width:100px;height:25px">
+            				$!{i.opinion}
+            			   </td>
+                		</tr>
+    				#end
+    			#end
+            </table>
+	 </div>		
+	#end
+	<!--消息层-->
+	<div id='messageService'></div>
+	<!--附件-->
+	<div id='uploadifydiv'></div>
+	<!--审批层-->
+	<div id='operationdiv'></div>
+</form>

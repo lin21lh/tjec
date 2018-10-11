@@ -1,0 +1,96 @@
+<!--禁用缓存-->	
+<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<META HTTP-EQUIV="expires" CONTENT="0">
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+fieldset {
+    	padding:10px;
+    	margin:5px;
+    	color:#333; 
+    	border:#06c dotted 1px;
+	}
+} 
+</style>
+</style>
+<form id="prepareAddForm" method="post">
+		<!--隐藏属性start
+			-->
+		<input type="hidden" id="projectid" name="projectid" /><!--项目id-->
+		<input type="hidden" id="pszbid" name="pszbid" /><!--项目id-->
+		<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+		<input type="hidden" id="dxpjid" name="dxpjid" /><!--菜单id-->
+		<input type="hidden" id="dlpjid" name="dlpjid" /><!--菜单id-->
+		<input type="hidden" id="status" name="status" /><!--状态-->
+		<input type="hidden" id="xmhj" name="xmhj" /><!--项目环节-->
+		<input type="hidden" id="updateFlag" name="updateFlag" /><!--修改标志-->
+		<!--隐藏属性end
+		-->
+		<font color="red" >&nbsp;系统自动计算PSC值 和VFM值 （1、PSC值 = 建设和运营维护净成本（初始PSC值） + 竞争性中立调整值 + 项目全部风险成本 2、VFM值 = PSC值 - PPP值）</font>
+		   	<table class="list" style='border-top:1px solid #99CCFF;border-left:1px solid #99CCFF;'>
+				<tr>
+        			<th >建设和运营维护净成本</th>
+        			<td >
+        				<input id="vomNetcost"   class="easyui-numberbox"  name="vomNetcost" style='width:240px'  data-options="min:0,precision:2,max:99999999999999.99" required="true" missingMessage="请输入建设和运营维护净成本" />
+					</td>
+					<th>竞争性中立调整值</th>
+        			<td >
+        				<input id="vomAdjust" class="easyui-numberbox"  name="vomAdjust" style='width:240px'  data-options="min:0,precision:2,max:99999999999999.99" required="true" missingMessage="请输入竞争性中立调整值" />
+        			</td>
+                </tr>
+				<tr>
+        			<th >项目全部风险成本</th>
+        			<td >
+        				<input id="vomRiskcost" class="easyui-numberbox" name="vomRiskcost" style='width:240px'  data-options="min:0,precision:2,max:99999999999999.99" required="true" missingMessage="请输入项目全部风险成本" />
+					</td>
+					<th>PSC值</th>
+        			<td >
+        				<input id="vomPsc" class="easyui-numberbox"  name="vomPsc" style='width:240px' readonly ='true'data-options="min:0,precision:2,max:99999999999999.99"   />
+        			</td>
+                </tr>
+				<tr>
+        			<th >PPP值</th>
+        			<td >
+        				<input id="vomPpp" class="easyui-numberbox" name="vomPpp" style='width:240px'  data-options="min:0,precision:2,max:99999999999999.99" required="true" missingMessage="请输入PPP值" />
+					</td>
+					<th>VFM值</th>
+        			<td >
+        				<input id="vomVfm" class="easyui-numberbox"  name="vomVfm" style='width:240px' readonly ='true'data-options="min:-99999999999999.99,precision:2,max:99999999999999.99"  />
+					</td>
+                </tr>
+				<tr>
+        			<th >定量评价描述</th>
+        			<td colspan='3'>
+        				<input id="vomConclusion" class="easyui-textbox" editable="true" multiline="true"  required="true" missingMessage="定性评价描述" name="vomConclusion"  style="width:690px;height:50px;" data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+					</td>
+                </tr>
+				<tr>
+        			<th >定量评价结果</th>
+        			<td >
+        				<input id="vomResult" class="easyui-combobox" name="vomResult" style='width:240px' required="true" missingMessage="请选择物有所值验证结果"/>
+					</td>
+        			<th >定量评价验证完成时间</th>
+        			<td >
+        				<input id="vomVerifytime" class="easyui-datebox" name="vomVerifytime" editable='false' style='width:240px' required="true" missingMessage="请输入验证完成时间"/>
+					</td>
+                </tr>
+				<tr>
+					<th>定量评价报告附件</th>
+        			<td id='dlfx' style='width:260px;height:31px' colspan="3" >
+						 <input id="vomAttachment" type="hidden"  name="vomAttachment" />
+						 <img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('dlfx','vomAttachment',20)"/>
+        			</td>
+                </tr>
+		   </table>
+		   	<!--第三方机构-->
+			 <table id="thirdOrganGrid"><input id="thirdOrganGridData" type="hidden" name='thirdOrganGridData'/></table> 
+	<!--上传附件层-->
+<div id='uploadifydiv'></div>
+</form>

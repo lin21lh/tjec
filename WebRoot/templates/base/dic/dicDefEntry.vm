@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/base/dic/util.js"></script>
+<script type="text/javascript" src="$contextpath/templates/base/dic/dicDefEntry.js"></script>
+
+<script type="text/javascript">
+	var menuid = "${modelMap.menuid}";
+	var usercode = "${modelMap.usercode}";
+</script>
+<style type="text/css">
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+	}
+</style>
+</head>
+<body id="cc" class="easyui-layout" border="false">
+	<!-- 数据项列表  -->
+	<div title="数据项列表" region="center" split="false">
+	    <div id="toolbar_dicElementDef" class="toolbar_group">
+			<div id="toolbar_buttons">
+				<a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" 
+					iconCls="icon-expand" plain="true" ></a>
+				<span class='xian' ></span>
+				<a id="addDicElement_b" href="#" class="easyui-linkbutton" iconCls="icon-add"  plain="true" onclick="addDic()">添加</a>
+				<span class='xian' ></span>
+				<a id="deleteDicElement_b" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteDicElement()">删除</a>
+				<span class='xian' ></span>
+				<a id="saveDicElement_b" href="#" class="easyui-linkbutton" iconCls="icon-parse" plain="true" onclick="elementValSet()">数据项值集维护</a>
+			</div>
+			<div id="toolbar_querybar" class="easyui-panel collapsable-toolbar-w" style="width:100%">
+	           &nbsp;	数据项分类： <input id="s_elementclass" name="s_elementclass" data-options="panelHeight:'auto'" class="easyui-combobox" style="width:110px">
+	                编码：<input id="s_elementcode" class="easyui-textbox" style="width:90px">
+	               名称：<input id="s_elementname" class="easyui-textbox" panelHeight="auto" style="width:90px" />
+	           <a id="searchDicElement_b" href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onclick="doSearch()">查询</a>
+	        </div>
+        </div>
+		<table id="datagrid_dicElementDef" ></table>
+	</div>
+	<div id="east_panel" region="east" title="数据项信息" style="width:540px" border="false" split="false" collapsible="true">
+		<div id="toolbar_menu"  class="linkbutton_group  datagrid-toolbar">
+			<a id="linkbutton_save" href="#" class="easyui-linkbutton" onclick="saveElement()"  iconCls="icon-save" plain="true">保存</a>
+			<span class='xian' ></span>
+			<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  onclick="rejectEdit()" iconCls="icon-undo" plain="true">取消</a>
+		</div>
+		<div style="padding:10px">数据项类型： <input id="elementtype" class="easyui-combobox" name="datatype"  style="width:142px" /></div>
+		<div id="dicdef_win" class="easyui-panel" style="width: 530px; height: auto;">
+			<form id="dicELement_form" method="post">
+				<table class="list" >
+					<tr >
+						<!--  style="border-left-width:1px;border-top-width:1px" style="border-top-width:1px" style="border-top-width:1px" style="border-top-width:1px" -->
+						<th >数据项分类：</th>
+						<td >
+							<select id="elementclass_edit" class="easyui-combobox" data-options="required:true,missingMessage:'请选择数据项分类',panelHeight:'auto'" name="elementclass" style="width:142px"></select>
+						</td>
+						<th >编码：</th>
+						<td >
+							<input id="elementcode_edit" class="easyui-textbox" data-options="required:true,missingMessage:'请输入编码'" validType="remoteIsExist['Sys_DicElement','elementid']" name="elementcode" style="width:140px"/>
+						</td>
+					</tr>
+					<tr>
+					<!-- style="border-left-width:1px;" -->
+						<th  >名称：</th>
+						<td>
+							<input id="elementname_edit" class="easyui-textbox" data-options="required:true,missingMessage:'请输入名称'" name="elementname" style="width:140px"/>
+						</td>
+						<th>数据类型：</th>
+						<td>
+							<select id="datatype_edit" class="easyui-combobox" data-options="editable:false,panelHeight : 'auto'" name="datatype" style="width:142px">
+								<option value="C">C-代码集</option>
+								<option value="S">S-文本</option>
+								<option value="N">N-数字</option>
+								<option value="Y">Y-金额</option>
+								<option value="D">D-日期</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th >数据长度：</th>
+						<td>
+							<input id="columnlength_edit" class="easyui-numberbox" name="columnlength" style="width:140px" />
+						</td>
+						<th>小数位数：</th>
+						<td>
+							<input id="scalelength_edit" class="easyui-numberbox" name="scalelength" style="width:140px" />
+						</td>
+					</tr>
+					<tr>
+						<th>数据项值集表：</th>
+						<td>
+							<input id="tablecode_edit" name="tablename" class="easyui-searchbox" editable="false" type="datagridDialog" style="width:140px" />
+						</td>
+						<th>编码格式类型：</th>
+						<td>
+							<select id="codetype_edit" class="easyui-combobox" editable="false" data-options="panelHeight : 'auto'" name="codetype" style="width:142px">
+								<option value="0">0-无编码格式</option>
+								<option value="1">1-顺序码</option>
+								<option value="2">2-层码</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>编码格式：</th>
+						<td>
+							<input id="codeformat_edit" class="easyui-textbox" name="codeformat" style="width:142px" />
+						</td>
+						<th>是否要素：</th>
+						<td>
+							<input type='checkbox' id='iselements_edit' name='iselements'  value='1' onchange="form_onchange()" />
+						</td>
+					</tr>
+					<tr>
+						<th>状态：</th>
+						<td>
+						 	<input id="status_edit" class="easyui-combobox" name="status"  style="width:142px" />
+						</td>
+						<th>由数据字典维护：</th>
+						<td>
+							<input type='checkbox' id='isedit_edit' name='isedit'  value='1' onchange="form_onchange()" />
+							<!--
+							<select id="isedit_edit" class="easyui-combobox" name="isedit" style="width:142px" value="0">
+								<option value="0">否</option>
+								<option value="1">是</option>
+							</select>
+							-->
+						</td>
+					</tr>
+					<tr>
+						<th >启用日期：</th>
+						<td>
+							<input id="startdate_edit" class="easyui-datebox" editable="false" name="startdate" data-options="required:true" style="width:142px" value="$!{modelMap.today}" />
+						</td>
+						<th>停用日期：</th>
+						<td>
+							<input id="enddate_edit" class="easyui-datebox" editable="false" name="enddate" style="width:142px" />
+						</td>
+					</tr>
+					<tr>
+						<th >备注：</th>
+						<td colspan="3">
+							<textarea id="remark_edit" class="easyui-textbox" multiline="true" name="remark" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:415px;height:50px;" ></textarea>
+							<input hidden="true" id="elementid" name="elementid" />
+						</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td ><span style="font-size:small;color:red">注：层码编码格式为：数字-数字-数字 比如 3-2-2</span></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		
+		<!-- 数据项视图维护界面 -->
+		<div id="dicview_win" class="easyui-panel" data-options="closed:true" style="width: 530px; height: auto;">
+			<form id="dicViewElement_form" method="post">
+				<table class="list" >
+					<tr >
+						<th >数据项分类：</th>
+						<td >
+							<select id="elementclass_view" class="easyui-combobox" editable="false" data-options="required:true,missingMessage:'请选择数据项分类'" name="elementclass" style="width:142px" ></select>
+						</td>
+						<th >源数据项：</th>
+						<td >
+							<input id="sourceelement_view" class="easyui-combobox" editable="false" data-options="required:true,missingMessage:'请选择源数据项'" name="sourceelement" style="width:142px" />
+						</td>
+					</tr>
+					<tr>
+						<th>编码：</th>
+						<td>
+							<input id="elementcode_view" class="easyui-textbox" data-options="required:true,missingMessage:'请输入编码'" validType="remoteIsExist['Sys_DicElement','elementviewid']" name="elementcode" style="width:142px" />
+						</td>
+						<th>名称：</th>
+						<td>
+							<input id="elementname_view" class="easyui-textbox" data-options="required:true,missingMessage:'请输入名称'" name="elementname" style="width:142px" />
+						</td>
+					</tr>
+					<tr>
+						<th >状态：</th>
+						<td>
+							<input id="status_view" class="easyui-combobox" editable="false" panelHeight="auto" name="status" style="width:142px" />
+						</td>
+						<th>是否要素：</th>
+						<td>
+							<input type='checkbox' id='iselements_view' name='iselements'  value='1' onchange="form_onchange()" />
+						</td>
+					</tr>
+					<tr>
+					</tr>
+					<tr>
+						<th >启用日期：</th>
+						<td>
+							<input id="startdate_view" class="easyui-datebox" editable="false" name="startdate" data-options="required:true" style="width:142px" value="$!{modelMap.today}" />
+						</td>
+						<th>停用日期：</th>
+						<td>
+							<input id="enddate_view" class="easyui-datebox" editable="false" name="enddate" style="width:142px" onchange="form_onchange()" />
+						</td>
+					</tr>
+					<tr>
+						<th >备注：</th>
+						<td colspan="3">
+							<textarea id="remark_view" class="easyui-textbox" name="remark" multiline="true" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:415px;height:50px;"></textarea>
+							<input hidden="true" id="elementviewid" name="elementid" />
+							<input hidden="true" id="elementviewfilters" name="elementviewfilters" />
+						</td>
+					</tr>
+				</table>
+				 <table id="dicViewConditions" class="easyui-datagrid" title="过滤条件项" style="height:280px"
+		            data-options="singleSelect: true, toolbar: '#dicViewCondButtons',method: 'post'">
+		    	</table>
+			</form>
+		</div>
+	</div>
+    
+    <div id="dicViewCondButtons" style="height:auto">
+    	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="append()">添加</a>
+   		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteViewFilter()">删除</a>
+   		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">保存编辑</a>
+   		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">取消编辑</a>
+	</div>
+    
+    <div id="menu" class="easyui-menu" style="width: 120px; display: none;">
+    <!--放置一个隐藏的菜单Div-->
+    <div  data-options="iconCls:'icon-add'" onclick="addDic()">添加</div>
+    <div data-options="iconCls:'icon-remove'"  onclick="deleteDicElement()">删除</div>
+    <div data-options="iconCls:'icon-parse'"  onclick="elementValSet()">数据项值集维护</div>
+    <div class="menu-sep"></div>
+    <div id="saveDicElement_b" data-options="iconCls:'icon-parse'" onclick="saveColSet()">保存列设置</div>
+	<div id="saveDicElement_b" data-options="iconCls:'icon-parse'" onclick="resetColSet()">还原列设置</div>
+	<div id="filemanage_b"data-options="iconCls:'icon-parse'" onclick="filemanage()">附件管理</div>
+</div>
+</body>
+</html>

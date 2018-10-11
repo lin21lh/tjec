@@ -1,0 +1,70 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="devplan_form" method="post">
+    <input id="projectid" type="hidden" name='projectid'/>
+    <input id="deveid" type="hidden" name='deveid'/>
+    <input id="createuser" type="hidden" name='createuser'/>
+    <input id="createtime" type="hidden" name='createtime'/>
+    <input id="updateuser" type="hidden" name='updateuser'/>
+    <input id="updatetime" type="hidden" name='updatetime'/>
+
+    <table class="list">
+			<tr>
+            <th>项目名称</th>
+            <td colspan="3">
+                <input id="proName" class="easyui-textbox"  readonly ='true' name="proName" style='width:626px' readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>项目开发年度</th>
+            <td>
+                <input id="deveYear"  class="easyui-textbox"   readonly ='true' name="deveYear" style='width:250px' />
+            </td>
+			<!--
+			<th>项目类型</th>
+            <td>
+                <input id="proTypeName" class="easyui-textbox" required="true" missingMessage="请输入项目类型" name="proTypeName" style='width:250px' readonly='true' />
+            </td>
+			-->
+            <th>项目采购方式</th>
+            <td >
+                <input id="purchaseTypeName" class="easyui-textbox"  readonly ='true'  name="purchaseTypeName" style='width:250px'/>
+            </td>
+        </tr>
+		  <tr>
+            <th>项目实施机构</th>
+            <td>
+                <input id="implementOrganName" name="implementOrganName" editable='false'  readonly ='true'  class="easyui-textbox"  style='width:250px' />
+            </td>
+			<th>机构联系人</th>
+            <td>
+                <input id="implementPerson" class="easyui-textbox" readonly ='true'  name="implementPerson" style='width:250px'/>
+            </td>
+        </tr>
+	    <tr>
+            <th>机构联系电话</th>
+            <td colspan="3">
+                <input id="implementPhone" name="implementPhone" class="easyui-textbox"  style='width:250px' readonly ='true'  />
+            </td>
+        </tr>
+		 <tr>
+			<th>开发计划附件</th>
+            <td  id="kfjh" style="height:31px" colspan="3">
+				<input id="devPath" type="hidden" name="devPath"/>
+			</td>
+        </tr>
+		<tr>
+            <th>项目情况说明</th>
+            <td  colspan="3">
+                <input id="remark" class="easyui-textbox"  multiline="true" readonly ='true' name="remark" style='width:626px;height:100px;' />
+            </td>
+        </tr>
+    </table>
+</form>

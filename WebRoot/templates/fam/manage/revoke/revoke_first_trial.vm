@@ -1,0 +1,94 @@
+<!DOCTYPE>
+<html>
+    <head>
+        #parse("common/common-v14.vm")
+        #parse("common/extensions-v14.vm")
+        <script type="text/javascript" src="$contextpath/templates/fam/manage/revoke/js/revoke_first_trial.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+        <script type="text/javascript">
+            var menuid = "$menuid";
+            var activityId = "$activityId";
+            var type = "$type";
+			var firstNode = "$firstNode";
+			var lastNode = "$lastNode";
+			var allbdgagency ="$allbdgagency";
+        </script>
+        <title>注销初审</title>
+        <style type="text/css">
+            .linkbutton_group {
+            border-bottom: 1px solid #95B8E7;
+            background-color: #eee;
+            }
+        </style>
+    </head>
+    <body id="layout" class="easyui-layout">
+        <div region="center" >
+            <div id="toolbar_hasrevoke" class="toolbar_group">
+                <input type="hidden" id="menuid" name="menuid" value="$menuid" />
+                <input type="hidden" id="activityId" name="activityId" value="$activityId" />
+                <input type="hidden" id="type" name="type" value="$type" />
+                <input type="hidden" id="firstNode" name="firstNode" value="$firstNode" />
+                <input type="hidden" id="lastNode" name="lastNode" value="$lastNode" />
+                <div class="toolbar_buttons">
+					<a id="openclose" onClick="javascript:panelctlForFam(0);" class="easyui-linkbutton" iconCls="icon-collapse" plain="true" ></a>
+					<span class='xian' ></span>
+                    <a id="btn_query" href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="queryHasRevokeInfo()">查询</a>
+                    <span class='xian' ></span>
+                    <a id="btn_ope" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="operateRevokeInfo()">审核</a>
+                    <span class='xian' ></span>
+                    <a id="btn_appro" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="batOperateRevokeInfo(true)">批准</a>
+                    <span class='xian' ></span>
+                    <a id="btn_refuse" href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="batOperateRevokeInfo(false)">退回</a>
+                    #if($lastNode == 'false')
+    					<span class='xian' ></span>
+                        <a id="btn_revoke" href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="removeRevokeInfo()">撤回</a>
+                    #end
+					<span class='xian' ></span>
+					<a id="btn_flow" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="queryRevokeInfo()">详情</a>
+					<span class='xian' ></span>
+                    <a id="btn_flow" href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">流程信息</a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onClick="outRegisterApplicationform()">注销申请表</a>
+                </div>
+                <div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;padding:2px">
+					<table style='width:100%'>
+                    <tr>
+        				<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap' >处理状态</td>
+        				<td style='font-size:12px;width:10%' ><input id="dealStatus" class="easyui-combobox" style="width:97%;" /></td>
+						<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>处理类型</td>
+        				<td style='font-size:12px;width:17%'><input id="processedStatus" class="easyui-combobox" style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>账户类型</td>
+        				<td style='font-size:12px;width:17%'><input id="oldAccountTypeSearch" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>预算单位</td>
+        				<td style='font-size:12px;width:22%'><input id="bdgagency1" class="easyui-textbox"  style="width:97%" /></td>
+						<td style='font-size:12px;width:3%'></td>
+    				</tr>      
+    				           
+                    <tr> 
+						<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap'>账户性质</td>
+        				<td style='font-size:12px;width:10%'> <input id="oldAccountType02" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>银行账号</td>
+        				<td style='font-size:12px;width:17%'> <input id="oldAccountNumber" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>账户名称 </td>
+        				<td style='font-size:12px;width:17%'> <input id="oldAccountName" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>申请时间</td>
+                        <td style='font-size:12px;width:22%'>
+							<input id="starttime" class="easyui-datebox" style='width:45%' />至<input id="endtime" class="easyui-datebox" style='width:45%'  />
+						</td>
+						<td style='font-size:12px;width:3%'></td>
+    				</tr>      
+				</table>
+					<!--
+				&nbsp;处理状态<input class="easyui-textbox" id="dealStatus" style='width:90px'/>
+                                        处理类型 <input class="easyui-textbox" id="processedStatus" style='width:90px'/>
+                                        预算单位 <input class="easyui-searchbox" id="bdgagency1"  style='width:180px' editable='false'/>
+                                        账户类型 <input class="easyui-textbox" id="oldAccountTypeSearch" style='width:140px'/>
+                    	当前状态：<input class="easyui-textbox" id="wfstatusSearch" style='width:110px'/>
+                    -->
+					
+                </div>
+            </div>
+            <table id="datagrid_hasRevoke"></table>
+        </div>
+    </body>
+</html>

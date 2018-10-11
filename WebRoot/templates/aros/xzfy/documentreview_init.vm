@@ -1,0 +1,96 @@
+<!DOCTYPE>
+<html>
+	<head>
+		#parse("common/common-v14.vm")
+		#parse("common/extensions-v14.vm")
+		<title>收回访单</title>
+		<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/documentreview_init.js"></script>
+		<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+		<script type="text/javascript" src="$contextpath/templates/aros/wtcl/js/bquesbaseinfo_fb_init.js"></script>
+		<script type="text/javascript">
+			//菜单ID
+			var menuid = "$menuid";
+			//接单ID
+            var nodeid = "$nodeid";
+        </script>
+		<style type="text/css">
+			.cs-west{
+        		width: 50%;
+        		padding: 0;
+        	}
+        	.linkbutton_group{
+        		border-bottom: 1px solid #95B8E7;
+        	}
+        </style>
+    </head>
+	
+	<body id="layout" class="easyui-layout">
+		<div id="caseDiv" class="easyui-panel" title="复议案件列表" style="width:100%;height:65%;">
+            <div data-options="region:'center',split:false">
+    			<div id="toolbar_center" class="toolbar_group">
+    				
+    				<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+    				
+    				<div class="toolbar_buttons">
+    					<a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+    					<span class='xian' ></span>
+    					<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="documentReviewQuery()">查询</a>
+    					<!-- <span class="xian"></span>
+    					<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="editXzfyReq()">处理</a>
+        				<span class="xian"></span>
+        				<a href="#" id="sendBtn" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onClick="sendWF()">送审</a>
+                        <span class="xian"></span>
+    					<a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-detail" plain="true" onClick="xzfyAcceptDetail()">详情</a>
+                        <span class='xian' ></span>
+                        <a href="#" id="sendBtn" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onClick="sendToOther()">转发</a>
+    					<span class="xian"></span>
+    					<a href="#" id="returnBtn" class="easyui-linkbutton" iconCls="icon-back" plain="true" onClick="xzfyReturn()">回退</a>
+        				<span class='xian' ></span>
+            			<a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">流程信息</a>
+            			<span class='xian' ></span>
+    					<a href="#" class="easyui-linkbutton" iconCls="icon-help" plain="true" onClick="quesfdQuery()">反馈意见</a>			
+    					<span class='xian' ></span>
+                        <a href="javascript:void(0)" id="xsajBtn"  class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="similarCaseManagement()">相似案件推荐</a> -->
+    				</div>
+    				<div id="documentReviewPanel" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%; border:0px;">
+    					<table class="list" style='border:1px'>
+    						<tr>
+    							<td style="font-size:12px; border:0px; text-align:right">处理标志：</td>
+                				<td style="font-size:12px; border:0px; text-align:left">
+        							<input id="opttype" class="easyui-combobox" style="width:150px" panelheight = "auto">
+        						</td>
+    							<td style="font-size:12px; border:0px; text-align:right;">申请人：</td>
+    							<td style="font-size:12px; border:0px; text-align:left;">
+    								<input id="appname" class="easyui-textbox" style='width:150px'>
+    							</td>
+        						<td style="border: 0px; text-align:right" align="right">被申请人：</td>
+                				<td style="font-size:12px;border: 0px;text-align:left">
+        							<input id="defname" class="easyui-textbox" style='width:150px'>
+        						</td>
+    						</tr>
+    						<tr>
+    							<td style="font-size:12px; border:0px; text-align:right;">行政管理类型：</td>
+    							<td style="font-size:12px; border:0px; text-align:left;">
+    								<input id="admtype" class="easyui-combobox" style='width:150px'>
+    							</td>
+        						<td style="border: 0px; text-align:right" align="right">申请复议事项：</td>
+                				<td style="font-size:12px;border: 0px;text-align:left">
+        							<input id="casetype" class="easyui-combobox" style='width:150px'>
+        						</td>
+    							<td style="font-size:12px; border:0px; text-align:right;">被申请人类型：</td>
+    							<td style="font-size:12px; border:0px; text-align:left;">
+    								<input id="deftype" class="easyui-combobox" style='width:150px'>
+    							</td>
+    						</tr>
+                        </table>
+    				</div>
+    			</div>
+    			
+				<div style="height:100%;width:100%;">
+					<table id="documentReviewDataGrid"></table>
+				</div>
+    		</div>
+		</div>
+		#parse("aros/xzfy/detail.vm")
+    </body>
+</html>

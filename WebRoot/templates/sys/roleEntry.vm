@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/common/component/doubleDatagridSelect.js" ></script>
+<script type="text/javascript" src="$contextpath/templates/sys/roleEntry.js"></script>
+<title>功能菜单维护界面</title>
+
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+	
+</style>
+</head>
+<body class="easyui-layout">
+	<div region="center" border="false" style="width:250px"   split="false" title='角色树'>
+		<ul id="roleTree"></ul>
+	</div>
+	
+	<div region="east" border="false" style="width:800px;">
+		<div id="centraltab" class="easyui-tabs" fit="true" border="true" tabPosition="top">
+			<div id='roleattr' title="角色基本属性">
+				<div id="rolePanel" class="easyui-panel"  border="false" >
+					<div id="toolbar_menu"  class="linkbutton_group">
+						<a id="linkbutton_save" href="#" class="easyui-linkbutton" onclick="saveEdit()"  iconCls="icon-save" plain="true">保存</a>
+						<span class='xian' ></span>
+						<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  onclick="rejectEdit()" iconCls="icon-undo" plain="true">取消</a>
+					</div>
+					<form id="content" method="post">
+						<table class="list">
+							<tr>
+								<th>角色名称：</th>
+								<td><input id="rolename" name="rolename" class='easyui-textbox' style='width:220px'
+									data-options="required:true,missingMessage:'请输入角色名称',onChange:form_onchange" />
+								</td>
+								<th>角色编码：</th>
+								<td><input id="rolecode" name="rolecode" type='text' class='easyui-textbox' style='width:220px'
+									data-options="required:true,missingMessage:'请输入角色编码',onChange:form_onchange"/>
+								</td>
+							</tr>
+							<tr>
+								<th>管理员：</th>
+								<td><input id='cncreater' name='cncreater' class='easyui-textbox' style='width:220px'
+									data-options="editable:false"/>
+								</td>
+				
+								<th>启用标识：</th>
+								<td>
+									<input type='checkbox' id='status' name='status'  value='1' onchange="form_onchange()" />
+																	
+								</td>
+							</tr>
+							<tr>
+								<th>启用日期：</th>
+								<td><input id="startdate" name="startdate" type='text' class='easyui-datebox' style='width:220px'
+									data-options="required:true,editable:false,missingMessage:'请选择启用日期', onSelect:form_onchange"/></td>
+								<th>停用日期：</th>
+								<td><input id="enddate" name="enddate" type='text' class='easyui-datebox' style='width:220px'
+									data-options="editable:false, onSelect:form_onchange"/></td>
+							</tr>
+							<tr>
+								<th>备注：</th>
+								<td colspan=3>
+									<input id="remark" name="remark" class="easyui-textbox"  style="width:625px;height:60px;"
+										data-options="multiline:true,prompt:'最多可输入100个汉字',validType:{length:[0,100]},onChange:form_onchange"/>
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" id="roleid" name="roleid" />
+						<input type="hidden" id="creater" name="creater" />
+						<input type="hidden" id="levelno" name="levelno" />
+						<input type="hidden" id="parentroleid" name="parentroleid" />
+					</form>
+				</div>
+			</div>
+			
+			<div id='roleattr' title="角色对应菜单权限" >
+				<div id='roleMenuPanel' class='easyui-panel' fit='true' >
+					<table  style='margin:0px;padding:0px;border-spacing:0px;height:100%'>
+						<tr>
+							<td style='width:500px;margin:0px;padding:0px;vertical-align:top'>
+								<div id="roleMenuPanel" class="easyui-panel"  border="false" style='overflow:hidden'>
+									<div class='panel-header' style="border:0px;font-weight:bold;color:#0E2D5F">
+										&nbsp;角色拥有的菜单
+									</div>
+									<div id="menutree_toolbar" style="background-color:#eee;border-bottom:1px solid #95B8E7;border-top:1px solid #95B8E7">
+										<a id="linkbutton_menutree_save" href="#" class="easyui-linkbutton" onclick="menutree_saveEdit()"  	iconCls="icon-save" plain="true">保存</a>
+										
+									</div>
+									<ul id="roleMenuTree"  style='overflow:auto'></ul>
+								</div>
+							</td>
+							<td id="oper_tree_td" style='border-left:1px solid #95B8E7;vertical-align:top;padding:0px'>
+								<div class='panel-header' style="border:0px;font-weight:bold;color:#0E2D5F">
+									&nbsp;角色拥有的菜单操作
+								</div>
+								<div id="opertree_toolbar" style="background-color:#eee;border-bottom:1px solid #95B8E7;border-top:1px solid #95B8E7">
+										<a id="linkbutton_menutree_save" href="#" class="easyui-linkbutton" onclick="saveMenuOpers()"  	iconCls="icon-save" plain="true">保存</a>
+								</div>
+								<ul id='roleMenuOperTree'></ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div id='roleattr' title="角色对应用户">
+			    <div id='roleUserPanel' class="easyui-panel"  border="false" fit="true">
+                </div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="contextmenu" class="easyui-menu" style="width:120px;">
+        <div onclick="menu_add_req()" data-options="iconCls:'icon-add'">添加</div>
+        <div onclick="menu_del_req()" data-options="iconCls:'icon-remove'">删除</div>
+        <div class="menu-sep"></div>
+        <div onclick="menu_addtop_req()" data-options="iconCls:'icon-add'">添加一级角色</div>
+         <div class="menu-sep"></div>
+        <div onclick="menu_refresh()" data-options="iconCls:'icon-reload'">刷新</div>
+    </div>
+ </body>
+</html>

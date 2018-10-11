@@ -1,0 +1,56 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/sys/userEntry.js"></script>
+<script type="text/javascript" src="$contextpath/templates/common/component/gridToExcel.js"></script>
+<title>用户管理</title>
+<style type="text/css">
+	.linkbutton_group {
+        border-bottom: 1px solid #95B8E7;
+        background-color: #eee;
+    }
+</style>
+
+</head>
+<body id="layout" class="easyui-layout">
+	<div region="center" border="false" >
+		<div id="toolbar_user" class="toolbar_group">
+			<div class="toolbar_buttons">
+				<a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+				<span class='xian' ></span>
+				<a id="btn_view" href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="viewUserWin()">详情</a>
+				<span class='xian' ></span>
+				<a id="btn_add" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="addUserWin()">添加</a>
+				<span class='xian' ></span>
+				<a id="btn_edit" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="editUserWin()">修改</a>
+				<span class='xian' ></span>
+				<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="removeUserWin()">删除</a>
+				<span class='xian' ></span>
+				<a id="btn_reset" href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="resetUserPasw()">重置密码</a>
+				<a id="btn_reset" href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="resetAllUserPasw()">重置全部用户密码</a>
+				<!--
+					<a id="btn_enable" href="#" class="easyui-linkbutton" iconCls="icon-enable" plain="true" onClick="">启用</a>
+				-->
+			</div>
+			<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" >
+				&nbsp;用户编码：<input class="easyui-textbox" id="usercode" />
+				用户名称：<input class="easyui-textbox" id="username" />
+				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onClick="queryUsers()">查询</a>
+				<!--
+				<a href="#" class="easyui-linkbutton" iconCls="icon-reload" plain="false" onClick="clearUsers()">清空</a>
+				-->
+			</div>
+		</div>
+		<table id="datagrid_user"></table>
+	</div>
+	
+	<div region="east" title="用户角色信息" style="width:280px;" split='false' collapsible="false">
+		<div class="linkbutton_group">
+			<a id="btn_auth" href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onClick="addAuthUser()">授权</a>
+		</div>
+		<ul id="lefttree"></ul>
+	</div>
+	
+</body>
+</html>

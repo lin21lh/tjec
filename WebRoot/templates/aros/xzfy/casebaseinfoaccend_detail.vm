@@ -1,0 +1,21 @@
+<table class="list">
+    <!--隐藏属性start-->
+        <input type="hidden" id="result" value="$!{result}" /><!--受理结果-->
+    <!--隐藏属性end-->
+    <tr>
+        <th width="13%">受理结果：</th>
+        <td width="37%"><span>$!{result_mc}</span></td>
+        <th width="13%">重大案件备案：</th>
+        <td width="37%"><span>$!{isgreat_mc}</span></td>
+    </tr>
+    <tr hidden="true" id="sendunitTr">
+        <th>转送机关：</th>
+        <td colspan="3">
+           <span>$!{sendunit}</span>
+        </td>
+    </tr>
+    <tr>
+        <th>说明：</th>
+        <td colspan="3"><span>$!{remark}</span></td>
+    </tr>
+</table>

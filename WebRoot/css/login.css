@@ -1,0 +1,212 @@
+BODY {
+    font-family: "Microsoft YaHei",Î¢ÈíÑÅºÚ;
+    font-size: 14px;
+    background: url(../images/login/bg1.jpg) no-repeat bottom center fixed;
+    background-size: cover;
+    color: #d6d6d6;
+}
+
+* {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Microsoft YaHei",Î¢ÈíÑÅºÚ;
+}
+
+a:link {
+    color: #d6d6d6;
+    text-decoration: none
+}
+
+a:visited {
+    color: #d6d6d6;
+    text-decoration: none
+}
+
+a:hover {
+    color: #62b9ef;
+    text-decoration: none
+}
+
+a:active {
+    color: #fff;
+    text-decoration: none
+}
+
+.clear {
+    clear: both
+}
+
+@-webkit-keyframes fadeInDownBig {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-100px)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0)
+    }
+}
+
+@-moz-keyframes fadeInDownBig {
+    0% {
+        opacity: 0;
+        -moz-transform: translateY(-100px)
+    }
+
+    100% {
+        opacity: 1;
+        -moz-transform: translateY(0)
+    }
+}
+
+.wrap {
+    width: 400px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 33px;
+    text-align: center;
+    margin: 80px 0 10px;
+    font-weight: lighter;
+	color:#6666ff;
+    -webkit-animation: fadeInDownBig 1s .6s ease both;
+    -moz-animation: fadeInDownBig 1s .6s ease both;
+}
+
+h2 {
+    font-size: 20px;
+    text-align: center;
+	color:#6666ff;
+    font-weight: lighter
+}
+
+h3 {
+    font-size: 16px;
+    text-align: center;
+    font-weight: lighter;
+    -webkit-animation: fadeInDownBig 1s .4s ease both;
+    -moz-animation: fadeInDownBig 1s .4s ease both;
+}
+
+.box {
+    background:#cadefa;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -webkit-animation: fadeInDownBig 1s .2s ease both;
+    -moz-animation: fadeInDownBig 1s .2s ease both;
+}
+
+.line {
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.line_b {
+    padding-top: 15px
+}
+
+.line_b span {
+    float: right
+}
+
+.line_c {
+    text-align: center;
+    font-size: 16px;
+    padding-top: 30px
+}
+
+.line img {
+    height: 40px;
+    width: 120px;
+    margin-left: 20px
+}
+
+.icon {
+    width: 50px;
+    height: 40px;
+    background: url(../images/cfit.png) #fff;
+    display: block;
+    float: left;
+    border-radius: 5px 0 0 5px;
+    -moz-border-radius: 5px 0 0 5px;
+    -webkit-border-radius: 5px 0 0 5px
+}
+
+.icon_b {
+    background-position: -50px 0
+}
+
+.icon_c {
+    background-position: -100px 0
+}
+
+.inp {
+    width: 280px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+    background: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+}
+
+.inp2 {
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+    background: #fff;
+    float: left;
+    border: none;
+    font-size: 16px;
+    border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+}
+
+.btn_login {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #62b9ef;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.btn_login:hover {
+    background: #0099ff;
+}
+
+.gph:-moz-placeholder {
+    color: #666;
+}
+
+.gph::-moz-placeholder {
+    color: #666;
+}
+
+.gph:-ms-input-placeholder {
+    color: #666;
+}
+
+.gph::-webkit-input-placeholder {
+    color: #666;
+}

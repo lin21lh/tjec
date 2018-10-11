@@ -1,0 +1,9 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+
+<div>
+	<iframe frameborder="0" width="100%" height="100%" marginheight="0" 
+		marginwidth="0" scrolling="no" src="CbiWebController_updateInit.do?caseid=$caseid">
+		
+	</iframe>
+</div>

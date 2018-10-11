@@ -1,0 +1,8 @@
+##工作流任务节点受托人属性选择对话框
+
+<div class="easyui-panel" fit="true" border='false' >
+	##<table id='assignGrid'>
+	##</table>
+	<ul id='assignTree'>
+	</ul>
+</div>

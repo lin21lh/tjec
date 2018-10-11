@@ -1,0 +1,105 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+
+<form id="bxzfyDisposeForm" method="post">
+	
+	<div id="tt" class="easyui-tabs" style="width:100%;height:auto;">
+		<div id="tab_1" title="案件基本信息">
+        	<table class="list">
+        		<!--隐藏属性start-->
+        			<input type="hidden" id="rcaseid" name="rcaseid" value="$!{rcasebaseinfo.rcaseid}"/><!--案件ID-->
+					<input type="hidden" id="caseid" name="caseid" value="$!{rcasebaseinfo.rcaseid}"/><!--案件ID-->
+        		<!--隐藏属性end-->
+        		<tr>
+        			<th width="13%">本机关案号：</th>
+        			<td width="37%">
+        				<span>$!{rcasebaseinfo.lcasecode}</span>
+        			</td>
+        			<th width="13%">复议机关案号：</th>
+        			<td width="37%">
+        				<span>$!{rcasebaseinfo.rcasecode}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>申请人：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.appname}</span>
+        			</td>
+        			<th>第三人：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.thirdname}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>复议机关：</th>
+        			<td colspan="3">
+        				<span>$!{rcasebaseinfo.rdeptname}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>收案人：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.receiver}</span>
+        			</td>
+        			<th>收案时间：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.rectime}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>事实和理由：</th>
+        			<td colspan="3">
+        				<span>$!{rcasebaseinfo.casereason}</span>
+        			</td>
+                </tr>
+				<tr>
+        			<th>承办人：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.undertaker}</span>
+        			</td>
+        			<th>协办人：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.assessor}</span>
+        			</td>
+        		</tr>
+        		<tr>
+                    <th>相关附件：</th>
+        			<td colspan="3" valign="top" style="height:40px" id="filetd"></td>
+                </tr>
+            </table>
+		</div>
+    	
+    	<div id="tab_2" title="案件办理"  data-options="selected:true">
+        	<table class="list">
+				<tr>
+                    <th>委托律师：</th>
+                    <td colspan="3">
+                        <input id="lawyer" class="easyui-textbox" name="lawyer" style="width:250px;" 
+							required="true" missingMessage="请输入委托律师" data-options="validType:{length:[0,10]}"/>
+						<font color=red>*</font>
+                    </td>
+                </tr>
+				<tr>
+                    <th>相关附件：</th>
+        			<td colspan="3" valign='top' style="height:40px" id="disposefiletd">
+    					<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" 
+							onClick="clickUploadDiv('DISPOSE', 'disposefiletd')"/>
+                    </td>
+                </tr>
+            </table>
+		</div>
+		
+		<div id="tab_2" title="制作答复书"></div>
+	</div>
+</form>
+	
+<!--上传附件层-->
+<div id="uploadifydiv"></div>

@@ -1,0 +1,26 @@
+#parse("common/extensions-v14.vm")
+
+<div>
+	 #if($list.size() != 0)
+            <table class="list">
+               <tr>
+                   <td style="background-color: #95B8E7;text-align: center;">委员姓名：</td>
+                   <td style="background-color: #95B8E7;text-align: center;">录入时间：</td>
+                   <td style="background-color: #95B8E7;text-align: center;">意见：</td>
+               </tr>
+                #foreach($i in $list)
+                <tr>
+                    <th style="width: 10%;text-align: center;">${i.operator}</th>
+                    <th style="width: 10%;text-align: center;">${i.opttime}</th>
+                    <td style="width: 80%;">$!{i.remark}</td>
+                </tr>
+                #end
+            </table>
+      #else
+      <table class="list">
+           <tr>
+               <td style="text-align: center;">无委员意见 </td>
+           </tr>
+      </table>
+      #end
+</div>

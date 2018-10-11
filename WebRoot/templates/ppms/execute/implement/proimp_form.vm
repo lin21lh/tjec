@@ -1,0 +1,97 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+	.datagrid-ftable{
+	background-color:#F4F4F4
+	} 
+</style>
+<form id="proimp_form" method="post">
+    <input id="projectid" type="hidden" name='projectid'/>
+    <input id="purchaseid" type="hidden" name='purchaseid'/>
+    <input id="implementid" type="hidden" name='implementid'/>
+    <input id="createuser" type="hidden" name='createuser'/>
+    <input id="createtime" type="hidden" name='createtime'/>
+    <input id="updateuser" type="hidden" name='updateuser'/>
+    <input id="updatetime" type="hidden" name='updatetime'/>
+    <input id="status" type="hidden" name='status'/>
+    <input id="datatype" type="hidden" name='datatype'/>
+    <input id="subStr" type="hidden" name='subStr'/>
+
+    <table class="list">
+		<tr>
+            <th>项目名称</th>
+            <td>
+                <input id="proName" class="easyui-textbox" required="true" missingMessage="请选择项目名称" name="proName" style='width:250px' readonly='true'/>
+            </td>
+            <th>项目类型</th>
+            <td >
+                <input id="proTypeName" class="easyui-textbox" required="true" missingMessage="请输入项目类型" name="proTypeName" style='width:250px' readonly='true' />
+            </td>
+        </tr>
+        
+		<tr>	
+             <th>项目公司名称</th>
+            <td>
+                <input id="projectCompany" class="easyui-textbox" required="true" data-options="validType:{length:[0,50]}" missingMessage="请输入项目公司名称" name="projectCompany" style='width:250px' />
+            </td>
+            <th>项目公司成立时间</th>
+            <td >
+                <input id="establishTime" class="easyui-datebox" required="true" editable='false' missingMessage="请输入项目公司成立时间" name="establishTime" style='width:250px'  />
+            </td>
+        </tr>
+    </table>
+	<table id="advance_organ"></table>
+	<table class="list">
+		<tr>	
+             <th>履约保证措施</th>
+            <td colspan='3'>
+                <input id="safeguardMeasure" class="easyui-textbox" required="true"  multiline="true" missingMessage="请输入履约保证措施" name="safeguardMeasure" style='width:675px;height:50px' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+            </td>
+            
+        </tr>
+        <tr>
+		<th>履约保证措施附件</th>
+            <td id='proimppath' colspan='3'>
+				<input id="safeguardMeasurePath" type="hidden"  name="safeguardMeasurePath" />
+				<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('proimppath','safeguardMeasurePath',30)"/>
+			</td>
+		</tr>
+		<tr>	
+             <th>项目融资交割时间</th>
+            <td>
+                <input id="financeTime" class="easyui-datebox" editable='false' required="true" missingMessage="请输入项目融资交割时间" name="financeTime" style='width:250px' />
+            </td>
+            <th>资产交割时间</th>
+            <td >
+                <input id="propertyTime" class="easyui-datebox" required="true" editable='false' missingMessage="请输入资产交割时间" name="propertyTime" style='width:250px'  />
+            </td>
+        </tr>
+		<tr>	
+             <th>项目开工时间</th>
+            <td>
+                <input id="startTime" class="easyui-datebox" required="true" editable='false' missingMessage="请输入合同签署时间" name="startTime" style='width:250px' />
+            </td>
+            <th>项目完成时间</th>
+            <td >
+                <input id="endTime" class="easyui-datebox" required="true" editable='false' missingMessage="请输入合同公布时间" name="endTime" style='width:250px'  />
+            </td>
+        </tr>
+		<tr>
+            <th>备注</th>
+            <td colspan="3">
+                <input id="remark" class="easyui-textbox"  multiline="true" missingMessage="请输入备注" name="remark" style='width:675px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+            </td>
+        </tr>
+        
+    </table>
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

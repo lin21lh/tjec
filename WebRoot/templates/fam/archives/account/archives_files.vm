@@ -1,0 +1,31 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="archives_files" method="post">
+	 <input id="itemid" type="hidden" name='itemid'/>
+    <table class="list">
+        <tr>
+            <th style='width:15%'>附件1（账户开立、变更、注销、备案）</th>
+            <td  valign='top' style="width:85%;height:150px;WORD-WRAP: break-word" id="filetd1">
+                
+            </td>
+        </tr>
+        <tr>
+            <th>附件2（档案表关联附件）</th>
+            <td  valign='top' style="height:150px;WORD-WRAP: break-word" id="filetd">
+                
+            </td>
+        </tr>
+        
+    </table>
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>
+

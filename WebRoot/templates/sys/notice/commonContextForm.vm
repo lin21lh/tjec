@@ -1,0 +1,20 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="message_form" method="post">
+    <table class="list">
+        <tr>
+			<th style='width:10%'>反馈内容</th>
+			<td style='width:80%'>
+				<input id="commentContent" class="easyui-textbox"  name="commentContent"  multiline="true" data-options="prompt:'最多可输入250个汉字',validType:{length:[0,250]}" style="width:400px;height:100px;" />
+			</td>
+        </tr>
+    </table>
+</form>

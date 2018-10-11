@@ -1,0 +1,107 @@
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+
+</style>
+
+<body>
+<div id="trialDiv" >
+
+<div style="float:left;width:100%;">
+  <div style="width:63%;float:left;">
+		<table id = 'trialTable'></table>
+  </div>
+  <div style="width:2%; float:left;text-align:center">
+		&nbsp;
+  </div>
+  <div style="width:35%;float:left;">
+		<div id="toolbar_menu"  class="linkbutton_group  datagrid-toolbar">
+			<a id="linkbutton_save" href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true">保存</a>
+			<span class='xian' ></span>
+			<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  iconCls="icon-undo" plain="true">取消</a>
+		</div>
+		<div id="trial_win" class="easyui-panel" style="width: 100%; height: 511px;">
+			<form id="trialForm" method="post">
+				<input type="hidden" name="trid" id="trid" />
+				<input type="hidden" name="caseid" id="caseid" />
+				
+				<table class="list" >
+					<tr >
+						<th >案件名称：</th>
+						<td>
+							<input id="casename" name="casename" class="easyui-textbox" data-options="validType:{length:[0,60]}" style='width:200px'
+								missingMessage="请输入案件名称" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr >
+						<th >庭审时间：</th>
+						<td >
+							<input id="casttime" name="casttime" class="easyui-datetimebox" editable="false" 
+								 missingMessage="请输入庭审时间" style='width:200px' required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr >
+						<th >庭审地点：</th>
+						<td>
+							<input id="place" name="place" class="easyui-textbox" data-options="validType:{length:[0,60]}"  style="width:200px" 
+								missingMessage="请输入庭审地点" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th>庭审人员：</th>
+						<td >
+							<input id="courter" name="courter" class="easyui-textbox" data-options="validType:{length:[0,60]}" style="width:200px"
+								missingMessage="请输入庭审人员" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >主持人：</th>
+						<td>
+							<input id="moderator" name="moderator" class="easyui-textbox" data-options="validType:{length:[0,25]}" style="width:200px" />
+						</td>
+					</tr>
+					<tr >
+						<th>书记员：</th>
+						<td>
+							<input id="recorder" name="recorder"  class="easyui-textbox" style="width:200px" />
+						</td>
+					</tr>
+					<tr>
+						<th>庭审参加人员：</th>
+						<td >
+							<input id="participants" name="participants" class="easyui-textbox" data-options="validType:{length:[0,160]}" style="width:200px"/>
+						</td>
+						
+					</tr>
+					<tr>
+						<th>庭审记录：</th>
+						<td >
+							<input id="remark" name="remark" class="easyui-textbox" multiline="true"  data-options="prompt:'最多可输入160个汉字',validType:{length:[0,160]}" style="width:200px;height:80px;"
+								missingMessage="请输入庭审记录" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+  </div>
+</div>
+
+		
+	
+</div>
+</body>

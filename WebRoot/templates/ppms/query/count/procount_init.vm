@@ -1,0 +1,54 @@
+<!--procount_init.vm-->
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/ppms/query/count/js/procount_init.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<title>项目数量统计</title>
+<script type="text/javascript">
+var menuid = "$menuid";
+var firstNode = "$firstNode";
+var lastNode = "$lastNode";
+var activityId = "$activityId";
+</script>
+<style type="text/css">
+	.linkbutton_group {
+        border-bottom: 1px solid #95B8E7;
+        background-color: #eee;
+    }
+</style>
+</head>
+
+<body id="layout" class="easyui-layout">
+	<div data-options="region:'center',split:false" >
+		<div id="toolbar_procount" class="toolbar_group">
+			<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+			<input type="hidden" id="activityId" name="activityId" value="$activityId" />
+			<input type="hidden" id="firstNode" name="firstNode" value="$firstNode" />
+			<input type="hidden" id="lastNode" name="lastNode" value="$lastNode" />
+			<div class="toolbar_buttons">
+				<!--<a id="openclose" onClick="javascript:panelctlForFam(0);" class="easyui-linkbutton" iconCls="icon-collapse" plain="true" ></a>-->
+				<span class='xian' ></span>
+				<a id="btn_query" href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="qryProCount()">查询</a>
+			</div>
+			<div id="qpanel1" class="easyui-panel collapsable-toolbar " collapsible="true" style="width:100%;padding:1px">
+				<table style='width:100%'>
+                    <tr>
+        				<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap' >单位名称</td>
+        				<td style='font-size:12px;width:23%' ><input id="name"  class="easyui-searchbox" style="width:97%;" /></td>
+						<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap'>项目创建时间</td>
+        				<td style='font-size:12px;width:38%'><input id="startTime" class="easyui-datebox" style="width:48%" />至
+						<input id="endTime" class="easyui-datebox" style="width:48%" />
+						</td>
+						<td style='width:25%'></td>
+    				</tr>      
+				</table>
+			</div>
+		</div>
+		<table id="datagrid_procount"></table>
+	</div>
+	
+</body>
+</html>

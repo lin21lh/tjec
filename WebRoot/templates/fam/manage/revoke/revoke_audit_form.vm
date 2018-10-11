@@ -1,0 +1,112 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/revoke/js/revoke_audit_form.js"></script>
+<script type="text/javascript">
+//debugger;
+var rowData = '$rowData';
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="revoke_audit_form" method="post">
+    <input id="bdgagencycode" type="hidden" name='bdgagencycode'/>
+    <input id="bdgagencyname" type="hidden" name='bdgagencyname'/>
+    <input id="applicationId" type="hidden" name='applicationId'/>
+    <input id="createUser" type="hidden" name='createUser'/>
+    <input id="createTime" type="hidden" name='createTime'/>
+    <input id="bankCode" type="hidden" name='bankCode'/>
+    <input id="isopen" type="hidden" name='isopen'/>
+    <input id="isregister" type="hidden" name='isregister'/>
+    <input id="type" type="hidden" name='type'/>
+    <input id="wfid" type="hidden" name='wfid'/>
+    <input id="wfstatus" type="hidden" name='wfstatus'/>
+    <input id="wfisback" type="hidden" name='wfisback'/>
+    <input id="status" type="hidden" name='status'/>
+    <input id="remark" type="hidden" name='remark'/>
+    <input id="updateUser" type="hidden" name='updateUser'/>
+    <input id="updateTime" type="hidden" name='updateTime'/>
+    <input id="itemid" type="hidden" name='itemid'/>
+    <input id="menuid" type="hidden" name='menuid'/>
+    <input id="activityId" type="hidden" name='activityId'/>
+    <input id="rowData" type="hidden" name='rowData' value ='$rowData'/>
+    <table class="list">
+		
+        <tr>
+            <th>预算单位</th>
+            <td>
+                <input id="bdgagencycn" class="easyui-textbox" required="false" missingMessage="请输入单位全称" name="bdgagencycn" style='width:300px' readonly='true'/>
+            </td>
+            <th>单位性质</th>
+            <td>
+                <input id="deptNature" class="easyui-combobox"  missingMessage="请输入单位性质" name="deptNature" style='width:250px'  readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>联系人</th>
+            <td>
+                <input id="linkman" class="easyui-textbox" missingMessage="请输入联系电话" name="linkman" style='width:300px' readonly='true'/>
+            </td>
+            <th>联系人电话</th>
+            <td>
+                <input id="applPhonenumber" class="easyui-textbox" missingMessage="请输入联系电话" name="applPhonenumber" style='width:250px' readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>单位地址</th>
+            <td colspan="3">
+                <input id="deptAddress" class="easyui-textbox"  missingMessage="请输入单位地址" name="deptAddress" style='width:650px' readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>账户名称</th>
+            <td>
+                <input id="oldAccountName" class="easyui-textbox" editable="false" name="oldAccountName" style='width:300px' readonly='true'/>
+            </td>
+            <th>银行账号</th>
+            <td>
+                <input id="oldAccountNumber" class="easyui-textbox" name="oldAccountNumber" style='width:250px' readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>开户行</th>
+            <td >
+                <input id="oldBankNameCn" class="easyui-searchbox"  name="oldBankNameCn" style='width:300px' />
+            </td>
+            <th>账户性质</th>
+            <td>
+                <input id="oldType02" class="easyui-combobox" missingMessage="请输入账户性质" name="oldType02" style='width:250px' readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>账户类型</th>
+            <td >
+                <input id="oldAccountType" class="easyui-textbox"    missingMessage="请输入账户类型"name="oldAccountType" style='width:300px' readonly='true'/>
+            </td>
+            <th>零余额账户</th>
+            <td >
+                <input id="oldIszero" class="easyui-textbox"   missingMessage="请输入是否是零余额账户"name="oldIszero" style='width:250px' readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>撤销理由</th>
+            <td colspan="3">
+                <input id="applyReason" class="easyui-textbox" editable="true" multiline="true"  required="true" missingMessage="请输入撤销理由"name="applyReason" style='width:650px;height:50px;' data-options="prompt:'最多可输入250个汉字',validType:{length:[0,250]}"/>
+            </td>
+        </tr>
+		<tr>
+        	<th>审批意见</th>
+			<td colspan="5">
+				<input id="opinion" class="easyui-textbox" name="opinion" multiline="true" required="true" missingMessage="请输入审批意见" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:650px;height:50px;" />
+			</td>
+        </tr>
+    </table>
+	
+</form>
+<div class="easyui-panel" style="width:100%;height:190px;overflow:scroll">
+    <table class='list' id='fileTable' >
+    </table>
+</div>

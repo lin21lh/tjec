@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+#set($contextpath = ${rc.contextPath})
+<link rel="stylesheet" type="text/css" href="$contextpath/component/jquery-easyui-1.4/themes/default/easyui.css">
+	<script type="text/javascript" src="$contextpath/component/jquery-easyui-1.4/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="$contextpath/component/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="$contextpath/component/jquery-easyui-1.4/locale/easyui-lang-zh_CN.js"></script>
+<title>会话已过期</title>
+<meta name="content-type" content="text/html; charset=UTF-8">
+</head>
+
+<style type='text/css'>
+body{
+	font-family:微软雅黑;
+	font-size:12px;
+}
+
+div.timeout-notice{
+	text-align:center;
+	width:400px;
+	height:200px;
+	margin:auto;
+	padding:auto;
+}
+
+
+</style>
+<script type="text/javascript">
+	var contextpath = "${rc.contextPath}/";
+		
+	$(function(){
+		var height=$(window).height();
+		var topdiv_height=height/3-50;
+		$('#topdiv')[0].style.height=topdiv_height+'px';
+		//启动倒记时
+		time_count();
+	});
+	
+	function gotoLoginPage(){
+		window.top.location.href = contextpath + 'login.do';
+	}
+	var sec=5;
+	function time_count(){
+		$('#secspan').html(sec);
+		sec--;
+		if(sec==-1){
+			gotoLoginPage();
+			return;
+		}
+		setTimeout(time_count,1000);
+	}
+</script>
+<body>
+	<div id='topdiv' >
+	</div>
+	<div class='timeout-notice'>
+		<div class="easyui-panel" style='width:400px;height:130px;' title='提示'>
+			<div style='margin-top:20px;text-align:center'>
+				会话已过期,&nbsp;<span id='secspan' style="font-weight:bold">5</span>&nbsp;秒后将跳转到登录页面！<br/>
+				<br/>
+				<a class='easyui-linkbutton' style='width:60px' onclick="gotoLoginPage()">登录</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="${rc.contextPath}/templates/base/datascope/datascopeEntry.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/templates/base/datascope/datascopeEditEntry.js"></script>
+<title>功能菜单维护界面</title>
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+</style>
+</head>
+<body class="easyui-layout" >
+	<div region="north"  border="false">
+		<div id="toolbar_menu"  class="linkbutton_group">
+			<a id="linkbutton_save" href="#" class="easyui-linkbutton" onclick="save()"  iconCls="icon-save" plain="true">保存</a>
+			<span class='xian' ></span>
+			<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  onclick="deleteDataRelation()" iconCls="icon-remove" plain="true">删除</a>
+			<span class='xian' ></span>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'" onclick="datascopeEdit()">数据权限维护</a>
+		</div>
+	</div>
+	<div region="west" border="false" style="width:250px"   split="true">
+		<div title="角色树" class="easyui-panel"  fit="true" >
+			<ul id="roletree">
+			</ul>
+		</div>
+	</div>
+	<div region="center" border="false" >
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',split:true,border:false" style="height:230px;">
+				<div class="easyui-layout" data-options="fit:true">
+					<div id='menuPanel2' region="north" style="height:25px;background-color:#eee;">
+                        <input  type="checkbox" id="isallmenu" onclick="checkFunc('isallmenu')"  value="isallmenu">对每个功能设置数据权限
+					</div>
+					<div id='menuPanel' region="center">
+						<ul id="menutree" >
+						</ul>
+					</div>
+				</div>
+			</div>
+        	<div data-options="region:'center',border:false">
+        	    <div  style="border-bottom: 1px solid #95B8E7;background-color:#eee;"><input  type="checkbox" id="isalluser" text="123" onclick="checkFunc('isalluser')" value="isalluser">对每个用户设置数据权限</div>
+        		<div class="easyui-layout" data-options="fit:true">
+	        		<div id="userPanel" class="easyui-panel"  fit="true" >
+	        			<table id="userdatagrid" class="easyui-datagrid" fit ="true"></table>
+	        		</div>
+        		</div>
+        	</div>
+        </div>
+	</div>
+	<div region="east" border="false" style="width:520px" split="true">
+		<div title="数据权限分配" class="easyui-panel" fit="true">
+			<div style="background-color:#eee;">&nbsp;&nbsp;&nbsp;数据权限：<input class="easyui-searchbox" editable="false" type="datagridDialog" id="datascopemain" name="datascopemainname" style="width:170px"></div>
+		   		<div id="condtions" class="easyui-tabs" style="width:512px;">
+    		</div>
+		</div>
+	</div>
+</body>
+</html>

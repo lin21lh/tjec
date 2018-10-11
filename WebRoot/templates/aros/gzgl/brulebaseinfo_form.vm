@@ -1,0 +1,53 @@
+<form id="ruleInfoForm" method="post">
+    <input type="hidden" name="ruleid">
+    <input type= "hidden" name="status"/>
+    <table class="list">
+        <tr>
+            <th>规则名称：</th>
+            <td colspan="3">
+                <input id="ruleName" name="rulename" class="easyui-textbox" style="width:250px" required="true" missingMessage="请输入规则名称"  />
+                <span style="color:red">*</span>
+            </td>
+        </tr>
+        <tr>
+            <th>表编码：</th>
+                <td>
+                    <input id="tabcode" name="tabcode" class="easyui-textbox" required="true" missingMessage="请输入表编码" style="width:250px" />
+                    <span style="color:red">*</span>               
+                </td>
+            <th>表名称：</th>
+            <td>
+                <input id="tabname" name="tabname" class="easyui-textbox" style="width:250px" />
+            </td>
+        </tr>
+        <tr>
+            <th>字段编码：</th>
+            <td>
+                <input id="fieldcode" name="fieldcode" class="easyui-textbox"  required="true" missingMessage="请输入表字段编码" style="width:250px" />
+                <span style="color:red">*</span>
+            </td>
+            <th>字段名称：</th>
+            <td>
+                <input id="fieldname" name="fieldname" class="easyui-textbox" style="width:250px" />
+            </td>
+        </tr>
+        <tr>
+            <th>频率：</th>
+            <td>
+                <input id="frequency" name="frequency" class="easyui-textbox" style="width:250px" />
+            </td>
+            <th>期限（天）：</th>
+            <td>
+                <input id="limit" name="limit" class="easyui-numberbox" required="true" precision="0" missingMessage="请输入整数" style="width:250px" />
+                <span style="color:red">*</span>
+            </td>
+        </tr>
+        <tr>
+            <th>where条件</th>
+            <td colspan="3">
+           	 <input class="easyui-textbox" name="wherestr" multiline="true" id="wherestr"
+						style="width:642px;height:65px;border: 0px solid;"/>
+            </td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,52 @@
+<HTML>
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<link rel="stylesheet" href="../temp1.css" type="text/css">
+<head>
+<script type="text/javascript" src="../../binary/dynaload.js?751"></script>
+<script language="JavaScript">
+ function OnReady(id)
+ {
+var xml = '<Data><items>\
+<item ID="1" str="前言"/>\
+<item ID="11" str="Properties" tip="属性"/>\
+<item ID="110" PID="11" str="Background" tip="背景属性"/>\
+<item ID="112" PID="11" str="Expresses" tip="计算列表达式"/>\
+<item ID="1121" PID="112" str="Express"/>\
+<item ID="113" PID="11" str="Validations" tip="验证"/>\
+<item ID="1131" PID="113" str="Validation"/>\
+<item ID="13" str="Fonts" tip="字体"/>\
+<item ID="131" PID="13" str="Font" tip="字体"/>\
+<item ID="12" str="Cols"/>\
+<item ID="121" PID="12" str="Col" tip="各列的定义"/>\
+<item ID="122" PID="12" str="Group" tip="分组表头"/>\
+<item ID="14" str="FreeformRes" tip="自由表头资源区"/>\
+<item ID="141" PID="14" str="Freeform"/>\
+<item ID="16" str="DropLists" tip="下拉选择内容"/>\
+<item ID="161" PID="16" str="DropList"/>\
+<item ID="1611" PID="161" str="item"/>\
+<item ID="19" str="Table" tip="初始数据"/>\
+<item ID="191" PID="19" str="TR"/>\
+<item ID="1911" PID="191" str="TD"/>\
+</items></Data>';
+  AF.func('ReadXML', xml);
+ }
+ function OnEvent(id, Event, p1, p2, p3, p4)
+ {
+  if(Event=="SelChanged") parent.document.getElementById('ContentPage').src="main.htm?751#Tag" + p1;
+ }
+</script>
+</head>
+
+<body bgcolor=#EEEEEE topmargin=10 leftMargin=3 rightMargin=1 bottommargin=1 vlink=#0000ff link=#0000ff alink=#0000ff>
+<table cols=1 border=0 height=100% width=100%>
+<tr height=24><td align=center>Supcan Treelist<br>XML文挡规范</td></tr>
+<tr height=38><td align=center><img src='../../res/tip2.bmp'>&nbsp; 目录 &nbsp;<img src='../../res/tip2.bmp'></td></tr>
+<tr><td>
+<div style="position:relative;width:100%;height:100%">
+	<script>insertTree('AF', 'Border=clientEdge; Style=hasButtons,hasLines,showSelAlways; leafImage=0; nodeImage=1; BackColor=#F0F0F0,#DFD8D8')</script>
+</div>
+</td></tr>
+</table>
+
+</body>
+</html>

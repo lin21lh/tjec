@@ -1,0 +1,109 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="prores_form" method="post">
+    <input id="projectid" type="hidden" name='projectid'/>
+    <input id="purchaseid" type="hidden" name='purchaseid'/>
+    <input id="createuser" type="hidden" name='createuser'/>
+    <input id="createtime" type="hidden" name='createtime'/>
+    <input id="updateuser" type="hidden" name='updateuser'/>
+    <input id="updatetime" type="hidden" name='updatetime'/>
+    <input id="wfid" type="hidden" name='wfid'/>
+    <input id="status" type="hidden" name='status'/>
+    <input id="datatype" type="hidden" name='datatype'/>
+    <input id="advanceid" type="hidden" name='advanceid'/>
+    <input id="subStr" type="hidden" name='subStr'/>
+    <input id="orgcode" type="hidden" name='orgcode'/>
+<div id="tabList" class="easyui-tabs">
+	<div title="基本信息">
+		<table class="list">
+		<tr>
+            <th>项目名称</th>
+            <td>
+                <input id="proName" class="easyui-textbox" required="true" missingMessage="请选择项目名称" name="proName" style='width:250px' readonly='true'/>
+            </td>
+            <th>项目类型</th>
+            <td >
+                <input id="proTypeName" class="easyui-textbox" required="true" missingMessage="请输入项目类型" name="proTypeName" style='width:250px' readonly='true' />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4"><table id="advance_organ"></table></td>
+		</tr>
+		<tr>	
+             <th>采购公告时间</th>
+            <td>
+                <input id="purchaseNoticeTime" class="easyui-datebox" editable='false' required="true" missingMessage="请输入采购公告时间" name="purchaseNoticeTime" style='width:250px' />
+            </td>
+            <th>公告发布媒体</th>
+            <td >
+                <input id="purchaseNoticeMedia" class="easyui-textbox" required="true" data-options="validType:{length:[0,100]}" missingMessage="请输入公告发布媒体" name="purchaseNoticeMedia" style='width:250px'  />
+            </td>
+        </tr>
+		<tr>	
+             <th>响应文件提交时间</th>
+            <td>
+                <input id="fileCommitTime" class="easyui-datebox" editable='false' required="true" missingMessage="请输入响应文件提交时间" name="fileCommitTime" style='width:250px' />
+            </td>
+            <th>响应文件评审时间</th>
+            <td >
+                <input id="fileJudgeTime" class="easyui-datebox" editable='false' required="true" missingMessage="请输入响应文件评审时间" name="fileJudgeTime" style='width:250px'  />
+            </td>
+        </tr>
+		<tr>	
+             <th>结果确认谈判时间</th>
+            <td>
+                <input id="negotiateTime" class="easyui-datebox" editable='false' required="true" missingMessage="请输入结果确认谈判时间" name="negotiateTime" style='width:250px' />
+            </td>
+            <th>政府审核时间</th>
+            <td >
+                <input id="govVerifyTime" class="easyui-datebox" editable='false' required="true" missingMessage="请输入政府审核时间" name="govVerifyTime" style='width:250px'  />
+            </td>
+        </tr>
+		<tr>	
+             <th>合同签署时间</th>
+            <td>
+                <input id="contractTime" class="easyui-datebox" editable='false' required="true" missingMessage="请输入合同签署时间" name="contractTime" style='width:250px' />
+            </td>
+            <th>合同公布时间</th>
+            <td >
+                <input id="contractPublishTime" class="easyui-datebox" editable='false' required="true" missingMessage="请输入合同公布时间" name="contractPublishTime" style='width:250px'  />
+            </td>
+        </tr>
+        <tr>	
+             <th>合同公布媒体</th>
+            <td >
+                <input id="contractPublishMedia" class="easyui-textbox" required="true" data-options="validType:{length:[0,100]}" missingMessage="请输入合同公布媒体" name="contractPublishMedia" style='width:250px' />
+            </td>
+            <th>ppp项目合同附件</th>
+            <td  colspan="3" id='prorespath'>
+                <input id="contractPath" type="hidden"  name="contractPath" />
+				<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('prorespath','contractPath',24)"/>
+			</td>
+        </tr>
+		<tr>
+            <th>备注</th>
+            <td colspan="3">
+                <input id="remark" class="easyui-textbox"  multiline="true" missingMessage="请输入备注" name="remark" style='width:670px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+            </td>
+        </tr>
+        
+    </table>
+    </div>
+	<div title="专家信息">
+		<table id="resultExpert"><input type="hidden" id="resultExpertData" name="resultExpertData" /></table>
+    </div>
+</div>
+    
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

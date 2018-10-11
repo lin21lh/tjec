@@ -1,0 +1,42 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>账户历史查询</title>
+<style type="text/css">
+	.linkbutton_group {
+        border-bottom: 1px solid #95B8E7;
+        background-color: #eee;
+    }
+</style>
+</head>
+
+<body class="easyui-panel" style="height:100%">
+	
+	<script type="text/javascript" src="$contextpath/templates/common/component/gridToExcel.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/fam/query/js/account_query_history.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>	
+	
+	<input type="hidden" id="menuid" name="menuid" />
+	<input type="hidden" id="allbdgagency" name="allbdgagency" />
+	<div id="toolbar_account" class="toolbar_group">
+		<div class="toolbar_buttons">
+			<span class='xian' ></span>
+			<a id="btn_remove" href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="qryApplicationInfo()">变更详情</a>
+			<span class='xian' ></span>
+			<a id="btn_excel" href="#" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onclick="out_excel_his(true)">导出excel</a>
+		</div>
+		<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;">
+				&nbsp;
+				开户行 <input class="easyui-searchbox" id="bank" style='width:150px'/>
+				账户名称 <input class="easyui-textbox" id="accountNameSearch" style='width:150px'/>
+				银行账号 <input class="easyui-textbox" id="accountNumberSearch" style='width:110px'/>
+				<a id ='queryAccountHisButton' href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onclick="queryAccountHisInfo()">查询</a>
+		</div>
+	</div>
+	<div id="dd" ></div>
+	<div id="d1" ></div>
+	<table id="datagridHisAccount"></table>
+</body>
+</html>

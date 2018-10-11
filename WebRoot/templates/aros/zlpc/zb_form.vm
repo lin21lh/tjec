@@ -1,0 +1,59 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+
+<form id="dataForm" method="post">
+	<div>
+    	<table class="list">
+    		<!--隐藏属性start-->
+    			<input type="hidden" id="standid" name="standid" value="$!{po.standid}"/>
+    		<!--隐藏属性end-->
+			<tr>
+				<th>指标名称：</th>
+				<td colspan="3">
+					<input id="standardname" name="standardname" value="$!{po.standardname}" class="easyui-textbox" 
+						required="true" missingMessage="请输入指标名称" data-options="validType:{length:[0,666]}" style="width:695px;"/>
+					<font color=red>*</font>
+				</td>
+			</tr>
+			<tr>
+    			<th>阶段类型：</th>
+    			<td >
+    				<input id="stagetype" name="stagetype" value="$!{po.stagetype}" class="easyui-textbox" required="true" missingMessage="请选择阶段类型" style='width:250px'/>
+					<font color=red>*</font>
+				</td>
+    			<th>指标类型：</th>
+    			<td >
+					<input id="inditype" name="inditype" value="$!{po.inditype}" class="easyui-textbox" required="true" missingMessage="请选择指标类型" style='width:250px' />
+					<font color=red>*</font>
+				</td>
+			</tr>
+			<tr>
+    			<th>分值：</th>
+    			<td>
+    				<input id="score" name="score" value="$!{po.score}" class="easyui-textbox" required="true" 
+						style="width:250px" missingMessage="请输入分值"
+						data-options="validType:{length:[0, 20]}" />
+					<font color=red>*</font>
+    			</td>
+    			<th>展示顺序：</th>
+    			<td>
+					<input id="seqno" name="seqno" value="$!{po.seqno}" class="easyui-textbox" required="true" 
+						style="width:250px" missingMessage="请输入展示顺序"
+						data-options="validType:{length:[0, 20]}" />
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+        </table>
+	</div>
+</form>
+	
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

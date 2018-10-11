@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app>
+	<container-descriptor>
+		<prefer-web-inf-classes>true</prefer-web-inf-classes>
+		<show-archived-real-path-enabled>true</show-archived-real-path-enabled>
+	    <servlet-reload-check-secs>1</servlet-reload-check-secs>
+	</container-descriptor>
+    <context-root>/ppms</context-root>
+</weblogic-web-app>

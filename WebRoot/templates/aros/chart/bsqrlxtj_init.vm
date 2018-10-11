@@ -1,0 +1,79 @@
+<!DOCTYPE>
+<html>
+    <head>
+    #parse("common/common-v14.vm")
+    #parse("common/extensions-v14.vm")
+    <title>被申请人类型趋势占比统计</title>
+    <style type="text/css">
+    	.linkbutton_group{
+    		border-bottom: 1px solid #95B8E7;
+    	}
+		#startm {
+			float:left; 
+			} 
+      	#endm {
+             float:left;  
+            } 
+        #leftd {
+             float:left;  
+            } 
+		.div-a{ float:left;width:49.5%;height:50%;border:0px solid #E0ECFF}
+		.div-m{ float:left;width:0.5%;height:50%;background-color:#E0ECFF}
+		.div-b{ float:right;width:50%;height:50%;border:0px solid #E0ECFF}		
+		
+    </style>
+    <script type="text/javascript" src="$contextpath/component/eCharts/echarts.min3.2.3.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/aros/chart/js/bsqrlxtj_init.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+	<script type="text/javascript">
+    	var menuid = "$!menuid";
+    </script>
+    </head>
+    <body id="layout" class="easyui-layout">
+    	<div data-options="region:'center',split:false" >
+            <div id="toolbar_center" class="toolbar_group" >
+        		<div class="toolbar_buttons">
+    				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="chartQuery()" >查询</a>
+                </div>
+        		<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;border:0px;">
+    				<table  class="list" style='border:1px' onclick='document.onkeypress = function (key) { if (key.keyCode == 13) {chartQuery(); } }'>
+                        <tr>
+							<td style='border: 0px;text-align:right;width:15%;' align="right">
+								统计周期：<input id="anafrequency" name="anafrequency" class="easyui-combobox" style='width:70px' panelheight = "auto">
+							</td>  
+							
+							<td style='border: 0px;text-align:center;width:25%' align="center">
+								被申请人类型：<input id="deftype" name="deftype" class="easyui-combobox" style='width:200px' panelheight = "auto">
+							</td>
+							
+							<td style='border: 0px;text-align:right;width:50%' align="right">
+								<div id="leftd">
+									统计日期：<input id="startyear" name="startyear"  class="easyui-combobox" style='width:100px' panelheight = "auto">年
+								</div>
+								<div id="startm" style="display:block">
+									<input id="startmonth" name="startmonth"  class="easyui-combobox" style='width:80px' panelheight = "auto">月
+								</div>
+								<div id="leftd">
+									-
+								</div>
+								<div id=leftd>
+									<input id="endyear" name="endyear" class="easyui-combobox" style='width:100px' panelheight = "auto">年
+								</div>
+								<div id="endm" style="display:block">
+									<input id="endmonth" name="endmonth"  class="easyui-combobox" style='width:80px' panelheight = "auto">
+								</div>
+							</td>  
+        				</tr>   
+    				</table>
+        		</div>
+    		</div>
+			<div id="sep" style="height:15px;background-color: #E0ECFF;"></div>
+    		<div id="chart" style="width:100%;">
+    			<div id="chart1" class="div-a" ></div>
+				<div id="mid" class="div-m"></div>
+                <div id="chart2" class="div-b"></div>
+			</div>
+		
+    	 </div>    
+    </body>
+</html>

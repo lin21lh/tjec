@@ -1,0 +1,161 @@
+@CHARSET "UTF-8";
+
+.wrapper2 {
+	margin-top: -32px;
+	background-color: #fff;
+	position: absolute;
+	width: 100%;
+	min-width: 980px;
+	_width: 980px;
+	left: 0;
+	z-index: 50;
+	top: 560px;
+}
+
+.fix-menu {
+	height: 90px;
+	background: #fafafa;
+	width: 100%;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.menu-list {
+	width: 980px;
+	margin: 0px auto;
+	padding-top: 5px;
+}
+
+.menu-list li {
+	float: left;
+	font-size: 14px;
+	margin-right: 25px;
+}
+
+.fix-menu-1,.fix-menu-1,.fix-menu-2,.fix-menu-3,.fix-menu-4,.fix-menu-5,.fix-menu-6
+	{
+	height: 55px;
+	display: inline-block;
+	background: url("../images/menu.png") no-repeat;
+	font-size: 0;
+	width: 142px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.menu-list .current .fix-menu-1 {
+	background-position: 0 -70px;
+}
+
+.fix-wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+.fix-content {
+	width: 980px;
+	margin: 0px auto;
+	height: 390px;
+	padding-top: 50px;
+}
+
+.index1 .content-word {
+	float: left;
+	width: 510px;
+	padding-top: 50px;
+}
+
+.word h2 {
+	font-size: 48px;
+	font-weight: 400;
+	margin-bottom: 10px;
+}
+
+.word li {
+	font-size: 24px;
+	color: #999999;
+	line-height: 35px;
+}
+
+.index1 .content-picture {
+	float: right;
+	width: 470px;
+}
+
+.computer {
+	width: 445px;
+	height: 295px;
+	position: relative;
+	background: url("../images/computer.png");
+}
+
+.computer-www {
+	width: 178px;
+	height: 40px;
+	background: url("../images/computer-www.png");
+	position: absolute;
+	top: 120px;
+	left: 130px;
+}
+
+.fix-content-hover .computer-www,.computer:hover .computer-www {
+	-webkit-animation-name: show-word;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-duration: 3s;
+	-moz-animation-name: show-word;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-duration: 3s;
+}
+
+.index2 .content-picture {
+	float: left;
+	width: 516px;
+}
+
+.index2-pciture-bg {
+	width: 516px;
+	height: 337px;
+	position: relative;
+	background: url("../images/index2-pciture-bg.png");
+}
+
+.stopwatch {
+	width: 202px;
+	height: 235px;
+	position: absolute;
+	left: 2px;
+	bottom: 0;
+	background: url("../images/stopwatch.png");
+}
+
+.stopwatch-pointer {
+	_background: url("../images/stopwatch-pointer2.png");
+}
+
+.stopwatch-pointer {
+	width: 28px;
+	height: 78px;
+	background: url("../images/stopwatch-pointer.png");
+	position: absolute;
+	top: 70px;
+	left: 90px;
+}
+
+.index2-mail-bg {
+	width: 516px;
+	height: 337px;
+	position: relative;
+	background: url("../images/index2-pciture-bg.png");
+}
+
+.monitor {
+	width: 365px;
+	height: 366px;
+	position: relative;
+	background: url("../images/monitor.png");
+}
+
+.group2 {
+	width: 408px;
+	height: 364px;
+	position: relative;
+}

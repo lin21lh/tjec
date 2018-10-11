@@ -1,0 +1,144 @@
+<!DOCTYPE>
+<html>
+<head>
+    #parse("common/common-v14.vm")
+    <title>复议申请查看</title>
+	<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+	<link href="$contextpath/css/stylecss.css" rel="stylesheet" type="text/css" />
+    <link href="$contextpath/css/yangshi.css" rel="stylesheet" type="text/css" />
+    <link href="$contextpath/images/sysicon.png" rel="shortcut icon"/>
+	<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+	<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var caseid = "$caseid";
+			
+			showWebFileDiv($("#filetd"), false, "XZFY", caseid, "");
+		});
+	</script>	
+</head>
+
+<body >
+	 <div class="box">
+	 
+		<div class="header">
+			<div class="top"></div>
+			<div class="edge"></div>
+		</div>
+				
+		<div class="article">
+			<div class="article_box">
+			
+				<div class="title">
+					<div class="name">复议申请</div>
+					<div class="return">
+						<a href="/aros">返回首页</a>
+					</div>
+				</div>
+				
+				<div style="height:600px;">   
+					<div style="width:95%;">
+						<fieldset style="font-size:12px;">
+        					 <legend>注意事项</legend>
+        					 <ul>
+        						<li>请妥善保存您的<span style="color:red;">证件号码</span>和<span style="color:red;">查询码</span>，以备查用。  </li>
+        					 </ul>
+        				</fieldset>
+					</div>
+					<div>
+						<form id="xzfyReqForm" method="post">
+                        	<div>
+                            	<table class="list" style="border-top:1px solid #99CCFF;vertical-align:middle;text-align:center;">
+                            		<!--隐藏属性start-->
+                            			<input type="hidden" id="caseid" name="caseid"/><!--案件ID-->
+                            			<input type="hidden" id="fjkeyid" name="fjkeyid" value="${fjkeyid}"/><!--附件keyid-->
+                            		<!--隐藏属性end-->
+									<tr>
+                            			<th style="font-weight:bold;height:14px;width:15%;" >查询码：</th>
+                            			<td style="height:14px;width:85%;" colspan="3">
+											<span style="color:red;">$!{casebaseinfo.key}</span>
+										</td>
+                            		</tr>
+                            		<tr>
+                            			<th style="font-weight:bold;height:14px;width:15%;">申请人：</th>
+                            			<td style="height:14px;width:35%;">$!{casebaseinfo.appname}</td>
+                            			<th style="font-weight:bold;height:14px;width:15%;">申请人类型：</th>
+                            			<td style="width:35%;">$!{casebaseinfo.apptypename}</td>
+                            		</tr>
+                            		<tr>
+                            			<th style="font-weight:bold;height:14px;">证件类型：</th>
+                            			<td>$!{casebaseinfo.idtypename}</td>
+                            			<th style="font-weight:bold;height:14px;">证件号码：</th>
+                            			<td>$!{casebaseinfo.idcode}</td>
+                            		</tr>
+                        			<tr>
+                            			<th style="font-weight:bold;height:14px;">所属区域：</th>
+                            			<td>$!{casebaseinfo.regionname}</td>
+                            			<th style="font-weight:bold;height:14px;">联系手机：</th>
+                            			<td>$!{casebaseinfo.mobile}</td>
+                            		</tr>
+                            		<tr>
+                            			<th style="font-weight:bold;height:14px;">邮箱：</th>
+                            			<td>$!{casebaseinfo.email}</td>
+                            			<th style="font-weight:bold;height:14px;">邮政编码：</th>
+                            			<td>$!{casebaseinfo.postcode}</td>
+                            		</tr>
+                            		<tr>
+                            			<th style="font-weight:bold;height:14px;">通讯地址：</th>
+                            			<td colspan="3">$!{casebaseinfo.address}</td>
+                                    </tr>
+                        			<tr>
+                            			<th style="font-weight:bold;height:14px;">邮寄地址：</th>
+                            			<td colspan="3">$!{casebaseinfo.mailaddress}</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="font-weight:bold;height:14px;">第三人名称：</th>
+                                        <td colspan="3">$!{casebaseinfo.thname}</td>
+                                    </tr>
+                            		<tr>
+                            			<th style="font-weight:bold;height:14px;">被申请人：</th>
+                            			<td>$!{casebaseinfo.defname}</td>
+                            			<th style="font-weight:bold;height:14px;">被申请人类型：</th>
+                            			<td>$!{casebaseinfo.deftypename}</td>
+                            		</tr>
+                            		<tr>
+                            			<th style="font-weight:bold;height:14px;">行政管理类型：</th>
+                            			<td>$!{casebaseinfo.admtypename}</td>
+                            			<th style="font-weight:bold;height:14px;">申请复议事项类型：</th>
+                            			<td>$!{casebaseinfo.casetypename}</td>
+                            		</tr>
+                            		<tr>
+                            			<th style="font-weight:bold;height:14px;">是否附带行政赔偿：</th>
+                            			<td>$!{casebaseinfo.ifcompensationname}</td>
+                            			<th style="font-weight:bold;height:14px;">赔偿金额：</th>
+                            			<td>$!{casebaseinfo.amountstr}（元）</td>
+                            		</tr>
+                            		<tr>
+                            			<th style="font-weight:bold;height:14px;">申请事项：</th>
+                            			<td colspan="3">$!{casebaseinfo.appcase}</td>
+                                    </tr>
+                            		<tr>
+                            			<th style="font-weight:bold;height:14px;">事实和理由：</th>
+                            			<td colspan="3">$!{casebaseinfo.factreason}</td>
+                                    </tr>
+                            		<tr>
+                                        <th style="font-weight:bold;height:14px;">相关附件：</th>
+                            			<td colspan="3" valign='top' style="height:40px" id="filetd"></td>
+                                    </tr>
+                                </table>
+                        	</div>
+							<div style="text-align: center;padding-top:4px;">
+								<a href="/aros" class="easyui-linkbutton" data-options="iconCls:'icon-redo'" style="width:10%">返回首页</a>
+                        	</div>
+                        </form>
+					</div>
+    			</div>
+			</div>
+			
+			<div class="footer">
+				<p>版权所有：中财信科技（北京）有限公司</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

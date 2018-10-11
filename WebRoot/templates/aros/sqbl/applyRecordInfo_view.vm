@@ -1,0 +1,59 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+	<div>
+    	<table class="list">
+			<tr>
+    			<th>时间：</th>
+    			<td ><span>$!{info.reqtime}</span></td>
+    			<th>地址：</th>
+    			<td ><span>$!{info.place}</span></td>
+    		</tr>
+			<tr>
+    			<th>调查人：</th>
+    			<td><span>$!{info.inquirer}</span></td>
+    			<th>记录人：</th>
+    			<td><span>$!{info.noter}</span></td>
+    		</tr>
+			<tr>
+    			<th>申请人：</th>
+    			<td><span>$!{info.appname}</span></td>
+    			<th>工作单位：</th>
+    			<td><span>$!{info.workunits}</span></td>
+    		</tr>
+    		<tr>
+    			<th>性别：</th>
+    			<td><span>$!{info.sexname}</span></td>
+    			<th>年龄：</th>
+    			<td><span>$!{info.age}</span></td>
+    		</tr>
+    		<tr>
+    			<th>家庭地址：</th>
+    			<td><span>$!{info.address}</span></td>
+    			<th>联系电话：</th>
+    			<td><span>$!{info.phone}</span></td>
+    		</tr>
+    		<tr>
+    			<th>问：</th>
+    			<td colspan="3"><span>$!{info.issue}</span></td>
+    		</tr>
+    		<tr>
+    			<th>答：</th>
+    			<td colspan="3"><span>$!{info.answer}</span></td>
+    		</tr>
+    		<tr>
+    			<th>申请时间：</th>
+    			<td colspan="3"><span>$!{info.appdate}</span></td>
+    		</tr>
+    		<tr>
+    			<th>是否案前化解：</th>
+    			<td colspan="3"><span>$!{info.issolvename}</span></td>
+    		</tr>
+        </table>
+	</div>

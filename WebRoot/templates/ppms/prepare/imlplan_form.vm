@@ -1,0 +1,98 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="imlplan_form" method="post">
+    <input id="projectid" type="hidden" name='projectid'/>
+    <input id="solutionid" type="hidden" name='solutionid'/>
+    <input id="createuser" type="hidden" name='createuser'/>
+    <input id="createtime" type="hidden" name='createtime'/>
+    <input id="updateuser" type="hidden" name='updateuser'/>
+    <input id="updatetime" type="hidden" name='updatetime'/>
+    <input id="wfid" type="hidden" name='wfid'/>
+    <input id="status" type="hidden" name='status'/>
+    <input id="datatype" type="hidden" name='datatype'/>
+    <input id="orgcode" type="hidden" name='orgcode'/>
+
+    <table class="list">
+		<tr>
+            <th>项目名称</th>
+            <td>
+                <input id="proName" class="easyui-textbox" required="true" missingMessage="请选择项目名称" name="proName" style='width:250px' readonly='true'/>
+            </td>
+            <th>项目类型</th>
+            <td >
+                <input id="proTypeName" class="easyui-textbox" required="true" missingMessage="请输入项目类型" name="proTypeName" style='width:250px' readonly='true' />
+            </td>
+        </tr>
+        <tr>
+            <th>风险分配框架</th>
+            <td colspan="3">
+                <input id="riskAllocation" class="easyui-textbox" required="true" multiline="true" missingMessage="请输入风险分配框架" name="riskAllocation" style='width:670px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" />
+            </td>
+		</tr>
+		<tr>	
+            <th>项目融资结构</th>
+            <td colspan="3">
+                <input id="projectFinance" class="easyui-textbox" required="true" multiline="true" missingMessage="请输入项目融资结构" name="projectFinance" style='width:670px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"  />
+            </td>
+        </tr>
+        <tr>
+            <th>回报机制</th>
+            <td colspan="3">
+                <input id="repayMechanism" class="easyui-textbox" required="true"  multiline="true" missingMessage="请输入回报机制" name="repayMechanism" style='width:670px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" />
+            </td>
+		</tr>
+		<tr>
+            <th>配套安排</th>
+            <td colspan="3">
+                <input id="suitedPlan" class="easyui-textbox" required="true" multiline="true" missingMessage="请输入配套安排" name="suitedPlan" style='width:670px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+            </td>
+        </tr>
+        <tr>
+            <th>项目合同体系</th>
+            <td colspan="3">
+                <input id="contractSystem" class="easyui-textbox"  required="true" multiline="true" missingMessage="请选择项目合同体系"   name="contractSystem" style='width:670px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+            </td>
+        </tr>
+		<tr>
+            <th>项目合同核心内容</th>
+            <td  colspan="3">
+                <input id="contractCoreContent" class="easyui-textbox" editable="true" multiline="true"  required="true" missingMessage="请输入项目合同核心内容" name="contractCoreContent" style='width:670px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+            </td>
+        </tr>
+		<tr>
+            <th>监管架构</th>
+            <td  colspan="3">
+                <input id="supervisoryRegime" class="easyui-textbox" editable="true" multiline="true"  required="true" missingMessage="请输入监管架构" name="supervisoryRegime" style='width:670px;height:50px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+            </td>
+        </tr>
+		<tr>
+            <th>实施方案附件</th>
+            <td  colspan="3" id='imlplanfile' style='height:31px'>
+                <input id="implementationPlanPath" type="hidden"  name="implementationPlanPath" />
+				<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('imlplanfile','implementationPlanPath',56)"/>
+			</td>
+        </tr>
+		 <tr>
+            <th>拟预审公告发布时间</th>
+            <td>
+                <input id="advancePublishTime" class="easyui-datebox" required="true"  missingMessage="请输入预审公告发布时间" name="advancePublishTime" editable='false' style='width:250px' />
+            </td>
+            <th>拟采购公告发布时间</th>
+            <td>
+                <input id="purchaseNoticeTime" class="easyui-datebox" required="true" missingMessage="请输入采购公告发布时间" name="purchaseNoticeTime" editable='false' style='width:250px' />
+            </td>
+        </tr>
+    </table>
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

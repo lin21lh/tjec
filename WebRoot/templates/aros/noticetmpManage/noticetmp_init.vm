@@ -1,0 +1,53 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>文书模板管理</title>
+<script type="text/javascript">
+    // 菜单ID
+    var menuid = "$menuid";
+</script>
+<script type="text/javascript" src="$contextpath/templates/aros/noticetmpManage/js/noticetmp_init.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+</head>
+<body id="layout" class="easyui-layout">
+     <div data-options="region:'center',split:false" >
+        <div id="toolbar_center" class="toolbar_group" >
+            <input type="hidden" id="menuid" name="menuid" value="$menuid" />
+            <div class="toolbar_buttons">
+                <a href="#" id="queryBtn" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="doQuery()" >查询</a>
+                <span class='xian' ></span>
+                <a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="addNoticetmp()">新增</a>
+                <span class='xian' ></span>
+                <a href="#" id="upBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="editNoticetmp()">修改</a>
+                <span class='xian' ></span>
+                <a href="#" id="upBtn" class="easyui-linkbutton" iconCls="icon-item" plain="true" onClick="noticetmpDetail()">详情</a>
+                <span class='xian' ></span>
+                <a href="#" id="delBtn" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="delNoticetmp()">删除</a>
+            </div>
+            <div id="queryPanel" class="easyui-panel collapsable-toolbar-w" collapsible="true" >
+                 <table class="list" style="border:0px;font-size:12px;">
+                    <tr>
+                        <td style='border:0px;text-align:right'>流程类型：</td>
+                        <td style='border:0px;text-align:left'>
+                            <input id="protype" class="easyui-combobox" style='width:150px'>
+                        </td>
+                        <td style='border:0px;text-align:right'>文书模板名称：</td>
+                        <td style='border:0px;text-align:left'>
+                            <input id="noticename" class="easyui-textbox" style='width:150px'>
+                        </td>
+                        <td style='border:0px;text-align:right'>创建日期：</td>
+                        <td style='border:0px;text-align:left'>
+                            <input id="starttime" class="easyui-datebox" style='width:110px'  editable="false">
+                            —
+                            <input id="endtime" class="easyui-datebox" style='width:110px'  editable="false">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <table id="noticetmpDataGrid"></table>
+     </div>    
+</body>
+</html>

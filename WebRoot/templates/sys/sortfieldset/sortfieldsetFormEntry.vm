@@ -1,0 +1,65 @@
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="sortFieldSetForm" method="post">
+	<table class="list">
+		<tr>
+			<th>名称：</th>
+			<td>
+            	<input id="sortname" class="easyui-textbox" required="true" missingMessage="请输入名称" name="sortname" style="width:160px" />
+			</td>
+			<th>菜单名称：</th>
+			<td>
+				<input id="resourcename" class="easyui-searchbox" required="true" missingMessage="请选择菜单" name="resourcename" style='width:160px'/>
+				<input type="hidden" id="sortid" name="sortid" />
+			</td>
+		</tr>
+		<tr>
+			<th>角色：</th>
+			<td>
+                <input id="rolename" class="easyui-searchbox" name="rolename" style="width:160px" />
+			</td>
+			<th>用户：</th>
+			<td>
+				<input id="username" class="easyui-searchbox" name="username" type="gridDialog" style="width:160px" />
+			</td>
+		</tr>
+		<tr>
+			<th>屏幕区域编号：</th>
+			<td>
+            	<input id="scrareano" class="easyui-textbox" required="true" missingMessage="请输入屏幕区域编号" name="scrareano" style="width:160px" />
+			</td>
+			<th>顺序号：</th>
+			<td>
+            	<input id="orderno" class="easyui-numberbox" name="orderno" required="true" missingMessage="请输入顺序号" style="width:160px" />
+			</td>
+		</tr>
+		<tr>
+			
+			<th>状态：</th>
+			<td colspan="3">
+            	<input id="status" class="easyui-combobox" name="status" required="true" value="0" data-options="valueField:'val',textField:'text',data:[{val:0,text:'启用'}, {val:'1',text:'停用'}],panelHeight:'auto'" missingMessage="请选择状态" style="width:160px" />
+			</td>
+		</tr>
+		<tr>
+			<th>排序字串：</th>
+			<td colspan="3">
+				<input id="sortstr" class="easyui-textbox" multiline="true" required="true" missingMessage="请输入排序字串" style="width:445px;height:40px;" name="sortstr" />
+			</td>
+		</tr>
+		<tr>
+		<th>备注：</th>
+			<td colspan="3">
+				<input id="remark" class="easyui-textbox" multiline="true" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:445px;height:50px;" name="remark" />
+			</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td ><span style="font-size:small;color:red">注：多个排序字段之间用#区分，排序字段与排序模式之间用*区分。排序模式可以不用设置。<br/>例如：itemid*asc#code*desc#name。</span></td>
+		</tr>
+	</table>
+</form>

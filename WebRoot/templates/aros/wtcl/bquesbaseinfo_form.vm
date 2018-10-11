@@ -1,0 +1,52 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/wtcl/js/bquesbaseinfo_form.js"></script>
+
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="projectAddForm" method="post">
+	<input type="hidden" id="quesid" name="quesid" />
+	<input type="hidden" id="quetype" name="quetype" />
+	<input type="hidden" id="asktime" name="asktime" />
+	<input type="hidden" id="operator" name="operator" />
+	<input type="hidden" id="opttime" name="opttime" />
+	<input type="hidden" id="ifanswer" name="ifanswer" />
+
+
+	<table class="list">
+    		<tr>
+    			<th >提问人</th>
+    			<td>
+    				<input id="askername" class="easyui-textbox" name="askername" readonly="true"
+						 data-options="validType:{length:[0,25]}" style='width:250px'/>
+    			</td >
+    			<th >联系方式</th>
+    			<td >
+    				<input id="phone" class="easyui-textbox" name="phone"  readonly="true" style='width:250px' />
+    			</td>
+    		</tr>    		
+			<tr>
+    			<th >问题描述</th>
+    			<td colspan="3">
+    				<input id="quesdesc" class="easyui-textbox" name="quesdesc" readonly="true"
+						 data-options="validType:{length:[0,300]}" style='width:645px;height:69px;' multiline="true"/>
+    			</td >    			
+    		</tr>
+    		<tr>
+    			<th >问题回复</th>
+    			<td colspan="3">
+    				<input id="answer" class="easyui-textbox" name="answer" required="true" missingMessage="请填写回复"
+						 data-options="validType:{length:[0,300]}" style='width:645px;height:69px;' multiline="true"/>
+						 <font color=red> *</font>
+    			</td >    			
+    		</tr>
+			
+			
+    </table>
+</form>
+

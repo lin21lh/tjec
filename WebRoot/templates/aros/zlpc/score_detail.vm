@@ -1,0 +1,38 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/zlpc/score_detail.js"></script>
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+    
+	#zs_div {
+    	
+    	margin-right: auto;
+    	margin-left: auto;
+    	margin-top: 30px;
+    	font-size: 14px;
+    	font-weight: bold;
+		text-align : center;
+    }
+</style>
+<script >
+	
+</script>
+<div id="zs_div">
+	<form id="dataForm" method="post">
+    	<input id="caseid" type="hidden" value="$!{caseid}"/>
+    	<table id="wdzsTable" width="90%" border="0" style="margin:auto;">
+    		<tr bgcolor="#AFD9E7">
+               <td width="15%" height="40" align="center">阶段</td>
+               <td width="15%" height="40" align="center">指标类型</td>
+               <td width="40%" height="40" align="center">指标</td>
+               <td width="15%" height="40" align="center">指标分值</td>
+               <td width="15%" height="40" align="center">实际分值</td>
+            </tr>
+    	</table>
+    </form>
+</div>

@@ -1,0 +1,42 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="projectViewForm" method="post">
+	<table class="list">
+    		<!--隐藏属性start-->
+			<input type="hidden" id="groupid" name="groupid" /><!--委员id-->
+    		<!--隐藏属性end-->
+    		<tr>
+    			<th >小组名称：</th>
+    			<td>
+    				<input id="groupname" class="easyui-textbox" name="groupname" readonly="true" style='width:250px'/>
+    			</td >  
+    			<th >是否允许查看案件：</th>
+    			<td>
+    				<input id="ifcheck" class="easyui-textbox" name="ifcheckname" readonly="true"  style='width:250px'/>
+    			</td >  			
+    		</tr>
+    		<tr>    			
+    			<th >案件描述：</th>
+    			<td colspan="3">
+					<input id="casedesc" class="easyui-textbox" name="casedesc" multiline="true" 
+					readonly="true" style="width:695px;height:65px;" />
+    			</td>   				
+    		</tr>
+    		<tr>    			
+    			<th >咨询问题：</th>
+    			<td colspan="3">
+					<input id="question" class="easyui-textbox" name="question" multiline="true" 
+					readonly="true" style="width:695px;height:65px;" />
+    			</td>   				
+    		</tr>    		
+    </table>
+</form>
+

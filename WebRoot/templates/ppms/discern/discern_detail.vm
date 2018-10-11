@@ -1,0 +1,154 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="projectAddForm" method="post">
+	<div id="tabList" class="easyui-tabs" >  
+	<div title="项目基本信息" > 
+	<table class="list">
+        		<!--隐藏属性start
+        			-->
+				<input type="hidden" id="workflowflag" name="workflowflag" /><!--区分保存还是保存并发送-->
+				<input type="hidden" id="projectid" name="projectid" /><!--项目id-->
+				<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+				<input type="hidden" id="proTrade" name="proTrade" /><!--菜单id-->
+				<input type="hidden" id="wfid" name="wfid" /><!--工作流id-->
+				<input type="hidden" id="thirdGridList" name="thirdGridList" /><!--第三方评审机构列表-->
+				<input type="hidden" id="financeGridList" name="financeGridList" /><!--财政预算支出-->
+				<input type="hidden" id="activityId" name="activityId" /><!--节点id-->
+				<input type="hidden" id="vomid" name="vomid" /><!--项目识别id-->
+        		<!--隐藏属性end
+        		-->
+        		<tr>
+        			<th  >项目名称</th>
+        			<td  >
+        				<input id="proName" class="easyui-textbox" name="proName"   readonly='true' style='width:240px'/>
+        			</td >
+        			<th >项目类型</th>
+        			<td  >
+        				<input id="proTypeName" class="easyui-textbox" name="proTypeName"   readonly='true' style='width:240px' />
+        			</td>
+        		</tr>
+        		<tr >
+        			<th >项目总投资（万元）</th>
+        			<td>
+        				<input id="amount" name="amount"  class="easyui-numberbox" data-options="min:0,precision:2,max:99999999999999.99" readonly='true'style='width:240px'/>
+        			</td>
+        			<th >拟合作期限（年）</th>
+        			<td >
+        				<input id="proYear" name="proYear" class="easyui-numberbox" readonly='true'  style='width:240px'/>
+        			</td>
+                </tr>
+        		<tr>
+        			<th>所属行业</th>
+        			<td >
+        				<input id="proTradeName" name="proTradeName"   readonly='true'    class="easyui-textbox" style='width:240px' />
+        			</td>	
+        			<th >项目运作方式</th>
+        			<td>
+        				<input id="proPerateName" name="proPerateName"  readonly='true'   class="easyui-textbox"  style='width:240px' />
+        			</td>
+				</tr>
+				<tr>
+        			<th >回报机制</th>
+        			<td >
+        				<input id="proReturnName"  name="proReturnName" class="easyui-textbox"  readonly='true' style='width:240px' />
+					</td>
+        			<th >项目发起时间</th>
+        			<td >
+        				<input id="proSendtime" name="proSendtime" class="easyui-textbox" readonly='true' style='width:240px' />
+        			</td>
+        		</tr>
+				<tr>
+        			<th >项目发起类型</th>
+        			<td >
+        				<input id="proSendtypeName" class="easyui-textbox" name="proSendtypeName" style='width:240px'  readonly='true'/>
+					</td>
+					<th>项目发起人名称</th>
+        			<td >
+        				<input id="proSendperson" name="proSendperson" class="easyui-textbox" readonly='true'  style='width:240px'/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >项目联系人</th>
+        			<td >
+        				<input id="proPerson" name="proPerson" class="easyui-textbox" readonly='true' style='width:240px' />
+					</td>
+					<th>联系人电话</th>
+        			<td >
+        				<input id="proPhone"  name="proPhone" class="easyui-textbox" readonly='true' style='width:240px'/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >示范项目</th>
+        			<td >
+        				<input id="sfxmName" name="sfxmName" class="easyui-textbox" readonly='true' style='width:240px'/>
+					</td>
+					<th>推介项目</th>
+        			<td >
+						<input id="tjxmName" name="tjxmName" class="easyui-textbox" readonly='true' style='width:240px'/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >申请补贴</th>
+        			<td >
+        				<input id="sqbtName" name="sqbtName" class="easyui-textbox" readonly='true' style='width:240px'/>
+					</td>
+					<th>补贴金额（万元）</th>
+        			<td >
+						<input id="btje" name="btje"    class="easyui-numberbox"  readonly='true' style='width:240px'/>
+        			</td>
+                </tr>
+				<tr>
+					<th >项目概况</th>
+					<td colspan="3">
+						<input id="proSituation" class="easyui-textbox" name="proSituation" multiline="true" readonly='true' style="width:685px;height:35px;" />
+					</td>
+				</tr>	
+				<tr>
+					<th >初步实施方案描述</th>
+					<td colspan="3">
+						<input id="proScheme" class="easyui-textbox" name="proScheme" multiline="true" readonly='true' style="width:685px;height:35px;" />
+					</td>
+				</tr>
+				<tr>
+        			<th >初步实施方案附件</th>
+        			<td  id="ssfa" style="height:31px">
+        				<input id="proSchemepath" type="hidden" name="proSchemepath"/>
+					</td>
+					<th>可行性研究报告附件</th>
+					<td id="kxxyj" style="height:31px">
+						<input id="proReportpath" type="hidden" name="proReportpath"/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >立项报告附件</th>
+        			<td id="hpbg" style="height:31px">	
+						<input id="proConditionpath" type="hidden" name="proConditionpath"/>
+					</td>
+					<th >项目产出物附件</th>
+					<td id="xmccw" style="height:31px">
+						<input id="proArticlepath" type="hidden" name="proArticlepath"/>
+					</td>
+                </tr>
+				<tr>
+					<th >项目产出物说明</th>
+					<td colspan="3">
+						<input id="proArticle" class="easyui-textbox" name="proArticle" multiline="true" readonly='true'  style="width:685px;height:35px;" />
+					</td>
+				</tr>
+        </table>
+    </div>	
+	<div title="年度产出计划" > 
+		<table id="projectAddGrid"></table>
+    </div>	
+    </div>
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

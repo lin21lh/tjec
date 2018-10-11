@@ -1,0 +1,241 @@
+
+	<div class="easyui-layout" fit='true'>
+		<div region="center" border="false">
+			<div id="toolbar_shtdtl" class="toolbar_group">
+				<div class="toolbar_buttons">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" 
+						onClick="shtdtl_hlist_add()">添加横向列表</a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" 
+					onClick="shtdtl_vlist_add()">添加竖向列表</a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" 
+					onClick="shtdtl_form_add()">添加表单</a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" 
+						onClick="shtdtl_edit()">修改</a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" 
+						onClick="shtdtl_del()">删除</a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" 
+						onClick="shtdtl_close()">关闭</a>
+				</div>
+			</div>
+			<table id='shtdtlgrid'>
+			</table>
+			<div id='datanode' style='displaynone' ></div>
+		</div>
+		
+		<div region="south" border="true" title="列表字段明细" style='height:280px'>
+			<div id="col_col" class="toolbar_group">
+				<div class="toolbar_buttons">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" 
+						onClick="coledit('add')">添加</a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" 
+						onClick="coledit('edit')">修改</a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" 
+						onClick="coldel()">删除</a>
+				</div>
+			</div>
+			<table id='colgrid'>
+			</table>
+		</div>
+	<div>
+	
+	<div style='display:none'>
+		<div id='add_hlist_window'>
+			<form id='hlistform' method='post'>
+				<table class='list'>
+					<tr>
+						<th>名称：
+						</th>
+						<td>
+							<input name='name' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>起始行：
+						</th>
+						<td>
+							<input name='startrow' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>结束行：
+						</th>
+						<td>
+							<input name='endrow' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>数据表表名：
+						</th>
+						<td>
+							<input name='tablename' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>批次标识字段：
+						</th>
+						<td>
+							<input name='uuidfield' type='text' />
+							<input name='typecode' type='hidden' />
+							<input name='cfgid' type='hidden' />
+							<input name='sheetid' type='hidden' />
+							<input name='id' type='hidden' />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div id='add_vlist_window'>
+			<form id='vlistform' method='post'>
+				<table  class='list'>
+					<tr>
+						<th>名称：
+						</th>
+						<td>
+							<input name='name' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>起始列：
+						</th>
+						<td>
+							<input name='startcol' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>结束列：
+						</th>
+						<td>
+							<input name='endcol' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>数据表表名：
+						</th>
+						<td>
+							<input name='tablename' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>批次标识字段：
+						</th>
+						<td>
+							<input name='uuidfield' type='text' />
+							<input name='typecode' type='hidden' />
+							<input name='cfgid' type='hidden' />
+							<input name='sheetid' type='hidden' />
+							<input name='id' type='hidden' />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div id='add_fm_window'>
+			<form id='fmform' method='post'>
+				<table  class='list'>
+					<tr>
+						<th>名称：
+						</th>
+						<td>
+							<input name='name' type='text' />
+						</td>
+					</tr>
+					
+					<tr>
+						<th>数据表表名：
+						</th>
+						<td>
+							<input name='tablename' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>批次标识字段：
+						</th>
+						<td>
+							<input name='uuidfield' type='text' />
+							<input name='typecode' type='hidden' />
+							<input name='cfgid' type='hidden' />
+							<input name='sheetid' type='hidden' />
+							<input name='id' type='hidden' />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		
+		<div id='add_col_window'>
+			<form id='col_form' method='post'>
+				<table  class='list'>
+					<tr>
+						<th>工作表索引号：
+						</th>
+						<td>
+							<input name='sheetid' type='text' />
+						</td>
+					</tr>
+					
+					<tr>
+						<th>行号：
+						</th>
+						<td>
+							<input name='rownum'  type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>列号：
+						</th>
+						<td>
+							<input name='colnum' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>中文名：
+						</th>
+						<td>
+							<input name='text' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>字段名：
+						</th>
+						<td>
+							<input name='fieldname' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>数据类型：
+						</th>
+						<td>
+							<input name='datatype' type='text' />
+						</td>
+					</tr>
+					<tr>
+						<th>是否允许为空：
+						</th>
+						<td>
+							<input name='allownull' type='text' />
+							<input type='hidden' name='id' />
+						
+							<input type='hidden' name='cfgid' />
+							<input type='hidden' name='typeid' />
+							<input type='hidden' name='typecode' />
+							
+							<input type='hidden' name='flag' />
+							
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		
+		<
+	</div>
+	
+	<script src='templates/base/excel/dataImpCfgSheetDetailEntry.js'>
+	</script>

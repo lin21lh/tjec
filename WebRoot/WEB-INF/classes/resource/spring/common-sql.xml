@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!-- oracle测试sql -->
+	<sql id="t_test1">
+	<![CDATA[
+		select * from demo where 1=1 
+		[and id={id} ]
+		order by id desc
+		  ]]>
+	</sql>
+	
+	<!-- 新闻列表 -->
+	<sql id="news_list">
+	<![CDATA[
+		select ne.conid,
+	         ne.title,
+	         ne.content,
+	         ne.opttime,
+	         ne.operator,
+	         ne.status,
+	         ne.contype,
+	         ne.releasetime,
+	         ne.newssources,
+	         ne.newsauthor,
+	         fi.itemid
+	    from b_contentbaseinfo ne left join sys_filemanage fi on ne.conid=fi.keyid
+	    where ne.contype='01'
+	    and ne.status='02'
+	    order by ne.opttime desc
+		  ]]>
+	</sql>
+	
+	<!-- 新闻详情 -->
+	<sql id="news_detail">
+	<![CDATA[
+		select ne.conid,
+	       ne.title,
+	       ne.content,
+	       ne.opttime,
+	       ne.operator,
+	       ne.status,
+	       ne.contype,
+	       ne.releasetime,
+	       ne.newssources,
+	       ne.newsauthor
+	  from b_contentbaseinfo ne
+	  where ne.contype='01'
+	  and ne.status='02'
+	  and ne.conid={conid}
+	  order by ne.opttime desc
+		  ]]>
+	</sql>
+	
+	<!-- 法律法规列表 -->
+	<sql id="law_list">
+	<![CDATA[
+		select ne.conid,
+	       ne.title,
+	       ne.content,
+	       ne.opttime,
+	       ne.operator,
+	       ne.status,
+	       ne.contype
+	  from b_contentbaseinfo ne
+	  where ne.contype='02'
+	  and ne.status='02'
+	  order by ne.opttime desc
+		  ]]>
+	</sql>
+	
+	<!-- 法律法规详情 -->
+	<sql id="law_detail">
+	<![CDATA[
+		select ne.conid,
+	       ne.title,
+	       ne.content,
+	       ne.opttime,
+	       ne.operator,
+	       ne.status,
+	       ne.contype
+	  from b_contentbaseinfo ne
+	  where ne.contype='02'
+	  and ne.status='02'
+	  and ne.conid={conid}
+	  order by ne.opttime desc
+		  ]]>
+	</sql>
+	
+	<!-- 典型案例列表 -->
+	<sql id="typical_case_list">
+	<![CDATA[
+		select ne.conid,
+	       ne.title,
+	       ne.content,
+	       ne.opttime,
+	       ne.operator,
+	       ne.status,
+	       ne.contype
+	  from b_contentbaseinfo ne
+	  where ne.contype='03'
+	  and ne.status='02'
+	  order by ne.opttime desc
+		  ]]>
+	</sql>
+	
+	<!-- 典型案例详情 -->
+	<sql id="typical_case_detail">
+	<![CDATA[
+		select ne.conid,
+	       ne.title,
+	       ne.content,
+	       ne.opttime,
+	       ne.operator,
+	       ne.status,
+	       ne.contype
+	  from b_contentbaseinfo ne
+	  where ne.contype='03'
+	  and ne.status='02'
+	  and ne.conid={conid}
+	  order by ne.opttime desc
+		  ]]>
+	</sql>
+	
+	<!-- 联系我们：机关列表 -->
+	<sql id="office_list">
+	<![CDATA[
+		select co.id,co.deptname,co.address,co.person,co.phone from b_contactbaseinfo co order by co.id
+		  ]]>
+	</sql>
+	
+	<!-- 案件查询 -->
+	<sql id="case_query">
+	<![CDATA[
+		select t.*,
+	       (select a.name
+	          from SYS_YW_DICENUMITEM a
+	         where upper(a.elementcode) = 'B_CASEBASEINFO_APPTYPE'
+	           and a.status = 0
+	           and a.code = t.apptype) apptype_mc,
+	       (select a.name
+	          from SYS_YW_DICENUMITEM a
+	         where upper(a.elementcode) = 'B_CASEBASEINFO_IDTYPE'
+	           and a.status = 0
+	           and a.code = t.idtype) idtype_mc,
+	       (select a.name
+	          from SYS_YW_DICENUMITEM a
+	         where upper(a.elementcode) = 'B_CASEBASEINFO_DEFTYPE'
+	           and a.status = 0
+	           and a.code = t.deftype) deftype_mc,
+	       (select a.name
+	          from SYS_YW_DICENUMITEM a
+	         where upper(a.elementcode) = 'ADMINLEVEL'
+	           and a.status = 0
+	           and a.code = t.admtype) admtype_mc,
+	       (select a.name
+	          from SYS_YW_DICENUMITEM a
+	         where upper(a.elementcode) = 'B_CASEBASEINFO_CASETYPE'
+	           and a.status = 0
+	           and a.code = t.casetype) casetype_mc,
+	       (select a.name
+	          from SYS_YW_DICENUMITEM a
+	         where upper(a.elementcode) = 'B_CASEBASEINFO_DATASOURCE'
+	           and a.status = 0
+	           and a.code = t.datasource) datasource_mc,
+	       (select a.name
+	          from SYS_DICENUMITEM a
+	         where upper(a.elementcode) = 'SYS_TRUE_FALSE'
+	           and a.status = 0
+	           and a.code = t.ifcompensation) ifcompensation_mc,
+	        (select pr.nodename from pub_pronodebaseinfo pr where pr.nodeid=t.nodeid and pr.protype='01') nodeid_mc   
+	  from B_CASEBASEINFO t
+	 where 1=1
+	 	and t.protype = '01'
+	   [and t.idtype = {idtype}]
+	   [and t.idcode = {idcode}]
+	   [and t.key = {key}]
+	   [and t.caseid = {caseid}]
+	   [and t.nodeid in (select t1.nodeid from pub_pronodebaseinfo t1,sys_user_role t2 where t1.roleid=t2.roleid and t2.userid={userid})]
+	   [and (t.appname like concat(concat('%',{queryData}),'%') or t.defname like concat(concat('%',{queryData}),'%') )]
+	   order by t.appdate desc,t.lasttime desc
+		  ]]>
+	</sql>
+	
+	
+	
+	<!-- 附件列表 -->
+	<sql id="file_list">
+	<![CDATA[
+		select fi.* from sys_filemanage fi 
+			where fi.keyid={keyid} and fi.elementcode={elementcode}
+			order by fi.itemid
+		  ]]>
+	</sql>
+	
+	<!-- 案件流程信息 -->
+	<sql id="case_flow">
+	<![CDATA[
+		select t.*,
+	       (select a.name
+	          from SYS_YW_DICENUMITEM a
+	         where upper(a.elementcode) = 'PUB_PRONODEBASEINFO_NODENAME'
+	           and a.status = 0
+	           and a.code = nvl(t.nodeid, 0)) nodeid_mc,
+	       (select a.name
+	          from SYS_YW_DICENUMITEM a
+	         where upper(a.elementcode) = 'PUB_PROBASEINFO_OPTTYPE'
+	           and a.status = 0
+	           and a.code = t.opttype) opttype_mc
+	  from pub_probaseinfo t
+	 where t.caseid = {caseid}
+	   and t.protype = '01'
+	 order by t.nodeid
+
+		  ]]>
+	</sql>
+	
+	<!-- 信息公开列表 -->
+	<sql id="mes_publish_list">
+	<![CDATA[
+		select ne.conid,
+	         ne.title,
+	         ne.content,
+	         ne.opttime,
+	         ne.operator,
+	         ne.status,
+	         ne.contype,
+	         fi.itemid
+	    from b_contentbaseinfo ne left join sys_filemanage fi on ne.conid=fi.keyid
+	    where ne.contype='06'
+	    and ne.status='02'
+	    order by ne.opttime desc
+		  ]]>
+	</sql>
+	
+	<!-- 信息公开详情 -->
+	<sql id="mes_publish_detail">
+	<![CDATA[
+		select ne.conid,
+	       ne.title,
+	       ne.content,
+	       ne.opttime,
+	       ne.operator,
+	       ne.status,
+	       ne.contype
+	  from b_contentbaseinfo ne
+	  where ne.contype='06'
+	  and ne.status='02'
+	  and ne.conid={conid}
+	  order by ne.opttime desc
+		  ]]>
+	</sql>
+	
+	<!-- 业务枚举字典项 -->
+	<sql id="yw_dicenumitem_query">
+	<![CDATA[
+		select a.code, a.name
+		  from SYS_YW_DICENUMITEM a
+		 where upper(a.elementcode) = {elementcode}
+		   and a.status = 0
+		 order by a.code
+
+		  ]]>
+	</sql>
+	
+	<!-- 系统枚举字典项 -->
+	<sql id="dicenumitem_query">
+	<![CDATA[
+		select a.code, a.name
+		  from SYS_DICENUMITEM a
+		 where upper(a.elementcode) = {elementcode}
+		   and a.status = 0
+		 order by a.code
+
+		  ]]>
+	</sql>
+	
+	
+	<!-- 待定 -->
+	<sql id="undetermined">
+	<![CDATA[
+
+		  ]]>
+	</sql>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</root>

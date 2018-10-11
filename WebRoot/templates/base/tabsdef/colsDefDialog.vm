@@ -1,0 +1,93 @@
+#parse("common/extensions-v14.vm")
+<div class='easyui-layout' fit='true'>
+	<div id='container_1' region='center' border='false'></div>
+	<div region='east' split='true' style='width:300px' title='字段信息' collapsible='false'>
+		 <div class='easyui-panel' style='background-color:#eee;' >
+		 	<a id='col_save_btn' class='easyui-linkbutton' iconCls='icon-save' plain='true'  >保存</a>
+		 	<span class='xian' ></span>
+		 	<a id='col_cancel_btn' class='easyui-linkbutton' iconCls='icon-undo' plain='true'  >取消</a>
+		 </div>
+		 <div style='height:405px;overflow:auto'>
+		 		<form id='colForm' method='post' >
+				<table  class='list'>
+					<tr>
+						<th>字段名：</th>
+						<td><input id='columncode' name='columncode' class='easyui-textbox' required='true' missingMessage='字段名不允许为空'
+							style='width:150px;line-height:18px;border:1px solid #95B8E7;background-color:#eee' READONLY/> </td>
+					</tr>
+					<tr>
+						<th>中文名称：</th>
+						<td><input id='columnname' name='columnname' type='text' class='easyui-textbox'
+						 	missingMessage = "请输入中文名称"
+							missingMessage = "请输入中文名称"
+							required='true' style='width:150px;border:1px solid #95B8E7;line-height:18px' /> </td>
+					</tr>
+					<tr>
+						<th>来源数据项：</th>
+						<td><input id='cnsourceelementcode' name='cnsourceelementcode' type='text' class='easyui-searchbox' editable="false"
+						 style='width:150px;' /> </td>
+					</tr>
+					<tr>
+						<th>来源表：</th>
+						<td><input id='sourcetable' name='sourcetable' type='text' class='easyui-textbox' style='width:150px;border:1px solid #95B8E7;line-height:18px' /> </td>
+					</tr>
+					<tr>
+						<th>数据类型：</th>
+						<td><input id='columntype' name='columntype' type='text' class='easyui-validatebox' style='width:150px' /> </td>
+					</tr>
+					<tr>
+						<th>数据长度：</th>
+						<td><input id='columnlength' name='columnlength' type='text' class='easyui-numberbox' style='width:152px' /> </td>
+					</tr>
+					<tr>
+						<th>小数长度：</th>
+						<td><input id='scalelength' name='scalelength' type='text' class='easyui-numberbox' style='width:152px' /> </td>
+					</tr>
+					<tr>
+						<th>编码字段：</th>
+						<td><input id='iscodecol' name='iscodecol' type='checkbox' value='1'/> </td>
+					</tr>
+					<tr>
+						<th>名称字段：</th>
+						<td><input id='isnamecol' name='isnamecol' type='checkbox' value='1'/> </td>
+					</tr>
+					<tr>
+						<th>关键字字段：</th>
+						<td><input id='iskeycol' name='iskeycol' type='checkbox' value='1'/> </td>
+					</tr>
+					<tr>
+						<th>上级关键字字段：</th>
+						<td><input id='ispkeycol' name='ispkeycol' type='checkbox' value='1'/> </td>
+					</tr>
+					<tr>
+						<th>层级字段：</th>
+						<td><input id='islevelnocol' name='islevelnocol' type='checkbox' value='1'/> </td>
+					</tr>
+					<tr>
+						<th>末级字段：</th>
+						<td><input id='isleafcol' name='isleafcol' type='checkbox' value='1'/> </td>
+					</tr>
+					<tr>
+						<th>唯一性字段：</th>
+						<td><input id='isunqcol' name='isunqcol' type='checkbox' value='1'/> </td>
+					</tr>
+					<tr>
+						<th>允许空值：</th>
+						<td><input id='nullable' name='nullable' type='checkbox' value='1'/> </td>
+					</tr>
+					<tr>
+						<th>启用标识：</th>
+						<td>
+							<input id='startmark' name='startmark' type='checkbox' value='1'/> 
+							<input type='hidden' name='columnid' />
+							<input type='hidden' id='tablecode' name='tablecode' />
+							<input type='hidden' id='systempretag' name='systempretag' />
+							<!-- <input type='hidden' id='sourceelementcode' name='sourceelementcode' /> -->
+						</td>
+					</tr>
+				</table>
+			</form>
+		 </div>
+		
+	</div>
+</div>

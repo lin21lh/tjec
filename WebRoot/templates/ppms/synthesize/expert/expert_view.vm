@@ -1,0 +1,248 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+fieldset {
+    	padding:10px;
+    	margin:5px;
+    	color:#333; 
+    	border:#06c dotted 1px;
+	}
+</style>
+<form id="expert_form" method="post">
+	<div id="tabList" class="easyui-tabs" >   
+		<div title="基本信息">      
+			
+	<fieldset> 
+		<legend>个人信息</legend> 
+		
+			<table class="list" style='border-top:1px solid #99CCFF;border-left:1px solid #99CCFF;'>
+				<input type="hidden" id="expertid" name="expertid" />
+				<input type="hidden" id="bidMajor" name="bidMajor" />
+				<input type="hidden" id="bidArea" name="bidArea" />
+				<input type="hidden" id="subStr_work" name="subStr_work" />
+				<input type="hidden" id="subStr_qual" name="subStr_qual" />
+				<input type="hidden" id="subStr_unit" name="subStr_unit" />
+				
+				<tr>
+					<th >姓名</th>
+					<td style='width:170px'>
+						<input id="name" class="easyui-textbox" name="name"    style="width:150px;" readonly='true'/>
+					</td>
+					<th >性别</th>
+					<td style='width:170px'>
+						<input id="sexName" class="easyui-textbox" name="sexName"    style="width:150px;" readonly='true'/>
+					</td>
+                    <td rowspan='6' style='width:150px;text-align:center'><img id="headphoto"   width="140" height="170"  /></td>
+				</tr>
+				<tr>
+					<th >出生日期</th>
+					<td >
+						<input id="birthday" class="easyui-textbox" name="birthday"   editable='false' style="width:150px;" readonly='true'/>
+					</td>
+					<th >民族</th>
+					<td >
+						<input id="nation" class="easyui-textbox" name="nation"    style="width:150px;" readonly='true'/>
+					</td>
+				</tr>
+				<tr>
+					<th >证件类别</th>
+					<td >
+						<input id="idtypeName" class="easyui-textbox" name="idtypeName"    style="width:150px;" readonly='true'/>
+					</td>
+					<th >证件号码</th>
+					<td >
+						<input id="idcard" class="easyui-textbox" name="idcard"    style="width:150px;" readonly='true'/>
+					</td>
+				</tr>
+				<tr>
+					<th >专家类型</th>
+					<td >
+						<input id="expertTypeName" class="easyui-textbox" name="expertTypeName"    style="width:150px;" readonly='true'/>
+					</td>
+					<th >政治面貌</th>
+					<td >
+						<input id="politicsStatusName" class="easyui-textbox" name="politicsStatusName"    style="width:150px;" readonly='true'/>
+					</td>
+				</tr>
+				<tr>
+					<th >近期是否参加过培训</th>
+					<td >
+						<input id="isTrainName" class="easyui-textbox" name="isTrainName"    style="width:150px;" readonly='true'/>
+					</td>
+					<th >是否应急专家</th>
+					<td >
+						<input id="isEmergencyName" class="easyui-textbox" name="isEmergencyName"    style="width:150px;" readonly='true'/>
+					</td>
+				</tr>
+				<tr>
+					<th >所在地区</th>
+					<td colspan='3'>
+						<input id="region" class="easyui-textbox" name="region"    style="width:440px;" readonly='true'/>
+					</td>
+				</tr>
+				
+			</table>
+			 </fieldset>
+			<fieldset> 
+		<legend>联系方式</legend> 
+			<table class="list" style='border-top:1px solid #99CCFF;border-left:1px solid #99CCFF;'>
+				<tr>
+        			<th >联系电话</th>
+        			<td >
+        				<input id="phoneNumber"   class="easyui-textbox"  name="phoneNumber" style='width:160px'   readonly='true'/>
+					</td>
+					<th >微信</th>
+        			<td >
+        				<input id="wechat"   class="easyui-textbox"  name="wechat" style='width:160px'   readonly='true'/>
+					</td>
+					<th >QQ</th>
+        			<td >
+        				<input id="qq"   class="easyui-textbox"  name="qq" style='width:160px'   readonly='true'/>
+					</td>
+                </tr>
+				<tr>
+        			<th >EMAIL</th>
+        			<td >
+        				<input id="email"   class="easyui-textbox"  name="email" style='width:160px'   readonly='true'/>
+					</td>
+					<th >家庭电话</th>
+        			<td >
+        				<input id="homeTelephone"   class="easyui-textbox"  name="homeTelephone" style='width:160px'  readonly='true' />
+					</td>
+					<th >家庭邮编</th>
+        			<td >
+        				<input id="homePostcode"   class="easyui-textbox"  name="homePostcode" style='width:160px'   readonly='true'/>
+					</td>
+                </tr>
+				<tr>
+        			<th >家庭地址</th>
+        			<td colspan='5'>
+        				<input id="homeAddress"   class="easyui-textbox"  name="homeAddress" style='width:520px'   readonly='true'/>
+					</td>
+                </tr>
+			</table>
+		</fieldset>
+		</div>
+		
+		<div title="学习工作状况" > 
+			<table class="list">
+                <tr>
+    				<th >最高学历</th>
+    				<td >
+    					<input id="highestDegreeName" class="easyui-textbox" name="highestDegreeName"    style="width:250px;" readonly='true'/>
+    				</td>
+    				<th >最高学位</th>
+    				<td >
+    					<input id="highestOfferingName" class="easyui-textbox" name="highestOfferingName"    style="width:250px;" readonly='true'/>
+    				</td>
+				</tr>
+				<tr>
+    				<th >毕业学校</th>
+    				<td >
+    					<input id="graduateSchool" class="easyui-textbox" name="graduateSchool"    style="width:250px;" readonly='true'/>
+    				</td>
+					<th >所学专业</th>
+    				<td >
+    					<input id="major" class="easyui-textbox" name="major"    style="width:250px;" readonly='true'/>
+    				</td>
+				</tr>
+				<tr>
+    				<th >从事专业类别</th>
+    				<td >
+    					<input id="majorTypeName" class="easyui-textbox" name="majorTypeName"    style="width:250px;" readonly='true'/>
+    				</td>
+					<th >所属行业</th>
+    				<td >
+    					<input id="industryName" class="easyui-textbox" name="industryName"    style="width:250px;" readonly='true'/>
+    				</td>
+				</tr>
+				<tr>
+    				<th >从事专业年限</th>
+    				<td >
+    					<input id="majorYear" class="easyui-numberbox" name="majorYear"    options="validType:{length:[0,60]}" style="width:250px;" readonly='true'/>
+    				</td>
+					<th >工作状态</th>
+    				<td >
+    					<input id="workingCondition" class="easyui-textbox" name="workingCondition"    style="width:250px;" readonly='true'/>
+    				</td>
+				</tr>
+				<tr>
+    				<th >工作单位</th>
+    				<td >
+    					<input id="unitName" class="easyui-textbox" name="unitName"    style="width:250px;" readonly='true'/>
+    				</td>
+					<th >职务</th>
+    				<td >
+    					<input id="duty" class="easyui-textbox" name="duty"    style="width:250px;" readonly='true'/>
+    				</td>
+				</tr>
+				<tr>
+    				<th >职称</th>
+    				<td >
+    					<input id="professionalTitleName" class="easyui-textbox" name="professionalTitleName"    style="width:250px;" readonly='true'/>
+    				</td>
+					<th >职称编号</th>
+    				<td >
+    					<input id="titleNumber" class="easyui-textbox" name="titleNumber"    style="width:250px;" readonly='true'/>
+    				</td>
+				</tr>
+				<tr>
+    				<th >单位地址</th>
+    				<td colspan='3'>
+    					<input id="unitAddress" class="easyui-textbox" name="unitAddress"    style="width:630px;" readonly='true'/>
+    				</td>
+				</tr>
+		   </table>
+		   <table id="expertWorked"></table>
+		</div>
+		<div title="执业资格以及证书" >
+            <table id="qualification">
+			</table>
+            <table class='list'>
+				<tr>
+    				<th style='width:222px'>个人研究及专业成就<br>(包括学术论文、科研成果、发明创造）</th>
+    				<td >
+    					<input id="research" class="easyui-textbox" multiline="true" name="research"  style='width:400px;height:60px'  readonly='true'/>
+    				</td>
+				</tr>
+				<tr>
+    				<th style='width:222px'>曾参与过的主要评标项目</th>
+    				<td >
+    					<input id="hasBidProject" class="easyui-textbox" multiline="true" name="hasBidProject"  style='width:400px;height:60px' readonly='true' />
+    				</td>
+				</tr>
+			</table>
+        </div>
+		<div title="评标信息" >
+            <table class='list'>
+                <tr>
+                    <th>评标专业</th>
+					<td >
+    					<input id="bidMajorName" class="easyui-textbox"  name="bidMajorName" multiline="true" style='width:600px;height:60px' readonly='true' />
+    				</td>
+				</tr>
+				<tr>
+                    <th>评标区域</th>
+					<td >
+    					<input id="bidAreaName" class="easyui-textbox"  name="bidAreaName" multiline="true" style='width:600px;height:60px' readonly='true' />
+    				</td>
+				</tr>
+			</table>
+            <table id='avoidUnitGrid'></table>
+			<table class='list'>
+                <tr>
+                    <th style='width:100px'>是否可用</th>
+					<td>
+						<input id="isUseName" class="easyui-textbox"  name="isUseName"   readonly='true'/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</form>

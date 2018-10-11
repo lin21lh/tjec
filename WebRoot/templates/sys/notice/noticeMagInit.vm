@@ -1,0 +1,65 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>留言发布管理</title>
+<script type="text/javascript" src="$contextpath/templates/sys/notice/noticeMagInit.js"></script>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<script type="text/javascript">
+	var messageType = "$messageType";
+</script>
+<style type="text/css">
+	.cs-west{
+		width: 50%;
+		padding: 0;
+	}
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+	}
+	textarea {
+		display: block;
+	}
+</style>
+#**
+	公告留言发布，查看
+	@author  songxiaojie 
+	@date 2015年5月7日
+*#
+</head>
+<body id="splayout" class="easyui-layout">
+	 <div data-options="region:'center',split:false" >
+        <div id="toolbar_center" class="toolbar_group" >
+			<div class="toolbar_buttons">
+    			<a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="addNotice()">新增</a>
+				<span class='xian' ></span>
+    			<a href="#" id="upBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="editNotice()">修改</a>
+				<span class='xian' ></span>
+    			<a href="#" id="delBtn" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="delNotice()">删除</a>
+				<span class='xian' ></span>
+    			<a href="#" id="sendBtn" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onClick="sendNotice()">发布</a>
+				<span class='xian' ></span>
+				<a href="#" id="backBtn" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="backNotice()" >撤回</a>
+				<span class='xian' ></span>
+    			<a href="#" id="showDetailBtn" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="showDetailMsg()">详情</a>
+				<span class='xian' ></span>
+    			<a href="#" id="historyBtn" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="listHistory()">阅读历史</a>
+				<span class='xian' ></span>
+    			<a href="#" id="commentBtn" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="commentDetail()">反馈详情</a>
+				<span class='xian' ></span>
+				
+            </div>
+    		<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" >
+    				&nbsp;<input id="status" class="easyui-combobox" style="width:150px;" />
+                    &nbsp;&nbsp;状态： <input id="substatus" class="easyui-combobox" style="width:150px;" />
+					&nbsp;&nbsp;标题名称： <input id="title" class="easyui-textbox"  style="width:150px;" />
+					&nbsp;&nbsp;发布时间 ：<input id="starttime" class="easyui-datebox"  style="width:120px;" /> —
+					<input id="endtime" class="easyui-datebox"  style="width:120px;" />
+					<a href="#" id="queryBtn" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="doQuery()" >查询</a>
+				
+    		</div>
+		</div>
+		<table id="noticeDataGrid"></table>
+	 </div>    
+</body>
+</html>

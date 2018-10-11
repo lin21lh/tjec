@@ -1,0 +1,105 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/sqbl/js/applyRecordInfo_form.js"></script>
+<form id="form" method="post">
+	<input id="arid" name="arid" hidden="true" />
+	<div>
+    	<table class="list">
+			<tr>
+    			<th>时间：</th>
+    			<td>
+    				<input id="reqtime" class="easyui-datebox" name="reqtime"  editable="false"
+						style="width:250px" required="true" missingMessage="请选择时间"/>
+    			</td>
+    			<th>地址：</th>
+    			<td>
+    				<input id="place" class="easyui-textbox" name="place" data-options="validType:{length:[0, 100]}" 
+						style="width:250px" required="true" missingMessage="请输入地址"/>
+    			</td>
+    		</tr>
+			<tr>
+    			<th>调查人：</th>
+    			<td>
+    				<input id="inquirer" class="easyui-textbox" name="inquirer"
+						style="width:250px" required="true" missingMessage="请输入调查人"/>
+    			</td>
+    			<th>记录人：</th>
+    			<td>
+    				<input id="noter" class="easyui-textbox" name="noter"
+						style="width:250px" required="true" missingMessage="请输入记录人"/>
+    			</td>
+    		</tr>
+			<tr>
+    			<th>申请人：</th>
+    			<td>
+    				<input id="appname" class="easyui-textbox" name="appname"
+						style="width:250px" required="true" missingMessage="请输入申请人"/>
+    			</td>
+    			<th>工作单位：</th>
+    			<td>
+    				<input id="workunits" class="easyui-textbox" name="workunits"
+						style="width:250px" missingMessage="请输入工作单位"/>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>性别：</th>
+    			<td>
+    				<input id="sex" class="easyui-combobox" name="sex"
+						style="width:250px" missingMessage="请选择类别"/>
+    			</td>
+    			<th>年龄：</th>
+    			<td>
+    				<input id="age" class="easyui-textbox" name="age" data-options="validType:{length:[0, 3]}"
+						style="width:250px" missingMessage="请输入年龄"/>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>家庭地址：</th>
+    			<td>
+    				<input id="address" class="easyui-textbox" name="address"
+						style="width:250px"  missingMessage="请输入家庭地址"/>
+    			</td>
+    			<th>联系电话：</th>
+    			<td>
+    				<input id="phone" class="easyui-textbox" name="phone" data-options="validType:{length:[0, 30]}"
+						style="width:250px" required="true" missingMessage="请输入联系电话"/>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>问：</th>
+    			<td colspan="3">
+    				<input id="issue" class="easyui-textbox" name="issue" data-options="multiline:true,validType:{length:[0, 1000]}"
+						style="width:692px;height: 60px" required="true" missingMessage="请输入问题"/>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>答：</th>
+    			<td colspan="3">
+    				<input id="answer" class="easyui-textbox" name="answer" data-options="multiline:true,validType:{length:[0, 1000]}"
+						style="width:692px;height: 60px" required="true" missingMessage="请输入答案"/>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>申请时间：</th>
+    			<td colspan="3">
+    				<input id="appdate" class="easyui-datebox" name="appdate"  editable="false"
+						style="width:250px" required="true" missingMessage="请选择申请时间"/>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>是否案前化解：</th>
+    			<td colspan="3">
+    				<input id="issolve" class="easyui-combobox" name="issolve"
+						style="width:250px" required="true" missingMessage="请选择是否案前化解"/>
+    			</td>
+    		</tr>
+        </table>
+	</div>
+</form>

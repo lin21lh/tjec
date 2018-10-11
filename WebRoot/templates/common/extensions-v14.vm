@@ -1,0 +1,11 @@
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	#set($contextpath = ${rc.contextPath})
+	<!-- 扩展 -->
+	<link rel="stylesheet" type="text/css" href="$contextpath/component/jquery-easyui-1.4/jquery-extensions/icons.css">
+	<link rel="stylesheet" type="text/css" href="$contextpath/component/jquery-easyui-1.4/jquery-extensions/jeasyui.extensions.css">
+	<script type="text/javascript" src="$contextpath/templates/common/component/jquery.jdirk.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/common/component/jeasyui.uxensions.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/common/component/uxensions.menu.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/common/component/treeDialog.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/common/component/gridDialog.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/common/component/uxdatagrid.js"></script>

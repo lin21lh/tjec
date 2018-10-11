@@ -1,0 +1,497 @@
+<HTML>
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<head>
+<link rel="stylesheet" href="../temp1.css" type="text/css">
+<style>
+	table {font-family:微软雅黑,Consolas,Arial,宋体;}
+</style>
+</head>
+
+<body bgcolor=#ffffff vlink=#0000ff>
+<div id="Tag1"/>
+<br>
+<Table cols=3 border=0 width=100%>
+<col width=5%>
+<col width=55%>
+<col width=40% valign=top>
+<tr height=130 valign=top><td/><td></td><td><img src='../../res/treelistsh.jpg'></td></tr>
+</table>
+　　Supcan Treelist是根据XML描述文件在页面动态创建的，该XML描述文件的规范简洁易懂，且大多数元素和属性都可以不书写(采用默认值)，程序员也可以在服务器端动态生成XML、甚至可以用 Notepad 直接编辑。<br>
+　　下面的说明相当于是本XML的DTD 规则文档，其中“数量”表示该元素的个数(在父元素下)，“1”表示必须有且只能为1个；“0 - 1”表示数量为0或1，“0 - n”表示可以为0或多个。<br>
+　　Supcan Treelist自带高效的XML DOM/SAX解析器，该解析器性能比Windows的MSXML更出色，且对元素名和属性名的<font color=red>大小写不敏感</font>.<br>
+　　在demo包的 Treelist 子目录下有大量的XML文件实例可供参考.<br>
+<br><br>
+
+<div id="Tag11"/>
+<b>Properties</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=6>含义:TreeList属性；数量:0 - 1</td></tr>
+<tr bgcolor=#f1f1f1><td>分类</td><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td><td>示例</td></tr>
+
+<tr><td rowspan=12>基本</td><td>id</td><td>Treelist的ID，用于生成XML提交文档，相当于是告诉应用服务器，当前提交的是什么表单.</td><td>自定义的串</td><td>(无)</td><td></td></tr>
+<tr><td>key</td><td>主键，用于GetChangedXML( )生成提交串</td><td>下面&lt;col&gt;的列名，复合主键须以逗号分隔</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 20.提交修改内容'></td></tr>
+<tr><td>isTree</td><td>是否以树展现</td><td>true/false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 5.图文并茂(2)'></td></tr>
+<tr><td>treeFormat</td><td>树的格式<br><br>注:详见开发者指南中的"Supcan Treelist组件"</td><td>normal - 普通多列多层树;<br>byid(或id) - 以第一列作为代码的单列多层树;<br>bydata(或data) - 数据本身就呈树状的单列多层树<br>byPid(或pid) - 用pid指定父id的单列多层树</td><td>normal</td><td><img src='document.bmp' title='请参见演示页: 14.单列多层树(一)，15.单列多层树(二)'></td></tr>
+<tr><td>dataURL</td><td>填入数据的默认URL(绝对或相对)，也可以是以“=”开头的表达式<br>注：dataURL为表达式的通常用于分页、或下拉嵌入的树列表</td><td>串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: "6.引用外部Treelist" 中下拉的Treelist、10.可编辑的下拉'></td></tr>
+<tr><td>XMLNodeName</td><td>指定XML/JSON数据(从dataURL加载)的开始填入节点, 不太常用</td><td>串</td><td>(无)</td><td></td></tr>
+<tr><td>editAble</td><td>是否允许输入操作(增删改)</td><td>true/false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 5.图文并茂(2)、12.事件'></td></tr>
+<tr><td>addRowAble</td><td>是否允许用户增行操作，仅在editAble=true时生效.<br>备注：并不影响增删改的API</td><td>true/false</td><td>true</td><td><img src='document.bmp' title='请参见演示页: 12.事件'></td></tr>
+<tr><td>deleteRowAble</td><td>是否允许用户删行操作，仅在editAble=true时生效.<br>备注：并不影响增删改的API</td><td>true/false</td><td>true</td><td><img src='document.bmp' title='请参见演示页: 12.事件'></td></tr>
+<tr><td>sort</td><td>默认排序表达式, 语法如下:<br>"列名1 [a/d], 列名2 [a/d], ..."<br>举例如:"price a, city d"</td><td>如左所述</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 12.事件、13.分类汇总'></td></tr>
+<tr><td>ListTreeSwitchAble</td><td>是否允许在 列表 和 树 之间任意切换</td><td>true/false</td><td>true</td><td></td></tr>
+<tr><td>ref</td><td>引用外部XML描述文件, 本&lt;Properties&gt;和下属节点 (&lt;Expresses&gt;除外) 的内容将来自该文件, 实现类似页面CSS的统一置换功能</td><td>外部XML文件的URL，可以是相对URL</td><td>(无)</td><td></td></tr>
+
+<tr><td rowspan=23 bgColor="#cccccc">外观</td><td>rowHeight</td><td>行高</td><td>像素数</td><td>19</td><td><img src='document.bmp' title='请参见演示页: 5.图文并茂(2)、8.多种掩码输入、12.事件、16.行的复选'></td></tr>
+<tr><td>headerHeight</td><td>顶部标题条的高度</td><td>像素数</td><td>24</td><td><img src='document.bmp' title='请参见演示页: 16.行的复选'></td></tr>
+<tr><td>headerColor<br>或headerBgColor<br>或headerBackColor</td><td>顶部标题条的背景色</td><td>颜色串，可以是以逗号分隔的多个颜色(渐变)</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 3.多层表头、16.行的复选'></td></tr>
+<tr><td>leftColor<br>或leftBgColor<br>或leftBackColor</td><td>左标尺的背景色</td><td>颜色串，可以是以逗号分隔的多个颜色(渐变)</td><td>(无)</td><td></td></tr>
+<tr><td>textColor</td><td>文字颜色</td><td>颜色串</td><td>#000000</td><td><img src='document.bmp' title='请参见演示页: 16.行的复选'></td></tr>
+<tr><td>bgColor<br>或backColor</td><td>背景色<br>建议写在&lt;Background&gt;中，此处为兼容老版本</td><td>颜色串，也可以是以逗号分隔的2个颜色(渐变填充)</td><td>(无)</td><td></td></tr>
+<tr><td>alternateColor</td><td>斑马线色</td><td>颜色串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 8.多种掩码输入'></td></tr>
+<tr><td>curSelMode</td><td>当前行或区域的显示模式</td><td>row - 单行选择,以深底色标记;<br>rows - 允许多行选择(Ctrl、shift+鼠标);<br>excel - 类似excel的区域选择方式</td><td>row</td><td><img src='document.bmp' title='请参见演示页: 8.多种掩码输入、21.4种提交级别'></td></tr>
+<tr><td>curSelBackColor<br>或curSelBgColor<br>或curSelColor</td><td>当前行的颜色，允许多个颜色渐变，颜色串支持ARGB格式，例如：“#10C0D0E0”, 其中10表示ALpha透明度, C0D0E0是RGB。此外还支持包含如下边框属性：<br>borderWidth: 边框线宽<br>borderColor：边框线色<br>borderRound：圆角直径<br>示例: "#12FFFFFF,#22EEFFEE; borderWidth=1; borderColor=red; borderRound=8"</td><td>如左所述</td><td>#14101020</td><td><img src='document.bmp' title='请参见演示页: 12.事件、16.行的复选'></td></tr>
+<tr><td>displayMask</td><td>整行的背景色、文字色表达式, 如:<br>bgColor=if(price=0, red, transparent); textColor=if(price>2,#000022, blue)</td><td>表达式串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: "24.动态更改属性"中的js部分'></td></tr>
+<tr><td>isShowRuler</td><td>是否显示左标尺</td><td>true/false</td><td>见备注</td><td></td></tr>
+<tr><td>isShowGridVert</td><td>是否显示垂直表格线</td><td>true/false</td><td>true</td><td><img src='document.bmp' title='请参见演示页: 16.行的复选'></td></tr>
+<tr><td>isShowGridHor</td><td>是否显示水平表格线</td><td>true/false</td><td>true</td><td><img src='document.bmp' title='请参见演示页: 12.事件、16.行的复选'></td></tr>
+<tr><td>GridColor</td><td>表格线颜色</td><td>颜色串</td><td>(无)</td><td></td></tr>
+<tr><td>GridStyle</td><td>表格线样式</td><td>solid / dash / dot / dashdot</td><td>solid</td><td></td></tr>
+<tr><td>FontIndex</td><td>指定默认字体(不太常用)<br>(注：等级低于&lt;Col&gt;中的同名属性)</td><td>&lt;Fonts&gt;中的字体顺序号</td><td>-1</td><td></td></tr>
+<tr><td>HeaderFontIndex</td><td>指定标题栏默认字体(不太常用)<br>(注：等级低于&lt;Col&gt;中的同名属性)</td><td>&lt;Fonts&gt;中的字体顺序号</td><td>-1</td><td><img src='document.bmp' title='请参见演示页: 1.感受Treelist'></td></tr>
+<tr><td>disableRowFlag</td><td>指定disable行的标记</td><td>gray - 灰色显示<br>deleteline - 删除线<br>none - 无标记</td><td>gray</td><td><img src='document.bmp' title='请参见演示页: 28.下拉的其它功能'></td></tr>
+<tr><td>isDrawUncheckedRadio</td><td>是否显示未选中的Radio</td><td>true/false</td><td>false</td><td></td></tr>
+<tr><td>isShowSortPanel</td><td>是否显示顶部的多重排序区</td><td>true/false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 12.事件'></td></tr>
+<tr><td>innerShadow</td><td>内凹陷阴影</td><td>可以定义上、下、左、右边框处的凹陷阴影, 默认是"top.width=6; top.alpha=25; left.width=2; left.alpha=33", 其中width表示阴影大小, alpha表示阴影的Alpha值(0-255), 数字越大越浓;</td><td>见"可用值"</td><td></td></tr>
+<tr><td>fadeInStep</td><td>执行 Load( ) 函数时的淡入淡出效果</td><td>0 - 255, 0表示关闭此效果, 数值越小效果越明显</td><td>20</td><td></td></tr>
+<tr><td>freeform</td><td>嵌入freeform，作为整行的显示、输入</td><td>Freeform的URL</td><td>(无)</td><td><img src='document.bmp' title='请参见自由表头的演示页: 11.多记录Freeform(1)'></td></tr>
+
+<tr><td rowspan=4>左右分屏</td><td>SeparateBarStyle</td><td>分屏方式</td><td>auto - 自动(超宽时会在左侧浮现分隔条);<br>true - 始终显示分隔条;<br>false - 始终不显示分隔条</td><td>auto</td><td></td></tr>
+<tr><td>SeparateBar</td><td>分屏，将窗口分裂为左右二个部分(类似"冻结")</td><td>列名或列序号，在该列处分屏</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: "24.动态更改属性"中的js部分'></td></tr>
+<tr><td>isHideLeftScrollBar<br>或 isHideLeftScroll</td><td>分屏后，是否隐藏左窗的水平滚动条</td><td>true/false</td><td>true</td><td></td></tr>
+<tr><td>isFrozenWhenSeparate<br>或 isFrozen</td><td>分屏后，右窗的水平滚动是否冻结</td><td>true/false, 为true时水平滚动条将滚不到被冻结的列</td><td>true</td><td></td></tr>
+
+
+
+
+<tr><td rowspan=14 bgColor="#cccccc">行为</td><td>autoBreakLine</td><td>文字显示的超宽处理，有如下4种选择:
+<br>0."breakLine":<br>　自动换行、缩小字体，换行优先
+<br>1."none":<br>　不处理
+<br>2."shrinkFont"或"smallFont":<br>　自动缩小字体、换行，缩小字体优先
+<br>3."breakLineOnly":<br>　自动换行，但不缩小字体</td><td>也可以直接写数字</td><td>0</td><td></td></tr>
+<tr><td>enter</td><td>回车键的行为, 仅用于在输入时</td><td>Right/Down - 光标向右/向下跳转</td><td>right</td><td></td></tr>
+<tr><td>autoUpdate</td><td>下拉Treelist列在选中后, 是否立即将所选数据更新到Treelist中.<br>注: 默认情况下，并不将数据更新到Treelist中，因为可以敲 Esc 键反悔</td><td>true/false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 27.过滤: 关联下拉'></td></tr>
+<tr><td>isSelectEditWhenFocus</td><td>当输入框取得焦点时，光标是否选中全部文字</td><td>true/false/auto - 全选/不选/自动, <br>auto表示int和double时全选</td><td>auto</td><td></td></tr>
+<tr><td>isHiLightModified 或<br>isHighLightModified</td><td>修改过的单元格, 是否在其左上角显示一个醒目的标记</td><td>true/false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: "20.提交修改内容"中js动态修改部分'></td></tr>
+<tr><td>isHiLightNewRow 或<br>isHighLightNewRow</td><td>新增行, 是否在左标尺的左上角显示一个醒目的标记</td><td>true/false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: "20.提交修改内容"中js动态修改部分'></td></tr>
+<tr><td>isAutoFitWidth</td><td>是否能自动扩展列宽而填充整个窗口</td><td>true/false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 6.引用外部Treelist，“自由表头”的演示页: 9.有表头表体的表单(1)'></td></tr>
+<tr><td>multiLayerAble</td><td>是否允许多层表头</td><td>true/false</td><td>true</td><td/></tr>
+<tr><td>moveAble</td><td>是否允许拖拽标题交换列的次序</td><td>true/false</td><td>true</td><td/></tr>
+<tr><td>sortAble</td><td>点击列标题是否执行排序</td><td>true/false</td><td>true</td><td/></tr>
+<tr><td>multiSortAble</td><td>是否允许多重排序操作</td><td>true/false</td><td>true</td><td></td></tr>
+<tr><td>editFreeformId</td><td>用于对话框输入的Freeform资源的id</td><td>在&lt;FreeformRes&gt;中的freeform的id</td><td>无</td><td><img src='document.bmp' title='请参见自由表头演示页: "15.辅助Treelist输入(2)"'></td></tr>
+<tr><td>editFreeformKey</td><td>打开Freeform对话框的动作</td><td>可以从dblClicked,enter,space选取，逗号分隔</td><td>dblClicked,enter</td><td/></tr>
+<tr><td>editFreeformMode</td><td>打开何种Freeform对话框</td><td>可以是 inner, model, 分别表示内嵌对话框、弹出的模式对话框</td><td>inner</td><td/></tr>
+
+<tr><td rowspan=10>打印</td><td>Title</td><td>标题，用于打印</td><td>串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 1.感受Treelist、8.多种掩码输入'></td></tr>
+<tr><td>SubTitle</td><td>副标题，用于打印</td><td>串</td><td>(无)</td><td></td></tr>
+<tr><td>TitleAlign</td><td>标题水平对齐，用于打印</td><td>Left / Center / Right</td><td>Center</td><td></td></tr>
+<tr><td>SubTitleAlign</td><td>副标题水平对齐，用于打印</td><td>Left / Center / Right</td><td>Center</td><td></td></tr>
+<tr><td>Oriantation</td><td>打印纸方向</td><td>Portrait - 纵向, Landscape - 横向</td><td>Portrait</td><td></td></tr>
+<tr><td>Scale</td><td>打印缩放比例</td><td>10至300之间的数字(百分比)</td><td>100</td><td></td></tr>
+<tr><td>PrintColor</td><td>打印的颜色</td><td>BW - 统一作黑白打印, Device - 自动适配打印设备</td><td>Device</td><td></td></tr>
+<tr><td>PaperBorder.left<br>PaperBorder.right<br>PaperBorder.top<br>PaperBorder.bottom</td><td>打印纸边界</td><td>数字(单位:毫米)</td><td>15</td><td></td></tr>
+<tr><td>PageCode</td><td>默认页码</td><td>可以包含page()、pages()的串</td><td>第page()页,共pages()页</td><td></td></tr>
+<tr><td>PageCodeAlign</td><td>页码对齐</td><td>可以包含水平(left或center或right)、垂直(top或bottom)对齐组合，以逗号分隔</td><td>center,bottom</td><td></td></tr>
+
+<tr><td rowspan=5 bgColor="#cccccc">小计合计</td><td>totalFontIndex<br>subtotalFontIndex</td><td>合计/小计行的字体顺序号，指向&lt;Fonts&gt;中的字体资源</td><td>数字</td><td>-1</td><td><img src='document.bmp' title='请参见演示页: 13.分类汇总'></td></tr>
+<tr><td>totalBgColor<br>subtotalBgColor</td><td>合计/小计行的背景色</td><td>颜色串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 7.计算列合计行、13.分类汇总'></td></tr>
+<tr><td>totalTextColor<br>subtotalTextColor</td><td>合计/小计行的文字色</td><td>颜色串</td><td>(无)</td><td></td></tr>
+<tr><td>isFixTotalRow 或<br>isTotalRowFixed</td><td>合计行是否紧挨底边</td><td>true/false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: "7.计算列、合计行"中的下方按钮的js'></td></tr>
+<tr><td>totalOption</td><td>合计/小计的其它选项</td><td>格式为：“isIncludeHideRow=?;isIncludeMergedCell=?”<br><b>isIncludeHideRow</b> - 表示是否包含被隐藏的行，默认是true;<br><b>isIncludeMergedCell</b> - 表示是否包含被组合的单元格(左上角主单元格除外)，默认是true;</td><td>如左</td><td></td></tr>
+
+<tr><td rowspan=4>分页动态加载</td><td>pageRows</td><td>每次加载行数</td><td>数字</td><td>100</td><td><img src='document.bmp' title='请参见演示页: 18.分页方案(一)、19.分页方案(二)'></td></tr>
+<tr><td>totalRows</td><td>取得数据总行数的URL</td><td>相对或绝对URL.<br>服务器返回的响应必须是数字(即总行数), 或包含数字的XML、JSON</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 18.分页方案(一)、19.分页方案(二)'></td></tr>
+<tr><td>dataURL</td><td>就是前面提到的的dataURL,<br>但是必须包含右侧所示的变量:</td><td>"../get1.aspx?st=@startRow&count=@rows"<br>其中变量@startRow、@rows代表开始行、要索取的行数</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 18.分页方案(一)、19.分页方案(二)'></td></tr>
+<tr><td>IsRemoteSort</td><td>当用户试图执行排序操作时, 是否让服务器来完成排序</td><td>true / false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 31.FreeformBar'></td></tr>
+
+<tr><td rowspan=4 bgColor="#cccccc">单列多层树</td><td>TreeImageLeaf</td><td>树叶的图标</td><td>图片URL</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 14.单列多层树(一)'></td></tr>
+<tr><td>TreeImageNodeExpand</td><td>树杈展开时的图标</td><td>图片URL</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 14.单列多层树(一)'></td></tr>
+<tr><td>TreeImageNodeCollapse</td><td>树杈合拢时的图标</td><td>图片URL</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 14.单列多层树(一)'></td></tr>
+<tr><td>LazyLoad</td><td>默认的懒加载<br>备注：仅用于单列多层树</td><td><b>true</b> - 不能确定是否含子孙，显示树杈标记，鼠标点击标记时抛出 "LazyLoad" 事件，需要通过加载数据来即时判断;<br><b>false</b> - 默认非树杈;<br><b>URL串</b> - 不能确定是否含子孙，显示树杈标记，鼠标点击标记时自动从该URL加载数据，该URL通常为一表达式</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 15.单列多层树(二)'></td></tr>
+
+<tr><td rowspan=1>自定义属性</td><td>符合变量命名的任意串,<br>不和上述属性重名即可</td><td>可定义多个自定义属性.<br>注：GetChangedXML( )函数输出的XML中将包含自定义属性, 并可以用SetProp( )、GetProp( )函数存取自定义属性.</td><td></td><td></td><td></td></tr>
+
+</table>
+备注: 1.上述dataURL、ref如果是相对URL，那么是相对于当前XML文件，而不是页面URL;<br>
+　　  2.editAble=true时，isShowRuler的默认值是true，否则是false;<br>
+　　  3.isTree=true时，如果不定义sort，那么默认将第一列当作树的排序列;<br>
+　　  4.上述Title、SubTitle，允许以"|"分隔中英文(用于中英文切换);<br>
+<br>
+
+<div id="Tag110"/>
+<b>Background</b>　　<img src='document.bmp' title='请参见演示页: 4.图文并茂(1)、5.图文并茂(2)'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:背景属性；数量:0 - 1</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>bgColor<br>或backColor</td><td>背景色</td><td>颜色串，也可以是以逗号分隔的2个颜色(渐变填充)</td><td>(无)</td></tr>
+<tr><td>colorAngle</td><td>渐变背景色的旋转角度</td><td>顺时针，0 - 360</td><td>0</td></tr>
+<tr><td>Picture<br>或backPicture<br>或bgPicture</td><td>背景图片</td><td>URL，支持<a href="../dev/pub.htm#Tag605" target=_blank>图片扩展URL</a></td><td>(无)</td></tr>
+<tr><td>arrange</td><td>背景图片显示方式</td><td>1.tile - 平铺<br>2.stretch - 伸展<br>3.单幅原样显示，须是水平、垂直的对齐组合，水平:left / center / right,垂直:top / middle / bottom，例如"bottom,right"</td><td>tile</td></tr>
+<tr><td>rotate</td><td>背景图片旋转</td><td>顺时针，0 - 360</td><td>0</td></tr>
+<tr><td>flip</td><td>背景图片翻转</td><td>horz - 水平翻转<br>vert - 垂直翻转</td><td>(无)</td></tr>
+<tr><td>alpha</td><td>背景图片透明度</td><td>0 - 255， 效果是:透明度越低(即数字越小)，图像越淡.</td><td>255</td></tr>
+<tr><td>gamma</td><td>背景图片Gamma</td><td>大于0的小数，用于调校颜色，不太常用</td><td>1.0</td></tr>
+<tr><td>isGray<br>或isGrayed</td><td>背景图是否以灰度显示</td><td>true / false</td><td>false</td></tr>
+<tr><td>size</td><td>背景图缩放</td><td>宽度、高度，以逗号分隔</td><td>(无)</td></tr>
+<tr><td>transparentColor</td><td>指定背景图片透明色</td><td>颜色串</td><td>(无)</td></tr>
+<tr><td>rulerPicture</td><td>为左上标尺空白处设一个图标</td><td>图片URL</td><td>(无)</td></tr>
+<tr><td>ref</td><td>引用外部XML描述文件,<br>背景内容将来自该文件, 实现类似页面CSS的界面统一置换</td><td>外部XML文件的URL，可以是相对URL</td><td>(无)</td></tr>
+</table>
+<br>
+
+<div id="Tag112"/>
+<b>Expresses</b>　　<img src='document.bmp' title='请参见演示页: 7.计算列、合计行'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:计算列表达式；数量:0 - 1</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>isOpt 或<br>isOptimize</td><td>是否自动按列的引用关系优化计算顺序</td><td>true/false</td><td>true</td></tr>
+</table>
+<br>
+
+<div id="Tag1121"/>
+<b>Express</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:计算列表达式条目；数量:1 - n，内容: 表达式</td></tr>
+</table>
+<br>
+
+
+<div id="Tag113"/>
+<b>Validations</b>　　<img src='document.bmp' title='请参见演示页: 22.Validation (验证)'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:客户端验证；数量:0 - 1</td></tr>
+</table>
+<br>
+
+<div id="Tag1131"/>
+<b>Validation</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:客户端验证条目；数量:1 - n，内容: 表达式, 如果计算结果为非零，表示通过验证</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>id</td><td>id号,可选</td><td>标注唯一的串，用于帮助API存取.</td><td>(无)</td></tr>
+<tr><td>locate</td><td>定位的列,可选</td><td>列名，表示未通过验证时，光标将自动定位到该列，并在上方浮现提示窗.<br>注：也可以不定义，硕正组件会自动从表达式中分析获得.</td><td>(无)</td></tr>
+<tr><td>errorText<br>或 error</td><td>未通过验证时的提示性文字</td><td>串，可以以“|”分隔中英文</td><td>(无)</td></tr>
+<tr><td>title</td><td>提示窗标题</td><td>标题，可选，可含如下文字之一：Warn、Success、Fail、Error、Prompt(可以更长，包含即可，例如Successful、Warning均合法)</td><td>Prompt</td></tr>
+<tr><td>icon</td><td>提示窗图标</td><td>可含如下文字之一：Stop、Success、Question、Info(可以更长，包含即可，例如Successful、Information均合法)</td><td>Info</td></tr>
+<tr><td>hold</td><td>提示窗持续时间</td><td>单位：秒，0表示永远显示，点击它才关闭. 它的默认值和icon有关(不是很精确):<br>
+　　Success - 2.5秒;<br>
+　　Info - 3.5秒;<br>
+　　Question - 4.5秒;<br>
+　　Stop - 永远显示;</td><td>(无)</td></tr>
+</table>
+<br>
+
+
+
+
+
+<div id="Tag13"/>
+<b>Fonts</b>　　<img src='document.bmp' title='请参见演示页: 1.感受Treelist、23.动态更改属性'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:用到的字体资源；数量:0 - 1</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>ref</td><td>引用外部XML描述文件,<br>字体内容将来自该文件, 实现类似页面CSS的统一置换功能</td><td>外部XML文件的URL，可以是相对URL</td><td>(无)</td></tr>
+</table>
+<br>
+
+
+<div id="Tag131"/>
+<b>Font</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:字体资源；数量:0 - n</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+
+<tr><td>faceName 或 Face, Name</td><td rowspan=14>对应Windows SDK中的LOGFONT结构中的同名属性.<br><br>
+注1: Height(或size)是字体的尺寸，单位是字体的逻辑单位，通常采用小于0的数字，如果大于0，则高度不包含文字的内部行距(internal-leading)。常用的尺寸是-8, -9, -10, -11, -12, -14, -16, -18, -20, -22, -24, -26, -28, -36, -48, -72;<br>
+注2: weight=400/700 对应 非粗体/粗体；<br>
+注3: Bold=false/true 对应 非粗体/粗体</td><td>串</td><td rowspan= 14>系统默认字体</td></tr>
+<tr><td>charSet</td><td>整数</td></tr>
+<tr><td>height 或 FontSize, Size</td><td>整数</td></tr>
+<tr><td>weight 或 Bold</td><td>整数</td></tr>
+<tr><td>width</td><td>整数</td></tr>
+<tr><td>pitchAndFamily</td><td>整数</td></tr>
+<tr><td>quality</td><td>整数</td></tr>
+<tr><td>italic</td><td>整数</td></tr>
+<tr><td>underline</td><td>整数</td></tr>
+<tr><td>outPrecision</td><td>整数</td></tr>
+<tr><td>strikeOut</td><td>整数</td></tr>
+<tr><td>clipPrecision</td><td>整数</td></tr>
+<tr><td>escapement</td><td>整数</td></tr>
+<tr><td>orientation</td><td>整数</td></tr>
+<tr><td>isAntiAlias</td><td>是否抗锯齿平滑显示</td><td>true/false</td><td>false</td></tr>
+<tr><td>ShadowAlpha</td><td>阴影的透明度</td><td>0 至 255</td><td>0</td></tr>
+<tr><td>ShadowBlur</td><td>阴影的模糊度</td><td>0 至 100</td><td>0</td></tr>
+<tr><td>ShadowX</td><td>阴影的横向偏移</td><td>-120 至 120</td><td>0</td></tr>
+<tr><td>ShadowY</td><td>阴影的纵向偏移</td><td>-120 至 120</td><td>0</td></tr>
+</table><br>
+
+<div id="Tag12"/>
+<b>Cols</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:各列的信息；数量: 1</td></tr>
+</table>
+<br>
+
+<div id="Tag121"/>
+<b>Col</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=5>
+<tr bgcolor=#DDDDDD><td colspan=6>含义:列的属性；数量:1 - n; 内容: 列标题文字。如果希望分多行显示，可以直接加回车、或加插"\r\n"</td></tr>
+<tr bgcolor=#f1f1f1><td>分类</td><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td><td>示例</td></tr>
+
+<tr><td rowspan=13>主要</td><td>name (或id)</td><td>列名</td><td>串</td><td>(无)</td><td></td></tr>
+<tr><td>isUnique</td><td>内容是否允许重复，用于生成XML提交文档前的唯一性验证。</td><td>true/false</td><td>false</td><td></td></tr>
+<tr><td>nullAble</td><td>是否允许为空，用于生成XML提交文档前的简单验证</td><td>true/false</td><td>true</td><td><img src='document.bmp' title='请参见演示页: 19.提交修改内容'></td></tr>
+<tr><td>defaultValue</td><td>默认值，用于新插入行操作时的初始<br>支持以“=”开头的表达式</td><td>串</td><td>(无)</td><td></td></tr>
+<tr><td>datatype</td><td>数据类型, 可以为 string / int / double / bool / date / datetime</td><td>如左</td><td>string</td><td></td></tr>
+<tr><td>decimal</td><td>小数位数，仅用于 datatype 为 double 时. -1表示小数位数不确定, 在0和8之间可以任意输入.</td><td>-1至8</td><td>2</td><td></td></tr>
+<tr><td>isHyperlink</td><td>是否超链接列<br>请参见下面的<a href="#Memo5">备注5</a></td><td>true/false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 12.事件'></td></tr>
+<tr><td>isImage</td><td>以图片显示，内容串将是图片的URL(支持<a href="../dev/pub.htm#Tag605" target=_blank>图片扩展URL</a>)<br>注：1.如果是相对URL，是指相对于填入数据的URL，而不是相对于当前XML文档或当前页面.;
+<br>2.请参见下面的<a href="#Memo5">备注5</a>.</td><td>true/false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 4.图文并茂(1)'></td></tr>
+<tr><td>isHide</td><td>是否隐藏, 可以为:<br><b>true</b> - 隐藏;<br><b>false</b> - 显示;<br><b>absHide 或 absTrue</b> - 绝对隐藏，不会被鼠标右键菜单选择;<br><b>absShow 或 absFalse</b> - 绝对显示，不会被鼠标右键菜单选择.</td><td>如左</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 11.显示掩码'></td></tr>
+<tr><td>sortAble</td><td>点击列标题是否执行排序，如果&lt;Properties&gt;中的sortAble设为false, 则本sortAble无效(false)</td><td>true/false</td><td>true</td><td></td></tr>
+<tr><td>moveAble</td><td>是否允许列的拖动操作，如果&lt;Properties&gt;中的moveAble设为false, 则本moveAble无效(false)</td><td>true/false</td><td>true</td><td></td></tr>
+<tr><td>pasteAble</td><td>是否允许被粘贴</td><td><b>true</b> - 允许;<br><b>false</b> - 不允许;<br><b>supcan.xml</b> - 通常是允许，但是当列不可编辑时(包括隐藏时)，将以supcan.xml中的 &lt;pasteAbleWhenUnEditAble&gt; 的设定为准</td><td>supcan.xml</td><td></td></tr>
+<tr><td>textId</td><td>指向另一列的列名，显示的内容存放在该列中，是另类 <b>key-value对</b> 的简易字典解决方案</td><td>列名</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 10.可编辑下拉'的技术分析区中的例子></td></tr>
+
+<tr><td rowspan=14 bgColor="#cccccc">外观</td><td>isThousandSeparat</td><td>是否以千位符分隔显示，仅用于 datatype 为 int 或 double 时</td><td>true/false</td><td>true</td><td></td></tr>
+<tr><td>width</td><td>列宽，可以是：<br>1.绝对数(单位:像素数);<br>2.百分比, 含义是窗口宽度的百分比, 如：20%;<br>3.比例因子，用于分配剩余的宽度, 必须为小于1的分数，如0.2;<br>4.串"fitHeader"或"header", 表示自动伸展到能使表头标题能够完整显示;</td><td></td><td>0.1</td><td></td></tr>
+<tr><td>minWidth</td><td>列的最小宽度</td><td>像素数</td><td>10</td><td><img src='document.bmp' title='请参见演示页: 6.引用外部Treelist'></td></tr>
+<tr><td>align</td><td>水平对齐, 其默认值是随datatype而变的</td><td>left / center / right</td><td>如左所述</td><td></td></tr>
+<tr><td>vAlign</td><td>垂直对齐</td><td>top / vcenter / bottom</td><td>vcenter</td><td></td></tr>
+<tr><td>alignHeader</td><td>列标题文字的对齐</td><td>left / center / right</td><td>center</td><td></td></tr>
+<tr><td>fontIndex</td><td>采用的字体, 前面定义的&lt;Font&gt;的序号<br>(等级高于Properties中的同名属性)</td><td>数字</td><td>-1</td><td><img src='document.bmp' title='请参见演示页: 6.引用外部Treelist'></td></tr>
+<tr><td>headerFontIndex</td><td>列标题采用的字体, 前面定义的&lt;Font&gt;的序号<br>(等级高于Properties中的同名属性)</td><td>数字</td><td>-1</td><td></td></tr>
+<tr><td>headerTextColor</td><td>列标题文字颜色</td><td>颜色串</td><td>#000000</td><td><img src='document.bmp' title='请参见演示页: 7.计算列、合计行'></td></tr>
+<tr><td>displayMask</td><td>用于显示的格式掩码表达式, 内容包括显示内容、 背景色、 文字色、 左图、 右图.  请详见Treelist帮助文档的"3.几个重要的属性"</td><td>表达式串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 4.图文并茂(1)、5.图文并茂(2)、7.计算列合计行、11.显示掩码'></td></tr>
+<tr><td>atLayer</td><td>位于多层表头的层位置.</td><td>数字，从0开始</td><td>0</td><td><img src='document.bmp' title='请参见演示页: 4.图文并茂(1)'></td></tr>
+<tr><td>extentRows</td><td>当以多层表头显示时，该列可跨越多行显示的额外行数</td><td>数字</td><td>0</td><td><img src='document.bmp' title='请参见演示页: 4.图文并茂(1)'></td></tr>
+<tr><td>DropDisplayType</td><td>下拉列(edittype = droplis 或 droptreelist)单元格的文字显示方式：<br>0 - 仅显示文字部分;<br>1 - 仅显示键值(即key)部分;<br>2 - 键值+" - "+文字;</td><td>0/1/2</td><td>0</td><td></td></tr>
+<tr><td>VColSep</td><td>虚拟列的数据分隔符(串).<br>如果设了这个串，在加载数据后，程序将按这个分隔符自动对各行数据进行处理，使其看上去呈现多列的效果。此外, 各个段中纵向、横向如果有连续相同的数据，将自动呈现纵、横的合并效果.<br>注1：仅改变显示效果，并不改变数据;<br>注2：VColSep列有诸多限制，例如只能为string型、不能作为树的排序列等等</td><td>串，比如"/"</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 32.合并单元格'></td></tr>
+
+<tr><td rowspan=34>输入</td><td>editAble</td><td>是否允许输入(其等级低于Properties中的同名属性，也就是说如果 Properties 中的 editAble 为 false，则本editAble无效)</td></td>true/false<td><td>true</td><td></td></tr>
+<tr><td>editAbleNewRow</td><td>当上方的editable=false时，新插入行(即非Load的行)的单元格是否可编辑</td><td>true/false</td><td>false</td><td></td></tr>
+<tr><td>isSelectEditWhenFocus</td><td>当输入框取得焦点时，光标是否选中全部文字, 可以为 true/false/auto - 全选/不选/自动, auto表示在数据类型为 int 和 double 时全选.<br>
+注：默认值沿用&lt;Properties&gt;中的同名属性</td><td>如左所述</td><td>如左所述</td><td></td></tr>
+<tr><td>edittype</td><td>输入方式，有以下9种：<br>
+<b>Edit</b> - 最普通、允许EditMask的编辑;<br>
+<b>EditWithButton</b> - 右侧有一按钮，不太常用;<br>
+<b>MultiLineEdit</b> - 多行编辑, 默认以Ctrl+Enter换行;<br>
+<b>Checkbox</b> - 复选框(见<a href="#Memo1">备注1</a>);<br>
+<b>RadioButton</b> 或 <b>Radio</b> - 单选框(见<a href="#Memo2">备注2</a>);<br>
+<b>Droplist</b> - 下拉列表;<br>
+<b>EditAbleDroplist</b> - 可编辑的下拉列表;<br>
+<b>Droptreelist</b> - 下拉嵌套的treelist;<br>
+<b>EditAbleDroptreelist</b> - 可编辑下拉treelist;<br>
+<b>button</b> - 按钮(见<a href="#Memo3">备注3</a>);<br>
+</td><td>如左所述</td><td>edit</td><td><img src='document.bmp' title='请参见演示页: 9.各种下拉、10.可编辑的下拉、12.事件'></td></tr>
+
+<tr><td rowspan=2>maxChars<br>maxMBytes</td><td>maxChars表示限制输入字数，以Unicode计(中英文一视同仁);<br>maxMBytes表示限制输入字节数，以多字节(非Unicode)计(中文2字节、英文1字节).<br>0表示不限制, 注: 不能同时使用maxChars和maxMBytes</td><td rowspan=2>正数</td><td rowspan=2>0</td><td rowspan=2><img src='document.bmp' title='请参见演示页: 8.多种掩码输入'></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: string型的Edit</td></tr>
+
+<tr><td rowspan=2>max<br>min</td><td>限制输入的最大值、最小值</td><td rowspan=2>串</td><td rowspan=2>(无)</td><td rowspan=2><img src='document.bmp' title='请参见演示页: 8.多种掩码输入'></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: 数据类型为int、 double、date、 datetime的Edit</td></tr>
+
+<tr><td rowspan=2>editMask</td><td>对于日期型，例如YYYY.MM.DD hh:mm:ss<br>对于数值型，例如 ##,###,###.00 (表示千位符分隔、小数点2位)、 +00000 (表示最长5位的正整数)、#,###.#(表示千位符分隔、小数位数不确定).<br>
+注: double型的默认值和小数位数有关，例如decimal=3时，EditMask默认为"#.000"</td><td rowspan=2>串</td><td rowspan=2>如左所述</td><td rowspan=2><img src='document.bmp' title='请参见演示页: 8.多种掩码输入、11.显示掩码'></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: 日期型、数值型的输入</td></tr>
+
+<tr><td rowspan=2>spin</td><td>是否需要输入框内的垂直旋转滚动条</td><td rowspan=2>true/false</td><td rowspan=2>日期是true</td><td rowspan=2></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: 仅用于int、 date、 datetime数据类型的Edit</td></tr>
+
+<tr><td rowspan=2>spinAsCalendar</td><td>点击垂直旋转滚动条是否弹出日历</td><td rowspan=2>true/false</td><td rowspan=2>false</td><td rowspan=2></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: 仅用于date、 datetime数据类型的Edit</td></tr>
+
+<tr><td rowspan=2>startDate</td><td>日期为空时，在输入时的起跳日期(即开始日期)</td><td rowspan=2>日期串，也可以是表达式</td><td rowspan=2>2000.1.1</td><td rowspan=2></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: 仅用于date、 datetime数据类型的Edit</td></tr>
+
+<tr><td rowspan=2>isWordWrap</td><td>超宽时是否自动折行</td><td rowspan=2>true/false</td><td rowspan=2>false</td><td rowspan=2></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: 仅用于MultiLineEdit</td></tr>
+
+<tr><td rowspan=2>droplistID</td><td>1.如果是下拉输入，则为下拉框的相关联的下拉资源ID;<br>注：该ID必须存在于下面的&lt;Droplists&gt;节点中<br><br>2.如果是EditWithButton, 则用作Key-Value字典.<br>注：该ID须存在，或用"auto"表示自动创建</td><td rowspan=2>串</td><td rowspan=2>(无)</td><td rowspan=2><img src='document.bmp' title='请参见演示页: 9.各种下拉、10.可编辑下拉、27.过滤: 关联下拉'></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: edittype为 droplist / droptreelist / editAbleDroplist / editAbleDropTreelist / editWithButton</td></tr>
+
+<tr><td rowspan=2>delayBeforeDropdown</td><td>BeforeDropdown事件重复触发的最短时间差</td><td rowspan=2>秒</td><td rowspan=2>0</td><td rowspan=2></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: edittype为 droplist / droptreelist / editAbleDroplist / editAbleDropTreelist</td></tr>
+
+<tr><td rowspan=2>dropdownWidth</td><td>强制设定下拉窗的宽度, 单位：像素数或百分比.<br>注：百分比是指相对于列的宽度</td><td rowspan=2>如左所述</td><td rowspan=2>(无)</td><td rowspan=2></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: 下拉</td></tr>
+
+<tr><td rowspan=2>dropdownHeight</td><td>设定下拉树列表窗口的最大高度，单位：像素数或百分比.<br>注：百分比是指相对于屏幕的高度</td><td rowspan=2>如左所述</td><td rowspan=2>(无)</td><td rowspan=2></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: droptreelist / editableDropTreelist</td></tr>
+
+<tr><td rowspan=2>isDropDownWhenFocus</td><td>是否得到焦点就自动弹出下拉</td><td rowspan=2>true/false</td><td rowspan=2>false</td><td rowspan=2></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: 下拉</td></tr>
+
+<tr><td rowspan=2>FreeInputAble</td><td>1.用于下拉: 　是否允许自由输入，即输入内容是否受Droplist中的DataCol、 DisplayCol的限制. true/false - 不受限制/受限<br>2.用于EditWithButton: 　是否允许直接输入, true/false - 允许输入/不允许输入(只能点击按钮).<br>3.如果EditWithButton绑定了DroplistID，则强制被设为false.</td><td rowspan=2>true/false</td><td rowspan=2>下拉 - false<br>其它 - true</td><td rowspan=2></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: EditAbleDropTreeList, editWithbutton</td></tr>
+
+<tr><td rowspan=2>isCheckboxOnly</td><td>是否仅仅用于Checkbox选择，如果是True，则不管 &lt;Properties&gt; 中的"editable"是true还是false，该Checkbox均是可操作的，并且左标尺的鼠标右键有全选、反选等菜单功能。<br>注：一般只允许一列为isCheckboxOnly;</td><td rowspan=2>true/false</td><td rowspan=2>false</td><td rowspan=2><img src='document.bmp' title='请参见演示页: "15.行的复选"中的js部分'></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: Checkbox</td></tr>
+
+<tr><td rowspan=2>TreeCombine</td><td>以树显示时，CheckBox显示在树的第一列，本列自动隐藏。<br>可以包含如下串:<br>
+<b>normal</b> - 树杈不允许有复选框<br>
+<b>NodeSelectAble</b>(包含 node 就行) - 树杈允许有复选框;<br>
+<b>AutoSelectChildren</b>(包含 auto 就行) - 树杈选中后, 将自动影响到其子孙;<br>
+<br>注1：仅仅是显示合并，其单元格数据仍然是独立的;<br>注2：单列多层树、多列多层树均适用;<br>例：treeCombine="node,auto"</td>
+<td rowspan=2>如左所述</td><td rowspan=2>(无)</td><td rowspan=2><img src='document.bmp' title='请参见演示页: "15.行的复选"中的js部分'></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: Checkbox 且 isCheckboxObly="true"</td></tr>
+
+<tr><td rowspan=2>GroupID</td><td>RadioButton(单选框)所在的组.<br>注1: GroupId="row"表示纵向选择，即只有一行的值为1;<br>注2: 如果仅有一个组, 则可忽略</td><td rowspan=2>串</td><td rowspan=2></td><td rowspan=2></td></tr>
+<tr><td bgcolor="#ffff00">仅用于: Radio</td></tr>
+
+
+<tr><td rowspan=7 bgColor="#cccccc">按钮列(见<a href="#Memo3">备注3</a>)</td><td>buttonText</td><td>按钮上的文字<br>注：buttonText 和 buttonImg至少要定义一项</td><td>串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 12.事件'></td></tr>
+<tr><td>buttonImg 或<br>buttonImage</td><td>按钮上的小图标<br>注1：buttonText 和 buttonImg至少要定义一项;<br>注2：buttonImage除了用于按钮列，也能用于EditWithButton、DropTreelist的右侧的图标;</td><td>URL</td><td>(无)</td><td></td></tr>
+<tr><td>buttonTip</td><td>鼠标划过按钮时的Tip</td><td>文字串</td><td>(无)</td><td></td></tr>
+<tr><td>buttonWidth</td><td>按钮宽度</td><td>数字，像素数</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 12.事件'></td></tr>
+<tr><td>buttonHeight</td><td>按钮高度</td><td>数字，像素数</td><td>(无)</td><td></td></tr>
+<tr><td>buttonSkin</td><td>强制指定按钮皮肤:<br>Windows - 操作系统按钮外观<br> default - 自动，与全局色调一致<br>flat - 平坦，无按钮边框，常用于仅有图标的情形<br>light gray - 浅灰色<br>caramel - 焦糖色<br>lilian - 百合花色<br>lividity - 青黑色</td><td>如左所述</td><td>windows</td><td></td></tr>
+<tr><td colspan=5>关于多按钮:<br>　　一列中允许同时有多个按钮， 上述buttonText、buttonTip、buttonImg、buttonWidth的内容只要用逗号(,)分隔即可，例如：<br> &lt; ...  buttonText="审核,  不审核"　buttonWidth="50, 70"  ...&gt;</td></tr>
+
+<tr><td rowspan=4>合计/小计</td><td>totalExpress<br>subtotalExpress</td><td>合计/小计表达式<br>备注: 表达式可以包含其它列的列名、和@开头的宏(参见《开发者指南》中的“公共内容”的“3.宏”中的“合计宏”)</td><td>表达式串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 7.计算列合计行、13.分类汇总'></td></tr>
+<tr><td>totalAlign<br>subtotalAlign</td><td>合计/小计的水平对齐</td><td>left / center / right</td><td>right</td><td><img src='document.bmp' title='请参见演示页: 7.计算列合计行、13.分类汇总'></td></tr>
+<tr><td>totalDecimal<br>subtotalDecimal</td><td>合计/小计保留的小数位数</td><td>0 至 8</td><td>与当前列一致</td><td></td></tr>
+<tr><td colspan=4>多个合计行的语法:<br>　　允许有多个独立的合计行，命名规则为 totalExpress1、 totalExpress2...类推， totalAlign 和 totalDecimal 也可按这个规则书写.</td><td></td></tr>
+
+<tr><td bgColor="#cccccc">自定义属性</td><td>符合变量命名的任意串, 不和上述属性重名即可</td><td>属性的值</td><td>任意串</td><td>(无)</td><td></td></tr>
+</table>
+<div id="Memo1"/><b>备注1</b>: 关于checkbox列：数据规则为 <b>1</b>:选中, <b>0</b>:未选中; <b>2</b>:状态不确定(方框内显示一实框),  <b>-1</b>:不显示Checkbox<br>
+<div id="Memo2"/><b>备注2</b>: 关于radiobutton列：数据规则为 <b>1</b>:选中, <b>0</b>:未选中(也不显示)<br>
+<div id="Memo3"/><b>备注3</b>: 所谓“按钮”是指EditType=Button的列，按钮在每行的显示是和单元格的值有关：<b>1</b>:正常显示按钮,  <b>0</b>:按钮显示为Disabled,  <b>其它值</b>: 不显示按钮，作为纯文字显示;<br>
+<div id="Memo4"/><b>备注4</b>: 上述列标题、buttonText，允许以"|"分隔中英文(用于中英文切换);<br>
+<div id="Memo5"/><b>备注5</b>: isHyperLink、isImage的列，如果加载的单元格数据以特征串 “<b>[NoEffect]</b>” 开头(大小写敏感)，表示该单元格以普通文字显示，特征串 <b>[NoEffect]</b> 使用范围为:<br>
+　　1.仅用于初始数据;<br>
+　　2.对 SetCellData( ) 函数设置的值无效;<br>
+　　3.该特征串在加载时能被自动识别、摘除，不会出现在单元格中;<br>
+<br>
+
+
+<div id="Tag122"/><br>
+<b>Group</b>　　<img src='document.bmp' title='请参见演示页: 3.多层表头'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:分组表头；数量:0 - n;</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>title(或name)</td><td>显示的文字</td><td>串</td><td>无</td></tr>
+<tr><td>headerFontIndex(或fontIndex)</td><td>采用的字体, 前面定义的&lt;Font&gt;的序号</td><td>数字</td><td>-1</td></tr>
+<tr><td>textColor(或color)</td><td>文字颜色</td><td>颜色串</td><td>#000000</td></tr>
+<tr><td>align</td><td>文字对齐</td><td>left/center/right</td><td>center</td></tr>
+<tr><td>id</td><td>分组的id，仅用于加载采用该id代替列名的XML/JSON数据</td><td>串</td><td>(无)</td></tr>
+</table>
+备注: 1.Group可以包含Col，也可以包含子Group，也可以和Col并列，相当于是树的树杈；<br>
+　　  2.title允许以"|"分隔中英文(用于中英文切换);<br>
+<br>
+
+
+
+<div id="Tag14"/>
+<b>FreeformRes</b>　　<img src='document.bmp' title='请参见演示页: 29.查询条件(一)、30.查询条件(二)'> 　<img src='document.bmp' title='请参见Freeform的演示页: 15.辅助Treelist输入(2)'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:自由表头资源区；数量:0 - 1;</td></tr>
+</table>
+<br>
+<div id="Tag141"/>
+<b>Freeform</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=5>含义:具体的Freeform；数量:0 - n；</td></tr>
+<tr bgcolor=#eaeaea><td>类别</td><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td rowspan=2>公共</td><td>id</td><td>该freeform的id, 用于有多个Freeform时</td><td>串</td><td>无</td></tr>
+<tr><td>url</td><td>引用的freeform的URL (见备注)</td><td>串</td><td>无</td></tr>
+
+<tr><td rowspan=11>用于内嵌输入</td><td>idOk</td><td>该freeform内"确认"按钮的id</td><td>串</td><td>无</td></tr>
+<tr><td>idCancel</td><td>该freeform内"取消"按钮的id</td><td>串</td><td>无</td></tr>
+<tr><td>Width</td><td>对话框宽度</td><td>数字(像素)，或百分比</td><td>80%</td></tr>
+<tr><td>Height</td><td>对话框高度</td><td>数字(像素)，或百分比</td><td>80%</td></tr>
+<tr><td>extW 或 extWidth</td><td>对话框向右侧扩展的宽度</td><td>数字(像素)</td><td>20</td></tr>
+<tr><td>extH 或 extHeight</td><td>对话框向下侧扩展的高度</td><td>数字(像素)</td><td>14</td></tr>
+<tr><td>idFocus 或 focusId</td><td>焦点定位到input的id</td><td>串</td><td>无</td></tr>
+<tr><td>border</td><td>边界线宽</td><td>数字(像素)</td><td>1</td></tr>
+<tr><td>borderColor</td><td>边界线色</td><td>颜色串</td><td>#96B4C4</td></tr>
+<tr><td>bgColor 或 backColor</td><td>遮罩色</td><td>颜色串</td><td>#C8C8C8</td></tr>
+<tr><td>alpha</td><td>遮罩透明度</td><td>1-255</td><td>70</td></tr>
+
+<tr><td rowspan=6>用于内嵌输入<br>(动态生成)</td><td>ZN</td><td>如果动态生成多行多列的&lt;input&gt;，那么是按照"Z"字型, 还是按照上下颠倒的"N"字型生成</td><td>Z或N</td><td>Z</td></tr>
+<tr><td>hiddenCol</td><td>隐藏列的动态生成模式，有如下3种选择：<br><b>edit 或 editable</b> - 可编辑;<br><b>disp 或 display</b> - 不可编辑，仅显示;<br><b>hide</b> - 仍隐藏</td><td>如左所述</td><td>hide</td></tr>
+<tr><td>unEditAbleCol</td><td>editAble=false的列的动态生成模式，有如下3种选择：<br><b>edit 或 editable</b> - 可编辑;<br><b>disp 或 display</b> - 不可编辑，仅显示;<br><b>hide</b> - 隐藏</td><td>如左所述</td><td>edit</td></tr>
+<tr><td>includeCol</td><td>动态生成的input, 仅包含某些列.<br>备注：includeCol、excludeCol不能同时存在</td><td>列名，逗号分隔</td><td>无</td></tr>
+<tr><td>excludeCol</td><td>动态生成的input, 除了某些列以外，都包含.<br>备注：includeCol、excludeCol不能同时存在</td><td>列名，逗号分隔</td><td>无</td></tr>
+<tr><td>GroupSep</td><td>分组的列名的分隔符.<br>生成诸如“分组1 \ 分组2 \ 列名”这样的输入框左侧文字</td><td>任意串，空串表示不需要分组名</td><td> \ (左右都带空格)</td></tr>
+</table>
+备注：可以不定义url，而在内部(子节点)直接嵌套入一个完整的Freeform XML，Freeform的语法请参见头部的“Freeform XML文档规范”;<br>
+<br>
+<br>
+<div id="Tag16"/>
+<b>DropLists</b>　　<img src='document.bmp' title='请参见演示页: 9.各种下拉、10.可编辑下拉、27.过滤: 关联下拉'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:下拉框字典资源；数量:0 - 1;</td></tr>
+</table>
+<br>
+
+
+<div id="Tag161"/>
+<b>DropList</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=5>含义:下拉框字典；数量:0 - n</td></tr>
+<tr bgcolor=#f1f1f1><td>分类</td><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td rowspan=5>dropList 和<br>dropTreelist<br>全部适用</td><td>id</td><td>该字典的ID号</td><td>串</td><td>无</td></tr>
+<tr><td>treelistURL<br>或treelist</td><td>嵌套引用的Treelist的XML描述文件的URL(绝对或相对).<br><font color=red>重要提示：</font>如果为空，表示是dropList(即简单的单列下拉)；否则就是dropTreeList</td><td>串</td><td>无</td></tr>
+<tr><td>dataURL</td><td>数据的URL，如果dataURL为空，dropTreeList自动采用自身的dataURL、 dropList则采用下面跟随的item条目.<br>如果需要分页显示，请参考&lt;Properties&gt;中"分页动态加载"的dataURL语法.</td><td>串</td><td>无</td></tr>
+<tr><td>dataCol</td><td>绑定的下拉数据的"数据列"的列名.</td><td>串</td><td>无</td></tr>
+<tr><td>displayCol</td><td>绑定的下拉数据的"显示列"的列名，其内容用于显示.<br>备注：允许是以“=”开头的表达式, 绑定多列(服务器搜索除外)</td><td>串</td><td>无</td></tr>
+<tr><td>dropList</td><td>isSortByKey</td><td>下拉内容是否按Key重新排序</td><td>true/false</td><td>false</td></tr>
+<tr><td rowspan=4>dropTreeList</td><td>totalRows</td><td>用于分页显示，可参见&lt;Properties&gt;中同名属性的含义</td><td>URL</td><td>无</td></tr>
+<tr><td>isMultiSelectAble</td><td>是否允许作多行选择</td><td>true/false</td><td>false</td></tr>
+<tr><td>isAutoSelectChildren</td><td>是否自动选择树杈的子孙.<br>备注：仅用于isMultiSelectAble="true"时</td><td>true/false</td><td>false</td></tr>
+<tr><td>isTreeNodeSelectAble</td><td>是否允许树杈被选中. 其作用范围是：<br>1：单列多层树;<br>2：多列多层树在多选时(checkbox勾选)</td><td>true/false</td><td>false</td></tr>
+<tr><td rowspan=4>editAble-<br>dropTreeList</td><td>RefreshDelay</td><td>用于服务器搜索时, 键盘触发刷新的最短时间间隔</td><td>毫秒数, 须大于300</td><td>1000</td></tr>
+<tr><td>RefreshChars</td><td>用于服务器搜索时, 键盘触发刷新的最短字数</td><td>字数</td><td>1</td></tr>
+<tr><td>dropdownMode</td><td>下拉的显示方式，可以为:<br><b>auto</b> - 在输入过程中会自动下拉;<br><b>buttonClick</b> - 只有在鼠标点击右侧按钮时才下拉</td><td>如左</td><td>auto</td></tr>
+<tr><td>buttonMode</td><td>右侧按钮的行为，可以为:<br><b>auto</b> - 点击时触发下拉动作;<br><b>sendMessage</b> - 只触发"Clicked"事件(p4参数为"button")，不触发下拉动作</td><td>如左</td><td>auto</td></tr>
+</table>
+备注：1.如果TreelistURL、dataURL是相对URL，应该是相对于当前Treelist XML，而不是相对于页面;<br>
+　　  2.如果EditAbleDropTreelist、且dataURL是表达式，就表示服务器搜索, RefreshDelay和RefreshChars用于控制搜索的频度;<br>
+<br>
+
+<div id="Tag1611"/>
+<b>item</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:下拉框字典条目；数量:1 - n；内容：该条目的显示串</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>key</td><td>条目键值</td><td>串</td><td>无</td></tr>
+</table>
+备注：如果已经定义了dataURL属性，就没必要再定义item元素了，dataURL优先级高于item元素;<br>
+<br>
+
+<div id="Tag19"/>
+<b>Table</b>　　<img src='document.bmp' title='请参见演示页: 7.计算列合计行、27.过滤: 关联下拉'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义: 需初始加载的纯数据；数量:0 - 1;<br>注：一般不建议夹带纯数据.</td></tr>
+</table>
+<br>
+
+<div id="Tag191"/>
+<b>TR</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义: 初始的数据行；数量:0 - n;</td></tr>
+</table>
+<br>
+
+<div id="Tag1911"/>
+<b>TD</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义: 数据列；数量:1 - n;<br>备注：也可以不采用TD，而是采用&lt;Cols&gt;中具体的列名(name)</td></tr>
+</table>
+<br>
+
+
+<br><br><br><br><br><br><br>
+</body></html>

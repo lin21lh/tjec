@@ -1,0 +1,97 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/xzys/js/brespbaseinfo_form.js"></script>
+
+<script type="text/javascript">
+    //案件ID
+    var id = "$id";
+    //案件ID
+    var nodeid="$nodeid";
+</script>
+
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="projectAddForm" method="post">
+	<table class="list">
+    		<!--隐藏属性start-->
+			<input id="id" name="id" type="hidden"/><!--案件id-->
+			<input type="hidden" id="caseid" name="caseid" /><!--关联案号id-->
+			<input type="hidden" id="nodeid" name="nodeid" value="$nodeid" /><!--节点编号-->
+    		<!--隐藏属性end-->
+            <tr>
+                <th>案号：</th>
+                <td>
+                    <input id="lawid" name="lawid" class="easyui-textbox" style='width:250px' required="true"
+                     missingMessage="请输入案号"/>
+                    <font color='red'>*</font>
+                </td >
+                <th>收案时间：</th>
+                <td>
+                    <input id="recdate" class="easyui-datebox" name="recdate" style='width:250px' required="true" editable="false"
+                    missingMessage="请选择收案时间"/>
+                    <font color='red'>*</font>
+                </td >
+            </tr>
+    		<tr>
+    			<th>审理阶段：</th>
+    			<td>
+    				<input id="regtype" class="easyui-combobox" name="regtype" style='width:250px' required="true"
+                    missingMessage="请选择审理阶段"/>
+                    <font color='red'>*</font>
+    			</td >
+                <th>案件承办人（单位）：</th>
+                <td colspan="3">
+                    <input id="deptname" class="easyui-textbox" name="deptname" style='width:250px' required="true" 
+                    missingMessage="请填写案件承办人" />
+                    <font color=red>*</font>
+                </td>
+            </tr>
+    		</tr>
+            <tr id ="glah">
+                <th>关联案号：</th>
+                <td>
+                    <input id="glahlawid" class="easyui-textbox" name="glahlawid" style='width:250px' readonly="true" />
+                   <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:60px"
+                    onClick="choiseTutor()">选择</a>
+                </td>
+                <th></th>
+                <td>&nbsp</td>
+            </tr>
+    		<tr>
+    			<th >受案法院：</th>
+    			<td>
+    				<input id="jurilaw" class="easyui-textbox" name="jurilaw" required="true"   style='width:250px'
+                    missingMessage="请选择收案法院"/>
+                    <font color='red'>*</font>
+    			</td >
+    			<th>起诉类型：</th>
+    			<td >
+    				<input id="suetype" class="easyui-textbox" name="suetype"  required="true" style='width:250px' 
+                    missingMessage="请选择起诉类型"/>
+                    <font color='red'>*</font>
+    			</td>
+    		</tr>
+    		<tr>
+                <th>案由：</th>
+                <td colspan="3">
+                    <input id="fringereq" class="easyui-textbox" multiline="true" name="fringereq" required="true" missingMessage="请填写案由"
+                        data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:685px;height:65px;"/>
+                    <font color=red>*</font>
+                </td>
+            </tr>
+            <tr>
+                <th>原告情况：</th>
+                <td colspan="3">
+                    <input id="suerequest" class="easyui-textbox" multiline="true" name="suerequest" required="true" missingMessage="请填写原告情况"
+                        data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:685px;height:65px;"/>
+                    <font color=red>*</font>
+                </td>
+            </tr>
+            
+    </table>
+</form>

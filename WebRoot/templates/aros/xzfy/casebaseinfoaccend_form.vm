@@ -1,0 +1,160 @@
+#parse("common/extensions-v14.vm")
+<form id="xzfyAccendForm" method="post">
+    <div id="tt" class="easyui-tabs" style="height:auto;">
+        <div id="tab_1" title="行政复议(立案)审批表" style="width:98%;">
+		<table class="list">
+		      <!--隐藏属性start-->
+		          <input type="hidden" id="caseid" name="caseid" value="${caseid}" /><!--案件ID-->
+		      <!--隐藏属性end-->
+		      <tr>
+		          <th>案件编号：</th>
+		          <td><span>$!{casebaseinfo.csaecode}</span></td>
+		      </tr>
+		      <tr>
+		          <th>申请事项：</th>
+		          <td><span>$!{casebaseinfo.appcase}</span></td>
+		      </tr>
+		      <tr>
+		          <th>申请人：</th>
+		          <td><span>$!{casebaseinfo.appname}</span></td>
+		      </tr>
+		      <tr>
+		          <th>被申请人：</th>
+		          <td><span>$!{casebaseinfo.defname}</span></td>
+		      </tr>   
+		      <tr>
+		          <th>第三人：</th>
+		          <td><span>$!{thirdnames}</span></td>
+		      </tr>
+		      <tr>
+		          <th>符合受理案件的依据：</th>
+		          <td>
+		              <table class="list" style="width:685px;">
+		                <tr>
+		                    <th width="70%" style="text-align:center;">依据</th>
+		                    <th width="30%" style="text-align:center;">是否符合</th>
+		                </tr>
+		                <tr>
+		                    <th style="text-align:left;">复议申请书等材料(身份证、联系方式等)是否完备</th>
+		                    <td>
+		                        <span>$!{accbasis.b1}</span>
+		                    </td>
+		                </tr>
+		                <tr>
+		                    <th style="text-align:left;">申请人是否具有主体资格</th>
+		                    <td>
+		                        <span>$!{accbasis.b2}</span>
+		                    </td>
+		                </tr>
+		                <tr>
+		                    <th style="text-align:left;">有无明确的被申请人</th>
+		                    <td>
+		                        <span>$!{accbasis.b3}</span>
+		                    </td>
+		                </tr>
+		                <tr>
+		                    <th style="text-align:left;">有无明确的复议请求</th>
+		                    <td>
+		                        <span>$!{accbasis.b4}</span>
+		                    </td>
+		                </tr>
+		                <tr>
+		                    <th style="text-align:left;">有无具体的事实依据</th>
+		                    <td>
+		                        <span>$!{accbasis.b5}</span>
+		                    </td>
+		                </tr>
+		                <tr>
+		                    <th style="text-align:left;">是否属于行政复议范畴</th>
+		                    <td>
+		                        <span>$!{accbasis.b6}</span>
+		                    </td>
+		                </tr>
+		                <tr>
+		                    <th style="text-align:left;">是否在法律申请期限内提出,超出期限是否有正当理由</th>
+		                    <td>
+		                        <span>$!{accbasis.b7}</span>
+		                    </td>
+		                </tr>
+		                <tr>
+		                    <th style="text-align:left;">是否应当由本机关受理</th>
+		                    <td>
+		                        <span>$!{accbasis.b8}</span>
+		                    </td>
+		                </tr>
+		                <tr>
+		                    <th style="text-align:left;">是否已提起行政诉讼</th>
+		                    <td>
+		                        <span>$!{accbasis.b9}</span>
+		                    </td>
+		                </tr>
+		                <tr>
+		                    <th style="text-align:left;">是否重新提起行政复议</th>
+		                    <td>
+		                        <span>$!{accbasis.b10}</span>
+		                    </td>
+		                </tr>
+		            </table>
+		          </td>
+		      </tr>
+		      <tr>
+		          <th>承办人意见：</th>
+		          <td>
+		               <span>$!{agentRemark}</span>
+		          </td>
+		      </tr>
+		      <tr>
+		          <th>科室负责人意见：</th>
+		          <td>
+		              <span>$!{sectionRemark}</span>
+		          </td>
+		      </tr>
+		      <tr>
+		          <th>机构负责人意见：</th>
+		          <td>
+		              <span>$!{organRemark}</span>
+		          </td>
+		      </tr>
+		      <tr>
+		          <th>机关负责人意见：</th>
+		          <td>
+		              <span>$!{officeRemark}</span>
+		          </td>
+		      </tr>       
+		  </table>
+        </div>
+        <div id="tab_2" title="受理结果"  data-options="selected:true" style="width:100%;">
+            <table class="list">
+                <tr>
+                    <th>受理结果：</th>
+                    <td>
+                        <input id="result" name="result" class="easyui-textbox" required="true" missingMessage="请选择受理结果" style="width:250px"
+                            value="$!{result}"/>
+                        <font color=red>*</font>
+                    </td>
+                    <th>重大案件备案：</th>
+                    <td>
+                        <input id="isgreat"name="isgreat" class="easyui-combobox" value="$!{casebaseinfo.isgreat}" style="width:250px"/>
+                    </td>
+                </tr>
+                <tr style="display:none" id="sendunitTr">
+                    <th>转送机关：</th>
+                    <td colspan="3">
+                        <input id="sendunit" class="easyui-textbox" name="sendunit" 
+                            data-options="validType:{length:[0,30]}" style="width:695px;" 
+                            value="$!{sendunit}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>说明：</th>
+                    <td colspan="3">
+                        <input id="remark" class="easyui-textbox" name="remark" multiline="true" required="true" missingMessage="请输入说明" 
+                            data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:695px;height:65px;" 
+                            value="$!{remark}"/>
+                        <font color=red>*</font>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>

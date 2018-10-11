@@ -1,0 +1,93 @@
+@CHARSET "UTF-8";
+
+textarea{
+	resize: none;
+}
+
+.list {
+	width: 100%;
+	border-spacing: 0;
+	font-size: 12px;
+}
+
+.list th {
+	border: 1px solid #99CCFF;
+	border-width: 0px 1px 1px 0px;
+	font-weight: normal;
+	height: 20px;
+	padding: 4px 6px 0px;
+	white-space: nowrap;
+	text-align: right;
+	background: #F5F5F5;
+	color: #000000;
+	width:13%;
+}
+
+.list td {
+	border: 1px solid #99CCFF;
+	border-width: 0px 1px 1px 0px;
+	height: 20px;
+	padding: 4px 6px 4px;
+}
+
+.list td .easyui-textbox {
+	border: 1px solid #95B8E7;
+	margin: 0;
+	padding: 0 2px;
+	vertical-align: middle;
+	width: 149px;
+	height: 20px;
+	line-height: 20px;
+}
+
+.list td .easyui-textarea {
+	border: 1px solid #95B8E7;
+	margin: 0;
+	padding: 0 2px;
+	vertical-align: middle;
+	line-height: 20px;
+}
+
+.toolbar_group {
+	background-color: #eee;
+	margin: 0px;
+	padding: 0px;
+}
+
+/**
+		弹出对话框窗口下方的操作按钮居中显示
+	*/
+.dialog-button {
+	text-align: center;
+}
+
+.menubtn-cutline {
+	height: 25px;
+	margin: 0px 5px 0px 0px;
+	padding: 0px;
+	border: 1px #dddddd inset;
+}
+
+input {
+	box-sizing: content-box;
+}
+
+.collapsable-toolbar {
+	padding: 0px;
+	height: 'auto';
+	background-color: #f6f6f6;
+	border: 0px 0px 1px 0px solid
+}
+
+.collapsable-toolbar-w {
+	padding: 0px;
+	height: 'auto';
+	border: 0px 0px 1px 0px solid
+}
+
+.xian {
+	height: 24px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #fff;
+	margin: 2px 1px;
+}

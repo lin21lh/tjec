@@ -1,0 +1,93 @@
+<!DOCTYPE>
+<html>
+    <head>
+        #parse("common/common-v14.vm")
+        <title>案件查询</title>
+		<link href="$contextpath/css/stylecss.css" rel="stylesheet" type="text/css" />
+        <link href="$contextpath/css/yangshi.css" rel="stylesheet" type="text/css" />
+        <link href="$contextpath/images/sysicon.png" rel="shortcut icon"/>
+		<style type="text/css">
+        	.cs-west{
+        		width: 50%;
+        		padding: 0;
+        	}
+        	.linkbutton_group{
+        		border-bottom: 1px solid #95B8E7;
+        	}
+		</style>
+		<script type="text/javascript">
+			//菜单ID
+			var menuid = "$menuid";
+        </script>
+		<script type="text/javascript" src="$contextpath/templates/aros/web/xzfy/js/xzfylist_init.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/login/layout.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/aros/wtcl/js/bquesbaseinfo_web_fb_init.js"></script>
+    </head>
+	
+    <body >
+    	 <div class="box">
+		 
+    		<div class="header">
+    			<div class="top"></div>
+    			<div class="edge"></div>
+    		</div>
+			
+    		<div class="article">
+    			<div class="article_box">
+				
+    				<div class="title">
+    					<div class="name">案件查询</div>
+    					<div class="return">
+    						<a href="/aros">返回首页</a>
+    					</div>
+    				</div>
+    
+    				 <div data-options="split:false">        				
+            			<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+            				
+						<div style="text-align:left;">
+							<a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">进度</a>
+							<span class='xian' ></span>
+							<a href="#" id="noticeBtn" class="easyui-linkbutton" iconCls="icon-item" plain="true" onClick="notice()">通知书</a>
+                            <span class='xian' ></span>
+							<a href="#" id="delBtn" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="xzfyReqCancel()">撤销</a>
+							<span class='xian' ></span>
+							<a href="#" id="editBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="xzfyReqEdit()">补正</a>
+							<span class='xian' ></span>
+							<a href="#" id="sendBtn" class="easyui-linkbutton" iconCls="icon-help" plain="true" onClick="quesQuery()">意见反馈</a>
+							<span class='xian' ></span>
+							<a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-detail" plain="true" onClick="xzfyReqView()">详情</a>
+						</div>
+            				
+						<div id="xzfyReqPanel" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;border:0px;">
+							<table style='border:1px'>
+								<tr>
+									<td style="font-size:12px; border:0px; text-align:right">申请人证件号码：</td>
+									<td style="font-size:12px; border: 0px; text-align:left">
+										<input id="idcode" class="easyui-textbox" style="width:150px"><span style="color:red;">*</span>
+									</td>
+									<td>&nbsp;</td>
+									<td style="font-size:12px; border:0px; text-align:right;">查询码：</td>
+									<td style="font-size:12px; border:0px; text-align:left;">
+										<input id="key" class="easyui-textbox" style='width:150px'><span style="color:red;">*</span>
+									</td>
+									<td>
+										&nbsp;
+										<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="xzfyReqQuery()">查询</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+        			</div>
+					
+        			<div style="height:86.5%;"><table id="xzfyReqDataGrid"></table></div>
+    			</div>
+				
+    			<div class="footer">
+    				<p>版权所有：中财信科技（北京）有限公司</p>
+    			</div>
+    		</div>
+		</div>
+    </body>
+</html>

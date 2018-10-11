@@ -1,0 +1,209 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<script type="text/javascript">
+var formIsEdit = $formIsEdit;
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="revoke_audit" method="post">
+    <input id="bdgagencycode" type="hidden" name='bdgagencycode'/>
+    <!--<input id="bdgagencyname" type="hidden" name='bdgagencyname'/>-->
+    <input id="applicationId" type="hidden" name='applicationId'/>
+    <input id="createUser" type="hidden" name='createUser'/>
+    <input id="createTime" type="hidden" name='createTime'/>
+    <input id="bankCode" type="hidden" name='bankCode'/>
+    <input id="isopen" type="hidden" name='isopen'/>
+    <input id="isregister" type="hidden" name='isregister'/>
+    <input id="type" type="hidden" name='type'/>
+    <input id="wfid" type="hidden" name='wfid'/>
+    <input id="wfstatus" type="hidden" name='wfstatus'/>
+    <input id="wfisback" type="hidden" name='wfisback'/>
+    <input id="status" type="hidden" name='status'/>
+    <input id="type02" type="hidden" name='type02'/>
+    <input id="accountType" type="hidden" name='accountType'/>
+    <input id="remark" type="hidden" name='remark'/>
+    <input id="updateUser" type="hidden" name='updateUser'/>
+    <input id="updateTime" type="hidden" name='updateTime'/>
+    <input id="itemid" type="hidden" name='itemid'/>
+	<input id="formIsEdit" type="hidden" name='formIsEdit' value='$formIsEdit'/>
+	<input id="savephonenumbers" type="hidden" name='savephonenumbers'/>
+	<input id="savemessage" type="hidden" name='savemessage'/>
+	<input id="typeName" type="hidden" name='typeName'/>
+    <table class="list">
+        <tr>
+            <th>单位名称</th>
+            <td>
+                <input id="bdgagencyname" class="easyui-textbox" required="false" missingMessage="请输入单位全称" name="bdgagencyname" style='width:300px' readonly='true'/>
+            </td>
+            <th>单位性质</th>
+            <td>
+                <input id="deptNature" class="easyui-textbox"  missingMessage="请输入单位性质" name="deptNature" style='width:250px'  readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>联系人</th>
+            <td>
+                <input id="linkman" class="easyui-textbox"  data-options="validType:{length:[0,25]}" missingMessage="请输入联系电话" name="linkman" style='width:300px' readonly='true'/>
+            </td>
+            <th>联系人手机</th>
+            <td>
+                <input id="phonenumber" class="easyui-textbox" missingMessage="请输入联系电话" name="phonenumber" style='width:250px' readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>单位地址</th>
+            <td colspan="3">
+                <input id="deptAddress" class="easyui-textbox"  data-options="validType:{length:[0,250]}" missingMessage="请输入单位地址" name="deptAddress" style='width:706px' readonly='true'/>
+            </td>
+        </tr>
+		 <tr>
+            <th>账户类型</th>
+            <td >
+                <input id="accountTypeName" class="easyui-textbox"    missingMessage="请输入账户类型"name="accountTypeName" style='width:300px' readonly='true'/>
+            </td>
+			<th>账户性质</th>
+            <td>
+                <input id="type02Name" class="easyui-textbox" missingMessage="请输入账户性质" name="type02Name" style='width:250px' readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>账户名称</th>
+            <td>
+                <input id="accountName" class="easyui-textbox" data-options="validType:{length:[0,50]}" editable="false" name="accountName" style='width:300px' readonly='true'/>
+            </td>
+            <th>银行账号</th>
+            <td>
+                <input id="accountNumber" class="easyui-textbox" name="accountNumber" style='width:250px' readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>开户行</th>
+            <td >
+                <input id="bank" class="easyui-textbox"  name="bankNameCn" style='width:300px' readonly='true'/>
+            </td>
+			<th>财务负责人</th>
+			<td >
+				<input id="financialOfficer" class="easyui-textbox"   missingMessage="请输入财务负责人名称"  name="financialOfficer" style='width:250px' readonly='true'/>
+			</td>
+            
+        </tr>
+       
+		<tr>
+			<th>法定代表人</th>
+			<td>
+				<input id="legalPerson" class="easyui-textbox"  missingMessage="请输入法定代表人"  name="legalPerson" style='width:300px' readonly='true'/>
+			</td>
+            <th>法人身份证号</th>
+            <td>
+				<input id="idcardno" class="easyui-textbox"  missingMessage="请输入法人身份证号"  name="idcardno" style='width:250px'readonly='true' />
+			</td>
+        </tr>
+		<tr>
+            <th >核算内容</th>
+    		<td colspan="3">
+    			<input id="accountContent" class="easyui-textbox" multiline="true"  missingMessage="请输入核算内容" data-options="validType:{length:[0,250]}" name="accountContent" style='width:706px;height:35px;' readonly='true'/>
+            </td>
+        </tr>
+		<tr>
+    		<th >注销事项</th>
+    		<td colspan="3">
+				 #if($formIsEdit)
+				<input id="changetype" name="changetype" editable ="true" class="easyui-textbox"  style='width:250px' required="true" missingMessage="请选择注销事项" />
+				#else
+				<input id="changetype" name="changetype" editable ="true" class="easyui-textbox"  style='width:250px' required="true" missingMessage="请选择注销事项" readonly='true'/>
+				#end
+			</td>
+    	</tr>
+        <tr>
+            <th>注销原因</th>
+            <td colspan="3">
+                #if($formIsEdit)
+				<input id="applyReason" class="easyui-textbox" editable="true" multiline="true"  required="true" missingMessage="请输入注销原因" name="applyReason" style='width:706px;height:50px;' data-options="prompt:'最多可输入200个汉字',validType:{length:[0,200]}" />
+				#else
+				<input id="applyReason" class="easyui-textbox" editable="true" multiline="true"  required="true" missingMessage="请输入注销原因" name="applyReason" style='width:706px;height:50px;' data-options="prompt:'最多可输入200个汉字',validType:{length:[0,200]}" readonly='true'/>
+				#end
+			</td>
+        </tr>
+		<!--<tr>
+            <th>审批意见</th>
+            <td colspan="3">
+                <input id="opinion" class="easyui-textbox" name="opinion" value="同意。" multiline="true" required="true" missingMessage="请输入审批意见" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:714px;height:50px;" />
+            </td>
+        </tr>-->
+		<tr>
+            <th>附件</th>
+            <td colspan="3" valign='top' style="height:45px" id="filetd">
+				
+			</td>
+        </tr>
+    </table>
+	<div style="width:100%;height:100px;overflow:auto">
+    	<table class="list">
+				<tr>
+        			<td style="width:40px;height:25px;align:center">序号</td>
+        			<td style="width:60px;height:25px;align:center">节点名称</td>
+        			<td style="width:100px;height:25px;align:center">动作名称</td>
+        			<td style="width:200px;height:25px;align:center">处理人</td>
+					<td style="width:120px;height:25px;align:center">处理时间</td>
+					<td style="width:100px;height:25px;align:center">处理意见</td>
+        		</tr>
+    			#if($wfList.size() != 0 )
+    				#foreach($i in $wfList)	
+						<tr>
+                			<td  style="width:40px;height:25px">
+            			   $!{velocityCount}
+            			   </td>
+                			<td  style="width:100px;height:25px">
+            				$!{i.actiName}
+            			   </td>
+                			<td  style="width:100px;height:25px">
+            				$!{i.transition}
+            			   </td>
+                			<td  style="width:80px;height:25px">
+            				$!{i.authorName}
+            			   </td>
+                			<td  style="width:80px;height:25px">
+            				$!{i.enddate}
+            			   </td>
+                			<td  style="width:100px;height:25px">
+            				$!{i.opinion}
+            			   </td>
+                		</tr>
+    				#end
+    			#end
+            </table>
+	 </div>		
+
+<!--
+ #if($formIsEdit && $optType!="view")
+<div class="easyui-panel" style="width:100%;padding:0px;height:42px" >
+    <table class='list' id='uptable' >
+        <tr >
+            <td valign="top">
+                <span id="fileQueue" style='height:29px'></span>
+            </td>
+            <td style='width:100px' valign="top">
+                <input  type="file" name="uploadify" id="uploadify" style='width:100px'/>
+            </td>
+        </tr>
+    </table>
+</div>
+#end
+<div class="easyui-panel" style="width:100%;height:100px;overflow:auto">
+    <table class='list' id='fileTable' style='TBBLE-LBYOUT: fixed'>
+    </table>
+</div>
+-->
+<!--短信服务层-->
+<div id='messageService'></div>
+<!--附件管理层-->
+<div id='uploadifydiv'></div>
+<!--审批层-->
+<div id='operationdiv'></div>
+</form>

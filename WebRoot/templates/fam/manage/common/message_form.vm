@@ -1,0 +1,27 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="message_form" method="post">
+    <table class="list">
+        <tr>
+            <th style='width:10%'>手机号</th>
+            <td style='width:80%'>
+                <input id="phonenumbers" class="easyui-textbox" missingMessage="请输入手机号,多个手机号用逗号隔开" name="phonenumbers" style='width:100%' required="true" validType='phonesIsRight'/>
+            </td>
+        </tr>
+        <tr>
+            <th style='width:10%'>短信内容</th>
+            <td style='width:80%'>
+                <input id="message" class="easyui-textbox" name="messagecontent" multiline="true" required="true" missingMessage="请输入短信内容" data-options="prompt:'最多可输入200个汉字',validType:{length:[0,200]}" style="width:100%;height:113px;" />
+            </td>
+        </tr>
+    </table>
+</form>
+

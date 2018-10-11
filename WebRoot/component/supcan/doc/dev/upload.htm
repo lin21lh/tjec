@@ -1,0 +1,74 @@
+<HTML>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<link rel="stylesheet" href="../temp1.css" type="text/css">
+</head>
+<body bgcolor=#ffffff vlink=#0000ff>
+
+
+<div id="Tag0"/>
+<Table cols=2 border=0 width=100%>
+<col width=60%>
+<col width=40%>
+<tr height=91><td/><td><img src='../../res/tradechart.jpg'></td></tr>
+</table>
+<br>
+<h3>　<font color=#3366ff>Supcan Upload组件</font></h3><hr color=#2266ee size=1>
+　　和Edit组件一样，Upload组件也是从Freeform组件中分离出来的，可单独用于页面中，实现本地文件的上传。<br>
+　　文件上传支持ftp、http put、http post传输协议，并且通过参数可以限制上传文件的个数、尺寸、zip压缩、图片大小等等常见项。<br>
+<br>
+注：服务器通常是需要配置的，常用的Windows 2003的IIS服务器配置要点:<br>
+1.允许虚拟目录的“写权限”;<br>
+2.建议设定安全帐号，简单的方法是集成Windows身份验证;<br>
+3.如果是采用http PUT上传，应在Web服务扩展中，允许WebDAV;<br>
+<br>
+
+<div id="Tag1"/><br><br><br>
+　　<font style='font-size:15pt'>1.创建实例</font><hr color=#2266ee size=1>
+　　Supcan Upload组件是通过插件/加载项创建的，所以应该用<a href="act.htm?751#Tag205" target=_blank>使用指南 \ 页面语法</a>中叙述的插件/加载项的页面创建语法创建，
+&lt;Object&gt;中的某几个Param参数规则如下:<br>
+<pre class='xml'>
+&lt;Object ...(略)&gt;
+&lt;Param name="CtlName" value="<Font color=red>BCV1.Upload</Font>"&gt;　　//固定
+&lt;Param name="ZipUrl" value="<Font color=red>BCV1.bin</Font>"&gt;	　　//也可以是绝对URL
+&lt;Param name="CtlPara" value="fileTypes=bmp,jpg,png"&gt;	//例子
+...</pre>
+　　如果页面是直接调用dynaload.js，那么可能就是这样:<br>
+<pre class='cpp'>insertUpload('AF', 'bgColor=white; fileTypes=bmp,jpg,png')</pre>
+　　CtlPara参数决定了如何在页面上展现Supcan Upload实例，在上面的例子中，参数串中可包含多个子串，子串间以 "；" 分隔。<br>
+　　可见参数串中包含了多个子串，子串间以 ";" 分隔，子串是以"name=value1,value2,..."方式书写的。<br>
+
+<div id="Tag2"/><br><br><br>
+　　<font style='font-size:15pt'>2.函数</font><hr color=#2266ee size=1>
+　　Supcan Upload的函数是通过插件/加载项的 func( string funcname, string paras ) 函数间接调用的，Supcan Upload组件的可用funcname如下:<br>
+　　　　SetFiles<br>
+　　　　SetFileTypes<br>
+　　　　SetFileMaxKb<br>
+　　　　SetPictureMaxSize<br>
+　　　　GetFiles<br>
+　　　　GetFilename<br>
+　　　　fptUpload<br>
+　　　　httpUpload<br>
+　　　　httpPost<br>
+　　　　GetFileBase64<br>
+　　　　GetFileType<br>
+　　　　GetFileSize<br>
+　　　　GetPictureWidth<br>
+　　　　GetPictureHeight<br>
+　　　　Empty<br>
+　　函数使用方法和Supcan Freeform中Input控件非常相似，除了不需要第一个参数(ID参数)，其它参数和返回值和Upload Input控件几乎一样，请参见<a href="freeform1.htm?751#Tag1202" target=_blank>Supcan Freeform组件-函数</a>中的Upload部分.<br>
+　　此外，Upload还拥有一组和Treelist、Freeform完全一样的全局函数，请参见<a href="globalfunction.htm?751" target=_blank>全局函数</a>介绍。<br>
+<br>
+
+<div id="Tag3"/><br><br><br>
+　　<font style='font-size:15pt'>3.事件</font><hr color=#2266ee size=1>
+　　Supcan Upload的OnEvent( id, Event, p1, p2, p3, p4 )事件含义及参数分别如下：<br>
+<table width=98% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#eaeaea><td>Event</td><td>含义</td><td>pa1</td><td>p2</td><td>p3</td><td>p4</td></tr>
+<tr><td>Upload</td><td>有文件上传成功</td><td>序号</td><td>上传文件总数</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>EditChanged</td><td>上传的文件有变化(对话框关闭时)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</table><br>
+
+<br><br><br><br><br>
+<script type='text/javascript' src='nstd.js'></script>
+</body></html>

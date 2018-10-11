@@ -1,0 +1,82 @@
+<!DOCTYPE>
+<html>
+	<!--禁用缓存-->	
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <head>
+        #parse("common/common-v14.vm")
+        #parse("common/extensions-v14.vm")
+        <title>社会资本录入</title>
+        <script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/ppms/library/shzbk/js/shzbk_init.js"></script>
+        <script type="text/javascript">
+            var menuid = "$menuid";
+        </script>
+        <style type="text/css">
+        	.cs-west{
+        		width: 50%;
+        		padding: 0;
+        	}
+        	.linkbutton_group{
+        		border-bottom: 1px solid #95B8E7;
+        	}
+        </style>
+    </head>
+    <body id="layout" class="easyui-layout">
+    	 <div data-options="region:'center',split:false" >
+            <div id="toolbar_center" class="toolbar_group" >
+        		<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+    			<div class="toolbar_buttons">
+    				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="topQuery()" >查询</a>
+    				<span class='xian' ></span>
+        			<a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="shzbkAdd()">新增</a>
+    				<span class='xian' ></span>
+        			<a href="#" id="editBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="shzbkEdit()">修改</a>
+    				<span class='xian' ></span>
+        			<a href="#" id="delBtn" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="shzbkDelete()">删除</a>
+    				<span class='xian' ></span>
+        			<a href="#" id="relevanceBtn" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onClick="shzbkRelevance()">用户关联</a>
+    				<span class='xian' ></span>
+					<a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="shzbkView()">详情</a>
+                </div>
+        		<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;border:0px;">
+    				<table  class="list" style='border:0px'>
+                        <tr>
+							<th style='border: 0px;text-align:right' align="right">用户类别</th>
+            				<th style='font-size:12px;border: 0px;text-align:left'>
+    							<input id="status" class="easyui-combobox"  style='width:150px' panelheight = "auto">
+    						</th>
+            				<th style='font-size:12px;border: 0px;text-align:right'>社会资本名称</th>
+            				<th style='font-size:12px;border: 0px;text-align:left'>
+    							<input id="orgname" class="easyui-textbox" style='width:150px' panelheight = "auto">
+    						</th>
+							
+							<th style='border: 0px;text-align:right' align="right">联系人号码</th>
+            				<th style='font-size:12px;border: 0px;text-align:left'>
+    							<input id="linkphone" class="easyui-textbox"  style='width:150px'>
+    						</th>
+						</tr>
+						<tr>
+            				<th style='border: 0px;text-align:right' align="right">是否关联</th>
+            				<th style='font-size:12px;border: 0px;text-align:left'>
+    							<input id="isrelevance" class="easyui-combobox"  style='width:150px' panelheight = "auto">
+    						</th>
+            				<th style='border: 0px;text-align:right' align="right">所属行业</th>
+            				<th style='font-size:12px;border: 0px;text-align:left'>
+    							<input id="categoryCode" class="easyui-textbox"  style='width:150px'>
+    						</th>
+							<th style='font-size:12px;border: 0px;text-align:right'>投资偏好</th>
+            				<th style='font-size:12px;border: 0px;text-align:left'>
+    							<input id="preferencesCode" class="easyui-combobox"  style='width:150px' multiple="true">
+    						</th>
+							
+        				</tr>      
+                            
+    				</table>
+        		</div>
+    		</div>
+    		<table id="shzbkDataGrid"></table>
+    	 </div>    
+    </body>
+</html>

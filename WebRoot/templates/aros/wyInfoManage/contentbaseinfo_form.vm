@@ -1,0 +1,72 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/wyInfoManage/js/contentbaseinfo_form.js" ></script>
+<style type='text/css'>     
+input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+}
+textarea {
+    display: block;
+}
+</style>
+<form id="contentForm" method="post">
+     <input id="conid" name="conid" type="hidden" />
+     <input id="status" name="status" type="hidden" />
+     <input id="operator" name="operator" type="hidden" />
+     <input id="opttime" name="opttime" type="hidden" />
+     <input id="contype" name="contype" type="hidden" value="$contype" />
+    <table class="list">
+    	#if ($contype == '02' || $contype == '03')
+        <tr>
+            <th>名称：</th>
+            <td colspan="4">
+                <input id="title" name="title" class="easyui-textbox" required="true" missingMessage="请输入名称"
+                 data-options="validType:{length:[0,30]}" style="width:600px;"/>
+                <span style="color:red">*</span>
+            </td>
+        </tr>
+        
+         <tr>
+               <th>类型：</th>
+           	 <td colspan="4">
+                <input id="type" name="type" class="easyui-combobox" required="true" missingMessage="请选择类型" 
+                style="width:200px;"/>
+                <span style="color:red">*</span>
+            </td>
+        </tr>
+        #end
+		#if ($contype != '02' && $contype != '03')
+		 <tr>
+            <th>标题：</th>
+            <td colspan="4">
+                <input id="title" name="title" class="easyui-textbox" required="true" missingMessage="请输入标题" 
+                 data-options="validType:{length:[0,30]}" style="width:600px;"/>
+                <span style="color:red">*</span>
+            </td>
+        </tr>        
+        <tr>
+            <th style="width:50px;">接收人：</th>
+            <td colspan="3">
+                <input id="receiveusername" name="receiveusername" class="easyui-textbox" multiline="true"
+                 readonly="true" missingMessage="请选择接收人"  data-options="prompt:'请选择接收人',validType:{length:[0,2000]}"
+                 style="width:600px;height:40px;" />
+            </td>
+            <td style="width:90px;">
+              <a href="#" id="choiseBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="choisePerson()">选择接收人</a>
+                <input id="receiveuserid" name="receiveuserid" type="hidden" />
+            </td>
+        </tr>	
+        #end
+        <tr>
+            <th style="width:50px;">内容：</th>
+            <td colspan="4">
+                <textarea id="contentEdit" name="contentEdit" style="width:700px;height:320px;visibility:hidden;"></textarea>
+                <input name="content" id="content" type="hidden" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+<!--选择接收人层-->
+<div id="showPreson"></div>
+

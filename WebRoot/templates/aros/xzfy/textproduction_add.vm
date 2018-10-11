@@ -1,0 +1,3 @@
+#parse("common/extensions-v14.vm")
+<!-- 模板列表 -->
+<table id="noticeTmpDataGrid"></table>

@@ -1,0 +1,46 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>文件下载</title>
+<script type="text/javascript" src="$contextpath/templates/aros/web/wjxz/js/filedown_init.js"></script>
+<link href="$contextpath/css/style.css" rel="stylesheet" type="text/css" />
+<link href="$contextpath/css/yangshi.css" rel="stylesheet" type="text/css" />
+<link href="$contextpath/images/sysicon.png" rel="shortcut icon"/>
+<script src="$contextpath/js/swfobject_modified.js" type="text/javascript"></script>
+<script type="text/javascript" src="$contextpath/templates/login/layout.js"></script>
+</head>         
+<body>
+<div class="box">
+    <div class="header">
+       <div class="top"></div>
+       <div class="edge"></div>
+    </div>
+    <div class="article">
+       <div id="docReqPanel" class="article_box">
+            <div class="title">
+              <div class="name">文件下载</div>
+              <div class="return"><a href="/aros">返回首页</a></div>
+            </div>
+            <table style="font-size:12px;">
+                <tr>
+                    <td style='text-align:right;padding-left:30px'>文件名称：</td>
+                    <td style='text-align:left'>
+                        <input id="filename" name="filename" class="easyui-textbox" style='width:150px'> 
+                    </td>
+                    <td style="text-align:right;padding-left:30px;">
+                        <a href="#" id="queryBtn" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="docQuery()" >查询</a>
+                        <a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-load" plain="true" onClick="down()" >下载</a>
+                    </td>                            
+                </tr>                
+            </table>
+            <div style="height:90%;"><table id="docDataGrid"></table></div>
+        </div>
+    </div>
+    <div class="footer">
+       <p>版权所有：中财信科技（北京）有限公司</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+#parse("common/extensions-v14.vm")
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="accountDetailForm" method="post">
+		<table class="list">
+				<tr>
+        			<th >账户名称</th>
+        			<td >
+        				<input id="oldAccountName" class="easyui-textbox" value="${modelMap.oldAccountName}"  readonly="true"  name="oldAccountName" style='width:200' />
+					</td>
+        			<th >银行账号</th>
+        			<td >
+        				<input id="oldAccountNumber" name="oldAccountNumber" value="${modelMap.oldAccountNumber}" readonly="true"  class="easyui-textbox"  style='width:200' />
+        			</td>
+        		</tr>
+        		<tr>
+        			<th >账户开户行</th>
+        			<td >
+        				<input id="oldBankName" class="easyui-textbox" value="${modelMap.oldBankName}" readonly="true"  name="oldBankName" style='width:200'  />
+					</td>
+        			<th >账户性质</th>
+        			<td>
+        				<input id="oldType02Name" name="oldType02Name" value="${modelMap.oldType02Name}"  readonly="true"   class="easyui-textbox"  style='width:200' />
+        			</td>
+				</tr>
+				<tr>
+        			<th>账户类型</th>
+        			<td >
+        				<input id="oldAccountTypeName" name="oldAccountTypeName" value="${modelMap.oldAccountTypeName}"   readonly="true"   class="easyui-textbox" style='width:200' />
+        			</td>	
+					<th>财务负责人</th>
+        			<td >
+        				<input id="oldFinancialOfficer" class="easyui-textbox" value="${modelMap.oldFinancialOfficer}" readonly="true"   name="oldFinancialOfficer" style='width:200'/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >法定代表人</th>
+        			<td >
+        				<input id="oldLegalPerson" class="easyui-textbox" value="${modelMap.oldLegalPerson}" readonly="true"  name="oldLegalPerson" style='width:200'/>
+					</td>
+					<th>法人身份证号</th>
+        			<td >
+        				<input id="oldIdcardno" class="easyui-textbox" value="${modelMap.oldIdcardno}" readonly="true"  name="oldIdcardno" style='width:200'/>
+			
+        			</td>
+                </tr>
+				<tr>
+                <th >核算内容</th>
+    			<td colspan="3">
+    				<input id="oldAccountContent" class="easyui-textbox" value="${modelMap.oldAccountContent}" multiline="true" readonly="true"  name="oldAccountContent" style='width:550px;height:35px;'/>
+                </td>
+            </tr>
+        </table>
+</form>

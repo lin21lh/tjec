@@ -1,0 +1,79 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+/**
+ * 启用发送按钮
+ */
+function showSendBtn(){
+	$("#sendBtn").linkbutton('enable'); // 可发送
+}
+</script>
+<form id="fyyqAuditForm" method="post">
+	<div>
+    	<table class="list">
+		<!--隐藏属性start-->
+			<input type="hidden" id="ccrid" name="ccrid" value="$!{casechangereq.ccrid}"/><!--申请ID-->
+			<input type="hidden" id="caseid" name="caseid" value="$!{casechangereq.caseid}"/><!--案件ID-->
+		<!--隐藏属性end-->
+    		<tr>
+				<th>案件名称：</th>
+    			<td colspan="3">
+					<span>$!{casechangereq.intro}</span>
+    			</td>
+    		</tr>
+			<tr>
+				<th>申请人：</th>
+    			<td>
+    				<span>$!{casechangereq.appname}</span>
+    			</td>
+				<th>被申请人：</th>
+    			<td>
+    				<span>$!{casechangereq.defname}</span>
+    			</td>
+			</tr>
+    		<tr>
+				<th>延期原因：</th>
+				<td colspan="3">
+					<input id="delayreason" name="delayreason" class="easyui-textbox" required="true" 
+						value="$!{casechangereq.delayreason}" readonly="readonly" style="width:685px; height:65px;"/>
+					<font color=red>*</font>
+				</td> 
+            </tr>
+			<tr>
+				<th>延期天数：</th>
+				<td colspan="3">
+					<input id="delaydate" class="easyui-textbox" name="delaydate" required="true" 
+    					 value="$!{casechangereq.delaydate}" readonly="readonly"/>
+					<font color=red>*</font>
+				</td> 
+            </tr>
+			<tr>
+				<th>承办人意见：</th>
+				<td colspan="3">
+					<input id="agentRemark" name="agentRemark" class="easyui-textbox" multiline="true" value="$!{agentRemark}" 
+						style="width:685px; height:65px;" missingMessage="请输入承办人意见" readonly="true"/>
+				</td>
+            </tr>
+            <tr>
+				<th>科室负责人意见：</th>
+                <td colspan="3">
+					<input id="sectionRemark" name="sectionRemark" readonly="readonly" class="easyui-textbox" multiline="true" value="$!{sectionRemark}"
+                       style="width:685px; height:65px;" missingMessage="请输入科室负责人意见" data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}"/>
+                </td>
+            </tr>
+            <tr>
+				<th>机构负责人意见：</th>
+                <td colspan="3">
+					<input id="organRemark" name="organRemark" readonly="readonly" class="easyui-textbox" multiline="true" value="$!{organRemark}"
+                       style="width:685px; height:65px;" missingMessage="请输入机构负责人意见" data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}"/>
+                </td>
+             </tr>
+             <tr>
+				<th>机关负责人意见：</th>
+                <td colspan="3">
+					<input id="officeRemark" name="officeRemark" readonly="readonly" class="easyui-textbox" multiline="true" value="$!{officeRemark}"
+                       style="width:685px; height:65px;" missingMessage="请输入机关负责人意见" data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}"/>
+                </td>
+             </tr> 
+        </table>
+	</div>
+</form>

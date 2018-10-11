@@ -1,0 +1,142 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>账户变更</title>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/change/js/change_init.js"></script>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<script type="text/javascript">
+var menuid = "$menuid";
+var activityId = "$activityId";
+var type = "$type";
+var allbdgagency ="$allbdgagency";
+var userid ="$userid";
+var globalChangeType = '';
+var accountbgmodel = '$accountbgmodel';
+</script>
+<style type="text/css">
+	.cs-west{
+		width: 50%;
+		padding: 0;
+	}
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+	}
+</style>
+#**
+	账户变更功能
+	@author  xinpeng 
+	@date 2015年4月14日9:20:29
+*#
+</head>
+<body id="layout" class="easyui-layout">
+	 <div data-options="region:'center',split:false" >
+        <div id="toolbar_center" class="toolbar_group" >
+		
+    		<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+    		<input type="hidden" id="activityId" name="activityId" value="$activityId" />
+			<div class="toolbar_buttons">
+				<a id="openclose" onClick="javascript:panelctlForFam(0);" class="easyui-linkbutton" iconCls="icon-collapse" plain="true" ></a>
+				<span class='xian' ></span>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="topQuery()" >查询</a>
+				<span class='xian' ></span>
+    			<a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="accountAdd()">新增</a>
+				<span class='xian' ></span>
+    			<a href="#" id="editBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="accountEdit()">修改</a>
+				<span class='xian' ></span>
+    			<a href="#" id="delBtn" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="accountDelete()">删除</a>
+				<span class='xian' ></span>
+    			<a href="#" id="sendBtn" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onClick="sendWF()">送审</a>
+				<span class='xian' ></span>
+    			<a href="#" id="backBtn" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="revokeWF()">撤回</a>
+				<span class='xian' ></span>
+    			<a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="accountView()">详情</a>
+				<span class='xian' ></span>
+    			<a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">流程信息</a>
+				<span class='xian' ></span>
+    			<a href="#" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onClick="outRegisterApplicationform()">变更申请表</a>
+            </div>
+    		<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;border:0px;">
+				<!--&nbsp;<input id="status" class="easyui-combobox" style="width:80px;" />
+					处理类型 <input id="processedStatus" class="easyui-combobox" style="width:80px;" />
+					预算单位 <input id="topBdgagency" class="easyui-textbox"  style="width:150px;" />
+					账户类型 <input id="topAccountType" class="easyui-textbox"  style="width:100px;" />
+					账户性质 <input id="topAccountType02" class="easyui-textbox"  style="width:100px;" />
+					银行账号 <input id="topAccountNumber" class="easyui-textbox"  style="width:100px;" />
+					账户名称 <input id="topAccountName" class="easyui-textbox"  style="width:100px;" />-->
+				<table  class="list" style='border:0px'>
+                    <tr>
+        				<th style='font-size:12px;border: 0px;text-align:right'>处理状态</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="status" class="easyui-combobox" style='width:100px'>
+						</th>
+						<th style='border: 0px;text-align:right' align="right">处理类型</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="processedStatus" class="easyui-combobox"  style='width:100px'>
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>原账户名称</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="topAccountName" class="easyui-textbox"  style='width:180px' >
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right' >预算单位</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="topBdgagency" class="easyui-textbox" style='width:210px'>
+						</th>
+    				</tr>      
+                    <tr> 
+						<th style='font-size:12px;border: 0px;text-align:right'>原账户性质</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="topAccountType02" class="easyui-textbox" style='width:100px'>
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>原账户类型</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="topAccountType" class="easyui-textbox" style='width:100px' >
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>原银行账号</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'> 
+							<input id="topAccountNumber" class="easyui-textbox" style='width:180px' >
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>申请时间</th>
+                        <th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="starttime" class="easyui-datebox" style='width:100px' />至<input id="endtime" class="easyui-datebox" style='width:100px'  />
+						</th>
+    				</tr>      
+				</table>
+    		</div>
+		</div>
+		<table id="changeAccountDataGrid"></table>
+	 </div>    
+	 <div data-options="region:'south',title:'可变更账户信息',split:false" style="height:45%;">
+        <div id="toolbar_account" class="toolbar_group">
+    		<div id="qpanel2" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;padding:1px">
+				<table style='width:100%'>
+                    <tr>
+        				<td style='font-size:12px;text-align:end;width:5%' >预算单位</td>
+        				<td style='font-size:12px;width:17%' ><input id="downBdgagency" class="easyui-textbox" style="width:97%;" /></td>
+        				<td style='font-size:12px;text-align:end;width:5%'>账户类型</td>
+        				<td style='font-size:12px;width:12%'> <input id="downAccountType" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:5%'>账户性质</td>
+        				<td style='font-size:12px;width:8%'>
+    						<input id="downAccountType02" class="easyui-textbox"  style="width:97%;" />
+						</td>
+        				<td style='font-size:12px;text-align:end;width:5%'>银行账号</td>
+        				<td style='font-size:12px;width:14%'><input id="downAccountNumber" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:5%'>账户名称</td>
+        				<td style='font-size:12px;width:14%'><input id="downAccountName" class="easyui-textbox"  style="width:97%" /></td>
+						<td style='font-size:12px;text-align:end;width:10%;text-align:start'><a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onClick="downGridQuery()" >查询</a></td>
+    				</tr>  
+                </table>
+				
+    			<!-- &nbsp;预算单位 <input id="downBdgagency" class="easyui-textbox"  style="width:150px;" />
+					账户类型 <input id="downAccountType" class="easyui-textbox"  style="width:100px;" />
+					账户性质 <input id="downAccountType02" class="easyui-textbox"  style="width:100px;" />
+					银行账号 <input id="downAccountNumber" class="easyui-textbox"  style="width:100px;" />
+					账户名称 <input id="downAccountName" class="easyui-textbox"  style="width:100px;" />
+    				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onClick="downGridQuery()" >查询</a>-->
+    		</div>
+		</div>
+		<table id="accountDataGrid"></table>
+	 </div>   
+</body>
+</html>

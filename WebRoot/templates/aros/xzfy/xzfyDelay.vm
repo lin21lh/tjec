@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="$contextpath/templates/aros/xzfy/js/xzfypro.css">
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/xzfyDelay.js"></script>
+</head>
+<body>
+<!--复议中止-->
+<div id="flowDiv" class="easyui-panel" title="案件流程进度" style="width:100%;height:22%;" >
+		<table id="fyDelayTable" class="ancestors" border="0">
+			<tbody>
+				<tr >
+					<th id="delay_jd" style="display:none" onclick="fyDelay()">复议延期</th>
+				</tr>
+				<tr id="delaytr"></tr>
+			</tbody>
+		</table>
+</div> 
+</body>
+
+</html>

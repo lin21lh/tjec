@@ -1,0 +1,36 @@
+#parse("common/extensions-v14.vm")
+<div>
+    <table class="list">
+        <tr>
+            <th>标题：</th>
+            <td><span>$!{info.title}</span></td>
+        </tr>
+        
+        <tr>
+            <th>发布时间：</th>
+            <td><span>$!{info.releasetime}</span></td>
+        </tr>
+        
+        <tr>
+            <th>来源：</th>
+            <td><span>$!{info.newssources}</span></td>
+        </tr>
+        
+         <tr>
+            <th>作者：</th>
+            <td><span>$!{info.newsauthor}</span></td>
+        </tr>
+        
+        <tr>
+            <th>内容：</th>
+            <td><div id="content"></div></td>
+        </tr>
+        
+        <tr>
+            <th>附件：</th>
+            <td><div id="files"></div></td>
+        </tr>
+        
+    </table>
+</div>
+

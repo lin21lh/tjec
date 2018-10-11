@@ -1,0 +1,18 @@
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	#set($contextpath = ${rc.contextPath})
+	<link rel="stylesheet" type="text/css" href="$contextpath/component/jquery-easyui-1.4/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="$contextpath/component/jquery-easyui-1.4/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="$contextpath/css/common.css">
+	<script type="text/javascript" src="$contextpath/component/jquery-easyui-1.4/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="$contextpath/component/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="$contextpath/component/jquery-easyui-1.4/locale/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="$contextpath/component/jquery-easyui-1.4/jquery-extensions/jeasyui.extensions.clearicon.js"></script>
+	<script type="text/javascript" src="$contextpath/component/jquery-easyui-1.4/jquery-extensions/jeasyui.extensions.datacolumnmove.js"></script>
+	<script type="text/javascript" src="$contextpath/component/jquery-easyui-1.4/jquery-extensions/datagrid-scrollview.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/common/util.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/common/toWriterXML.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/base/datagridColumnsSet.js"></script> <!-- 保存列设置 还原列设置 -->
+	
+	<script type="text/javascript">
+		var contextpath = "${rc.contextPath}/";
+	</script>

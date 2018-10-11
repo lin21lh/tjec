@@ -1,0 +1,78 @@
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+
+</style>
+
+
+<body>
+<div id="quesDiv" >
+
+<div style="float:left;width:100%;">
+  <div style="width:50%;float:left;">
+		<table id = 'quesTable'></table>
+  </div>
+  <div style="width:2%; float:left;text-align:center">
+		&nbsp;
+  </div>
+  <div style="width:48%;float:left;">
+		<div id="toolbar_menu"  class="linkbutton_group  datagrid-toolbar">
+			<a id="linkbutton_save" href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true">保存</a>
+			<span class='xian' ></span>
+			<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  iconCls="icon-undo" plain="true">取消</a>
+		</div>
+		<div id="ques_win" class="easyui-panel" style="width: 100%; height: 511px;">
+			<form id="quesForm" method="post">
+				<input type="hidden" name="quesid" id="quesid" />
+				<input type="hidden" name="caseid" id="caseid" />
+				<input type="hidden" name="quetype" id="quetype" />
+				<input type="hidden" name="asktime" id="asktime" />
+				<input type="hidden" name="askername" id="askername" />
+				<input type="hidden" name="phone" id="phone" />
+				<input type="hidden" name="operator" id="operator" />
+				<input type="hidden" name="opttime" id="opttime" />
+				<input type="hidden" name="ifanswer" id="ifanswer" />
+				
+				<table class="list" >
+					<tr>
+		    			<th>问题描述：</th>
+		    			<td >
+		    				<input id="quesdesc" class="easyui-textbox" name="quesdesc" required="true" missingMessage="请填写问题描述"
+								 data-options="validType:{length:[0,300]}" style='width:435px;height:80px;' multiline="true"/>
+								<span style="color:red;">*</span>
+		    			</td >    			
+		    		</tr>
+		 
+		    		<tr>
+		    			<th>问题回复：</th>
+		    			<td>
+		    				<input id="answer" class="easyui-textbox" name="answer" readonly="true"
+								 data-options="validType:{length:[0,300]}" style='width:435px;height:80px;' multiline="true"/>
+		    			</td >    			
+		    		</tr>
+
+				</table>
+			</form>
+		</div>
+  </div>
+</div>
+
+		
+	
+</div>
+</body>

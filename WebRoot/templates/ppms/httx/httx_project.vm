@@ -1,0 +1,26 @@
+
+
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppms/httx/js/httx_project.js"></script>
+
+<div style="overflow:hidden;height:100%;padding:0px;">
+    <form id="httxProjectForm" method="post" style="height:100%;">
+    	<table  class="list" style='border:0px;height:12%;'>
+            <tr>
+    			<th style='font-size:12px;border: 0px;text-align:right;width:10%;'>项目名称</th>
+    			<th style='font-size:12px;border: 0px;text-align:left;width:20%;'>
+    				<input id="proName" class="easyui-textbox" style='width:150px' panelheight = "auto">
+    			</th>
+    			<th style="border:0;text-align:left;width:70%;">
+    				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="httxProjectQuery()" >查询</a>
+    			</th>	
+    		</tr>
+    	</table>
+    	
+    	<div style="height:88%;">
+    		<table id="httxProjectDataGrid" ></table>
+    	</div>
+    </form>    
+</div>
+

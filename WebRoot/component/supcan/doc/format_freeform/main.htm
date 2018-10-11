@@ -1,0 +1,683 @@
+<HTML>
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<head>
+<link rel="stylesheet" href="../temp1.css" type="text/css">
+<style>
+	table {font-family:微软雅黑,Consolas,Arial,宋体;}
+</style>
+</head>
+
+<body bgcolor=#ffffff vlink=#0000ff>
+<div id="Tag前言"/>
+<br>
+<Table cols=3 border=0 width=100%>
+<col width=5%>
+<col width=55%>
+<col width=40% valign=top>
+<tr height=130 valign=top><td/><td></td><td><img src='../../res/freeformsh.jpg'></td></tr>
+</table>
+　　Supcan Freeform在页面的展现也是根据XML文件创建的，本文为该XML的规范性文档。<br>
+　　Supcan Freeform XML文档的元素名和属性名也是<font color=red>大小写不敏感</font>的.<br>
+<br>
+　　在demo包的 Treelist 子目录下有大量的XML文件实例可供参考.<br>
+<br><br>
+
+<div id="TagProperties"/><br>
+<b>Properties</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=7>含义:Freeform属性；数量:0 - 1</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td><td>示例</td></tr>
+<tr><td>id</td><td>该Freeform的ID，用于生成XML提交文档，相当于是告诉应用服务器，当前提交的是什么表单.</td><td>串</td><td>无</td><td></td></tr>
+<tr><td>key</td><td>主键，用于生成XML提交文档</td><td>下面的object的id，复合主键以逗号分隔</td><td>无</td><td></td></tr>
+<tr><td>bgColor<br>或backColor</td><td>背景色<br>建议写在&lt;Background&gt;中，此处为兼容老版本</td><td>颜色串，也可以是以逗号分隔的2个颜色(渐变填充)</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 1.体验Freeform'></td></tr>
+<tr><td>editAble</td><td>是否允许Edit(输入)<br>如果是false，那么所有input都将仅显示、无法输入</td><td>true/false</td><td>true</td><td></td></tr>
+<tr><td>dataURL</td><td>数据的URL，用以执行Build( )函数就能直接加载数据</td><td>绝对或相对URL(相对本XML)</td><td>(无)</td><td></td></tr>
+<tr><td>HiLightUnNullable 或<br>HighLightUnNullable</td><td>是否在nullable="false"的输入控件加醒目的提示</td><td>可以为：<br><b>true / false</b> - 表示在输入框右侧显示红色*号 / 无任何醒目标记;<br>短句“<b>text=?;color=?</b>” - 在输入框右侧以某个颜色显示一个自定义的串;<br>短句“<b>leftTextColor=?</b>” - 左侧文字以某颜色显示</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 8.有表头表体的表单(1)'></td></tr>
+<tr><td>isSelectEditWhenFocus</td><td>当输入框取得焦点时，光标是否选中全部文字</td><td>true/false/auto - 全选/不选/自动, auto表示int和double时全选</td><td>auto</td><td></td></tr>
+<tr><td>innerShadow</td><td>内凹陷阴影</td><td>请参见Treelist的同名属性</td><td>(无)</td><td></td></tr>
+<tr><td>自定义属性</td><td>符合变量命名的任意串,<br>不和上述属性重名即可</td><td>可定义多个自定义属性.<br>注：GetChangedXML( )、 Export( )函数输出的XML中将包含自定义属性, 并且可以用SetProp( )、GetProp( )函数存取自定义属性.</td><td></td><td></td></tr>
+</table>
+<br>
+
+<div id="TagBackground"/>
+<b>Background</b>　　<img src='document.bmp' title='请参见演示页: "1.体验Freeform"、"6.动态更改属性(1)"中的js部分'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:背景属性；数量:0 - 1</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>bgColor<br>或backColor</td><td>背景色</td><td>颜色串，也可以是以逗号分隔的2个颜色(渐变填充)</td><td>(无)</td></tr>
+<tr><td>colorAngle</td><td>渐变背景色的旋转角度</td><td>顺时针，0 - 360</td><td>0</td></tr>
+<tr><td>Picture<br>或backPicture<br>或bgPicture</td><td>背景图片</td><td>URL，支持<a href="../dev/pub.htm#Tag605" target=_blank>图片扩展URL</a></td><td>(无)</td></tr>
+<tr><td>arrange</td><td>背景图片显示方式</td><td>1.tile - 平铺<br>2.stretch - 伸展<br>3.单幅原样显示，须是水平、垂直的对齐组合，水平:left / center / right,垂直:top / middle / bottom，例如"bottom,right"</td><td>tile</td></tr>
+<tr><td>rotate</td><td>背景图片旋转</td><td>顺时针，0 - 360</td><td>0</td></tr>
+<tr><td>flip</td><td>背景图片翻转</td><td>horz - 水平翻转<br>vert - 垂直翻转</td><td>(无)</td></tr>
+<tr><td>alpha</td><td>背景图片透明度</td><td>0 - 255， 效果是:透明度越低(即数字越小)，图像越淡.</td><td>255</td></tr>
+<tr><td>gamma</td><td>背景图片Gamma</td><td>大于0的小数，用于调校颜色，不太常用</td><td>1.0</td></tr>
+<tr><td>isGray<br>或isGrayed</td><td>背景图是否以灰度显示</td><td>true / false</td><td>false</td></tr>
+<tr><td>size</td><td>背景图缩放</td><td>宽度、高度，以逗号分隔</td><td>(无)</td></tr>
+<tr><td>transparentColor</td><td>指定背景图片透明色</td><td>颜色串</td><td>(无)</td></tr>
+<tr><td>pathID</td><td>在指定的路径中画背景(不太常用)</td><td>Paths中某个Path资源</td><td>(无)</td></tr>
+<tr><td>ref</td><td>引用外部XML描述文件,<br>背景内容将来自该文件, 实现类似页面CSS的统一置换功能</td><td>外部XML文件的URL，可以是相对URL</td><td>(无)</td></tr>
+</table>
+<br>
+
+<div id="TagExpresses"/><br>
+<b>Expresses</b>　　<img src='document.bmp' title='请参见演示页: 1.体验Freeform'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:计算列表达式；数量:0 - 1</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>isOpt 或<br>isOptimize</td><td>是否自动按列的引用关系优化计算顺序</td><td>true/false</td><td>true</td></tr>
+</table>
+
+<div id="TagExpress"/><br>
+<b>Express</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:计算列表达式条目；数量:1 - n，内容: 表达式</td></tr>
+</table>
+<br>
+
+<div id="TagValidations"/>
+<b>Validations</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:客户端验证；数量:0 - 1</td></tr>
+</table>
+<br>
+
+<div id="TagValidation"/>
+<b>Validation</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:客户端验证条目；数量:1 - n，内容: 表达式, 如果计算结果为非零，表示通过验证</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>id</td><td>id号,可选</td><td>标注唯一的串，用于帮助API存取.</td><td>(无)</td></tr>
+<tr><td>locate</td><td>定位的对象id,可选</td><td>object的id，表示未通过验证时，光标将自动定位到该对象，并在上方浮现提示窗.<br>注：也可以不定义，硕正组件会自动从表达式中分析获得.</td><td>(无)</td></tr>
+<tr><td>errorText<br>或 error</td><td>未通过验证时的提示性文字</td><td>串，可以以“|”分隔中英文</td><td>(无)</td></tr>
+<tr><td>title</td><td>提示窗标题</td><td>标题，可选，可含如下文字之一：Warn、Success、Fail、Error、Prompt(可以更长，包含即可，例如Successful、Warning均合法)</td><td>Prompt</td></tr>
+<tr><td>icon</td><td>提示窗图标</td><td>可含如下文字之一：Stop、Success、Question、Info(可以更长，包含即可，例如Successful、Information均合法)</td><td>Info</td></tr>
+<tr><td>hold</td><td>提示窗持续时间</td><td>单位：秒，0表示永远显示，点击它才关闭. 它的默认值和icon有关(不是很精确):<br>
+　　Success - 2.5秒;<br>
+　　Info - 3.5秒;<br>
+　　Question - 4.5秒;<br>
+　　Stop - 永远显示;</td><td>(无)</td></tr>
+</table>
+<br>
+
+
+
+<div id="TagFonts"/><br>
+<b>Fonts</b>　　<img src='document.bmp' title='请参见演示页: 1.体验Freeform'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:用到的字体资源；数量:0 - 1</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>ref</td><td>引用外部XML描述文件,<br>字体内容将来自该文件, 实现类似页面CSS的统一置换功能</td><td>外部XML文件的URL，可以是相对URL</td><td>(无)</td></tr>
+</table>
+
+<div id="TagFont"/><br>
+<b>Font</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:字体资源；数量:0 - n</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+
+<tr><td>faceName 或 Face, Name</td><td rowspan=14>对应Windows SDK中的LOGFONT结构中的同名属性.<br><br>
+注1: Height(或size)是字体的尺寸，单位是字体的逻辑单位，通常采用小于0的数字，如果大于0，则高度不包含文字的内部行距(internal-leading)。常用的尺寸是-8, -9, -10, -11, -12, -14, -16, -18, -20, -22, -24, -26, -28, -36, -48, -72;<br>
+注2: weight=400/700 对应 非粗体/粗体；<br>
+注3: Bold=false/true 对应 非粗体/粗体</td><td>串</td><td rowspan=14>系统默认字体</td></tr>
+<tr><td>charSet</td><td>整数</td></tr>
+<tr><td>height 或 FontSize, Size</td><td>整数</td></tr>
+<tr><td>weight 或 Bold</td><td>整数</td></tr>
+<tr><td>width</td><td>整数</td></tr>
+<tr><td>pitchAndFamily</td><td>整数</td></tr>
+<tr><td>quality</td><td>整数</td></tr>
+<tr><td>italic</td><td>整数</td></tr>
+<tr><td>underline</td><td>整数</td></tr>
+<tr><td>outPrecision</td><td>整数</td></tr>
+<tr><td>strikeOut</td><td>整数</td></tr>
+<tr><td>clipPrecision</td><td>整数</td></tr>
+<tr><td>escapement</td><td>整数</td></tr>
+<tr><td>orientation</td><td>整数</td></tr>
+<tr><td>isAntiAlias</td><td>是否抗锯齿平滑显示</td><td>true/false</td><td>false</td></tr>
+<tr><td>ShadowAlpha</td><td>阴影的透明度</td><td>0 至 255</td><td>0</td></tr>
+<tr><td>ShadowBlur</td><td>阴影的模糊度</td><td>0 至 100</td><td>0</td></tr>
+<tr><td>ShadowX</td><td>阴影的横向偏移</td><td>-120 至 120</td><td>0</td></tr>
+<tr><td>ShadowY</td><td>阴影的纵向偏移</td><td>-120 至 120</td><td>0</td></tr>
+</table>
+
+<div id="TagObjects"/><br>
+<b>Objects</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:各对象信息；数量: 1</td></tr>
+</table>
+<br>
+
+<div id="Tag公共属性"/><br>
+<b>公共属性</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=6>
+<tr bgcolor=#DDDDDD><td colspan=6>含义: Edit、Upload、Text、Line、TableLayout等所有对象共同具备的属性.</td></tr>
+<tr bgcolor=#f1f1f1><td colspan=>分类</td><td colspan=2>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td rowspan=8>不嵌入于<br>tableLayout<br>的坐标</td> <td rowspan=4>可选1</td><td>x</td><td>x坐标</td><td rowspan=8>
+1.像素数，相当于绝对数；<br>
+2.百分比, 控件区域高或宽的百分比；<br>
+3.相对于某个对象的坐标，例如 price.x1+2、price.right-20<br>
+4.相对于上一个对象的坐标，例如 .bottom+2、.right、.y2+2、.x2<br><br>备注：相对坐标的运算只支持加、减(+、-)</td><td>(无)</td></tr>
+<tr><td>y</td><td>y坐标</td><td>(无)</td></tr>
+<tr><td>width</td><td>宽度</td><td>200</td></tr>
+<tr><td>height</td><td>高度</td><td>22</td></tr>
+<tr><td rowspan=4>可选2</td><td>x1</td><td>左上x坐标</td><td>(无)</td></tr>
+<tr><td>y1</td><td>左上y坐标</td><td>(无)</td></tr>
+<tr><td>x2</td><td>右下x坐标</td><td>(无)</td></tr>
+<tr><td>y2</td><td>右下y坐标</td><td>(无)</td></tr>
+<tr><td rowspan=2>嵌入于<br>tableLayout<br>的坐标</td><td colspan=2>width</td><td>跨越的列数</td><td>数字</td><td>1</td></tr>
+<tr><td colspan=2>height</td><td>跨越的行数</td><td>数字</td><td>1</td></tr>
+<tr><td rowspan=3>其它属性</td><td colspan=2>id (或name)</td><td>该对象的id</td><td>串，每个对象须唯一，允许为空</td><td>(无)</td></tr>
+<tr><td colspan=2>visible</td><td>该对象是否可视</td><td>true/false - 可视/隐藏</td><td>true</td></tr>
+<tr><td colspan=2>自定义串</td><td>自定义属性</td><td>任意串</td><td>(无)</td></tr>
+</table>
+备注1：坐标 y = ".bottom + 2"， 表示相对上一个对象的坐标，“上一个对象”是指可视(visible="true")、不嵌入TableLayout中的独立对象;<br>
+备注2：坐标 y = "price.bottom + 2"， 如果price对象不可视、或嵌入在TableLayout中，则该y值无效，将自动转换成".bottom + 2";<br>
+备注3：坐标 y = ".bottom + 2"， 如果上一个对象在页面中被动态修改成visible="false"，“上一个对象”也将动态变成可视的“上一个对象”，界面的效果是：从该对象开始，坐标整体往上平移;<br>
+<br>
+
+<div id="TagInput"/><br>
+<b>Input</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=5>
+<tr bgcolor=#DDDDDD><td colspan=6>含义:输入对象的属性；数量:0 - n; 内容: 输入对象</td></tr>
+<tr bgcolor=#f1f1f1><td colspan=2>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td><td>示例</td></tr>
+<tr><td colspan=2>type 或<br>editType</td><td>输入控件类型</td>
+<td>
+<b>Edit</b> - 最普通、允许EditMask的编辑<br>
+<b>EditWithButton</b> - 右侧有按钮的Edit<br>
+<b>MultiLineEdit</b> - 多行编辑(默认以Ctrl+Enter换行)<br>
+<b>Checkbox</b> (或Check) - 复选框<br>
+<b>RadioButton</b> (或Radio) - 单选框<br>
+<b>Button</b> - 按钮<br>
+<b>Droplist</b> - 下拉列表<br>
+<b>EditAbleDroplist</b> - 可编辑的下拉列表<br>
+<b>Droptreelist</b> - 下拉嵌套的treelist<br>
+<b>EditAbleDroptreelist</b> - 可编辑的下拉嵌套treelist<br>
+<b>Upload</b> - 文件上传输入控件<br>
+<b>password或pwd</b> - 密码输入控件<br>
+</td><td>Edit</td><td></td></tr>
+<tr><td colspan=2>TabOrder</td><td>输入顺序号</td><td>数字</td><td>0</td><td></td></tr>
+<tr><td colspan=2>Enable</td><td>是否Enable</td><td>true/false/readonly<br>注："readonly"仅用于有输入框的input</td><td>true</td><td></td></tr>
+<tr><td colspan=2>EditAble</td><td>是否能输入</td><td>true/false，false表示仅显示<br>备注：对Button无效</td><td>true</td><td></td></tr>
+<tr><td colspan=2>nullAble</td><td>是否允许空</td><td>true/false<br>备注：仅对Edit、EditWithButton等有输入框的对象有效</td><td>true</td><td><img src='document.bmp' title='请参见演示页: 8.有表头表体的表单(1)'></td></tr>
+<tr><td colspan=2>Align</td><td>水平对齐</td><td>left/center/right<br>备注：对Button、Checkbox、Radio无效</td><td>和数据类型有关</td><td></td></tr>
+<tr><td colspan=2>LeftText</td><td>左侧文字</td><td>串<br>备注：对Button无效</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 1.体验Freeform'></td></tr>
+<tr><td colspan=2>LeftTextAlign 或 AlignLeftText</td><td>左侧文字的对齐</td><td>left/center/right<br>备注：对Button无效</td><td>right</td><td></td></tr>
+<tr><td colspan=2>LeftSize</td><td>左侧文字宽度</td><td>如果Input是嵌在tableLayout中，表示跨越的列数(当 width>1 时)， 否则表示像素数.<br>备注1: 如果是像素数, LeftSize, EditSize选其一即可;<br>备注2：对Button无效</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 1.体验Freeform'></td></tr>
+<tr><td colspan=2>EditSize</td><td>右侧输入框宽度</td><td>如果Input是嵌在tableLayout中，表示跨越的列数(当 width>1 时)， 否则表示像素数.<br>备注1: 如果是像素数, LeftSize、EditSize选其一即可;<br>备注2：对Button无效</td><td>(无)</td><td></td></tr>
+<tr><td colspan=2>color (或TextColor)</td><td>左侧文字的颜色</td><td>颜色串<br>备注：对Button等无效</td><td>#000000</td><td></td></tr>
+<tr><td colspan=2>fontIndex</td><td>字体</td><td>数字，指向在&lt;Fonts&gt;中定义的字体的顺序号，从0开始计数</td><td>0</td><td></td></tr>
+<tr><td colspan=2>Value</td><td>初始值</td><td>串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 1.体验Freeform'></td></tr>
+<tr><td colspan=2>Border</td><td>输入框边界</td><td>none - 表示无边界<br>备注：对Button等无效</td><td>(无)</td><td></td></tr>
+<tr><td colspan=2>isSelectEditWhenFocus</td><td>当输入框取得焦点时，光标是否选中全部文字</td><td>true/false/auto - 全选/不选/自动, auto表示int和double时全选.<br>备注：仅对Edit、EditWithButton等有输入框的对象有效</td><td>沿用<br>&lt;Properties&gt;</td><td></td></tr>
+
+<tr><td rowspan=6>Droplist<br>EditAbleDroplist<br>DropTreelist<br>EditAbleDropTreelist</td><td>droplistID</td><td>下拉框的相关联的下拉资源ID</td><td>串，该ID必须存在于下面的&lt;Droplists&gt;节点中.</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 3.多种下拉、4.关联下拉'></td></tr>
+<tr><td>FreeInputAble</td><td>输入内容是否受限</td><td>即输入内容是否受Droplist中的dataCol、dispCol限制.<br>true - 不受限制; false - 受限<br>注：仅用于EditAbleDropTreelist.</td><td>false</td><td></td></tr>
+<tr><td>EmptyPrompt</td><td>未输入时显示的提示</td><td>串，例如"-请输入-|-Input-"</td><td>(无)</td><td></td></tr>
+<tr><td>delayBefore-<br>Dropdown</td><td>BeforeDropdown事件重复触发的最短时间差</td><td>秒</td><td>0</td><td></td></tr>
+<tr><td>dropdownWidth</td><td>强制设定下拉窗的宽度</td><td>像素数或百分比<br>注：百分比是指相对于输入框的宽度</td><td>(无)</td><td></td></tr>
+<tr><td>isDropDownWhenFocus</td><td>是否得到焦点就自动弹出下拉</td><td>true/false</td><td>false</td><td></td></tr>
+
+<tr><td rowspan=9>Edit</td><td>dataType</td><td>数据类型</td><td>string / int / double / date / datetime</td><td>string</td><td></td></tr>
+<tr><td>editmask</td><td>日期型、数值型的输入掩码</td><td>对于日期型，例如YYYY.MM.DD hh:mm:ss<br>对于数值型，例如 ##,###,###.00 (表示千位符分隔、小数点2位)、 +00000 (表示最长5位的正整数)、#,###.#(表示千位符分隔、小数位数不确定).</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 1.体验Freeform'></td></tr>
+<tr><td>spin</td><td>输入框内的垂直旋转滚动条</td><td>true/false, 仅用于int、date、datetime型</td><td>日期是true</td><td><img src='document.bmp' title='请参见演示页: 2.多种掩码输入'></td></tr>
+<tr><td>spinAsCalendar</td><td>点击垂直旋转滚动条是否弹出日历</td><td>true/false, 仅用于date、datetime型</td><td>false</td><td></td></tr>
+<tr><td>max<br>min</td><td>输入范围</td><td>仅用于int、double、date、datetime类型<br>备注：不建议使用，因为会导致输入困难</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 2.多种掩码输入'></td></tr>
+<tr><td>maxChars<br>maxMBytes</td><td>字符串长度限定</td><td>maxChars表示限制输入字数，以Unicode计;<br>maxMBytes表示限制输入字节数，以多字节(非Unicode)计.<br>备注：不能同时使用maxChars和maxMBytes</td><td>0</td><td><img src='document.bmp' title='请参见演示页: 2.多种掩码输入'></td></tr>
+<tr><td>DefaultValue</td><td>初始值</td><td>支持以“=”开头的表达式.<br>注：Input的“id”不得为空，否则无效.</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 1.体验Freeform、2.多种掩码输入'></td></tr>
+<tr><td>startDate</td><td>日期为空时，在输入时的起跳日期(即开始日期)</td><td>日期串，也可以是表达式, 仅用于date、datetime型</td><td>2000.1.1</td><td></td></tr>
+<tr><td>textId</td><td>指定用于显示的数据列的列名(出现在数据的XML中)</td><td>串</td><td>(无)</td><td/></tr>
+
+<tr><td rowspan=4>EditWithButton</td><td>FreeInputAble</td><td>是否允许输入</td><td>true/false<br>注：如果指定了droplistID(即绑定了字典)，则强制为false</td><td>true</td><td></td></tr>
+<tr><td>droplistID</td><td>下拉资源ID，作为Key-Value的字典</td><td>串，该ID必须存在于下面的&lt;Droplists&gt;节点中; 也可以为"auto"，表示自动创建一个空的下拉字典.</td><td>(无)</td><td></td></tr>
+<tr><td>Image 或 Img</td><td>右侧按钮的图标</td><td>URL</td><td>(无)</td><td></td></tr>
+<tr><td>textId</td><td>指定用于显示的数据列的列名(出现在数据的XML中)</td><td>串</td><td>(无)</td><td/></tr>
+
+<tr><td>MultiLineEdit</td><td>isWordWrap</td><td>超宽时是否自动折行</td><td>true/false</td><td>false</td><td></td></tr>
+
+<tr><td>CheckBox</td><td>text</td><td>Checkbox的文字</td><td>串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 1.体验Freeform'></td></tr>
+
+<tr><td rowspan=3>RadioButton</td><td>text</td><td>RadioButton的文字</td><td>串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 1.体验Freeform'></td></tr>
+<tr><td>GroupID</td><td>分组的ID</td><td>串，必需</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 1.体验Freeform'></td></tr>
+<tr><td>SelectValue</td><td>真实的值</td><td>串, 用于GetChangedXML( )函数</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 1.体验Freeform'></td></tr>
+
+<tr><td rowspan=10>Button</td><td>text<br>(或value)</td><td>按钮上的文字</td><td>串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 5.事件、按钮、菜单、工具条'></td></tr>
+<tr><td>tip<br>(或toolTip)</td><td>鼠标滑过时的黄底文字</td><td>串</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 5.事件、按钮、菜单、工具条'></td></tr>
+<tr><td>textColor</td><td>文字颜色</td><td>颜色串</td><td>#000000</td><td><img src='document.bmp' title='请参见演示页: 5.事件、按钮、菜单、工具条'></td></tr>
+<tr><td>style</td><td>按钮风格</td><td>为如下串的组合、逗号分隔:<br><b>flat</b> - 平坦的按钮，无凸起<br><b>transparent</b> - 全透明的平坦按钮<br><b>round</b> - 圆角矩形的平坦按钮<br><b>noMouseHover</b> - 鼠标滑过时保持不变</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 5.事件、按钮、菜单、工具条; 7.动态更改属性(2)'></td></tr>
+<tr><td>bgColor<br>(或backColor)</td><td>自定义按钮色</td><td>颜色串，多个颜色间以逗号分隔，通常为1、3、4个颜色</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 5.事件、按钮、菜单、工具条'></td></tr>
+<tr><td>icon<br>(或image、<br>picture)</td><td>按钮小图标</td><td>URL，支持<a href="../dev/pub.htm#Tag605" target=_blank>图片扩展URL</a><br>图片支持ico、bmp、jpg、png、gif</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 5.事件、按钮、菜单、工具条; 7.动态更改属性(2)'></td></tr>
+<tr><td>at</td><td>小图标位于文字的位置</td><td>小图标可位于文字的left / right / top / bottom 侧</td><td>left</td><td><img src='document.bmp' title='请参见演示页: 5.事件、按钮、菜单、工具条'></td></tr>
+<tr><td>distance<br>(或dis)</td><td>小图标与文字的距离</td><td>像素数</td><td>4</td><td><img src='document.bmp' title='请参见演示页: 5.事件、按钮、菜单、工具条'></td></tr>
+<tr><td>menuID</td><td>下拉菜单ID</td><td>菜单资源ID串，即&lt;Menus&gt; \ &lt;Menu&gt;的id</td><td>(无)</td><td><img src='document.bmp' title='请参见演示页: 5.事件、按钮、菜单、工具条'></td></tr>
+<tr><td>isDynamicMenu</td><td>是否动态下拉菜单</td><td>true/false</td><td>false</td><td><img src='document.bmp' title='请参见演示页: 6.动态更改属性(1)'></td></tr>
+
+<tr><td rowspan=4>Upload</td><td>FileTypes</td><td>允许的文件类型</td><td>为文件后缀，后缀间以逗号分隔，如"bmp,jpg,png"。 后缀也可以是星号(*)，例如"bmp,jpg, *"，带星号表示允许选任何文件，前面的后缀只是起引导作用.</td><td>(无)</td><td></td></tr>
+<tr><td>Files</td><td>文件个数限制</td><td>数字，0表示无限制.</td><td>0</td><td><img src='document.bmp' title='请参见演示页: 17.文件上传控件'></td></tr>
+<tr><td>FileMaxKb</td><td>单个文件的长度限制</td><td>数字，单位为KB，0表示不限制</td><td>0</td><td></td></tr>
+<tr><td>PictureMaxSize</td><td>图片文件的尺寸限制</td><td>2个数字，以逗号分隔，分别表示横向/纵向的像素数，0表示不限制.<br>备注：只能辨认后缀是BMP、JPG、PNG、GIF、TIF的图片文件.</td><td>0,0</td><td></td></tr>
+</table>
+备注1：如果设定了LeftText，那么必须设定 LeftSize 或 EditSize (只要有其一即可)，否则无法保证输入框在垂直方向的对齐;<br>
+备注2：下拉Treelist也可以不采用droplistID，而使用诸如treelistURL、DataCol、DisplayCol属性以自行指定下拉Treelist;<br>
+备注3：leftText、text、tip允许以"|"分隔中英文(用于中英文切换);<br>
+<br>
+
+<div id="TagText"/><br>
+<b>Text</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:纯文字对象的属性；数量:0 - n; 内容: 文字</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>text (或value)</td><td>文字</td><td>串</td><td>(无)</td></tr>
+<tr><td>fontIndex</td><td>文字字体</td><td>数字，指向在&lt;Fonts&gt;中定义的字体的顺序号，从0开始计数</td><td>0</td></tr>
+<tr><td>color (或TextColor)</td><td>文字的颜色</td><td>颜色串</td><td>#000000</td></tr>
+<tr><td>align</td><td>文字水平对齐</td><td>left / center / right</td><td>left</td></tr>
+<tr><td>valign</td><td>文字垂直对齐</td><td>top / middle / bottom</td><td>top</td></tr>
+<tr><td>displayMask</td><td>显示掩码表达式</td><td>和Treelist的显示掩码类似，但仅支持文字、文字颜色的子表达式</td><td>(无)</td></tr>
+<tr><td>isMultiLine 或<br>isMultiLineAble</td><td>如果超出宽度, 是否允许自动拆分成多行显示</td><td>true/false</td><td>false</td></tr>
+<tr><td>isHyperLink</td><td>是否超链接</td><td>true/false</td><td>false</td></tr>
+<tr><td>isBindingCol</td><td>是否数据绑定列，用于函数GetChangedXML()生成的XML串</td><td>true/false</td><td>false</td></tr>
+<tr><td>textId</td><td>指定用于显示的数据列的列名(出现在数据的XML中)</td><td>串</td><td>(无)</td></tr>
+</table>
+备注：text允许以"|"分隔中英文(用于中英文切换);<br>
+<br>
+
+<div id="TagLine"/><br>
+<b>Line</b>　　<img src='document.bmp' title='请参见演示页: 1.体验Freeform'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:线条对象的属性；数量:0 - n; 内容: 线条</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>color (或LineColor)</td><td>线条的颜色</td><td>颜色串</td><td>#000000</td></tr>
+<tr><td>thick</td><td>线粗</td><td>像素数</td><td>1</td></tr>
+<tr><td>style</td><td>线型</td><td>solid / dash / dot / dashdot</td><td>solid</td></tr>
+</table>
+备注：在TableLayout内，Line的 x1,x2,y1,y2 属性仍有效，但其相对坐标是&lt;TD&gt;容器的左上角;<br>
+<br>
+
+<div id="TagRect"/><br>
+<b>Rect 或 Rectangle</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:矩形框对象的属性；数量:0 - n; 内容: 矩形框</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>color (或LineColor)</td><td>边框线条的颜色</td><td>颜色串</td><td>#000000</td></tr>
+<tr><td>thick</td><td>边框线粗</td><td>像素数</td><td>1</td></tr>
+<tr><td>style</td><td>边框线型</td><td>solid / dash / dot / dashdot</td><td>solid</td></tr>
+<tr><td>bgColor<br>或backColor</td><td>填充色</td><td>颜色串，或者是以逗号分隔的多个颜色串的垂直渐变色</td><td>无(透明)</td></tr>
+<tr><td>isDragBar</td><td>是否可拖拽</td><td>true/false<br>注：“可拖拽”是指在TableLayout中作为可被拖拽的分隔条</td><td>false</td></tr>
+
+<tr bgcolor=#f6f6f6><td colspan=4>以下属性为渲染功能，不太常用　　<img src='document.bmp' title='请参见演示页: "6.动态更改属性(1)"中的js部分、10.多记录Freeform(1)、12.多记录Freeform(3)、18.炫酷ImageFlow(图像流)控件'></td></tr>
+<tr><td>mirror</td><td>画上方的渐变倒影</td><td>格式例如：“offset=2;alpha=255”<br>offset：倒影开始处的垂直偏移<br>alpha：倒影开始处的透光度, 0 - 255</td><td>(无)</td></tr>
+<tr><td>pathId</td><td>使用路径</td><td>Paths中某个Path资源，用于下面的pathBorder、Filter</td><td>(无)</td></tr>
+<tr><td>pathBorder</td><td>画路径轮廓线</td><td>格式例如“thick=1;color=#ff0000;style=dashdot”</td><td>(无)</td></tr>
+<tr><td>Filter</td><td>在路径内渲染</td><td>
+1.线性渐变，例如如下串:<br>
+　　“start.color=#ff0000; start.alpha=255; start.x=100; start.y=10%;<br>
+　　end.color=#ff0000; end.alpha=0; end.x=10; end.y=90%”<br>
+2.中心辐射渐变，例如如下串:<br>
+　　“start.color=#ff0000; end.color=#ff0000; start.alpha=255; end.alpha=0; center.x=10; center.y=90%; scale=0.3”<br>
+center为中心点坐标，scale为非均匀分隔点，为小于等于1的分数.<br>
+备注：以上坐标均为相对坐标
+</td><td>(无)</td></tr>
+</table><br>
+
+<div id="TagImage"/><br>
+<b>Img 或 Image</b>　　<img src='document.bmp' title='请参见演示页: "1.体验Freeform"、"6.动态更改属性(1)"中的js部分、"10.多记录Freeform(1)"、"12.多记录Freeform(3)"'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:图片对象的属性；数量:0 - n; 内容: 图片</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>src (或url)</td><td>图片的URL，支持<a href="../dev/pub.htm#Tag605" target=_blank>图片扩展URL</a>，支持jpg、bmp、png、gif、tif、ico格式</td><td>串</td><td>(无)</td></tr>
+<tr><td>isTransparent</td><td>是否透明，即是否以SRCAND画图</td><td>true / false</td><td>false</td></tr>
+<tr><td>isUseOriSize</td><td>是否以原始尺寸显示</td><td>true / false</td><td>false</td></tr>
+<tr><td>arrange</td><td>当图片尺寸和矩形框不相等时，图片的显示排列方式(isUseOriSize须为false):<br>1.tile - 平铺<br>2.stretch - 伸展<br>3.单幅原样显示，须是水平、垂直的对齐组合，水平:left / center / right,垂直:top / middle / bottom，例如"bottom,right"</td><td>如左</td><td>(无)</td></tr>
+<tr><td>alpha</td><td>透明度</td><td>0 - 255</td><td>255</td></tr>
+<tr><td>gamma</td><td>Gamma校正，1.0表示正常亮度, 小于1变亮，大于1变暗</td><td>小数</td><td>1.0</td></tr>
+<tr><td>rotate</td><td>顺时针旋转一个角度</td><td>0 - 360</td><td>0</td></tr>
+<tr><td>flip</td><td>Vert - 垂直翻转；Horz - 水平翻转</td><td>如左</td><td>(无)</td></tr>
+<tr><td>isGray</td><td>是否以黑白(灰度)显示</td><td>true/false</td><td>false</td></tr>
+<tr><td>transparentColor</td><td>指定图片的透明色</td><td>颜色串</td><td>(无)</td></tr>
+<tr><td>pathID</td><td>Path资源，表示肯定画在该封闭Path内，不太常用</td><td>Paths资源的某个Path的id</td><td>(无)</td></tr>
+<tr><td>isBindingCol</td><td>是否数据绑定列，用于函数GetChangedXML()生成的XML串</td><td>true/false</td><td>false</td></tr>
+</table><br>
+
+
+<div id="TagImageFlow"/><br>
+<b>ImgFlow 或 ImageFlow</b>　　<img src='document.bmp' title='请参见演示页: 18.炫酷ImageFlow(图像流)控件'>
+<table cols="5" width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=5>含义:图片流对象的属性；数量:0 - n; 内容: 图片流</td></tr>
+<tr bgcolor=#f1f1f1><td colspan=2>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td rowspan=9>普通</td><td>style</td><td>图片流样式</td><td>ipod / horz</td><td>ipod</td></tr>
+<tr><td>src (或url)</td><td>图片流的XML描述文件的URL(绝对或相对).<br>图片流的XML文档通常为多记录的树，格式说明如下：
+<br>　1.每记录可有id、url(或src)、tip(或text)元素;
+<br>　2.其含义为ID、图片URL、文字说明，其中id、url为必需;
+<br>　3.url可以是相对URL，相对于图片流XML文档位置;
+<br>　4.可参考freeform的demo页实例;</td><td>串</td><td>(无)</td></tr>
+<tr><td>slider</td><td>滚动条的样式</td><td>scroll - 普通的滑竿<br>digital - 数字显示<br>no - 无滚动条</td><td>Scroll</td></tr>
+<tr><td>alpha</td><td>倒影的上部透明度</td><td>0 - 255</td><td>70</td></tr>
+<tr><td>shadowHeightPercent</td><td>倒影高度百分比</td><td>0 - 100</td><td>18</td></tr>
+<tr><td>shadowDistance</td><td>图片底边和倒影顶部之间的距离(像素)</td><td>0 - 100</td><td>1</td></tr>
+<tr><td>preLoadImages</td><td>预加载图片数，例如50表示预加载当前中心位置的前、后各50幅.</td><td>&gt;=0的数字</td><td>50</td></tr>
+<tr><td>isToolTipEnabled</td><td>是否随鼠标显示Tip.</td><td>true/false</td><td>true</td></tr>
+<tr><td>autoFlowInterval</td><td>自动滚动播放的时间间隔.</td><td>数字，单位为秒，0表示不自动滚动</td><td>0</td></tr>
+
+<tr><td rowspan=3>仅<br>Horz<br>样式</td><td>enlargeActive</td><td>放大显示活动的当前图片</td><td>数字，像素数</td><td>4</td></tr>
+<tr><td>imageSize</td><td>指定图片显示的宽和高，逗号分隔，也可以用百分比表示(相对于ImageFlow区).</td><td>逗号分隔的数字或百分比</td><td>200,200</td></tr>
+<tr><td>hasMouseButton</td><td>鼠标划过左、右边界时，是否要浮现前页、下页的三角形按钮</td><td>true/false</td><td>false</td></tr>
+
+<tr><td rowspan=3>仅<br>Digital<br>滚动条</td><td>sliderCount</td><td>显示多少个数字</td><td>数字, 0表示自动</td><td>0</td></tr>
+<tr><td>sliderPos</td><td>数字区位于ImaleFlow中的位置.</td><td>topLeft / bottomRight / bottomLeft / topRight</td><td>bottomRight</td></tr>
+<tr><td>sliderColor</td><td>数字区的底色.</td><td>Html颜色串</td><td>#C00000</td></tr>
+</table>
+备注：ImageFlow是没有背景属性的，它将沿用当前Freeform的上下文背景。<br>
+
+
+<div id="TagGroup"/><br>
+<b>Group 或 GroupBox</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:分组框的属性；数量:0 - n; 内容: 分组框</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>text (或value)</td><td>分组框的文字</td><td>串</td><td>(无)</td></tr>
+<tr><td>fontIndex</td><td>文字字体</td><td>数字，指向在&lt;Fonts&gt;中定义的字体的顺序号，从0开始计数</td><td>0</td></tr>
+</table>
+备注：text允许以"|"分隔中英文(用于中英文切换);<br>
+<br>
+
+<div id="TagGroupEx"/><br>
+<b>GroupEx 或 GroupBoxEx</b>　　<img src='document.bmp' title='请参见演示页: 3.多种下拉、7.动态更改属性(2)'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:Supcan风格的分组框的属性；数量:0 - n; 内容: Supcan风格分组框</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>text (或value)</td><td>分组框的文字</td><td>串</td><td>(无)</td></tr>
+<tr><td>fontIndex</td><td>文字字体</td><td>数字，指向在&lt;Fonts&gt;中定义的字体的顺序号，从0开始计数</td><td>0</td></tr>
+<tr><td>skin</td><td>色调</td><td>1/2/3 - 暖色调/蓝灰中性色/冷色调</td><td>自动</td></tr>
+<tr><td>titleHeight</td><td>标题高度</td><td>像素数</td><td>19</td></tr>
+<tr><td>titleOffset<br>(或LeftSize)</td><td>标题文字的开始位置</td><td>像素数</td><td>10</td></tr>
+<tr><td>round</td><td>圆角直径</td><td>像素数</td><td>11</td></tr>
+</table>
+备注：text允许以"|"分隔中英文(用于中英文切换);<br>
+<br>
+
+<div id="TagPager"/><br>
+<b>Pager</b>　　<img src='document.bmp' title='请参见Treelist的演示页: 18.分页方案(一)、30.FreeformBar'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:分页器；数量:0 - n; 内容: 用于Treelist的分页器</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>fontIndex</td><td>文字字体</td><td>数字，指向在&lt;Fonts&gt;中定义的字体的顺序号，从0开始计数</td><td>0</td></tr>
+<tr><td>textColor</td><td>文字颜色</td><td>颜色串</td><td>0</td></tr>
+<tr><td>totalRows</td><td>数据的总行数</td><td>数字，或URL<br>如果是URL，返回的响应必须是数字(即总行数)，或包含数字的XML、JSON</td><td>(无)</td></tr>
+<tr><td>pageRows</td><td>每页显示行数</td><td>数字</td><td>100</td></tr>
+<tr><td>dataURL</td><td>数据的URL</td><td>URL，写法如下：<br>"../getData.aspx?st=@startRow&count=@rows"<br>其中变量@startRow、@rows代表开始行、要索取的行数</td><td>(无)</td></tr>
+<tr><td>pageRowsList</td><td>每页显示行数列表</td><td>用于规定的每页显示行数下拉，写法如："20,50,100,200"</td><td>(无)</td></tr>
+<tr><td>showText</td><td>右侧的当前行号和行数的文字</td><td>带变量的串，如："第@startRow至@endRow行, 共@totRows行"，空串表示不需要显示该文字。</td><td>(@startRow-@endRow) / @totalRows</td></tr>
+</table>
+备注：showText允许以"|"分隔中英文(用于中英文切换);<br>
+<br>
+
+
+<div id="TagFreeformTree"/><br>
+<b>FreeformTree 或 FormTree</b>　　<img src='document.bmp' title='请参见演示页: 12.多记录Freeform(3)'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:内嵌Freeform树；数量:0 - n; </td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>dataURL</td><td>数据的URL</td><td>绝对或相对URL<br>备注：数据格式规范请参考开发者指南.</td><td>(无)</td></tr>
+<tr><td>lineType</td><td>父子树节点之间的线条连接方式</td><td>lineVH - 水平和垂直折线<br>lineStraight - 单条笔直的斜线</td><td>lineVH</td></tr>
+<tr><td>lineColor<br>(或 color)</td><td>连接线颜色</td><td>颜色串</td><td>#000000</td></tr>
+<tr><td>thick</td><td>连接线的线粗</td><td>像素数</td><td>1</td></tr>
+<tr><td>style</td><td>连接线的线型</td><td>solid / dash / dot / dashdot</td><td>solid</td></tr>
+</table><br>
+
+<div id="TagComponent"/><br>
+<b>Component</b>　　<img src='document.bmp' title='请参见演示页: 19.Freeform框架'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义: 硕正大粒度组件；数量:0 - n; </td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>Type</td><td>组件类型</td><td><b>Treelist</b> - 树列表组件<br><b>Freeform</b> - 自由表头组件<br><b>Report</b> - 报表组件<br><b>Tree</b> - 树组件<br><b>Chart</b> - 统计图组件<br></td><td>(无)</td></tr>
+<tr><td>CreatePara</td><td>创建参数</td><td>串<br>备注：不同组件类型有不同的规范, 请参见相关组件的文档中的“1.创建实例”中的参数规范.</td><td>(无)</td></tr>
+<tr><td>URL<br>或 SRC</td><td>用于Build的URL</td><td>绝对或相对URL<br>备注：仅用于有Build函数的组件：Report/Treelist/Freeform/Tree.</td><td>(无)</td></tr>
+</table><br>
+
+
+<div id="TagTableLayout"/><br>
+<b>TableLayout 或 Table</b>　　<img src='document.bmp' title='请参见演示页: 1.体验Freeform、3.多种下拉、7.动态更改属性(2)、8.有表头表体的表单(1)'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:类似Html Table的布局，辅助其它对象定位；数量:0 - n; </td></tr>
+<tr bgcolor=#f1f1f1><td colspan=4>内含col、TR、TD子节点，在&lt;TD&gt; ..  &lt;/TD&gt;之间嵌入具体的对象，请详见下方的“关于TableLayout”</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>border</td><td>表格线宽</td><td>像素数, 通常用于调试</td><td>0</td></tr>
+<tr><td>borderColor</td><td>表格线色</td><td>颜色串</td><td>#000000</td></tr>
+<tr><td>cellPadding</td><td>内嵌对象离表格线的距离</td><td>像素数</td><td>0</td></tr>
+</table><br>
+
+<div id="TagCol"/><br>
+<b>Col</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:定义TableLayout中列；数量:1 - n; </td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>width</td><td>列宽</td><td>可以是<br>1.像素数;<br>2.百分比;<br>3.比例因子，为小于1的分数，表示剩余空间的分配比例</td><td>0.1</td></tr>
+<tr><td>minWidth</td><td>最小列宽</td><td>像素数，仅用于按百分比或比例因子分配的情形</td><td>0</td></tr>
+<tr><td>visible</td><td>是否可视</td><td>true/false<br>注1：如果visible=false, 那么列内的对象自动隐藏<br>注2：在freeform设计器中，该属性不起作用</td><td>true</td></tr>
+<tr><td>id 或 name</td><td>该列的id号</td><td>串<br>注：不太常用，仅用于动态设置该列的visible、width属性</td><td>(无)</td></tr>
+</table><br>
+
+<div id="TagTR"/><br>
+<b>TR</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:定义TableLayout中各行；数量:1 - n; </td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>height</td><td>行高</td><td>可以是<br>1.像素数;<br>2.百分比;<br>3.比例因子，为小于1的分数，表示剩余空间的分配比例</td><td>0.1</td></tr>
+<tr><td>minHeight</td><td>最小列宽</td><td>像素数，仅用于按百分比或比例因子分配的情形</td><td>0</td></tr>
+<tr><td>visible</td><td>是否可视</td><td>true/false<br>注1：如果visible=false, 那么行内的对象自动隐藏<br>注2：在freeform设计器中，该属性不起作用</td><td>true</td></tr>
+<tr><td>id 或 name</td><td>该行的id号</td><td>串<br>注：不太常用，仅用于动态设置该行的visible、height属性</td><td>(无)</td></tr>
+</table><br>
+
+<div id="TagTD"/><br>
+<b>TD</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center" cols=4>
+<tr bgcolor=#DDDDDD><td colspan=4>含义:和 html 的 TD 同义，TD的子节点就是具体的内嵌对象，请详见下方的“关于TableLayout”；数量:1 - n; </td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>width</td><td>宽度</td><td>和&lt;col&gt;中的"width"同义，优先级高于&lt;col&gt;，但不建议书写在此.</td><td>(无)</td></tr>
+<tr><td>border-left-width<br>或 leftBorder</td><td>左边界线宽度</td><td>像素数. 注：对相邻单元格的同一位置的线条也有效</td><td>(无)</td></tr>
+<tr><td>border-right-width<br>或 rightBorder</td><td>右边界线宽度</td><td>像素数. 注：对相邻单元格的同一位置的线条也有效</td><td>(无)</td></tr>
+<tr><td>border-top-width<br>或 topBorder</td><td>上边界线宽度</td><td>像素数. 注：对相邻单元格的同一位置的线条也有效</td><td>(无)</td></tr>
+<tr><td>border-bottom-width<br>或 bottomBorder</td><td>下边界线宽度</td><td>像素数. 注：对相邻单元格的同一位置的线条也有效</td><td>(无)</td></tr>
+<tr><td>backColor<br>或 bgColor</td><td>填充的颜色</td><td>颜色串</td><td>(无)</td></tr>
+</table><br>
+备注: 在freeform设计器的工具条中，有边界线色和填充色的辅助功能按钮.<br>
+
+<div id="TagDropLists"/><br>
+<b>DropLists</b>　　<img src='document.bmp' title='请参见演示页: 3.多种下拉、4.关联下拉，以及树列表的 27.过滤的下拉及其它功能'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:下拉框字典资源；数量:0 - 1;</td></tr>
+</table>
+<br>
+
+<div id="TagDropList"/>
+<b>DropList</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=5>含义:下拉框字典；数量:0 - n</td></tr>
+<tr bgcolor=#f1f1f1><td>分类</td><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td rowspan=5>dropList 和<br>dropTreelist<br>全部适用</td><td>id</td><td>该字典的ID号</td><td>串</td><td>无</td></tr>
+<tr><td>treelistURL<br>或treelist</td><td>嵌套引用的Treelist的XML描述文件的URL(绝对或相对).<br><font color=red>重要提示：</font>如果为空，表示是dropList(即简单的单列下拉)；否则就是dropTreeList</td><td>串</td><td>无</td></tr>
+<tr><td>dataURL</td><td>数据的URL，如果dataURL为空，dropTreeList自动采用自身的dataURL、 dropList则采用下面跟随的item条目.<br>如果需要分页显示，请参考&lt;Properties&gt;中"分页动态加载"的dataURL语法.</td><td>串</td><td>无</td></tr>
+<tr><td>dataCol</td><td>绑定的下拉数据的"数据列"的列名.</td><td>串</td><td>无</td></tr>
+<tr><td>displayCol</td><td>绑定的下拉数据的"显示列"的列名，其内容用于显示.<br>备注：允许是以“=”开头的表达式, 绑定多列(服务器搜索除外)</td><td>串</td><td>无</td></tr>
+<tr><td>dropList</td><td>isSortByKey</td><td>下拉内容是否按Key重新排序</td><td>true/false</td><td>false</td></tr>
+<tr><td rowspan=4>dropTreeList</td><td>totalRows</td><td>用于分页显示，可参见&lt;Properties&gt;中同名属性的含义</td><td>URL</td><td>无</td></tr>
+<tr><td>isMultiSelectAble</td><td>是否允许作多行选择</td><td>true/false</td><td>false</td></tr>
+<tr><td>isAutoSelectChildren</td><td>是否自动选择树杈的子孙.<br>备注：仅用于isMultiSelectAble="true"时</td><td>true/false</td><td>false</td></tr>
+<tr><td>isTreeNodeSelectAble</td><td>是否允许树杈被选中. 其作用范围是：<br>1：多选时(checkbox勾选);<br>2：单选的<b>单列多层树</b>切换成列表显示时</td><td>true/false</td><td>false</td></tr>
+<tr><td rowspan=4>editAble-<br>dropTreeList</td><td>RefreshDelay</td><td>用于服务器搜索时, 键盘触发刷新的最短时间间隔</td><td>毫秒数, 须大于300</td><td>1000</td></tr>
+<tr><td>RefreshChars</td><td>用于服务器搜索时, 键盘触发刷新的最短字数</td><td>字数</td><td>1</td></tr>
+<tr><td>dropdownMode</td><td>下拉的显示方式，可以为:<br><b>auto</b> - 在输入过程中会自动下拉;<br><b>buttonClick</b> - 只有在鼠标点击右侧按钮时才下拉</td><td>如左</td><td>auto</td></tr>
+<tr><td>buttonMode</td><td>右侧按钮的行为，可以为:<br><b>auto</b> - 点击时触发下拉动作;<br><b>sendMessage</b> - 只触发"Clicked"事件(p4参数为"button")，不触发下拉动作</td><td>如左</td><td>auto</td></tr>
+</table>
+备注：1.如果treelistURL、dataURL是相对URL，应该是相对于当前Treelist XML，而不是相对于页面;<br>
+　　  2.如果EditAbleDropTreelist、且dataURL是表达式，就表示服务器搜索, RefreshDelay和RefreshChars用于控制搜索的频度;<br>
+<br>
+
+<div id="Tagitem"/>
+<b>item</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:下拉框字典条目；数量:1 - n；内容：该条目的显示串</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>key</td><td>条目键值</td><td>串</td><td>无</td></tr>
+</table>
+备注：如果已经定义了dataURL属性，就没必要再定义item元素了，dataURL优先级高于item元素;<br>
+<br>
+
+<div id="TagMenus"/><br>
+<b>Menus</b>　　<img src='document.bmp' title='请参见演示页: 5.事件、按钮、菜单、工具条集中演示'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:下拉菜单资源，用于下拉菜单风格的按钮；数量:0 - 1;</td></tr>
+</table>
+<br>
+
+<div id="TagMenu"/>
+<b>Menu</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:下拉菜单；数量:0 - n</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>id</td><td>该菜单的ID号</td><td>串</td><td>无</td></tr>
+<tr><td>url</td><td>菜单的XML文件的URL.<br>如果url为空，将采用下面跟随的item条目.</td><td>绝对或相对URL</td><td>无</td></tr>
+</table>
+<br>
+
+<div id="TagItem"/>
+<b>Item</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:菜单项；数量:1 - n；内容：菜单项</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>id</td><td>菜单的id值</td><td>串，须为<font color="red">纯数字</font></td><td>无</td></tr>
+<tr><td>text</td><td>菜单项文字</td><td>串</font></td><td>无</td></tr>
+<tr><td>detail</td><td>该菜单项的详细说明，会显示在菜单下方弹出的浮动小窗口中</td><td>串</font></td><td>无</td></tr>
+<tr><td>image (或icon)</td><td>菜单项图片的URL，支持<a href="../dev/pub.htm#Tag605" target=_blank>图片扩展URL</a></td><td>串</td><td>无</td></tr>
+<tr><td>自定义属性</td><td>除了上述内容以外的，都是自定义属性</a></td><td>串</td><td>无</td></tr>
+</table>
+备注1：item可以有多级子item，表示多级别的下拉菜单.<br>
+备注2：text、detail允许以"|"分隔中英文(用于中英文切换);<br>
+<br>
+
+<div id="TagPaths"/><br>
+<b>Paths</b>　　<img src='document.bmp' title='请参见演示页: 5.事件、按钮、菜单、工具条集中演示、10.多记录Freeform(1)、12.多记录Freeform(3)、18.炫酷ImageFlow(图像流)控件'>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#DDDDDD><td colspan=4>含义:路径资源，用于Rect、Img对象的渲染，能极大地提高界面的美感；数量:0 - 1;</td></tr>
+</table>
+<br>
+
+<div id="TagPath"/>
+<b>Path</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:路径，由一系列的点、曲线等组成的封闭区域；数量:0 - n<br>注：路径内的坐标均为相对坐标.</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>id</td><td>该Path的ID号</td><td>串</td><td>无</td></tr>
+</table>
+<br>
+
+<div id="TagPoints"/>
+<b>Points</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:一系列的点组成的折线；数量:0 - n；</td></tr>
+</table>
+<br>
+
+<div id="TagPoint"/>
+<b>Point</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:点的相对坐标，x，y以逗号分隔，允许以%百分比表示，例如&lt;point&gt;20,50%&lt;/point&gt;,  数量:2 - n；</td></tr>
+</table>
+<br>
+
+<div id="TagCurve"/>
+<b>Curve</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:一系列的点组成的圆滑曲线；数量:0 - n；</td></tr>
+</table>
+<br>
+
+<div id="TagPoint "/>
+<b>Point</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:点的相对坐标，x，y以逗号分隔，允许以%百分比表示，例如&lt;point&gt;20,50%&lt;/point&gt;,  数量:2 - n；</td></tr>
+</table>
+<br>
+
+<div id="TagBezier"/>
+<b>Bezier</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:贝塞尔曲线；数量:0 - n；</td></tr>
+</table>
+<br>
+
+<div id="Tagpoint"/>
+<b>Point</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:点的相对坐标，x，y以逗号分隔，允许以%百分比表示，例如&lt;point&gt;20,50%&lt;/point&gt;,  数量:4；<br>备注：必须有4个点，分别表示起始点、第一控制点、第二控制点、终止点.</td></tr>
+</table>
+<br>
+
+<div id="TagArc"/>
+<b>Arc</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:弧线；数量:0 - n；</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>x</td><td>圆弧的矩形区域的左上角x, 相对坐标，允许以%百分比表示</td><td>如80、30%</td><td>(无)</td></tr>
+<tr><td>y</td><td>圆弧的矩形区域的左上角y，相对坐标，允许以%百分比表示</td><td>如80、30%</td><td>(无)</td></tr>
+<tr><td>width</td><td>圆弧的矩形区域宽度，允许以%百分比表示</td><td>如80、30%</td><td>(无)</td></tr>
+<tr><td>height</td><td>圆弧的矩形区域高度，允许以%百分比表示</td><td>如80、30%</td><td>(无)</td></tr>
+<tr><td>angle</td><td>开始画弧的角度</td><td>0 - 360，顺时针方向</td><td>0</td></tr>
+<tr><td>sweep</td><td>弧线长度(以弧度计)</td><td>0 - 360，顺时针方向</td><td>0</td></tr>
+</table>
+<br>
+
+<div id="Tagrect"/>
+<b>Rect</b>
+<table width=100% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgColor=#DDDDDD><td colspan=4>含义:矩形或圆角矩形的封闭区域；数量:0 - n；</td></tr>
+<tr bgcolor=#f1f1f1><td>属性名称</td><td>含义</td><td>可用值</td><td>默认值</td></tr>
+<tr><td>x</td><td>矩形区域的左上角x, 相对坐标，允许以%百分比表示</td><td>如80、30%</td><td>(无)</td></tr>
+<tr><td>y</td><td>矩形区域的左上角y，相对坐标，允许以%百分比表示</td><td>如80、30%</td><td>(无)</td></tr>
+<tr><td>width</td><td>矩形区域宽度，允许以%百分比表示</td><td>如80、30%</td><td>(无)</td></tr>
+<tr><td>height</td><td>矩形区域高度，允许以%百分比表示</td><td>如80、30%</td><td>(无)</td></tr>
+<tr><td>round</td><td>圆角半径</td><td>数字</td><td>0</td></tr>
+</table>
+<br>
+
+<div id="Tag附录.关于TableLayout"/><br>
+<h3>附录：关于TableLayout</h3>
+　　TableLayout 和 Html中的 Table 很相似，用于方便地书写布局，例如：<br>
+<pre class='xml'>
+&lt;TableLayout y=".bottom+2" width="100%"&gt;
+ &lt;col width="20%"/&gt;
+ &lt;col width="15%"/&gt;
+ &lt;col width=".1"/&gt;
+ &lt;col width="15%"/&gt;
+ &lt;col width="20%"/&gt;
+ &lt;col width="20%"/&gt;
+ &lt;tr height="15"/&gt;
+ &lt;tr height="21"&gt;
+  &lt;td&gt;&lt;input id="id" LeftText="单证号: " width="2" nullAble="false"/&gt;&lt;/td&gt;
+  &lt;td/&gt;
+  &lt;td/&gt;
+  &lt;td&gt;&lt;input id="dt" LeftText="发货日期: " width="2" defaultvalue="=now()" datatype="date"/&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr height="4"/&gt;
+ &lt;tr height="21"&gt;
+  &lt;td&gt;&lt;input id="rate" LeftText="汇率: " width="2" editmask="#,###.0000" datatype="double" /&gt;&lt;/td&gt;
+  &lt;td/&gt;
+  &lt;td/&gt;
+  &lt;td&gt;&lt;input id="cust" LeftText="客户: " width="2" type="droptreelist" droplistID="customer"/&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+&lt;/TableLayout&gt;</pre>
+　　可见，使用了TableLayout后，就不需要为每个对象书写令人讨厌的 x、x、x1、x2 等坐标信息了，并且位置容易辨认，便于修改。<br>
+　　TableLayout规则如下：<br>
+1.列宽在&lt;col&gt;中统一定义;<br>
+2.行高在&lt;tr&gt;中统一定义;<br>
+3.只能在&lt;td&gt;...&lt;/td&gt;中嵌入对象;<br>
+4.内嵌对象将自动拉伸，在所在单元格<b>满格显示</b>;<br>
+5.内嵌对象 width、Height 属性的含义表示跨越的列数和行数;<br>
+6.除了 width、Height 和&lt;Line&gt;的x1,x2,y1,y2，内嵌对象其它坐标定位属性无效;<br>
+7.内嵌 input 对象的 leftSize、editSize 含义表示跨越的列数;<br>
+8.如果内嵌对象有leftText、且leftSize和editSize未定义时，如果width=2, 那么左列分配给leftText，右列分配给输入控件;<br>
+9.如果内嵌对象同上，当 width=3 时, 中间列自动作分隔用;<br>
+10.一个 Freeform 中允许有多个 TableLayout, 且支持 TableLayout 层层嵌套;<br>
+11.未包含嵌入对象的右侧的 &lt;td&gt; 可以省略;<br>
+<br><br><br><br><br><br><br>
+<script type='text/javascript' src='../dev/nstd.js'></script>
+</body></html>

@@ -1,0 +1,206 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/ajpj/js/bcaseestbaseinfo_form.js"></script>
+
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+th {
+	width:20%;
+}
+
+td {
+	width:30%;
+}
+
+td.td1 {
+	width:80%;
+}
+
+</style>
+<form id="projectAddForm" method="post">
+	<div id="tabList" class="easyui-tabs" >
+	<div title="复议案件基本信息">
+	<table class="list">
+		<!--隐藏属性start-->
+			<input type="hidden" id="id" name="id" value="$!{ct.id}"/><!--案件ID-->
+			<input type="hidden" id="caseid" name="caseid" value="$!{po.caseid}"/><!--案件ID-->
+			<input type="hidden" id="fjkeyid" name="fjkeyid" value="$!{fjkeyid}"/><!--附件keyid-->
+		<!--隐藏属性end-->
+			
+		<tr>
+			<th>申请人</th>
+			<td>
+				$!{po.appname}
+			</td>
+			<th>申请人类型</th>
+			<td>
+				$!{po.apptypename}
+			</td>
+		</tr>
+		<tr>
+			<th>证件类型</th>
+			<td>
+				$!{po.idtypename}
+			</td>
+			<th>证件号码</th>
+			<td>
+				$!{po.idcode}
+			</td>
+		</tr>
+		<tr>
+			<th>联系电话</th>
+			<td>
+				$!{po.phone}
+			</td>
+			<th>邮政编码</th>
+			<td>
+				$!{po.postcode}
+			</td>
+		</tr>
+		<tr>
+			<th>通讯地址</th>
+			<td colspan="3" class="td1">
+				$!{po.address}
+			</td>
+        </tr>
+		<tr>
+			<th>被申请人</th>
+			<td>
+				$!{po.defname}
+			</td>
+			<th>被申请人类型</th>
+			<td>
+				$!{po.deftypename}
+			</td>
+		</tr>
+	<!--
+		<tr>
+			<th>被申请人证件类型</th>
+			<td>
+				$!{po.defidtype}
+			</td>
+			<th>被申请人证件号码</th>
+			<td>
+				$!{po.defidcode}
+			</td>
+		</tr>
+	-->
+		<tr>
+			<th>被申请人联系电话</th>
+			<td>
+				$!{po.defphone}
+			</td>
+			<th>被申请人邮政编码</th>
+			<td>
+				$!{po.defpostcode}				
+			</td>
+		</tr>
+		<tr>
+			<th>被申请人通讯地址</th>
+			<td colspan="3" class="td1">
+				$!{po.defaddress}				
+			</td>
+        </tr>
+		<tr>
+			<th>行政管理类型</th>
+			<td>
+				$!{po.admtypename}				
+			</td>
+			<th>申请复议事项类型</th>
+			<td>
+				$!{po.casetypename}				
+			</td>
+		</tr>
+		<tr>
+			<th>是否附带行政赔偿</th>
+			<td>
+				$!{po.ifcompensationname}				
+			</td>
+			<th>赔偿金额</th>
+			<td>
+				$!{po.amount}				
+			</td>
+		</tr>
+		<tr>
+			<th>申请事项</th>
+			<td colspan="3" class="td1">
+				$!{po.appcase}				
+			</td>
+        </tr>
+		<tr>
+			<th>事实和理由</th>
+			<td colspan="3" class="td1">
+				$!{po.factreason}				
+			</td>
+        </tr>
+		<tr>
+            <th>相关附件</th>
+			<td colspan="3" class="td1" valign='top' style="height:40px" id="filetd">
+            </td>
+        </tr>
+    </table>
+	</div>
+	<div title="第三人信息">
+	<table class="list">
+		<tr>
+			<th>第三人名称</th>
+			<td>
+				$!{third.thname}				
+			</td>
+			<th>第三人类型</th>
+			<td>
+				$!{third.thtypename}				
+			</td>
+		</tr>
+		<tr>
+			<th>第三人证件类型</th>
+			<td>
+				$!{third.thidtypename}				
+			</td>
+			<th>第三人证件号码</th>
+			<td>
+				$!{third.thidcode}				
+			</td>
+		</tr>
+		<tr>
+			<th>第三人联系电话</th>
+			<td>
+				$!{third.thphone}				
+			</td>
+			<th>第三人邮政编码</th>
+			<td>
+				$!{third.thpostcode}				
+			</td>
+		</tr>
+		<tr>
+			<th>第三人通讯地址</th>
+			<td colspan="3" class="td1">
+				$!{third.thpostcode}				
+			</td>
+        </tr>
+    </table>
+	</div>
+	<div title="案件评价情况">
+	<table class="list">
+		<tr>
+			<th>案件完成质量</th>
+			<td colspan="3" class="td1">
+				<input id="quatype" class="easyui-textbox" name="quatype" value="$!{ct.quatype}" required="true" missingMessage="请选择案件完成质量" style="width:250px" /><font color='red'>*</font>
+			</td>
+		</tr>
+		<tr>
+			<th>评价说明</th>
+			<td colspan="3" class="td1">
+				<input id="remark" class="easyui-textbox" name="remark" value="$!{ct.remark}" multiline="true" required="true" missingMessage="请输入评价说明"
+					data-options="prompt:'最多可输入300个汉字',validType:{length:[0,300]}" style="width:680px;height:65px;" /><font color='red'>*</font>
+			</td>
+		</tr>
+    </table>
+	</div>
+    </div>
+</form>
+

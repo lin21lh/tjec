@@ -1,0 +1,78 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<form id="devplan_form" method="post">
+    <input id="projectid" type="hidden" name='projectid'/>
+    <input id="deveid" type="hidden" name='deveid'/>
+    <input id="createuser" type="hidden" name='createuser'/>
+    <input id="createtime" type="hidden" name='createtime'/>
+    <input id="updateuser" type="hidden" name='updateuser'/>
+    <input id="updatetime" type="hidden" name='updatetime'/>
+    <input  id = 'implementOrgan' type="hidden" name='implementOrgan'/>
+    <input  id = 'devPath' type="hidden" name='devPath'/>
+
+    <table class="list">
+		<tr>
+            <th>项目名称</th>
+            <td colspan="3">
+                <input id="proName" class="easyui-textbox" required="true" missingMessage="请选择项目名称" name="proName" style='width:626px' readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>项目开发年度</th>
+            <td>
+                <input id="deveYear"  class="easyui-numberspinner"  data-options='min:2010,max:2099'  required="true" missingMessage="请选择开发年度" name="deveYear" style='width:250px' />
+            </td>
+			<!--
+			<th>项目类型</th>
+            <td>
+                <input id="proTypeName" class="easyui-textbox" required="true" missingMessage="请输入项目类型" name="proTypeName" style='width:250px' readonly='true' />
+            </td>
+			-->
+            <th>项目采购方式</th>
+            <td >
+                <input id="purchaseType" class="easyui-combobox"  required="true" missingMessage="请选择项目采购方式"  name="purchaseType" style='width:250px'/>
+            </td>
+        </tr>
+		  <tr>
+            <th>项目实施机构</th>
+            <td>
+                <input id="implementOrganName" name="implementOrganName" editable='false'  required="true" missingMessage="请选择项目实施机构"  class="easyui-textbox"  style='width:250px' />
+            </td>
+			<th>机构联系人</th>
+            <td>
+                <input id="implementPerson" class="easyui-textbox" required="true" missingMessage="请输入实施机构联系人" name="implementPerson" style='width:250px'/>
+            </td>
+        </tr>
+	    <tr>
+            <th>机构联系电话</th>
+            <td colspan="3">
+                <input id="implementPhone" name="implementPhone" class="easyui-textbox"  style='width:250px' required="true" missingMessage="请输入机构联系电话" />
+            </td>
+        </tr>
+		 <tr>
+			<th>开发计划附件</th>
+            <td  id="kfjh" style="height:31px" colspan="3">
+				<input id="devPath" type="hidden" name="devPath"/>
+				<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('kfjh','devPath',20)"/>
+			</td>
+        </tr>
+		<tr>
+            <th>项目情况说明</th>
+            <td  colspan="3">
+                <input id="remark" class="easyui-textbox" editable="true" multiline="true"  required="true" missingMessage="请输入项目情况说明" name="remark" style='width:626px;height:100px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+            </td>
+        </tr>
+    </table>
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

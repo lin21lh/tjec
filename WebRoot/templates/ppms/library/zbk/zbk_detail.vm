@@ -1,0 +1,47 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="zbkDetailForm" method="post">
+	<table class="list">
+        		<!--隐藏属性start
+        			-->
+				<input type="hidden" id="zbkid" name="zbkid" /><!--指标库id-->
+				
+        		<!--隐藏属性end
+        		-->
+        		<tr>
+					<th >指标名称</th>
+					<td >
+						<input id="zbmc" name="zbmc" class="easyui-textbox" readonly ="true" style='width:250px'  required="true" />
+					</td>
+        			<th >指标类别</th>
+        			<td >
+        				<input id="zblbName" name="zblbName" class="easyui-textbox" readonly ="true" style='width:250px'  required="true" />
+					</td>
+                </tr>
+				<tr>
+					<th >是否有效</th>
+					<td colspan="3">
+						<input id="sfyxName" name="sfyxName" class="easyui-textbox"  style='width:250px'  readonly ="true"/>
+					</td>
+        			
+                </tr>
+				
+				<tr>
+        			<th >指标描述</th>
+        			<td colspan="3">
+        				<input id="zbms" name="zbms" readonly ="true" multiline="true"
+							 class="easyui-textbox"   style='width:695px;height:45px;'/>
+					</td>
+                </tr>
+        </table>
+		
+</form>
+

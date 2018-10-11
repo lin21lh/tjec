@@ -1,0 +1,54 @@
+#parse("common/extensions-v14.vm")
+<link rel="stylesheet" type="text/css" href="$contextpath/css/print.css">
+<form id="noticeForm" method="post" style="background:#fff">
+    <input type="hidden" id="noticeid" name="noticeid" value="$!{info.noticeid}" />
+    <div align="center">
+        <table width="90%">
+            <tr>
+                <td>
+                    <div>
+                        <div align="center"><h3>行政复议答复通知书</h3></div>
+                        <div align="right"><h5>[<input id="code" name="code" class="css_span" style="width:100px;" type="text" value="$!{info.code}"/>]号</h5></div>
+                    </div>
+                    <table rules="none">
+                        <tr> 
+                            <td>
+                            <input id="defName" name="defName" class="css_span" style="width: 200px;" type="text" value="$!{info.defName}"/>：<br />
+                            <p>
+                                <input id="appName" name="appName" class="css_span" style="width: 200px;" type="text" value="$!{info.appName}"/>
+                                                                                                        对你机关
+                                <input id="appCase" name="appCase" class="css_span" style="width: 300px;" type="text" value="$!{info.appCase}"/>
+                                                                                                        不服提出的行政复议申请，本机关已于
+                                <input id="year" name="year" class="css_span" style="width: 40px;" type="text" value="$!{info.year}"/>年
+                                <input id="month" name="month" class="css_span" style="width: 20px;" type="text" value="$!{info.month}"/>月
+                                <input id="day" name="day" class="css_span" style="width: 20px;" type="text" value="$!{info.day}"/>日
+                                                                                                       依法受理。根据《中华人民共和国行政复议法》第二十三条的规定，现将行政复议申请书副本
+                                                                                                        （口头申请行政复议笔录复印件）发送你机关，
+                                                                                                        请你机关自收到行政复议申请书副本（口头申请行政复议笔录复印件）之日起10日内，
+                                                                                                        对该行政复议申请提出书面答复，并提交当初作出该具体行政行为的证据、依据和其他有关材料。
+                                                                                                        逾期未提交书面答复，未提交当初作出具体行政行为的证据、依据和其他有关材料的，
+                                                                                                        视为该具体行政行为没有证据、依据，本机关将依法予以撤销。
+                                <p>特此通知。</p>
+                                <p>
+                                                                                                        附件：行政复议申请书副本或者口头申请行政复议笔录复印件及相关材料
+                                </p>
+                              </p>
+                              <br/>
+                          </td>
+                        </tr>
+                        <tr> 
+                            <td>
+                                <div align="right" style="line-height: 2em;">
+                                    <input id="systemYear" name="systemYear" readonly="readonly" style="width:40px;border:none;" value="${info.systemYear}"/>年
+                                    <input id="systemMonth" name="systemMonth" readonly="readonly" style="width:20px;border:none;" value="${info.systemMonth}"/>月
+                                    <input id="systemDay" name="systemDay" readonly="readonly" style="width:20px;border:none;" value="${info.systemDay}"/>日 <br />
+                                                                                                        （行政复议机关印章或者行政复议专用章）
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

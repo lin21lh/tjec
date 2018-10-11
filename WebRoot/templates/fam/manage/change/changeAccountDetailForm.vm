@@ -1,0 +1,197 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="accountChangeForm" method="post">
+	<table class="list">
+        		<!--隐藏属性start
+        			-->
+        		##&nbsp;
+				<input id="oldType02" type="hidden" name='oldType02' />
+	 			<input id="oldType02Name" type="hidden" name='oldType02Name' />
+	 			<input id="oldAccountType" type="hidden" name='oldAccountType' />
+	 			<input id="oldAccountTypeName" type="hidden" name='oldAccountTypeName' />
+	 			<input id="oldAccountName" type="hidden" name='oldAccountName'/>
+	 			<input id="oldAccountNumber" type="hidden" name='oldAccountNumber'/>
+	 			<input id="oldBankName" type="hidden" name='oldBankName'/>
+	 			<input id="oldFinancialOfficer" type="hidden" name='oldFinancialOfficer'/>
+	 			<input id="oldLegalPerson" type="hidden" name='oldLegalPerson'/>
+	 			<input id="oldFinancialOfficer" type="hidden" name='oldFinancialOfficer'/>
+	 			<input id="oldIdcardno" type="hidden" name='oldIdcardno'/>
+	 			<input id="oldAccountContent" type="hidden" name='oldAccountContent'/>
+	 			<input id="oldIszero" type="hidden" name='oldIszero'/>
+				
+        		<input type="hidden" id="type" name="type" value="$type" />
+        		<input type="hidden" id="bdgagencycode" name="bdgagencycode" />
+				<input type="hidden" id="wfstatus" name="wfstatus"  />
+        		<input type="hidden" id="wfid" name="wfid"/>
+        		<input type="hidden" id="oldBankCode" name="oldBankCode" />
+        		<input type="hidden" id="accountId" name="accountId" />
+        		<input type="hidden" id="applicationId" name="applicationId" />
+        		<input type="hidden" id="createUser" name="createUser" />
+        		<input type="hidden" id="createTime" name="createTime" />
+        		<input type="hidden" id="itemid" name="itemid" /><!--账户档案表id-->
+        		<input type="hidden" id="isback" name="isback" /><!--工作送审标志-->
+        		<input type="hidden" id="workflowflag" name="workflowflag" /><!--区分保存还是保存并发送-->
+        		<input type="hidden" id="menuid" name="menuid"  value="$menuid" /><!--菜单id-->
+        		<input type="hidden" id="activityId" name="activityId" value="$activityId"/><!--节点id-->
+        		<input type="hidden" id="sessionId" name="sessionId" value="$sessionId"/><!--sessionId-->
+        		<input type="hidden" id="formIsEdit" name="formIsEdit" value="$formIsEdit"/><!--表单是否可编辑-->
+				<input id="savephonenumbers" type="hidden" name='savephonenumbers'/><!--消息服务使用-->
+	 			<input id="savemessage" type="hidden" name='savemessage'/><!--消息服务使用-->
+	 			<input id="messageIsUse" type="hidden" name='messageIsUse' value="$messageIsUse"/><!--消息服务是否启用-->
+	 			<input id="backToFirstNode" type="hidden" name='backToFirstNode' value="$backToFirstNode"/><!--退回首节点-->
+	 		
+        		<!--隐藏属性end
+        		-->
+        		<tr>
+        			<th  >&nbsp; 单位名称</th>
+        			<td  >
+        				<input id="bdgagencyname" class="easyui-textbox" name="bdgagencyname" readonly="true"  style='width:250px'/>
+        			</td >
+        			<th > 单位性质</th>
+        			<td  >
+        				<input id="deptNatureName" class="easyui-textbox" name="deptNatureName"  readonly="true"  style='width:250px' />
+        			</td>
+        		</tr>
+        		<tr >
+        			<th >联系人</th>
+        			<td>
+        				<input id="linkman" name="linkman"  class="easyui-textbox"   readonly="true"  style='width:250px'/>
+        			</td>
+        			<th >联系电话</th>
+        			<td >
+        				<input id="applPhonenumber" name="applPhonenumber" validType='phonesIsRight'  readonly="true" 
+							 class="easyui-textbox"  style='width:250px'/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >单位地址</th>
+        			<td colspan="3">
+        				<input id="deptAddress" name="deptAddress"  class="easyui-textbox"  readonly="true" 
+							data-options="validType:{length:[0,250]}" style='width:705px'/>
+        			</td>
+                </tr>
+				#if ($display == "true")
+        		<tr>
+        			<th>账户类型</th>
+        			<td >
+        				<input id="accountTypeName" name="accountTypeName"    readonly="true"   class="easyui-textbox" style='width:250px' />
+        			</td>	
+        			<th >账户性质</th>
+        			<td>
+        				<input id="type02Name" name="type02Name"   readonly="true"   class="easyui-textbox"  style='width:250px' />
+        			</td>
+				</tr>
+				<tr>
+        			<th >账户名称</th>
+        			<td >
+        				<input id="accountName" class="easyui-textbox"   readonly="true"  name="accountName" style='width:250px' />
+					</td>
+        			<th >银行账号</th>
+        			<td >
+        				<input id="accountNumber" name="accountNumber"  readonly="true"  class="easyui-textbox"  style='width:250px' />
+        			</td>
+        		</tr>
+				<tr>
+        			<th >账户开户行</th>
+        			<td >
+        				<input id="bankName" class="easyui-textbox" readonly="true"  name="bankName" style='width:250px'  />
+					</td>
+					<th>财务负责人</th>
+        			<td >
+        				<input id="financialOfficer" class="easyui-textbox"  readonly="true"   name="financialOfficer" style='width:250px'/>
+        			</td>
+                </tr>
+				<tr>
+        			<th >法定代表人</th>
+        			<td >
+        				<input id="legalPerson" class="easyui-textbox" readonly="true"  name="legalPerson" style='width:250px'/>
+					</td>
+					<th>法人身份证号</th>
+        			<td >
+        				<input id="idcardno" class="easyui-textbox" readonly="true"  name="idcardno" style='width:250px'/>
+			
+        			</td>
+                </tr>
+				<tr>
+                <th >核算内容</th>
+    			<td colspan="3">
+    				<input id="accountContent" class="easyui-textbox" multiline="true" readonly="true"  data-options="validType:{length:[0,250]}" name="accountContent" style='width:705px;height:35px;'/>
+                </td>
+            </tr>
+			#end
+    		<tr>
+    			<th >变更事项</th>
+    			<td colspan="5">
+					<input id="changetypeName" name="changetypeName" editable ="false" class="easyui-textbox"  style='width:250px' readonly="true"  />
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>变更原因</th>
+    			<td colspan="5">
+    				<input id="applyReason" class="easyui-textbox" name="applyReason" multiline="true" readonly="true"  data-options="prompt:'最多可输入200个汉字',validType:{length:[0,200]}" style="width:705px;height:35px;" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>附件</th>
+    			<td colspan="5" valign='top' style="height:40px" id="filetd">
+    			</td>
+    		</tr>
+			<!--
+			
+			#if($comeFlag == "audit")
+			<tr>
+    			<th>审批意见</th>
+        			<td colspan="5">
+    				<input id="opinion" class="easyui-textbox" name="opinion" value="同意！" multiline="true" required="true" missingMessage="请输入审批意见" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:705px;height:50px;" />
+    			</td>
+    		</tr>
+			#end
+			-->
+        </table>
+            <div style="width:100%;height:150px;overflow:auto">
+            	<table class="list">
+				<tr>
+        			<td style="width:40px;height:25px;align:center">序号</td>
+        			<td style="width:60px;height:25px;align:center">节点名称</td>
+        			<td style="width:100px;height:25px;align:center">动作名称</td>
+        			<td style="width:200px;height:25px;align:center">处理人</td>
+					<td style="width:120px;height:25px;align:center">处理时间</td>
+					<td style="width:100px;height:25px;align:center">处理意见</td>
+        		</tr>
+				#foreach($i in ${wfList})	
+					<tr>
+            			<td  style="width:40px;height:25px">
+        			   $!{velocityCount}
+        			   </td>
+            			<td  style="width:100px;height:25px">
+        				$!{i.actiName}
+        			   </td>
+            			<td  style="width:100px;height:25px">
+        				$!{i.transition}
+        			   </td>
+            			<td  style="width:80px;height:25px">
+        				$!{i.authorName}
+        			   </td>
+            			<td  style="width:80px;height:25px">
+        				$!{i.enddate}
+        			   </td>
+            			<td  style="width:100px;height:25px">
+        				$!{i.opinion}
+        			   </td>
+            		</tr>
+				#end
+            </table>
+	    </div>		
+	<div id='messageService'></div>
+	<div id='accountDetail'></div>
+	<!--审批层-->
+	<div id='operationdiv'></div>
+</form>

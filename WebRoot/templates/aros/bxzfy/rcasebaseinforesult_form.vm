@@ -1,0 +1,158 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#result').combobox({
+			onSelect:function(param){
+				var resultmsg = $('#result').combobox('getText');
+				$("#resultmsg").val(resultmsg);
+			}
+		});
+	});
+</script>
+<form id="bxzfyResultForm" method="post">
+	
+	<div id="tt" class="easyui-tabs" style="width:100%;height:auto;">
+		<div id="tab_1" title="案件基本信息">
+        	<table class="list">
+        		<!--隐藏属性start-->
+        			<input type="hidden" id="rcaseid" name="rcaseid" value="$!{rcaseid}"/><!--案件ID-->
+					<input type="hidden" id="caseid" name="caseid" value="$!{rcasebaseinfo.rcaseid}"/><!--案件ID-->
+					<input type="hidden" id="resultmsg" name="resultmsg" value="$!{resultmsg}"/><!--结果内容-->
+        		<!--隐藏属性end-->
+        		<tr>
+        			<th width="13%">本机关案号：</th>
+        			<td width="37%">
+        				<span>$!{rcasebaseinfo.lcasecode}</span>
+        			</td>
+        			<th width="13%">复议机关案号：</th>
+        			<td width="37%">
+        				<span>$!{rcasebaseinfo.rcasecode}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>申请人：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.appname}</span>
+        			</td>
+        			<th>第三人：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.thirdname}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>复议机关：</th>
+        			<td colspan="3">
+        				<span>$!{rcasebaseinfo.rdeptname}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>收案人：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.receiver}</span>
+        			</td>
+        			<th>收案时间：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.rectime}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>事实和理由：</th>
+        			<td colspan="3">
+        				<span>$!{rcasebaseinfo.casereason}</span>
+        			</td>
+                </tr>
+				<tr>
+        			<th>承办人：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.undertaker}</span>
+        			</td>
+        			<th>协办人：</th>
+        			<td>
+        				<span>$!{rcasebaseinfo.assessor}</span>
+        			</td>
+        		</tr>
+        		<tr>
+                    <th>相关附件：</th>
+        			<td colspan="3" valign="top" style="height:40px" id="filetd"></td>
+                </tr>
+            </table>
+		</div>
+    	
+    	<div id="tab_2" title="案件处理信息">
+        	<table class="list">
+				<tr>
+                    <th width="13%">委托律师：</th>
+					<td colspan="3" width="87%">
+						<span>$!{rcasebaseinfo.lawyer}</span>
+					</td>
+                </tr>
+				<tr>
+                    <th>相关附件：</th>
+        			<td colspan="3" valign='top' style="height:40px" id="disposefiletd"></td>
+                </tr>
+            </table>
+		</div>
+		
+		<div id="tab_3" title="审批信息">
+        	<table class="list">
+        		<tr>
+        			<th width="13%">审批结果：</th>
+        			<td colspan="3" width="87%">
+						<span>$!{auditResult}</span>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>审批意见：</th>
+        			<td colspan="3">
+						<span>$!{auditRemark}</span>
+        			</td>
+        		</tr>
+				<tr>
+                    <th>相关附件：</th>
+					<td colspan="3" valign='top' style="height:40px" id="auditfiletd"></td>
+                </tr>
+            </table>
+		</div>
+		
+		<div id="tab_4" title="复议结果信息" data-options="selected:true">
+        	<table class="list">
+        		<tr>
+        			<th>复议结果：</th>
+        			<td colspan="3">
+        				<input id="result" class="easyui-textbox" name="result" required="true" 
+							missingMessage="请选择复议结果" style="width:250px" value="$!{result}"/>
+						<font color=red>*</font>
+        			</td>
+        		</tr>
+        		<tr>
+        			<th>复议意见：</th>
+        			<td colspan="3">
+        				<input id="resultremark" class="easyui-textbox" name="resultremark" multiline="true" required="true" missingMessage="请输入复议意见"
+        					data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:700px;height:65px;" 
+        					value="$!{resultRemark}"/>
+						<font color=red>*</font>
+        			</td>
+        		</tr>
+				<tr>
+                    <th>相关附件：</th>
+        			<td colspan="3" valign='top' style="height:40px" id="resultfiletd">
+    					<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" 
+							onClick="clickUploadDiv('RESULT', 'resultfiletd')"/>
+                    </td>
+                </tr>
+            </table>
+		</div>
+	</div>
+</form>
+	
+<!--上传附件层-->
+<div id="uploadifydiv"></div>

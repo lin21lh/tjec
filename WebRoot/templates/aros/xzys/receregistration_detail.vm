@@ -1,0 +1,41 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+</script>
+	<div style="width:100%;height:auto;">
+        <form id="xzysSadj">
+        	<table class="list">
+    			<tr>
+        			<th>案号：</th>
+        			 <td><span>$!{brespbaseinfo.lawid}</span></td>
+        			<th>收案时间：</th>
+        			 <td><span>$!{brespbaseinfo.recdate}</span></td>
+        		</tr>
+                <tr>
+                    <th>审理阶段：</th>
+                     <td><span>$!{brespbaseinfo.regtypename}</span></td>
+                    <th>案件承办人（单位）：</th>
+                     <td><span>$!{brespbaseinfo.deptname}</span></td>
+                </tr>
+                 <tr>
+                    <th>关联案号：</th>
+                     <td><span>$!{brespbaseinfo.glahlawid}</span></td>
+                    <th></th>
+                    <td>&nbsp</td>
+                </tr>
+                 <tr>
+                    <th>受案法院：</th>
+                     <td><span>$!{brespbaseinfo.jurilawname}</span></td>
+                    <th>起诉类型：</th>
+                     <td><span>$!{brespbaseinfo.suetypename}</span></td>
+                </tr>
+				<tr>
+        			<th>案由：</th>
+        			 <td colspan="3"><span>$!{brespbaseinfo.fringereq}</span></td>
+                </tr>
+    			<tr>
+        			<th>原告情况：</th>
+        			 <td colspan="3"><span>$!{brespbaseinfo.suerequest}</span></td>
+                </tr>
+            </table>
+          </form>
+	</div>

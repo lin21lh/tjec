@@ -1,0 +1,55 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="messageDetailForm" method="post">
+	<table class="list">
+        		<!--隐藏属性start
+        			-->
+				<input type="hidden" id="messageid" name="messageid" /><!--消息id-->
+				<input type="hidden" id="status" name="status" /><!--消息状态-->
+				
+        		<!--隐藏属性end
+        		-->
+        		<tr>
+					<th >接收人</th>
+					<td colspan="3">
+						<input id="receiveName" name="receiveName" multiline="true"  readonly="true"  required="true"
+							class="easyui-textbox"  style='width:695px;height:40px;' />
+					
+        				<input id="viewId" name="viewId" type="hidden"/>
+        				<input id="receiveId" name="receiveId" type="hidden"/>
+        				<input id="receiveLb" name="receiveLb" type="hidden"/>
+        				<input id="receivePhone" name="receivePhone" type="hidden"/>
+        			</td>
+				</tr>
+				<tr>
+        			<th >消息类型</th>
+        			<td >
+        				<input id="messageTypeName" name="messageTypeName" class="easyui-textbox" readonly="true" style='width:250px'  required="true" />
+					</td>
+                </tr>
+				<tr>
+        			<th >消息内容</th>
+        			<td colspan="3">
+        				<input id="messageContext" name="messageContext" readonly="true"  multiline="true" required="true"
+							 class="easyui-textbox" data-options="validType:{length:[0,100]}"   style='width:695px;height:45px;'/>
+					</td>
+                </tr>
+				<tr>
+        			<th >备注</th>
+        			<td colspan="3">
+        				<input id="remark" name="remark"   multiline="true" readonly="true"
+							 class="easyui-textbox" data-options="validType:{length:[0,250]}"   style='width:695px;height:45px;'/>
+					</td>
+                </tr>
+        </table>
+		
+</form>
+

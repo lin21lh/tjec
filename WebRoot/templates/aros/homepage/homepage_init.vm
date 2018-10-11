@@ -1,0 +1,26 @@
+<!DOCTYPE>
+<html>
+    <head>
+    #parse("common/common-v14.vm")
+    #parse("common/extensions-v14.vm")
+    <title>首页</title>
+    <style type="text/css">
+		.div-a{ float:left;width:49.5%;height:100%;border:0px solid #E0ECFF}
+		.div-m{ float:left;width:0.5%;height:100%;background-color:#E0ECFF}
+    </style>
+    <script type="text/javascript" src="$contextpath/component/eCharts/echarts.min3.2.3.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/aros/homepage/js/homepage_init.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+    </head>
+    <body id="layout" class="easyui-layout" >
+		<div data-options="region:'center',split:false" >
+    		<div id="chart_div">
+    			<div id="chart12" style="width:100%;padding:0px;">
+                	<div id="chart5" class="div-a" ></div>
+					<div class="div-m"></div>
+					<div id="chart3" class="div-a" ></div>
+            	</div>
+			</div>
+    	</div>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+	#parse("common/extensions-v14.vm")
+	<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/sys/notice/noticeDetailForm.js" ></script>
+	<style type='text/css'>
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+	textarea {
+		display: block;
+	}
+	</style>
+	<script type="text/javascript">
+        var messageType = "$messageType";
+    </script>
+	<form id="noticeDetailFrom" method="post">
+		
+		<table class="list">
+			<tr>
+				<th>标题</th>
+				<td colspan="3">
+					<input id="title" class="easyui-textbox" name="title" style="width:702px;"  readonly="true"/>
+				</td>
+			</tr>
+			#if($messageType == "1")
+			<tr>
+				<th>重要性</th>
+				<td>
+					<input id="priorlevelname" name="priorlevelname" class='easyui-textbox'  style="width:300px" readonly="true"/>
+				</td>
+				<th>有效时间</th>
+				<td >
+					<input id="validtime" name="validtime" class='easyui-textbox' style="width:305px" readonly="true"/>
+				</td>
+			</tr>
+			#end
+			#if($messageType == "2" && $showPersonFlag > 0)
+           	<tr>
+				<th>发送短信</th>
+				<td>
+					<input id="messageflagname" name="messageflagname" class='easyui-textbox'  style="width:300px" readonly="true"/>
+				</td>
+				<th>接收人</th>
+				<td>
+					<input id="receiveusername" class="easyui-textbox" name="receiveusername" style="width:335px;height:25px;" readonly="true"/>
+				</td>
+			</tr>
+			#end
+    		<tr>
+    			<th>内容</th>
+				<td  colspan="3">
+					#if($operType == 'view')
+    					<div id="contentDiv" name="contentDiv" style="width:700px;height:200px;overflow:auto;border: 1px solid #95B8E7;"></div>
+    				#else
+    					<textarea id="contentEdit" name="contentEdit" style="width:700px;height:200px;visibility:hidden;"></textarea>
+    				#end
+					<input id="content" name="content" type="hidden"></input>
+				</td>
+			</tr>
+			<tr>
+				<th>备注</th>
+				<td  colspan="3">
+					<input id="remark" class="easyui-textbox" name="remark" multiline="true" style="width:703px;height:40px;" readonly="true"/>
+				</td>
+    		</tr>
+			#if($fileCount > 0)
+			<tr>
+				<th>附件</th>
+				<td colspan="3" valign='top' style="height:40px" id="filetd">
+    			</td>
+			</tr>
+			#end
+	</table>
+	
+    <div id="receivePreson"></div>
+</form>

@@ -1,0 +1,58 @@
+#parse("common/extensions-v14.vm")
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+
+<form id="pronodebaseinfoForm" method="post">
+	<div>
+    	<table class="list">
+    		<!--隐藏属性start-->
+    			<input type="hidden" id="id" name="id"/>
+				<input type="hidden" id="proname" name="proname"/>
+				<input type="hidden" id="rolename" name="rolename"/>
+    		<!--隐藏属性end-->
+			
+			<tr>
+    			<th>流程类型：</th>
+    			<td>
+    				<input id="protype" class="easyui-textbox" name="protype" required="true" missingMessage="请选择流程类型" style="width:250px" />
+					<font color=red>*</font>
+    			</td>
+				<th>用户角色：</th>
+    			<td>
+    				<input id="roleid" class="easyui-combobox" name="roleid" required="true" missingMessage="请选择用户角色" style="width:250px" />
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+			<tr>
+				<th>节点编号：</th>
+    			<td>
+    				<input id="nodeid" class="easyui-textbox" name="nodeid" data-options="validType:{length:[0, 4]}" 
+						style="width:250px" required="true" missingMessage="请输入节点编号"/>
+					<font color=red>*</font>
+    			</td>
+    			<th>节点名称：</th>
+    			<td>
+    				<input id="nodename" class="easyui-textbox" name="nodename" required="true" missingMessage="请输入节点名称"
+						style="width:250px" />
+					<font color=red>*</font>
+    			</td>
+    		</tr>
+			<tr>
+				<th>是否可选：</th>
+                <td>
+                    <input id="optional" class="easyui-combobox" name="optional" style="width:250px"/>
+                </td>
+			</tr>
+    		<tr>
+    			<th>菜单路径：</th>
+    			<td colspan="3">
+    				<input id="menuurl" class="easyui-textbox" name="menuurl" style="width:690px" />
+    			</td>
+            </tr>
+        </table>
+	</div>
+</form>

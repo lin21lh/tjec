@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html> 
+<head> 
+<title>联系我们</title>
+<link href="../images/sysicon.png" rel="shortcut icon"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css"> 
+   a:link { text-decoration: none;color: blue}
+  
+  #page {width:*}
+  #right {width:60%; 
+          float:left; 
+		  border:solid 1px #CCC; 
+         } 
+  #left {width:*; 
+         float:left;  
+		 border:solid 1px #CCC; 
+        } 
+
+	.tab_info {
+		border-top: #ccc 1px solid;
+		border-left: #ccc 1px solid
+	}
+	
+	.tab_info td {
+		border-bottom: #ccc 0px solid;
+		border-right: #ccc 0px solid;
+		font-family: "宋体";
+		font-size: 14px;
+		padding: 8px 10px
+	}
+	
+	.in_gray {
+		height: 26px;
+		line-height: 26px;
+		border: #efefef 0px solid;
+		width: 100%
+	}
+</style>
+<script type="text/javascript">
+	function changeImg(imgid)
+	{
+		if(imgid=="100"){
+			document.getElementById("map").src="100.jpg";
+		}
+		if(imgid=="200"){
+			document.getElementById("map").src="200.jpg";
+		}
+		if(imgid=="300"){
+			document.getElementById("map").src="300.jpg";
+		}
+		if(imgid=="400"){
+			document.getElementById("map").src="400.jpg";
+		}
+		if(imgid=="500"){
+			document.getElementById("map").src="500.jpg";
+		}
+	}
+</script>
+</head> 
+<body> 
+<div id="page"> 
+  <div id="right"> 
+   <table width="100%" height="255px" border="0" cellspacing="0" cellpadding="0" class="tab_info">
+   <tr><td>1、无影潭办事处</td><td><a href="#" onclick='changeImg("100")'>山东省济南市无影潭西路12-6号</a></td><td>联系电话：0521-76534312</td></tr>
+   <tr><td>2、民生大街办事处</td><td><a href="#" onclick='changeImg("200")'>山东省济南市民生大街13附近</a></td><td>联系电话：0521-76534813</td></tr>
+   <tr><td>3、历黄路办事处</td><td><a href="#" onclick='changeImg("300")'>山东省济南市历黄路19-5号</a></td><td>联系电话：0521-76534562</td></tr>
+   <tr><td>4、经六路办事处</td><td><a href="#" onclick='changeImg("400")'>山东省济南市经六路2-8号</a></td><td>联系电话：0521-76532313</td></tr>
+   <tr><td>5、花园路59号办事处</td><td><a href="#" onclick='changeImg("500")'>山东省济南市花园路59号环东佳苑8-231</a></td><td>联系电话：0521-76534987</td></tr>
+   </table>
+  </div> 
+  <div id="left"> 
+	  <img id="map" src="100.jpg" style="width:400px;height:255px;"/>
+  </div> 
+</div> 
+</body> 
+</html>

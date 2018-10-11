@@ -1,0 +1,415 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+</script>
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/casebaseinforeq_form.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<form id="xzfyReqForm" method="post">
+	<div class="easyui-tabs" style="width:98%;height:auto;">
+    	<div title="案件信息">
+        	<table class="list">
+			<input type="hidden" id="caseid" name="caseid"/><!--案件ID-->
+    		<!--隐藏属性start-->
+    		<!--隐藏属性end-->
+				<tr><td colspan="4" style="font-size: 13px;font-weight: bold;text-align: center;background-color:#EEF4FF;">申请人信息 </td></tr>
+        		<tr>
+					<th>申请人类型：</th>
+        			<td>
+        				<input id="apptype" class="easyui-combobox" name="apptype" required="true" missingMessage="请选择申请人类型" 
+        					style="width:250px" />
+        					<font color=red>*</font>
+        			</td>
+					<th>申请人数：</th>
+        			<td>
+        				<input id="reqmansum" class="easyui-numberbox" name="reqmansum" style="width:250px" />
+        			</td>
+        		</tr>
+				<tr>
+					<th>申请人：</th>
+        			<td>
+        				<input id="appname" class="easyui-textbox" name="appname" required="true" missingMessage="请输入申请人"
+        					 data-options="validType:{length:[0, 50]}" style="width:250px"/>
+    					<font color=red>*</font>
+        			</td>
+					<th>工作单位：</th>
+        			<td>
+        				<input id="workunits" class="easyui-textbox" name="workunits" 
+        					 data-options="validType:{length:[0, 65]}" style="width:250px"/>
+        			</td>
+				</tr>
+        		<tr>
+        			<th>证件类型：</th>
+        			<td>
+        				<input id="idtype" class="easyui-combobox" name="idtype" required="true" 
+							missingMessage="请选择证件类型" style="width:250px" />
+    					<font color=red>*</font>
+        			</td>
+        			<th>证件号码：</th>
+        			<td>
+        				<input id="idcode" class="easyui-textbox" name="idcode" required="true" 
+							data-options="validType:{length:[0, 20]}"
+							missingMessage="请输入证件号码" style="width:250px"/>
+    					<font color=red>*</font>
+        			</td>
+        		</tr>
+    			<tr>
+        			<th>联系电话：</th>
+        			<td>
+        				<input id="phone" class="easyui-textbox" name="phone" 
+        					  validType="phone" style="width:250px"/>
+        			</td>
+        			<th>联系手机：</th>
+        			<td>
+        				<input id="mobile" class="easyui-textbox" name="mobile" 
+        					 validType="mobile" style="width:250px"/>
+        			</td>
+        		</tr>
+				<tr>
+        			<th>通讯地址：</th>
+        			<td colspan="3">
+        				<input id="address" class="easyui-textbox" name="address"  
+        					data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:680px;"/>
+        			</td>
+                </tr>
+    			<tr>
+        			<th>邮寄地址：</th>
+        			<td colspan="3">
+        				<input id="mailaddress" class="easyui-textbox" name="mailaddress" required="true" missingMessage="请输入邮寄地址"
+        					data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:680px;"/>
+    					<font color=red>*</font>
+        			</td>
+                </tr>
+        		<tr>
+        			<th>邮箱：</th>
+        			<td>
+        				<input id="email" class="easyui-textbox" name="email"  validType='email'
+                            style="width:250px"/>
+        			</td>
+        			<th>邮政编码：</th>
+        			<td>
+        				<input id="postcode" class="easyui-textbox" name="postcode" validType="zip" 
+							required="true" missingMessage="请输入邮政编码" style="width:250px" />
+						<font color=red>*</font>
+        			</td>
+        		</tr>
+				<tr>
+					<th>性别：</th>
+        			<td>
+        				<input id="sex" class="easyui-combobox" name="sex" style="width:250px" />
+        			</td>
+					<th>年龄：</th>
+        			<td>
+        				<input id="age" class="easyui-textbox" name="age" 
+							data-options="validType:{length:[0, 3]}" style="width:250px" />
+        			</td>
+				</tr>
+				<tr>
+					<th>生日：</th>
+        			<td colspan="3">
+						<input id="birth" class="easyui-datebox" name="birth" 
+    						style="width:250px" editable="false" />
+        			</td>
+				</tr>
+				<tr>
+					<th>法定代表人：</th>
+        			<td>
+        				<input id="legalperson" class="easyui-textbox" name="legalperson" 
+							data-options="validType:{length:[0, 20]}" style="width:250px" />
+        			</td>
+					<th>职务：</th>
+        			<td>
+        				<input id="position" class="easyui-textbox" name="position" 
+							data-options="validType:{length:[0, 20]}" style="width:250px" />
+        			</td>
+				</tr>
+				<tr>
+					<th>委托代理人：</th>
+        			<td>
+        				<input id="proxyman" class="easyui-textbox" name="proxyman" 
+							data-options="validType:{length:[0, 20]}" style="width:250px" />
+        			</td>
+					<th>委托代理人电话：</th>
+        			<td>
+        				<input id="proxyphone" class="easyui-textbox" name="proxyphone" 
+							data-options="validType:{length:[0, 20]}" style="width:250px" />
+        			</td>
+				</tr>
+				<tr><td colspan="4" style="font-size: 13px;font-weight: bold;text-align: center;background-color:#EEF4FF;">被申请人信息 </td></tr>
+        		<tr>
+					<th>被申请人类型：</th>
+        			<td>
+        				<input id="deftype" class="easyui-combobox" name="deftype" required="true"
+        					style="width:250px" />
+    					<font color=red>*</font>
+        			</td>
+        			<th>被申请人：</th>
+        			<td>
+        				<input id="defname" class="easyui-textbox" name="defname" required="true" missingMessage="请输入被申请人"
+        					 data-options="validType:{length:[0, 65]}" style="width:250px"/>
+    					<font color=red>*</font>
+        			</td>
+        		</tr>
+    			<tr>
+					<th>联系手机：</th>
+        			<td>
+        				<input id="defmobile" class="easyui-textbox" name="defmobile" 
+        					 validType="mobile" style="width:250px"/>
+        			</td>
+        			<th>联系电话：</th>
+        			<td>
+        				<input id="defphone" class="easyui-textbox" name="defphone" data-options="validType:{length:[0, 20]}" 
+        					 validType="phone" style="width:250px"/>
+        			</td>
+        		</tr>
+				<tr>
+        			<th>通讯地址：</th>
+        			<td colspan="3">
+        				<input id="defaddress" class="easyui-textbox" name="defaddress" 
+        					 data-options="prompt:'最多可输入100个汉字',validType:{length:[0,200]}" style="width:680px;"/>
+        			</td>
+                </tr>
+    			<tr>
+        			<th>邮寄地址：</th>
+        			<td colspan="3">
+        				<input id="defmailaddress" class="easyui-textbox" name="defmailaddress" required="true" missingMessage="请选择被申请人邮寄地址"
+        					 data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:680px;"/>
+    					<font color=red>*</font>
+    				</td>
+                </tr>
+        		<tr>
+        			<th>邮箱：</th>
+        			<td>
+        				<input id="defemail" class="easyui-textbox" name="defemail" validType='email'
+        					  style="width:250px"/>
+        			</td>
+        			<th>邮政编码：</th>
+        			<td>
+        				<input id="defpostcode" class="easyui-textbox" name="defpostcode" required="true" missingMessage="请输入邮政编码"
+        					 validType="zip" style="width:250px"/>
+						<font color=red>*</font>
+        			</td>
+        		</tr>
+				<tr>
+					<th>法定代表人：</th>
+        			<td>
+        				<input id="deflegalman" class="easyui-textbox" name="deflegalman" 
+							data-options="validType:{length:[0, 20]}" style="width:250px" />
+        			</td>
+					<th>法定代表人职务：</th>
+        			<td>
+        				<input id="deflegalduty" class="easyui-textbox" name="deflegalduty" 
+							data-options="validType:{length:[0, 20]}" style="width:250px" />
+        			</td>
+				</tr>
+				<tr>
+					<th>委托代理人：</th>
+        			<td>
+        				<input id="appliedman" class="easyui-textbox" name="appliedman" 
+							data-options="validType:{length:[0, 20]}" style="width:250px" />
+        			</td>
+					<th>委托代理人电话：</th>
+        			<td>
+        				<input id="appliedphone" class="easyui-textbox" name="appliedphone" 
+							data-options="validType:{length:[0, 20]}" style="width:250px" />
+        			</td>
+				</tr>
+				<tr><td colspan="4" style="font-size: 13px;font-weight: bold;text-align: center;background-color:#EEF4FF;">复议案件信息 </td></tr>
+				<tr>
+        			<th>申请日期：</th>
+        			<td colspan="3">
+        				<input id="appdate" class="easyui-datebox" name="appdate" required="true" missingMessage="请选择申请日期"
+    						style="width:250px" editable="false" />
+    					<font color=red>*</font>
+        			</td>
+        		</tr>
+				<tr>
+        			<th>收到申请日期：</th>
+        			<td>
+        				<input id="receivedate" class="easyui-datebox" name="receivedate" required="true" missingMessage="请选择收到申请日期"
+    						style="width:250px" editable="false" />
+    					<font color=red>*</font>
+        			</td>
+        			<th>收到申请方式：</th>
+        			<td>
+        				<input id="receiveway" class="easyui-combobox" name="receiveway" required="true" missingMessage="请选择收到申请方式" 
+        					style="width:250px" />
+    					<font color=red>*</font>
+        			</td>
+        		</tr>
+				<tr>
+                    <th>案件名称：</th>
+                    <td colspan="3">
+                        <input id="intro" class="easyui-textbox" name="intro" required="true" missingMessage="请输入案件名称" 
+                            data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" 
+                            style="width:680px;" />
+						<font color=red>*</font>
+                    </td>
+                </tr>
+    			<tr>
+        			<th>递送公司：</th>
+        			<td>
+        				<input id="expresscom" class="easyui-textbox" name="expresscom" data-options="validType:{length:[0, 30]}" style="width:250px"/>
+        			</td>
+        			<th>递送单号：</th>
+        			<td>
+        				<input id="couriernum" class="easyui-textbox" name="couriernum" data-options="validType:{length:[0, 30]}" style="width:250px"/>
+        			</td>
+        		</tr>
+				<tr>
+        			<th>案由分类：</th>
+        			<td colspan="3">
+        				<input id="type" class="easyui-combobox" name="type" required="true" missingMessage="请选择案由分类" 
+        					style="width:250px" />
+    					<font color=red>*</font>
+        			</td>
+        		</tr>
+				<tr>
+        			<th>行政管理类型：</th>
+        			<td>
+        				<input id="admtype" class="easyui-combobox" name="admtype" required="true" missingMessage="请选择被行政管理类型" 
+        					style="width:250px" />
+    					<font color=red>*</font>
+        			</td>
+        			<th>行政行为类型：</th>
+        			<td>
+        				<input id="casetype" class="easyui-combobox" name="casetype" required="true" missingMessage="请输入申请复议事项类型"
+        					style="width:250px"/>
+    					<font color=red>*</font>
+        			</td>
+        		</tr>
+				<tr>
+        			<th>是否附带行政赔偿：</th>
+        			<td>
+        				<input id="ifcompensation" class="easyui-combobox" name="ifcompensation" required="true" missingMessage="请选择是否附带行政赔偿" 
+        					style="width:250px" />
+    					<font color=red>*</font>
+        			</td>
+        			<th>赔偿金额：</th>
+        			<td>
+        				<input id="amount" class="easyui-numberbox" name="amount" class="easyui-numberbox" validType='currency'
+        					data-options="min:0,precision:2,max:99999999999999.99" style="width:250px"/>
+        			</td>
+        		</tr>
+				<tr>
+                    <th>具体行政行为：</th>
+                    <td colspan="3">
+                        <input id="administratif" class="easyui-textbox" name="administratif" 
+							required="true" missingMessage="请输入具体行政行为"
+                            data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" 
+                            style="width:680px;"/>
+						<font color=red>*</font>
+                    </td>
+                </tr>
+				<tr>
+        			<th>行政复议请求：</th>
+        			<td colspan="3">
+        				<input id="appcase" class="easyui-textbox" name="appcase" multiline="true" required="true" missingMessage="请输入申请事项"
+        					data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:680px;height:65px;" />
+    					<font color=red>*</font>
+    				</td>
+                </tr>
+        		<tr>
+        			<th>事实和理由：</th>
+        			<td colspan="3">
+        				<input id="factreason" class="easyui-textbox" name="factreason" multiline="true"  required="true" missingMessage="请输入事实和理由"
+        					data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:680px;height:65px;" />
+    					<font color=red>*</font>
+        			</td>
+                </tr>
+            </table>
+    	</div>
+		</form>	
+		<div title="第三人信息" style="width:100%;height:400px;">
+			<div style="width:60%;height:400px;float:left;">
+				<div id="toolbar_menu" class="linkbutton_group datagrid-toolbar">
+    				<a id="linkbutton_save" href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="add()">添加</a>
+    				<span class='xian' ></span>
+    				<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  iconCls="icon-cancel" plain="true" onclick="_delete()">删除</a>
+				</div>
+				<table id="thirdbaseinfoTable"></table>
+			</div>
+			<div style="width:40%;float:left;;height:400px">
+				<div id="toolbar_menu" class="linkbutton_group datagrid-toolbar">
+    				<a id="linkbutton_save" href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="save()">保存</a>
+				</div>
+    			<div id="thidDiv" class="easyui-panel">
+    				<form id="thidForm" method="post">
+    					<input type="hidden" name="thid" id="thid" />
+        				<table class="list" >
+        					<tr>
+                    			<th>第三人名称：</th>
+                    			<td>
+                    				<input id="thname" class="easyui-textbox" name="thname" missingMessage="请输入名称"
+                    					 data-options="validType:{length:[0, 65]}" style="width:200px" />
+                    			</td>
+                    		</tr>
+							<tr>
+								<th>第三人类型：</th>
+                    			<td>
+                    				<input id="thtype" class="easyui-combobox" name="thtype" missingMessage="请选择类型"
+                    					style="width:200px" />
+                    			</td>
+							</tr>
+                    		<tr>
+                    			<th>第三人证件类型：</th>
+                    			<td>
+                    				<input id="thidtype" class="easyui-combobox" name="thidtype"  missingMessage="请选择证件类型"
+                    					style="width:200px" />
+                    			</td>
+                    		</tr>
+							<tr>
+								<th>第三人证件号码：</th>
+                    			<td>
+                    				<input id="thidcode" class="easyui-textbox" name="thidcode" data-options="validType:{length:[0, 50]}" 
+                    					 validType="idcard" style="width:200px" />
+                    			</td>
+							</tr>
+                    		<tr>
+                    			<th>第三人联系电话：</th>
+                    			<td>
+                    				<input id="thphone" class="easyui-textbox" name="thphone" data-options="validType:{length:[0, 20]}" 
+                    					  validType="mobile" style="width:200px" />
+                    			</td>
+                    		</tr>
+							<tr>
+								<th>第三人邮政编码：</th>
+                    			<td>
+                    				<input id="thpostcode" class="easyui-textbox" name="thpostcode"  missingMessage="请输入正确的邮政编码"
+                    					 validType="zip" style="width:200px" />
+                    			</td>
+							</tr>
+                    		<tr>
+                    			<th>第三人通讯地址：</th>
+                    			<td colspan="3">
+                    				<input id="thaddress" class="easyui-textbox" name="thaddress"
+            							data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}"
+                    					style="width:200px;" />
+                    			</td>
+                            </tr>
+							<tr>
+                    			<th>委托代理人：</th>
+                    			<td>
+                    				<input id="thidproxyman" class="easyui-textbox" name="thidproxyman"
+                    					 data-options="validType:{length:[0, 20]}" style="width:200px" />
+                    			</td>
+                    		</tr>
+							<tr>
+								<th>委托代理人电话：</th>
+                    			<td>
+                    				<input id="thidproxyphone" class="easyui-textbox" name="thidproxyphone" 
+                    					validType="mobile" data-options="validType:{length:[0, 15]}" style="width:200px" />
+                    			</td>
+							</tr>
+							<tr>
+                    			<th>委托代理人地址：</th>
+                    			<td colspan="3">
+                    				<input id="thidproxyaddress" class="easyui-textbox" name="thidproxyaddress" 
+            							data-options="prompt:'最多可输入100个汉字',validType:{length:[0,200]}" 
+                    					style="width:200px;" />
+                    			</td>
+                            </tr>
+        				</table>
+    				</form>
+    			</div>
+			</div>
+		</div>
+	</div>

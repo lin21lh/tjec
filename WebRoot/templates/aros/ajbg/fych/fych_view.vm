@@ -1,0 +1,59 @@
+#parse("common/extensions-v14.vm")
+<form id="fychViewForm" method="post">
+	<div>
+    	<table class="list">
+    		<tr>
+				<th>案件名称：</th>
+    			<td colspan="3">
+					<span>$!{casechangereq.intro}</span>
+    			</td>
+    		</tr>
+			<tr>
+				<th>申请人：</th>
+    			<td>
+    				<span>$!{casechangereq.appname}</span>
+    			</td>
+				<th>被申请人：</th>
+    			<td>
+    				<span>$!{casechangereq.defname}</span>
+    			</td>
+			</tr>
+    		<tr>
+				<th>撤回原因：</th>
+				<td colspan="3">
+					<span>$!{casechangereq.withdrawreason}</span>
+				</td> 
+            </tr>
+			<tr>
+				<th>承办人意见：</th>
+				<td colspan="3">
+					<span>$!{agentRemark}</span>
+				</td>
+            </tr>
+            <tr>
+				<th>科室负责人意见：</th>
+                <td colspan="3">
+					<span>$!{sectionRemark}</span>
+                </td>
+            </tr>
+            <tr>
+				<th>机构负责人意见：</th>
+                <td colspan="3">
+					<span>$!{organRemark}</span>
+                </td>
+             </tr>
+             <tr>
+				<th>机关负责人意见：</th>
+                <td colspan="3">
+					<span>$!{officeRemark}</span>
+                </td>
+             </tr> 
+			 <tr>
+    			<th>处理结果：</th>
+    			<td colspan="3">
+					<span>$!{casechangereq.result}</span>
+    			</td>
+    		</tr>
+        </table>
+	</div>
+</form>

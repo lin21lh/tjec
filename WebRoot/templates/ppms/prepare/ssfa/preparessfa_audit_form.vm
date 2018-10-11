@@ -1,0 +1,110 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<script type="text/javascript">
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+	fieldset {
+    	padding:10px;
+    	margin:5px;
+    	color:#333; 
+    	border:#06c dotted 1px;
+	}
+</style>
+<form id="imlplan_form" method="post">
+    <input id="projectid" type="hidden" name='projectid'/>
+    <input id="solutionid" type="hidden" name='solutionid'/>
+    <input id="createuser" type="hidden" name='createuser'/>
+    <input id="createtime" type="hidden" name='createtime'/>
+    <input id="updateuser" type="hidden" name='updateuser'/>
+    <input id="updatetime" type="hidden" name='updatetime'/>
+    <input id="wfid" type="hidden" name='wfid'/>
+    <input id="status" type="hidden" name='status'/>
+    <input id="datatype" type="hidden" name='datatype'/>
+    <input id="orgcode" type="hidden" name='orgcode'/>
+	<input type="hidden" id="vomid" name="vomid" />
+    <table class="list">
+		<tr>
+            <th>项目名称</th>
+            <td>
+                <input id="proName" class="easyui-textbox"  name="proName" style='width:250px' readonly='true'/>
+            </td>
+            <th>项目类型</th>
+            <td >
+                <input id="proTypeName" class="easyui-textbox"  name="proTypeName" style='width:250px' readonly='true' />
+            </td>
+        </tr>
+        <tr>
+            <th>风险分配框架</th>
+            <td colspan="3">
+                <input id="riskAllocation" class="easyui-textbox"  multiline="true"  name="riskAllocation" style='width:697px;height:48px;' readonly='true'/>
+            </td>
+		</tr>
+		<tr>	
+            <th>项目融资结构</th>
+            <td colspan="3">
+                <input id="projectFinance" class="easyui-textbox"  multiline="true" name="projectFinance" style='width:697px;height:48px;'  readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>回报机制</th>
+            <td colspan="3">
+                <input id="repayMechanism" class="easyui-textbox"   multiline="true" name="repayMechanism" style='width:697px;height:48px;' readonly='true'/>
+            </td>
+		</tr>
+		<tr>
+            <th>配套安排</th>
+            <td colspan="3">
+                <input id="suitedPlan" class="easyui-textbox"  multiline="true" name="suitedPlan" style='width:697px;height:48px;' readonly='true'/>
+            </td>
+        </tr>
+        <tr>
+            <th>项目合同体系</th>
+            <td colspan="3">
+                <input id="contractSystem" class="easyui-textbox"   multiline="true"  name="contractSystem" style='width:697px;height:48px;' readonly='true'/>
+            </td>
+        </tr>
+		<tr>
+            <th>项目合同核心内容</th>
+            <td  colspan="3">
+                <input id="contractCoreContent" class="easyui-textbox" editable="true" multiline="true"  name="contractCoreContent" style='width:697px;height:48px;' readonly='true'/>
+            </td>
+        </tr>
+		<tr>
+            <th>监管架构</th>
+            <td  colspan="3">
+                <input id="supervisoryRegime" class="easyui-textbox" editable="true" multiline="true"   name="supervisoryRegime" style='width:697px;height:48px;' readonly='true'/>
+            </td>
+        </tr>
+		<tr>
+            <th>实施方案附件</th>
+            <td  colspan="3" id='imlplanfile' style='height:31px'>
+                <input id="implementationPlanPath" type="hidden"  name="implementationPlanPath" />
+			</td>
+        </tr>
+		 <tr>
+            <th>拟预审公告发布时间</th>
+            <td>
+                <input id="advancePublishTime" class="easyui-textbox"    name="advancePublishTime" style='width:250px' readonly='true'/>
+            </td>
+            <th>拟采购公告发布时间</th>
+            <td>
+                <input id="purchaseNoticeTime" class="easyui-textbox"   name="purchaseNoticeTime" style='width:250px' readonly='true'/>
+            </td>
+        </tr>
+		 <tr>
+            <th>评审意见</th>
+            <td colspan="3">
+				<input id="opinion" class="easyui-textbox" editable="true" multiline="true" required="true"  name="opinion" style='width:697px;height:35px;' data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}"/>
+            </td>
+        </tr>
+    </table>
+    </div>
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

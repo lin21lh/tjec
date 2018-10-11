@@ -1,0 +1,16 @@
+    #parse("common/extensions-v14.vm")
+		
+		<script type="text/javascript" src="$contextpath/templates/aros/bztx/js/standBaseInfo_online.js"></script>
+		<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+		<script type="text/javascript">
+			//菜单ID
+			var menuid = "$menuid";
+			//附件ID
+			var activityId = "$activityId";
+        </script>
+
+		 <div id="toolbar_centers" class="toolbar_group">
+		 </div>
+			
+		<table id="onlineDataGrid"></table>
+		<input type="hidden" id="menuid" name="menuid" value="$menuid" />

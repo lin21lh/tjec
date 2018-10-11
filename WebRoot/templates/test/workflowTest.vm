@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="../templates/test/workflowTest.js"></script>
+<title>流程统一测试页面</title>
+</head>
+<body>
+<!--
+<div class="easyui-panel" title="流程发布">
+	&nbsp;&nbsp;JPDL文件路径：<input type="text" style="width:600px" id="filename" name="filename"/> 
+	<a class="easyui-linkbutton"  style="width:60px"  onclick="procDeploy()">发布</a>
+</div>
+<br/>
+-->
+<div class="easyui-panel" title="流程部署查询">
+	<div id='tb0' style='background-color:#eee'>
+		<a class="easyui-linkbutton"  onclick="deployQuery()">查询部署结果</a>
+		<a class="easyui-linkbutton"  onclick="viewJpdl()">查看JPDL</a>
+	</div>
+	<table id="dpgrid">
+	</table>
+</div>
+<br/>
+<div class="easyui-panel" title="流程定义查询"> 
+	<div id="toolbar1">
+	<a class="easyui-linkbutton"  onclick="procDeployQuery()">查询发布结果</a>
+	</div>
+	<table id="defgrid">
+	</table>
+</div>
+<br/>
+<div class="easyui-panel" title="流程实例启动"> 
+	流程定义key:<input id='pdefkey' type='text' />
+	流程实例key:<input id='pkey' type='text' />
+	流程变量:<input id="var" type='text' />
+	<a class="easyui-linkbutton"  onclick="startProcessByKey()">流程实例启动</a>
+
+</div>
+<br/>
+<div class="easyui-panel" title="流程实例结果查询"> 
+	<div id="toolbar2">
+	<a class="easyui-linkbutton"  onclick="procInstanceQuery()">查询流程实例</a>
+	</div>
+	<table id="instgrid">
+	</table>
+</div>
+<br/>
+<div class="easyui-panel" title="流程图查看"> 
+	<div id="toolbar2_1">
+	流程ID:<input id="instid_for_imageview" type="text" />
+	<a class="easyui-linkbutton"  onclick="workflowImageView()">查询流程图</a>
+	</div>
+</div>
+<br/>
+<div class="easyui-panel" title="Task查询"> 
+	<div id="toolbar3">
+	<a class="easyui-linkbutton"  onclick="taskQuery()">查询Task</a>
+	</div>
+	<table id="taskgrid">
+	</table>
+</div>
+<br/>
+<div class="easyui-panel" title="候选Task查询"> 
+	<div id="toolbar31">
+	<a class="easyui-linkbutton"  onclick="candidateTaskQuery()">查询Task</a>
+	</div>
+	<table id="ctaskgrid">
+	</table>
+</div>
+
+<br/>
+
+<div class="easyui-panel" title="推进流程"> 
+	<div id="toolbar3">
+	TaskID:
+	<input id='taskid' type='text' />
+	Outcome:
+	<input id='outcome' type='text' />
+	<a class="easyui-linkbutton"  onclick="taskComplete()">推进Task</a>
+	</div>
+</div>
+<br/>
+
+<div class="easyui-panel" title="历史任务查询"> 
+	<div>
+	处理者:<input id="his_assignee" type="text" />
+	<a class="easyui-linkbutton"  onclick="hisTaskQuery()">历史任务查询</a>
+	</div>
+	<table id="histaskgrid" >
+	</table>
+</div>
+
+<div class="easyui-panel" title="撤回任务"> 
+	<div>
+	历吏任务ID:<input id="getback_taskid" type="text" />
+	<a class="easyui-linkbutton"  onclick="getBackTask()">撤回任务</a>
+	</div>
+</div>
+
+
+<div id="img_window" class="easyui-window"  style="width:800px;height:500px" closed="true" title="流程图" >
+	<img id="img_loc" src="" />
+</div>
+
+<div id="xml_window" class="easyui-window"  style="width:800px;height:500px" closed="true" title="JPDL定义" >
+	<textarea id="jpdl" style="width:770px;height:450px"></textarea>
+</div>
+</body>
+</html>

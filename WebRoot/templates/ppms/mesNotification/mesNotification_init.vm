@@ -1,0 +1,76 @@
+<!DOCTYPE>
+<html>
+	<!--禁用缓存-->	
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <head>
+        #parse("common/common-v14.vm")
+        #parse("common/extensions-v14.vm")
+        <title>消息通知录入</title>
+        <script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/ppms/mesNotification/js/mesNotification_init.js"></script>
+        <script type="text/javascript">
+            var menuid = "$menuid";
+        </script>
+        <style type="text/css">
+        	.cs-west{
+        		width: 50%;
+        		padding: 0;
+        	}
+        	.linkbutton_group{
+        		border-bottom: 1px solid #95B8E7;
+        	}
+        </style>
+    </head>
+    <body id="layout" class="easyui-layout">
+    	 <div data-options="region:'center',split:false" >
+            <div id="toolbar_center" class="toolbar_group" >
+        		<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+    			<div class="toolbar_buttons">
+    				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="topQuery()" >查询</a>
+    				<span class='xian' ></span>
+        			<a href="#" id="addBtn" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="messageAdd()">新增</a>
+    				<span class='xian' ></span>
+        			<a href="#" id="editBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="messageEdit()">修改</a>
+					<span class='xian' ></span>
+        			<a href="#" id="sendBtn" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="messageSend()">发送</a>
+    				<span class='xian' ></span>
+        			<a href="#" id="delBtn" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="messageDelete()">删除</a>
+    				<span class='xian' ></span>
+					<a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="messageView()">详情</a>
+                </div>
+        		<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;border:0px;">
+    				<table  class="list" style='border:0px'>
+                        <tr>
+            				<th style='font-size:12px;border: 0px;text-align:right'>消息状态</th>
+            				<th style='font-size:12px;border: 0px;text-align:left'>
+    							<input id="status" class="easyui-textbox" style='width:150px' panelheight = "auto">
+    						</th>
+							<th style='font-size:12px;border: 0px;text-align:right'>消息内容</th>
+            				<th style='font-size:12px;border: 0px;text-align:left' >
+    							<input id="messageContext" class="easyui-textbox" style='width:210px' panelheight = "auto">
+    						</th>
+							<th style='font-size:12px;border: 0px;text-align:right'>接收人</th>
+            				<th style='font-size:12px;border: 0px;text-align:left' >
+    							<input id="receive" class="easyui-textbox" style='width:210px' panelheight = "auto">
+    						</th>
+						</tr>
+						<tr>
+							<th style='font-size:12px;border: 0px;text-align:right'>开始时间</th>
+            				<th style='font-size:12px;border: 0px;text-align:left' >
+    							<input id="createTimeBegin" class="easyui-datebox" style='width:120px' panelheight = "auto">
+								
+    						</th>
+							<th style='font-size:12px;border: 0px;text-align:right'>结束时间</th>
+            				<th style='font-size:12px;border: 0px;text-align:left' colspan="3">
+								<input id="createTimeEnd" class="easyui-datebox" style='width:120px' panelheight = "auto">
+    						</th>
+						</tr>
+    				</table>
+        		</div>
+    		</div>
+    		<table id="messageDataGrid"></table>
+    	 </div>    
+    </body>
+</html>

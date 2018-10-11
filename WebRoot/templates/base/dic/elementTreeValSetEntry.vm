@@ -1,0 +1,50 @@
+<script type="text/javascript" src="templates/base/dic/util.js"></script>
+<script type="text/javascript" src="templates/base/dic/elementTreeValSetEntry.js"></script>
+<script type="text/javascript">
+var last_node_handle = null;
+var flag_edit=false;  //是否正在编辑
+
+var keycolumn = '${modelMap.keycolumn}';
+var tablecode = '${modelMap.tablecode}';
+
+${modelMap.treeScheme}
+$(function(){
+	//加载数据项值集
+	loadDataFunction();
+	
+	$('#contentTree').form({
+		onLoadSuccess:function(){
+			$('#linkbutton_save').linkbutton("disable");
+			$('#linkbutton_cancel').linkbutton("disable");
+			flag_edit = false;
+		}
+	});
+});
+</script>
+<!-- 数据项值集维护 -->
+<div class="easyui-layout" data-options="fit:true">
+	<div region="west" border="false" style="width:320px"   split="true">
+		<div title="" class="easyui-panel"  fit="true" >
+			${modelMap.treeSchemeID}
+		</div>
+	</div>
+	<div region="center" border="false" style="padding:0px">
+		<div id="toolbar_menu"  class="linkbutton_group datagrid-toolbar">		
+			<a id="linkbutton_save" href="#" class="easyui-linkbutton" data-options="disabled:true" onclick="saveEdit()"  iconCls="icon-save" plain="true">保存</a>
+			<a id="linkbutton_cancel" href="#" class="easyui-linkbutton" data-options="disabled:true"  onclick="rejectEdit()" iconCls="icon-undo" plain="true">取消</a>
+		</div>
+		<form id="contentTree" method="post">
+			<table class="list" style='width:100%'>
+				${modelMap.editScheme}
+			</table>
+		</form>
+	</div>	
+	<div id="contextmenu" class="easyui-menu" style="width:120px;">
+        <div onclick="dicElementVal_addDown_req()" data-options="iconCls:'icon-add'">添加下级</div>
+        <div onclick="dicTreeElementVal_del_req()" data-options="iconCls:'icon-remove'">删除</div>
+        <div class="menu-sep"></div>
+        <div onclick="dicElementVal_add_req()" data-options="iconCls:'icon-add'">添加</div>
+         <div class="menu-sep"></div>
+        <div onclick="menu_refresh()" data-options="iconCls:'icon-reload'">刷新</div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://cxf.apache.org/jaxws
+	http://cxf.apache.org/schemas/jaxws.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+	http://cxf.apache.org/jaxrs
+    http://cxf.apache.org/schemas/jaxrs.xsd">
+
+	<context:component-scan base-package="com.jbf.webservice.service.*"
+		use-default-filters="true" />
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<!-- soap webservice -->
+	<jaxws:endpoint id="helloCxfWs" implementor="com.jbf.webservice.service.HelloCxfWsImpl"
+		address="/helloCxfWs">
+	</jaxws:endpoint>
+	
+	<!-- restful webservice -->
+	<jaxrs:server id="helloCxfRs" address="/helloCxfRs">
+		<jaxrs:serviceBeans>
+			<ref bean="HelloCxfRs" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+		</jaxrs:providers>
+	</jaxrs:server>
+	
+</beans>

@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html>
+    <head>
+    #parse("common/common-v14.vm")
+    #parse("common/extensions-v14.vm")
+    <title>全市案件办理结果统计</title>
+    <style type="text/css">
+    	.linkbutton_group{
+    		border-bottom: 1px solid #95B8E7;
+    	}
+    </style>
+    <script type="text/javascript" src="$contextpath/component/eCharts/echarts.min3.2.3.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/aros/chart/js/casestate_init.js"></script>
+	<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+	<script type="text/javascript">
+    	var menuid = "$!menuid";
+    </script>
+    </head>
+    <body id="layout" class="easyui-layout">
+    	<div data-options="region:'center',split:false" >
+			<div id="sep" style="height:15px;background-color: #E0ECFF;"></div>
+    		<div id="chart" style="width:100%;">
+				<div id="mid" class="div-m"></div>
+                <div id="chart2" class="div-b"></div>
+			</div>
+		
+    	 </div>    
+    </body>
+</html>

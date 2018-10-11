@@ -1,0 +1,50 @@
+#parse("common/extensions-v14.vm")
+<style type='text/css'>
+ input {
+        border: 0px solid;
+    }
+</style>
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/lxfs/js/lxfsinfo_init.js"></script>
+<form id="lxfsForm" method="post">
+    	<table class="list">
+    		<!--隐藏属性start-->
+    			<input type="hidden" id="id" name="id"/><!--案例ID-->
+                <input type="hidden" id="menuid" name="menuid"/>
+    		<!--隐藏属性end-->
+			<tr>
+    			<th>联系人:</th>
+    			<td>
+    				<input id="person" readonly name="person" style="width:250px"/>
+				</td>
+    			<th>地址:</th>
+    			<td>
+    				<input id="address"  readonly name="address" style="width:250px"/>
+				</td>
+    		</tr>
+			
+			<tr>
+    			<th>机关名称:</th>
+    			<td>
+    				<input id="deptname"  readonly name="deptname" style="width:250px"/>
+    			</td>
+    			<th>联系电话:</th>
+    			<td>
+    				<input id="phone"  readonly name="phone" style="width:250px"/>
+    			</td>
+    		</tr>
+			
+            <tr>
+                <th>X坐标:</th>
+                <td>
+                    <input id="xcoor"  readonly name="xcoor" style="width:250px" />
+                </td>
+                <th>Y坐标:</th>
+                <td>
+                    <input id="ycoor"  readonly name="ycoor" style="width:250px" />
+                </td>
+            </tr>
+            
+        </table>
+</form>

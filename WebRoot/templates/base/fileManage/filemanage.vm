@@ -1,0 +1,25 @@
+<!DOCTYPE>
+<html>
+    <head>
+        #parse("common/common-v14.vm")
+        #parse("common/extensions-v14.vm")
+        <script type="text/javascript" src="$contextpath/templates/base/fileManage/filemanage.js"></script>
+        <script type="text/javascript">
+        	var sessionid = '${modelMap.sessionId}';
+        	var keyid = '${modelMap.keyid}';
+        	var elementcode = '${modelMap.elementcode}';
+        	$(function() {
+            	loadFileDataGrid(keyid, elementcode);
+            });
+        </script>
+    </head>
+    <body id="layout" class="easyui-layout">
+        <!-- 附件管理 -->
+        <div style="width:100%;height:100%;">
+        	<table id="fileDataGrid"></table>
+        </div>
+    </body>
+    <div id='addFileDiv'></div>
+</html>
+
+

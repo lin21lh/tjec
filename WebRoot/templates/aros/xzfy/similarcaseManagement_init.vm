@@ -1,0 +1,37 @@
+    #parse("common/extensions-v14.vm")
+    <script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/similarcaseManagement_init.js"></script>
+    <script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+           
+    <div id="toolbar_centers" class="toolbar_group">
+        <div class="toolbar_buttons">
+			<a id="openAclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" iconCls="icon-expand" plain="true" ></a>
+	        <span class='xian' ></span>
+	        <a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="xzfySimilQuery()">查询</a>
+	        <span class='xian'></span>
+            <a href="#"   class="easyui-linkbutton" iconCls="icon-detail" plain="true" onClick="xzfyReqView()">案件基本信息</a>
+            <span class='xian' ></span>
+            <a href="#"   class="easyui-linkbutton" iconCls="icon-item" plain="true" onClick="sugView()">委员意见查看</a>
+            <span class="xian"></span>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">流程信息</a>
+            <span class="xian"></span>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="noticeView()">卷宗查看</a>
+        </div>
+    
+    	<div id="xzfyViewPanel" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%; border:0px;">
+    		<table   class="list" style='border:1px' onclick='document.onkeypress = function (key) { if (key.keyCode == 13) {xzfySimilQuery(); } }'>
+    			<tr>
+    				<td style="font-size:12px; border:0px;text-align:right; float:left">全文关键字搜索：</td>
+    				<td style="font-size:12px; border:0px; text-align:left;float:left">
+    					<input id="keyval" name="keyval" class="easyui-textbox" data-options="prompt:'可根据案件编号、申请人、被申请人名称等查询',validType:{length:[0,100]}"  style='width:280px'>
+    				</td>
+    			</tr>
+             </table>
+        </div>
+	</div>
+	<div style="height:100%;width:100%;">
+		<table id="xzfyViewDataGrid"></table>
+        <input type="hidden" id="menuid" name="menuid" value="$menuid" />
+        <input type="hidden" id="deftype" name="deftype" value="$deftype" />
+        <input type="hidden" id="admtype" name="admtype" value="$admtype" />
+        <input type="hidden" id="casetype" name="casetype" value="$casetype" />
+    </div>

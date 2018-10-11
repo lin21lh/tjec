@@ -1,0 +1,25 @@
+<!DOCTYPE>
+<html>
+    <head>
+        #parse("common/common-v14.vm")
+        #parse("common/extensions-v14.vm")
+        <title>行政复议</title>
+    </head>
+    <body class="easyui-layout">
+		
+		<input id="fileItemmids" type="hidden" name='fileItemmids' value='${fileItemmids}'/>
+        <input id="sessionId" type="hidden" name='sessionId' value='${sessionId}'/>
+        <input id="tdId" type="hidden" name='tdId' value='${tdId}'/>
+        <input id="elementcode" type="hidden" name='elementcode' value='${elementcode}'/>
+        <input id="keyid" type="hidden" name='keyid' value='${keyid}'/>
+	
+	    <div id="mainPanle" region="center" border="true" border="false">
+	         <div id="tabs" fit="true" border="false">
+	            <div id="content">
+		            <iframe id="xzfyInit" src="$contextpath/base/filemanage/fileManageController/photosifyInit.do?fileItemmids=${fileItemmids}&sessionId=${sessionId}&tdId=${tdId}&elementcode=${elementcode}&keyid=${keyid}" 
+		                style="width:100%;height:99%;" scrolling="auto" frameborder="0"></iframe>
+	            </div>
+	        </div>
+	    </div>
+    </body>
+</html>

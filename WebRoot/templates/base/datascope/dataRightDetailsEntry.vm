@@ -1,0 +1,24 @@
+<style type="text/css">
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+</style>
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+	var resourceid = "${modelMap.resourceid}";
+</script>
+<script type="text/javascript" src="${rc.contextPath}/templates/base/datascope/datascopeEditEntry.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/templates/base/datascope/dataRightDetailsEntry.js"></script>
+<div id="dataRightDetail_layout" class="easyui-layout" data-options="fit:true" >
+	<div data-options="region:'west',split:false" title="用户对应角色" style="width:240px;border:1px 0px 0px 0px">
+		<ul id="roleTree" style="border:0px;">
+	</div>
+	<div data-options="region:'center',iconCls:'icon-ok',border:true"  style="border-width:0px 0px 0px 1px;">
+		<div class="easyui-panel" data-options="fit:true"  style="border:0px;">
+			<div class="linkbutton_group">&nbsp;数据权限名称： <input class="easyui-validbox textbox" name="scopemainname" readonly="true" style="width:180px;height:20px"></div>
+		    <div id="condtions" class="easyui-tabs" style="border:0px;">
+    		</div>
+		</div>
+	</div>
+</div>

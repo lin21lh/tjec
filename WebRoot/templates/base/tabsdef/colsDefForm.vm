@@ -1,0 +1,102 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="templates/base/tabsdef/colsDefForm.js"></script>
+<style type='text/css'>
+
+</style>
+<!-- 增加或编辑字段定义的对话框 -->
+	<form id="colForm" method="post">
+		<table class="list">
+			<tr>
+				<th>列名：</th>
+				<td>
+					<input class="easyui-validatebox" required="true" name="columncode"  style="width:178px;border:1px solid #95B8E7;line-height:20px"/>
+					<input type="hidden" id="columnid" name="columnid" />
+					<input type="hidden" id="tablecode" name="tablecode" />
+				</td>
+				<th>中文列名：</th>
+				<td>
+					<input class="easyui-validatebox " required="true" name="columnname"   style="width:178px;border:1px solid #95B8E7;line-height:20px"/>
+					
+				</td>
+			</tr>
+			<tr>
+				<th>字段类型：</th>
+				<td>
+					<select class="easyui-combobox " name="fieldtype" required="true" style="width:180px">
+                        <option value="0">普通字段</option>
+                        <option value="1">关键字字段</option>
+                        <option value="2">编码字段</option>
+                        <option value="3">名称字段</option>
+                        <option value="4">上级流水号字段</option>
+                        <option value="5">级次字段</option>
+                        <option value="6">末级字段</option>
+                        <option value="7">状态字段</option>
+                        <option value="8">启用日期字段</option>
+                        <option value="9">停用日期字段</option>
+                    </select>
+				</td>
+				<th>数据类型：</th>
+				<td>
+					<select id="datatype_edit" class="easyui-combobox " name="columntype" style="width:180px">
+						<option value="C">C-代码集</option>
+						<option value="S">S-文本</option>
+						<option value="N">N-数字</option>
+						<option value="Y">Y-金额</option>
+						<option value="D">D-日期</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>数据长度：</th>
+				<td>
+					<input class="easyui-numberbox " name="columnlength" style="width:180px"/>
+				</td>
+				<th>小数长度：</th>
+				<td>
+					<input class="easyui-numberbox" name="scalelength" style="width:180px"/>
+				</td>
+			</tr>
+			<tr>
+				<th>来源数据项：</th>
+				<td>
+					<input id="src_Ele_Code" name="sourceelementcode"  style="width:180px" />
+				</td>
+				<th>来源表：</th>
+				<td>
+					<input class="easyui-validatebox" name="sourcetable" readonly="true" style="width:178px;background-color:#eee;border:1px solid #95B8E7;line-height:20px"/>
+				</td>
+			</tr>
+			<tr>
+				<th>编码方式：</th>
+				<td>
+					<select id="codetype_edit" class="easyui-combobox " name="codetype" style="width:180px">
+						<option value="0">0-无编码格式</option>
+						<option value="1">1-顺序码</option>
+						<option value="2">2-层码</option>
+					</select>
+				</td>
+				<th>编码格式：</th>
+				<td>
+					<input class="easyui-validatebox" name="codeformat" style="width:178px;border:1px solid #95B8E7;line-height:20px" />
+				</td>
+			</tr>
+			<tr>
+				<th>是否允许为空：</th>
+				<td>
+					<input class="easyui-validatebox" name="nullable" type="radio" required="true" value="1">是</input>
+					<input class="easyui-validatebox" name="nullable" type="radio" checked="checked" required="true" value="0">否</input>
+				</td>
+				<th>是否使用标志：</th>
+				<td>
+					<input class="easyui-validatebox" name="used" type="radio" required="true" value="1">是</input>
+					<input class="easyui-validatebox" name="used" type="radio" checked="checked" required="true" value="0">否</input>
+				</td>
+			</tr>
+			<tr>
+				<th>备注：</th>
+				<td colspan="3">
+					<textarea class="easyui-textarea" name="remark" rows="3" style="width:572px;" ></textarea>
+				</td>
+			</tr>
+		</table>
+	</form>

@@ -1,0 +1,113 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+/**
+ * 启用发送按钮
+ */
+function showSendBtn(){
+	$("#sendBtn").linkbutton('enable'); // 可发送
+}
+</script>
+<script type="text/javascript" src="$contextpath/templates/aros/ajbg/fytj/js/fytjadd_form.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<form id="fytjAddForm" method="post">
+	<div>
+    	<table class="list">
+		<!--隐藏属性start-->
+			<input type="hidden" id="ccrid" name="ccrid"/><!--申请ID-->
+			<input type="hidden" id="caseid" name="caseid"/><!--案件ID-->
+			<input type="hidden" id="csaecode" name="csaecode"/><!--案件编号-->
+		<!--隐藏属性end-->
+    		<tr>
+				<th>案件名称：</th>
+    			<td colspan="3">
+    				<input id="intro" class="easyui-textbox" name="intro" required="true" missingMessage="请选择案件" 
+    					style="width:600px" readonly="readonly"/>
+					<font color=red>*</font>
+					<a id="selectBtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onClick="choiseCase()">选择案件</a>
+    			</td>
+    		</tr>
+			<tr>
+				<th>申请人：</th>
+    			<td>
+    				<input id="appname" class="easyui-textbox" name="appname" required="true" missingMessage="请输入申请人"
+    					 data-options="validType:{length:[0, 100]}" style="width:250px" readonly="readonly"/>
+					<font color=red>*</font>
+    			</td>
+				<th>被申请人：</th>
+    			<td>
+    				<input id="defname" class="easyui-textbox" name="defname" required="true" missingMessage="请输入被申请人"
+    					 data-options="validType:{length:[0, 65]}" style="width:250px" readonly="readonly"/>
+					<font color=red>*</font>
+    			</td>
+			</tr>
+    		<tr>
+				<th>申请人请求：</th>
+				<td colspan="3">
+					<input id="reqmanrequest" name="reqmanrequest" class="easyui-textbox" required="true" missingMessage="请输入申请人请求"
+						style="width:685px; height:65px;" data-options="validType:{length:[0, 650]}" multiline="true"/>
+					<font color=red>*</font>
+				</td> 
+            </tr>
+			<tr>
+				<th>申请人称：</th>
+				<td colspan="3">
+					<input id="reqmansay" name="reqmansay" class="easyui-textbox" required="true" missingMessage="请输入申请人称"
+						style="width:685px; height:65px;" data-options="validType:{length:[0, 650]}" multiline="true"/>
+					<font color=red>*</font>
+				</td> 
+            </tr>
+			<tr>
+				<th>被申请人称：</th>
+				<td colspan="3">
+					<input id="reqedmansay" name="reqedmansay" class="easyui-textbox" required="true" missingMessage="请输入被申请人称"
+						style="width:685px; height:65px;" data-options="validType:{length:[0, 650]}" multiline="true"/>
+					<font color=red>*</font>
+				</td> 
+            </tr>
+			<tr>
+				<th>第三人称：</th>
+				<td colspan="3">
+					<input id="thirdsay" name="thirdsay" class="easyui-textbox" required="true" missingMessage="请输入第三人称"
+						style="width:685px; height:65px;" data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}" multiline="true"/>
+					<font color=red>*</font>
+				</td> 
+            </tr>
+			<tr>
+				<th>审理查明：</th>
+				<td colspan="3">
+					<input id="ascertain" name="ascertain" class="easyui-textbox" required="true" missingMessage="请输入审理查明"
+						style="width:685px; height:65px;" data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}" multiline="true"/>
+					<font color=red>*</font>
+				</td> 
+            </tr>
+			<tr>
+				<th>承办人意见：</th>
+				<td colspan="3">
+					<input id="agentRemark" name="agentRemark" class="easyui-textbox" multiline="true" required="true" value="$!{agentRemark}" 
+						style="width:685px; height:65px;" missingMessage="请输入承办人意见" data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}"/>
+				</td> 
+            </tr>
+            <tr>
+				<th>科室负责人意见：</th>
+                <td colspan="3">
+					<input id="sectionRemark" name="sectionRemark" readonly="readonly" class="easyui-textbox" multiline="true" value="$!{sectionRemark}"
+                       style="width:685px; height:65px;" missingMessage="请输入科室负责人意见" data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}"/>
+                </td>
+            </tr>
+            <tr>
+				<th>机构负责人意见：</th>
+                <td colspan="3">
+					<input id="organRemark" name="organRemark" readonly="readonly" class="easyui-textbox" multiline="true" value="$!{organRemark}"
+                       style="width:685px; height:65px;" missingMessage="请输入机构负责人意见" data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}"/>
+                </td>
+             </tr>
+             <tr>
+				<th>机关负责人意见：</th>
+                <td colspan="3">
+					<input id="officeRemark" name="officeRemark" readonly="readonly" class="easyui-textbox" multiline="true" value="$!{officeRemark}"
+                       style="width:685px; height:65px;" missingMessage="请输入机关负责人意见" data-options="prompt:'最多可输入650个汉字',validType:{length:[0,650]}"/>
+                </td>
+             </tr> 
+        </table>
+	</div>
+</form>

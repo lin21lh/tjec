@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<excel excelName="accountHis" excelTemplateFile="outAccountHisExcel.xls" > <!--  -->
+		<sheets>
+			<sheet sheetName="账户" startrow="2">
+				<bean beanname="com.wfzcx.fam.query.account.outexcel.outAccountHisExcel" />
+				<headers>
+					<header colname="bdgagencycn" title="预算单位" width="20"  isNumber="false" isHidden="false" />
+					<header colname="deptNatureName" title="单位性质" width="30" isNumber="false" isHidden="false" />
+					<header colname="accountName" title="账户名称" width="20" isNumber="false" isHidden="false" />
+					<header colname="accountNumber" title="银行账号" width="30" isNumber="false" isHidden="false" />
+					<header colname="bankNameCn" title="开户行名称" width="12" isNumber="false" isHidden="false" />
+					<header colname="accountTypeName" title="账户类型" width="25" isNumber="false" isHidden="false" />
+					<header colname="type02Name" title="账户性质" width="25" isNumber="false" isHidden="false" />
+					<header colname="iszeroName" title="零余额账户" width="25" isNumber="false" isHidden="false" />
+					<header colname="statusName" title="状态" width="25" isNumber="false" isHidden="false" />
+					<header colname="deptAddress" title="单位地址" width="25" isNumber="false" isHidden="false" />
+					<header colname="linkman" title="联系人" width="25" isNumber="false" isHidden="false" />
+					<header colname="phonenumber" title="联系人电话" width="25" isNumber="false" isHidden="false" />
+					<header colname="remark" title="注释" width="25" isNumber="false" isHidden="false" />
+					<header colname="createUser" title="创建人" width="25" isNumber="false" isHidden="false" />
+					<header colname="createTime" title="创建时间" width="25" isNumber="false" isHidden="false" />
+					<header colname="updateUser" title="修改人" width="25" isNumber="false" isHidden="false" />
+					<header colname="updateTime" title="修改时间" width="25" isNumber="false" isHidden="false" />
+				</headers>
+			</sheet>
+		</sheets>
+	</excel>
+</root>

@@ -1,0 +1,41 @@
+#parse("common/extensions-v14.vm")
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+	
+<form id="xzfyReqForm" method="post">
+	<div>
+    	<table class="list">
+    		<tr>
+    			<th width="13%">流程类型：</th>
+    			<td width="37%">
+    				<span>$!{pronodebaseinfo.proname}</span>
+    			</td>
+    			<th width="13%">角色名称：</th>
+    			<td width="37%">
+    				<span>$!{pronodebaseinfo.rolename}</span>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>节点编号：</th>
+    			<td>
+    				<span>$!{pronodebaseinfo.nodeid}</span>
+    			</td>
+    			<th>节点名称：</th>
+    			<td>
+    				<span>$!{pronodebaseinfo.nodename}</span>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>菜单路径：</th>
+    			<td colspan="3">
+    				<span>$!{pronodebaseinfo.menuurl}</span>
+    			</td>
+            </tr>
+        </table>
+	</div>
+</form>

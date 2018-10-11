@@ -1,0 +1,59 @@
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/detail.js"></script>
+<div id="flowDiv" class="easyui-panel" title="案件流程进度" style="width:100%;height:28%;">
+    <table id="flowTable" class="list" style="width:100%;height:100%;">
+        <tbody>
+            <tr style="height:10%;">
+                <th style="text-align:center;background-color: #efefef;bolder-color:red;" colspan="10">复议立案</th>
+				<th style="text-align:center;background-color: #efefef;" colspan="11">复议审理</th>
+            </tr>
+			<tr style="height:90%;width:100%;">
+				<th name="nodeid_1" id="1" style="width:4.7%;text-align:center;" onClick="xzfyReqReceiveDetail()" valign="top">接<br/>受<br/>申<br/>请<br/>材<br/>料</th>
+                <th name="nodeid_2" id="2" style="width:4.7%;text-align:center;" onClick="xzfyReqDetail()" valign="top">案<br/>件<br/>登<br/>记</th>
+                <th name="nodeid_3" id="3" style="width:4.7%;text-align:center;" onClick="xzfyAcceptDetail()" valign="top">承<br/>办<br/>人</th>
+                <th name="nodeid_4" id="4" style="width:4.7%;text-align:center;" onClick="xzfyAcceptDetail()" valign="top">科<br/>室<br/>负<br/>责<br/>人</th>
+                <th name="nodeid_5" id="5" style="width:4.7%;text-align:center;" onClick="xzfyAcceptDetail()" valign="top">机<br/>构<br/>负<br/>责<br/>人</th>
+                <th name="nodeid_6" id="6" style="width:4.7%;text-align:center;" onClick="xzfyAcceptDetail()" valign="top">机<br/>关<br/>负<br/>责<br/>人</th>
+                <th name="nodeid_7" id="7" style="width:4.7%;text-align:center;" onClick="xzfyAccendDetail()" valign="top">受<br/>理<br/>决<br/>定</th>
+                <th name="nodeid_8" id="8" style="width:4.7%;text-align:center;" onClick="xzfyTextProductionDetail()" valign="top">文<br/>书<br/>制<br/>作</th>
+                <th name="nodeid_9" id="9" style="width:4.7%;text-align:center;" onClick="documentDeliveryDetail()" valign="top">文<br/>书<br/>送<br/>达</th>
+                <th name="nodeid_10" id="10" style="width:4.7%;text-align:center;" onClick="documentReviewDetail()" valign="top">收<br/>回<br/>访<br/>单</th>
+				<th name="nodeid_11" id="11" style="width:4.7%;text-align:center;"  onClick="xzfyResReceiveDetail()" valign="top">接<br/>受<br/>答<br/>复<br/>材<br/>料</th>
+                <th name="nodeid_12" id="12" style="width:4.7%;text-align:center;" onClick="xzfyReviewDetail()" valign="top">承<br/>办<br/>人</th>
+                <th name="nodeid_13" id="13" style="width:4.7%;text-align:center;" onClick="xzfyReviewDetail()" valign="top">科<br/>室<br/>负<br/>责<br/>人</th>
+                <th name="nodeid_14" id="14" style="width:4.7%;text-align:center;" onClick="xzfyReviewDetail()" valign="top">机<br/>构<br/>负<br/>责<br/>人</th>
+                <th name="nodeid_15" id="15" style="width:4.7%;text-align:center;" onClick="xzfyReviewDetail()" valign="top">机<br/>关<br/>负<br/>责<br/>人</th>
+                <th name="nodeid_15.5" id="15.5" style="width:4.7%;text-align:center;"  onClick="spesugbaseinfoView()" valign="top">委<br/>员<br/>意<br/>见</th>
+                <th name="nodeid_16" id="16" style="width:4.7%;text-align:center;" onClick="xzfyDecisionDetail()" valign="top">复<br/>议<br/>决<br/>定</th>
+                <th name="nodeid_17" id="17" style="width:4.7%;text-align:center;" onClick="xzfyTextProductionDetailHear()" valign="top">文<br/>书<br/>制<br/>作</th>
+                <th name="nodeid_18" id="18" style="width:4.7%;text-align:center;" onClick="documentDeliveryDetailHear()" valign="top">文<br/>书<br/>送<br/>达</th>
+                <th name="nodeid_19" id="19" style="width:4.7%;text-align:center;" onClick="documentReviewDetailHear()" valign="top">收<br/>回<br/>访<br/>单</th>
+                <th name="nodeid_20" id="20" style="width:4.7%;text-align:center;" onClick="summaryDetail()" valign="top">备<br/>考<br/>表</th>
+			</tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="timeDiv" class="easyui-panel" title="案件时间进度" style="width:100%;height:10%;">
+    <table id="flowTable" class="list" style="width:100%;height:100%;">
+        <tr id="timeTr" style="height:100%;">
+            <td name="time_5" id="1-5" style="text-align:center;">1-5</td>
+            <td name="time_10" id="6-10" style="text-align:center;">6-10</td>
+            <td name="time_15" id="11-15" style="text-align:center;">11-15</td>
+            <td name="time_20" id="16-20" style="text-align:center;">16-20</td>
+            <td name="time_25" id="21-25" style="text-align:center;">21-25</td>
+            <td name="time_30" id="26-30" style="text-align:center;">26-30</td>
+            <td name="time_35" id="31-35" style="text-align:center;">31-35</td>
+            <td name="time_40" id="36-40" style="text-align:center;">36-40</td>
+            <td name="time_45" id="41-45" style="text-align:center;">41-45</td>
+            <td name="time_50" id="46-50" style="text-align:center;">46-50</td>
+            <td name="time_55" id="51-55" style="text-align:center;">51-55</td>
+            <td name="time_60" id="56-60" style="text-align:center;">56-60</td>
+            <td name="time_65" id="61-65" style="text-align:center;">61-65</td>
+            <td name="time_70" id="66-70" style="text-align:center;">66-70</td>
+            <td name="time_75" id="71-75" style="text-align:center;">71-75</td>
+            <td name="time_80" id="76-80" style="text-align:center;">76-80</td>
+            <td name="time_85" id="81-85" style="text-align:center;">81-85</td>
+            <td name="time_90" id="86-90" style="text-align:center;">86-90</td>
+        </tr>
+    </table>
+</div>

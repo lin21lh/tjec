@@ -1,0 +1,57 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="wdjgAddForm" method="post">
+	<table class="list">
+		<!--隐藏属性start
+			-->
+		<input type="hidden" id="wdjgid" name="wdjgid" /><!--文档结构id-->
+		
+		<!--隐藏属性end
+		-->
+		<tr>
+			<th >项目环节</th>
+			<td >
+				<input id="xmhj" name="xmhj" class="easyui-textbox" style='width:250px'  required="true" missingMessage="请选择项目环节"/>
+			</td>
+			<th >环节分类</th>
+			<td >
+				<input id="hjfl" name="hjfl" class="easyui-textbox"  style='width:250px'  required="true" missingMessage="请选择环节分类"/>
+			</td>
+        </tr>
+		<tr>
+			<th >文档名称</th>
+			<td >
+				<input id="wdmc" name="wdmc" class="easyui-textbox"  style='width:250px' data-options="validType:{length:[0,50]}" required="true"  missingMessage="请输入文档名称"/>
+			</td>
+			<th >关联表</th>
+			<td >
+				<input id="glbm" name="glbm" class="easyui-textbox"  style='width:250px' data-options="validType:{length:[0,25]}" required="true"  missingMessage="请输入关联表名"/>
+			</td>
+        </tr>
+		<tr>
+			<th >关联字段</th>
+			<td >
+				<input id="glzd" name="glzd" class="easyui-textbox"  style='width:250px' data-options="validType:{length:[0,25]}" required="true"  missingMessage="请输入关联字段"/>
+			</td>
+			<th >排列顺序</th>
+			<td >
+				<input id="plsx" name="plsx" class="easyui-numberbox"  style='width:250px' data-options="precision:0,max:99999999999999" required="true"  missingMessage="请输入排列顺序"/>
+			</td>
+        </tr>
+		<tr>
+			<th >备注</th>
+			<td colspan="3">
+				<input id="bz" name="bz"  missingMessage="请输入备注" multiline="true"
+					 class="easyui-textbox" data-options="validType:{length:[0,500]}"   style='width:695px;height:45px;'/>
+			</td>
+        </tr>
+    </table>
+</form>

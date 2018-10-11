@@ -1,0 +1,262 @@
+.icon-blank{
+	background:url('icons/blank.gif') no-repeat center center;
+}
+.icon-view{
+	background:url('icons/view.png') no-repeat center center;
+}
+.icon-add{
+	background:url('icons/edit_add.png') no-repeat center center;
+}
+.icon-load{
+	background:url('icons/icon_load.png') no-repeat center center;
+}
+.icon-edit{
+	background:url('icons/pencil.png') no-repeat center center;
+}
+.icon-detail{
+	background:url('icons/detail.png') no-repeat center center;
+}
+.icon-remove{
+	background:url('icons/edit_remove.png') no-repeat center center;
+}
+.icon-save{
+	background:url('icons/filesave.png') no-repeat center center;
+}
+.icon-cut{
+	background:url('icons/cut.png') no-repeat center center;
+}
+.icon-ok{
+	background:url('icons/ok.png') no-repeat center center;
+}
+.icon-no{
+	background:url('icons/no.png') no-repeat center center;
+}
+.icon-cancel{
+	background:url('icons/cancel.png') no-repeat center center;
+}
+.icon-reload{
+	background:url('icons/reload.png') no-repeat center center;
+}
+.icon-search{
+	background:url('icons/search.png') no-repeat center center;
+}
+.icon-print{
+	background:url('icons/print.png') no-repeat center center;
+}
+.icon-help{
+	background:url('icons/help.png') no-repeat center center;
+}
+.icon-undo{
+	background:url('icons/undo.png') no-repeat center center;
+}
+.icon-redo{
+	background:url('icons/redo.png') no-repeat center center;
+}
+.icon-back{
+	background:url('icons/back.png') no-repeat center center;
+}
+.icon-sum{
+	background:url('icons/sum.png') no-repeat center center;
+}
+.icon-tip{
+	background:url('icons/tip.png') no-repeat center center;
+}
+.icon-filter{
+	background:url('icons/filter.png') no-repeat center center;
+}
+
+.icon-lock{
+	background:url('icons/lock.png') no-repeat center center;
+}
+
+.icon-unlock{
+	background:url('icons/unlock.png') no-repeat center center;
+}
+
+.icon-parse{
+	background:url('icons/parse.png') no-repeat center center;
+}
+
+.icon-xml{
+	background:url('icons/xml.png') no-repeat center center;
+}
+
+.icon-folder{
+	background:url('icons/folder.gif') no-repeat center center;
+}
+
+.icon-wfnode{
+	background:url('icons/node.png') no-repeat center center;
+}
+
+.icon-version{
+	background:url('icons/version.png') no-repeat center center;
+}
+
+.icon-form{
+	background:url('icons/form.png') no-repeat center center;
+}
+
+.icon-workflow{
+	background:url('icons/workflow.png') no-repeat center center;
+}
+
+
+.icon-mini-add{
+	background:url('icons/mini_add.png') no-repeat center center;
+}
+.icon-mini-edit{
+	background:url('icons/mini_edit.png') no-repeat center center;
+}
+.icon-mini-refresh{
+	background:url('icons/mini_refresh.png') no-repeat center center;
+}
+
+.icon-oper{
+	background:url('icons/oper.png') no-repeat center center;
+}
+
+.icon-large-picture{
+	background:url('icons/large_picture.png') no-repeat center center;
+}
+.icon-large-clipart{
+	background:url('icons/large_clipart.png') no-repeat center center;
+}
+.icon-large-shapes{
+	background:url('icons/large_shapes.png') no-repeat center center;
+}
+.icon-large-smartart{
+	background:url('icons/large_smartart.png') no-repeat center center;
+}
+.icon-large-chart{
+	background:url('icons/large_chart.png') no-repeat center center;
+}
+
+.icon-excel{
+	background:url('icons/excel.png') no-repeat center center;
+}
+
+
+.icon-logout{
+	background:url('icons/logout.png') no-repeat center center;
+}
+.icon-rtnhome{
+	background:url('icons/rtnhome.png') no-repeat center center;
+}
+
+.icon-password{
+	background:url('icons/password.png') no-repeat center center;
+}
+
+.icon-collapse{
+	background:url('icons/collapse.png') no-repeat center center;
+}
+
+.icon-expand{
+	background:url('icons/expand.png') no-repeat center center;
+}
+
+.icon-item{
+	background:url('icons/item.png') no-repeat center center;
+}
+.icon-user{
+	background:url('icons/user.png') no-repeat center center;
+}
+.icon-role{
+	background:url('icons/role.png') no-repeat center center;
+}
+
+
+.icon-menu{
+	background:url('icons/menu.png') no-repeat center center;
+}
+
+.icon-dic{
+	background:url('icons/dic.png') no-repeat center center;
+}
+
+.icon-database{
+	background:url('icons/database.png') no-repeat center center;
+}
+
+.icon-priority{
+	background:url('icons/priority.png') no-repeat center center;
+}
+
+.icon-dept{
+	background:url('icons/dept.png') no-repeat center center;
+}
+
+.icon-config{
+	background:url('icons/config.png') no-repeat center center;
+}
+
+.icon-copy{
+	background:url('icons/copy.png') no-repeat center center;
+}
+
+
+.icon-design{
+	background:url('icons/design.png') no-repeat center center;
+}
+
+.icon-standard-application-form-magnify{
+	background:url('icons/application-form-magnify.png') no-repeat center center;
+}
+
+
+/** 左右上下箭头 **/
+.icon-left-arrow{
+	background:url('icons/left_arrow.png') no-repeat center center;
+}
+.icon-right-arrow{
+	background:url('icons/right_arrow.png') no-repeat center center;
+}
+.icon-left-double-arrow{
+	background:url('icons/left_double_arrow.png') no-repeat center center;
+}
+.icon-right-double-arrow{
+	background:url('icons/right_double_arrow.png') no-repeat center center;
+}
+.icon-up-arrow{
+	background:url('icons/up_arrow.png') no-repeat center center;
+}
+.icon-down-arrow{
+	background:url('icons/down_arrow.png') no-repeat center center;
+}
+.icon-clear{
+	background:url('icons/clear.png') no-repeat center center;
+}
+.icon-paused{
+	background:url('icons/paused.png') no-repeat center center;
+}
+.icon-resume{
+	background:url('icons/resume.png') no-repeat center center;
+}
+.icon-task{
+	background:url('icons/task.png') no-repeat center center;
+}
+.icon-report{
+	background:url('icons/report.png') no-repeat center center;
+}
+.icon-log{
+	background:url('icons/log.png') no-repeat center center;
+}
+.icon-datebox{
+	background-image: url('icons/datebox.png');
+}
+.icon-message{
+	background:url('icons/message.png') no-repeat center center;
+}
+.icon-files{
+	background:url('icons/files.png') no-repeat center center;
+}
+.icon-toRemind{
+	background:url('icons/toRemind.png') no-repeat center center;
+}
+.icon-notice{
+	background:url('icons/notice.png') no-repeat center center;
+}
+.icon-delete{
+	background:url('icons/delete.gif') no-repeat center center;
+}

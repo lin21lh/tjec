@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="../../../templates/base/excel/dataImpEntry.js"></script>
+<title>功能菜单维护界面</title>
+<style type="text/css">
+
+</style>
+</head>
+<body >
+	<div class="easyui-layout" fit='true'>
+		<div region="center" border="false" title="数据导入">
+		
+			<div id="toolbar_tmpl" class="toolbar_group">
+				<div class="toolbar_buttons">
+					<a id="openclose" onClick="javascript:panelctl(0);" class="easyui-linkbutton" 
+							iconCls="icon-collapse" plain="true" ></a>
+				<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onClick="doImport()">导入</a>
+								
+				</div>
+				<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" >
+					&nbsp;配置名称：<input class="easyui-textbox" id="cfgname" />
+					
+					<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onClick="query()">查询</a>
+					<!--
+					<a href="#" class="easyui-linkbutton" iconCls="icon-reload" plain="false" onClick="clear()">清空</a>
+					-->
+				</div>
+			</div>
+			<table id="tmplgrid"></table>
+		</div>
+		
+		<div region="south" border="true" title="数据导入日志" split="false" style="height:280px">
+			<div id="toolbar_log" class="toolbar_group">
+			<!--
+				<div class="toolbar_buttons">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="viewLog()">详情</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="addLog()">添加</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="editLog()">修改</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="delLog()">删除</a>
+				</div>
+			-->
+				<div class="toolbar_querybar">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="showDetail()" >日志信息详情</a>
+					<span class='xian' ></span>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="false" onClick="queryDataImplLogs()">查询</a>
+					
+				</div>
+			</div>
+			<table id="loggrid"></table>
+		</div>
+	</div>
+	
+	<div id='fileWin'  class='easyui-window' title='Excel数据文件选择'  closed="true"
+		minimizable='false' maximizable='false' collapsible='false' style='width:400px;height:150px' >
+		<div class="easyui-layout" fit='true'>  
+		    <div data-options="region:'center'" style='padding-top:20px'>  
+		        <form id='fileForm' method='post' enctype ="multipart/form-data">
+					<input type='file' name='execlfile' accept="application/msexcel" />
+					<input type='hidden' name='cfgid' id='cfgid' />
+				</form>
+		    </div>
+		    <div data-options="region:'south'" style="width:100%;height:40px;overflow:hidden">
+		    	<div style='width:100%;height:100%;padding-top:5px;text-align:center;background-color:#eee'>
+			    	<a href="#" class="easyui-linkbutton" iconCls="icon-ok"
+						 plain="false" onClick="btn_ok()">导入</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" 
+						plain="false" onClick="btn_cancel()">取消</a>
+				</div>
+		    </div>  
+		</div>  
+	</div>
+</body>
+
+	

@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<html>
+    <head>
+        #parse("common/common-v14.vm")
+        #parse("common/extensions-v14.vm")
+        <title>复议案件查询</title>
+        <script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/similarcaseManagement_init.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/login/layout.js"></script>
+        <script type="text/javascript">
+            //菜单ID
+            var menuid = "$menuid";
+        </script>
+        <style type="text/css">
+            .cs-west{
+                width: 50%;
+                padding: 0;
+            }
+            .linkbutton_group{
+                border-bottom: 1px solid #95B8E7;
+            }
+        </style>
+    </head>
+    <body id="layout" class="easyui-layout">
+        <div data-options="region:'center',split:false">
+            <input type="hidden" id="menuid" name="menuid" value="$menuid" />
+        </div>
+        <table id="caseFileTab" class=""></table>
+    </body>
+</html>

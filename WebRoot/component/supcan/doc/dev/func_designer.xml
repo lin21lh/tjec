@@ -1,0 +1,28 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+<functions>
+<category name="(未分类)">
+	<function name="Build">
+		<usage>加载Freeform的XML描述文件</usage>
+		<para>XML的URL(相对或绝对)，或者直接就是XML大串</para>
+		<return>1 - 成功; 空串 - 失败(将自动弹出失败页面)</return>
+	</function>
+	<function name="GetFileXML">
+		<usage>取得Freeform当前的XML大串</usage>
+		<return>XML串</return>
+		<memo>该函数取得XML后，通常需要再通过Ajax发送给服务器，以实现在线设计</memo>
+	</function>
+	<function name="OpenToolBox">
+		<usage>打开工具箱</usage>
+		<para>可以是1、2、3，顺序表示工具箱中的属性、控件库和下拉字典页，默认是1.</para>
+	</function>
+	
+	<function name="GetHandle">
+		<usage>取得内部非模式对话框的句柄</usage>
+		<para>可以为:&lt;br&gt;
+&lt;b&gt;innerDialog&lt;/b&gt; - 取内部非模式对话框的Freeform句柄;&lt;br&gt;
+</para>
+		<return>整数串</return>
+	</function>
+	
+</category>
+</functions>

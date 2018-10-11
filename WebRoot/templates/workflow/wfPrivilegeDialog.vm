@@ -1,0 +1,5 @@
+
+<div class="easyui-panel" fit="true" border='false' >
+	<ul id='priv_roletree'>
+	</ul>
+</div>

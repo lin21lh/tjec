@@ -1,0 +1,6 @@
+#parse("common/common-v14.vm")
+<title>选择关联案件</title>
+
+<body>
+	<table id="caseTable" style="width:100%;"></table>
+</body>

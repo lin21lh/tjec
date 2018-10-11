@@ -1,0 +1,105 @@
+#parse("common/extensions-v14.vm")
+<link rel="stylesheet" type="text/css" href="$contextpath/css/print.css">
+<form id="noticeForm" method="post" style="background:#fff">
+    <input type="hidden" id="noticeid" name="noticeid" value="$!{info.noticeid}" />
+    <div align="center">
+      <table width="90%">
+        <tr>
+          <td>
+            <div>
+              <div align="center"><h3>行政复议和解书</h3></div>
+              <div align="right"><h5>[<input id="code" name="code" class="css_span" style="width:100px;" type="text" value="$!{info.code}"/>]号</h5></div>
+            </div>
+            <table rules="none">
+              <tr> 
+                <td>
+                <div>
+                                        申请人：<input id="appName" name="appName" class="css_span" style="width: 250px;" value="$!{info.appName}"/>
+                                        性别<input id="appSex" name="appSex" class="css_span" style="width: 100px;" value="$!{info.appSex}"/>
+                                        出生年月<input id="appBirthday" name="appBirthday" class="css_span" style="width: 160px;" value="$!{info.appBirthday}"/>
+                    <br />
+                                         住所<input id="appAddress" name="appAddress" class="css_span" style="width: 650px;" value="$!{info.appAddress}"/>
+                    <br />
+                   <!--  [（法人或者其他组织）<input id="appCorName" name="appCorName" class="css_span" style="width:425px;" value="$!{info.appCorName}"/>
+                    <br />
+                                        住所<input id="appCorAddress" name="appCorAddress" class="css_span" style="width:550px;" value="$!{info.appCorAddress}"/>
+                    ]<br />  -->                 
+                                        法定代表人或者主要负责人<input id="appCorporation" name="appCorporation" class="css_span" style="width: 210px;" value="$!{info.appCorporation}"/>
+                                        职务<input id="appCorJob" name="appCorJob" class="css_span" style="width: 245px;" value="$!{info.appCorJob}"/>
+                    <br />
+                                        被申请人：<input id="defName" name="defName" class="css_span" style="width: 600px;" type="text" value="$!{info.defName}"/>
+                    <br />            
+                                        住所<input id="defAddress" name="defAddress" class="css_span" style="width: 650px;" type="text" value="$!{info.defAddress}"/>
+                    <br />
+                                        法定代表人或者主要负责人<input id="defCorporation" name="defCorporation" class="css_span" style="width: 210px;" value="$!{info.defCorporation}"/>
+                                        职务<input id="defCorJob" name="defCorJob" class="css_span" style="width: 245px;" value="$!{info.defCorJob}"/>
+                    <br />
+                    [第三人：<input id="thName" name="thName" class="css_span" style="width: 325px;" value="$!{info.thName}"/>
+                                        住所<input id="thAddress" name="thAddress" class="css_span" style="width: 250px;" value="$!{info.thAddress}"/>
+                    <br />
+                                        委托代理人：<input id="agentName" name="agentName" class="css_span" style="width: 295px;" value="$!{info.agentName}"/>
+                                        住所<input id="agentAddress" name="agentAddress" class="css_span" style="width: 250px;" value="$!{info.agentAddress}"/>]
+                    <br />
+                </div>
+                <p>
+                                    申请人对被申请人
+                  <input id="appCase" name="appCase" class="css_span" style="width: 300px;" type="text" value="$!{info.appCase}"/>
+                                    不服，于
+                  <input id="appYear" name="appYear" class="css_span" style="width: 40px;" type="text" value="$!{info.appYear}"/>年
+                  <input id="appMonth" name="appMonth" class="css_span" style="width: 20px;" type="text" value="$!{info.appMonth}"/>月
+                  <input id="appDay" name="appDay" class="css_span" style="width: 20px;" type="text" value="$!{info.appDay}"/>日向
+                  <input id="agencyName" name="agencyName" class="css_span" style="width: 200px;" type="text" value="$!{info.agencyName}"/>
+                                    提出行政复议申请，
+                  <input class="css_span" style="width: 200px;" type="text" value="$!{info.agencyName}"/>
+                                    依法已予受理。
+                </p>
+                <p>
+                                    经申请人与被申请人协商，自愿达成如下和解协议：<br />
+                  <input id="agreementContent" name="agreementContent" class="css_span" style="width: 600px;" type="text" value="$!{info.agreementContent}"/>
+                                     。申请人同时撤回行政复议申请。
+                </p>
+                <p>
+                                    本和解协议一式三
+                  <!-- <input id="agreementNum" name="agreementNum" class="css_span" style="width: 60px;" type="text" value="$!{info.agreementNum}"/> -->
+                                     份，当事人各执一份，向
+                  <input class="css_span" style="width: 200px;" type="text" value="$!{info.agencyName}"/>
+                                    提交一份。
+                </p>
+                <br />
+                <br />
+               </td>
+              </tr>
+              <tr> 
+                <td>
+                  <div>
+                                        申请人：（签字或者盖章）
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                        被申请人：（签字或者盖章）<br />
+                    &emsp;
+                    <input id="apYear" name="apYear" class="css_span" style="width: 50px;" value="$!{info.apYear}"/>年
+                    <input id="apMonth" name="apMonth" class="css_span" style="width: 30px;" value="$!{info.apMonth}"/>月
+                    <input id="apDay" name="apDay" class="css_span" style="width: 30px;" value="$!{info.apDay}"/>日
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    <input id="defYear" name="defYear" class="css_span" style="width: 50px;" value="$!{info.defYear}"/>年
+                    <input id="defMonth" name="defMonth" class="css_span" style="width: 30px;" value="$!{info.defMonth}"/>月
+                    <input id="defDay" name="defDay" class="css_span" style="width: 30px;" value="$!{info.defDay}"/>日
+                  </div>
+                </td>
+              </tr>
+              <tr> 
+                <td>
+                  <div style="margin-top:10px;">
+                    [第三人： （签字或者盖章）<br />
+                    &emsp;
+                    <input id="thYear" name="thYear" class="css_span" style="width: 50px;" value="$!{info.thYear}"/>年
+                    <input id="thMonth" name="thMonth" class="css_span" style="width: 30px;" value="$!{info.thMonth}"/>月
+                    <input id="thDay" name="thDay" class="css_span" style="width: 30px;" value="$!{info.thDay}"/>日]
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+</form>

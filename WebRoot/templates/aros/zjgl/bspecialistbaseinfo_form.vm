@@ -1,0 +1,111 @@
+#parse("common/extensions-v14.vm")
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<form id="projectAddForm" method="post">
+	<table class="list">
+    		<!--隐藏属性start-->
+			<input type="hidden" id="speid" name="speid" /><!--委员id-->
+			<input type="hidden" id="userid" name="userid" />
+			<input type="hidden" id="orgcode" name="orgcode" />
+			<input type="hidden" id="createuser" name="createuser" />
+			<input type="hidden" id="createtime" name="createtime" />
+			<input type="hidden" id="modifyuser" name="modifyuser" />
+			<input type="hidden" id="modifytime" name="modifytime" />
+    		<!--隐藏属性end-->
+    		<tr>
+    			<th >委员姓名：</th>
+    			<td>
+    				<input id="spename" class="easyui-textbox" name="spename" required="true"   missingMessage="请输入委员姓名"
+						 data-options="validType:{length:[0,25]}" style='width:250px'/><font color=red> *</font>
+    			</td >
+    			<th >职称：</th>
+    			<td >
+    				<input id="title" class="easyui-textbox" name="title" style='width:250px' />
+    			</td>
+    		</tr>
+    		<tr>
+    			<th >职务：</th>
+    			<td>
+    				<input id="post" class="easyui-textbox" name="post"  style='width:250px'/>
+    			</td >
+    			<th >学历：</th>
+    			<td >
+    				<input id="degree" class="easyui-textbox" name="degree"   style='width:250px' />
+    			</td>
+    		</tr>
+    		<tr>
+    			<th >联系电话：</th>
+    			<td>
+    				<input id="phone" class="easyui-textbox" name="phone" 
+						 data-options="validType:{length:[0,11]}" style='width:250px'/>
+    			</td >
+    			<th >通讯地址：</th>
+    			<td >
+    				<input id="address" class="easyui-textbox" name="address"   style='width:250px'  data-options="validType:{length:[0,30]}"/>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th >邮政编码：</th>
+    			<td>
+    				<input id="postcode" class="easyui-textbox" name="postcode" 
+						 data-options="validType:{length:[0,6]}" style='width:250px'/>
+    			</td >
+                <th>委员类型：</th>
+                <td>
+                    <input id="membertype" class="easyui-textbox" name="membertype" style='width:250px'/>
+                </td >  
+    		</tr>
+            <tr>
+    			<th >工作单位：</th>
+    			<td colspan="3">
+    				<input id="workunits" class="easyui-textbox" name="workunits" style='width:645px' 
+    				 data-options="validType:{length:[0,66]}" /><font color=red> *</font>
+    			</td>
+            </tr>
+    		<tr>
+    			<th >专业领域：</th>
+    			<td colspan="3">
+    				<input id="spedesc" class="easyui-textbox" name="spedesc" required="true" missingMessage="请输入专业领域"
+						 data-options="validType:{length:[0,300]}" style='width:645px;height:69px;' multiline="true"/><font color=red> *</font>
+    			</td>
+    			
+    		</tr>
+			<tr>
+    			<th >简介：</th>
+    			<td colspan="3">
+    				<input id="intro" class="easyui-textbox" name="intro" 
+						 data-options="validType:{length:[0,300]}" style='width:645px;height:69px;' multiline="true"/>
+    			</td>
+    			
+    		</tr>
+			<tr>
+				<th>用户编码：</th>
+				<td>
+					<input id="usercode" class="easyui-textbox" required="true"
+					 missingMessage="请输入用户编码" name="usercode" style='width:250px'
+					 data-options="validType:{length:[0,25]}" />
+				</td>
+				<th>机构名称：</th>
+				<td>
+					<input id="searchbox_agency" class="easyui-searchbox" editable="false" name="orgname" style='width:250px' />
+				</td>
+			</tr>
+			#if($passflag)
+			<tr>
+				<th>用户密码：</th>
+				<td>
+					<input id="userpswd" type="password" class="easyui-textbox" required="true" data-options="missingMessage:'请输入用户密码', validType:{length:[6,20]}" style='width:250px' name="userpswd" />
+				</td>
+				<th>确认用户密码：</th>
+				<td>
+					<input id="confpswd" type="password" class="easyui-textbox" data-options="missingMessage:'请输入确认密码', validType:{length:[6,20]}" style='width:250px' required="true" />
+				</td>
+			</tr>
+			#end
+    </table>
+</form>
+

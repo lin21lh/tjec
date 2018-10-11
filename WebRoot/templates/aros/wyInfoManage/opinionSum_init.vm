@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html>
+    <head>
+        #parse("common/common-v14.vm")
+        #parse("common/extensions-v14.vm")
+        <title>意见汇总</title>
+        <script type="text/javascript" src="$contextpath/templates/aros/wyInfoManage/js/opinionSum_init.js"></script>
+        <script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+        <script type="text/javascript">
+            //菜单ID
+            var menuid = "$menuid";
+        </script>
+    </head>
+    <body id="layout" class="easyui-layout">
+        <div data-options="region:'center',split:false">
+            <div id="toolbar_center" class="toolbar_group">
+                <input type="hidden" id="menuid" name="menuid" value="$menuid" />
+                <div class="toolbar_buttons">
+	                <a href="#" id="searchBtn" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="doQuery()">查询</a>
+	                <span class='xian' ></span>
+	                <a href="#" id="viewBtn" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="openOpinionSum()" >意见汇总</a>
+	            </div>
+	            <div id="xzfyAcceptPanel" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%; border:0px;">
+	                 <table class="list" style="font-size:12px;">
+	                    <tr>
+	                        <td style='border:0px;text-align:right'>案件编号：</td>
+	                        <td style='border:0px;text-align:left'>
+	                            <input id="casecode" class="easyui-textbox" style='width:150px'>
+	                        </td>
+	                        <td style='border:0px;text-align:right'>申请事项类型：</td>
+	                        <td style='border:0px;text-align:left'>
+	                            <input id="casetype" class="easyui-combobox" style='width:150px'>
+	                        </td>
+	                        <td style='border:0px;text-align:right'>收文日期：</td>
+	                        <td style='border:0px;text-align:left'>
+	                            <input id="starttime" class="easyui-datebox" style='width:110px' editable="false">
+	                            —
+	                            <input id="endtime" class="easyui-datebox" style='width:110px' editable="false">
+	                        </td>
+	                    </tr>
+	                </table>              
+	            </div>
+            </div>
+            <table id="caseDataGrid"></table>
+        </div>
+    </body>
+</html>

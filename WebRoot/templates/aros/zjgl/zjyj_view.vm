@@ -1,0 +1,54 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+    #if($data.size() == 0)
+      <table class="list">
+	      <tr>
+	          <td style="text-align: center;">该案件还没有发起过复议研讨！</td>
+	      </tr>
+      </table>
+    #end
+    #foreach($map in $data)
+     #foreach($info in $map.entrySet())
+        #if($info.key == "groupname")
+            #set ($groupname = $info.value)
+        #end
+        #if($info.key == "list")
+            #set ($list = $info.value)
+        #end 
+        #if($info.key == "groupid")
+            #set ($groupid = $info.value)
+        #end 
+     #end
+	<div class="easyui-panel" title="复议主题--$!{groupname}">
+	 #if($list.size() > 0)
+            <table class="list">
+               <tr>
+                   <td style="background-color: #95B8E7;text-align: center;">委员姓名：</td>
+                   <td style="background-color: #95B8E7;text-align: center;">录入时间：</td>
+                   <td style="background-color: #95B8E7;text-align: center;">内容：</td>
+               </tr>
+                #foreach($i in $list)
+                <tr>
+                    <th style="width: 60px">${i.spename}</th>
+                    <th style="width: 70px">${i.opttime}</th>
+                    <td colspan="3">$!{i.remark}</td>
+                </tr>
+                #end
+            </table>
+      #else
+      <table class="list">
+           <tr>
+               <td style="text-align: center;">无委员意见 !</td>
+           </tr>
+      </table>
+      #end
+	</div>
+	#end

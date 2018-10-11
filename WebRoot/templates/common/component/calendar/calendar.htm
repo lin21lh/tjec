@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>
+日期选择&nbsp;
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<link rel="stylesheet" type="text/css" href="../../../../../component/jquery-easyui-1.4/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../../../../../component/jquery-easyui-1.4/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../../../../css/common.css">
+<script type="text/javascript" src="../../../../../component/jquery-easyui-1.4/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../../../../../component/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../../../../component/jquery-easyui-1.4/locale/easyui-lang-zh_CN.js"></script>
+<script>
+function calendarLoad() {
+	setInterval(function() {window.focus();}, 1000);
+	window.focus();
+	$('#calendar').calendar({
+		fit : true,
+		current:new Date(),
+		onSelect : function(date) {
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate();
+			var datedata = y+ (m < 10 ? '-0' : '-') + m + (d < 10 ? '-0' : '-')+d;
+			var ua = navigator.userAgent.toLowerCase();
+			var isChrome=ua.indexOf("chrome")!=-1;
+		  	if(isChrome){
+		 		window.ctrlobj.textbox("setValue", datedata);
+		  	}else
+		  		window.returnValue=datedata;
+		  	window.close();
+		}
+	});
+}
+
+function fkeydown() {
+	if(event.keyCode==27) {
+		event.returnValue = null;
+		window.returnValue = null;
+		window.close();
+	}
+	
+}
+
+document.onkeydown=fkeydown;
+</script>
+<body onload="calendarLoad()">
+<div id="calendar" class="easyui-calendar" style="width:180px;height:180px;"></div>
+</body>
+</html>

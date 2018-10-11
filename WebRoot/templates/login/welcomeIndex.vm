@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>首页</title>
+<style type="text/css">
+	.cs-west{
+		width: 50%;
+		padding: 0;
+	}
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+	}
+</style>
+<script type="text/javascript" src="$contextpath/templates/login/welcomeIndex.js"></script>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+
+#**
+	首页
+	@author  maqs 
+	@date 2015年5月20日14:42:20
+*#
+</head>
+<body id="layout" class="easyui-layout" data-options="tools:[{iconCls:'icon-reload', handler : function() { showWaitWorkDatagrid(); loadDataToWaitWorkgrid();}}]">
+	<div data-options="region:'north',iconCls:'icon-toRemind'" title="待办提醒" style="height:33%">
+		<div class="easyui-layout" style="height:100%"  border="false">
+			<div data-options="region:'center'" style="height:100%;width:50%">
+				<table id="waitworkDatagrid1" width='100%'></table>
+			</div>
+			<div data-options="region:'east'" style="height:100%;width:50%">
+				<table id="waitworkDatagrid2" width='100%' ></table>
+			</div>
+		</div>
+	</div>
+	<div data-options="region:'center',iconCls:'icon-notice',tools:[{iconCls:'icon-reload', handler : function() { showWaitWorkDatagrid(); loadDataToWaitWorkgrid();}}]" title="公告" style="height:33%" >
+		<div id='noticepanel' class="easyui-panel"  border="false" fit="true">
+			<table id="showNoticegrid" width='100%'>
+			</table>
+		</div>
+	
+	</div>
+	<div data-options="region:'south',split:true,iconCls:'icon-message'"  title="留言" style="height:33%;">
+		<div id='messagepanel' class="easyui-panel"  border="false" fit="true">
+			<table id="showMessagegrid" width='100%'>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

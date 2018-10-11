@@ -1,0 +1,116 @@
+<HTML>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=gb2312">
+<link rel="stylesheet" href="../temp1.css" type="text/css">
+</head>
+<body bgcolor=#ffffff vlink=#0000ff>
+
+
+<div id="Tag306"/><br><br><br>
+　　<font style='font-size:15pt'>10.事件</font><hr color=#2266ee size=1>
+　　Supcan Report的OnEvent( id, Event, p1, p2, p3, p4 )事件含义及参数分别如下：<br>
+<table width=98% cellpadding=4 cellspacing=0 border=1 borderColorLight=#999999 borderColorDark=#999999 align="center">
+<tr bgcolor=#eaeaea><td>idEvent</td><td>含义</td><td>p1</td><td>p2</td><td>p3</td><td>p4</td></tr>
+
+<tr><td rowspan=2>SelChanged</td><td>选中了单元格</td><td>行号</td><td>列号</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>选中了内嵌对象</td><td>别名</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<tr><td rowspan=3>Clicked</td><td>鼠标点到某单元格</td><td>行号</td><td>列号</td><td>超链接的URL<br>(如果该单元定义了超链接)</td><td>数据源超链接的列ID(如果是数据源的超链接)</td></tr>
+<tr><td>鼠标点到某统计图</td><td>统计图别名</td><td>系列名</td><td>数据项名</td><td>数据所在的单元格名称. 如果是多工作表，则在后面跟随有类似 "@sheet1" 的宏</td></tr>
+<tr><td>鼠标点到某内嵌对象</td><td>别名</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>DblClicked</td><td>鼠标双击某单元格</td><td>行号</td><td>列号</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<tr><td rowspan=3>EditChanged</td><td>单元格内容被修改</td><td>行号</td><td>列号</td><td>输入前的内容</td><td>&nbsp;</td></tr>
+<tr><td>文本框内容被修改</td><td>别名</td><td>&nbsp;</td><td>输入前的内容</td><td>&nbsp;</td></tr>
+<tr><td colspan=5>备注：通常是输入框关闭(焦点离开)后才触发该事件的</td></tr>
+
+<tr><td rowspan=3>Editing</td><td>正打开着的单元格的输入框内容有变</td><td>行号</td><td>列号</td><td>当前内容串</td><td>&nbsp;</td></tr>
+<tr><td>正打开着的文本框的输入框内容有变</td><td>别名</td><td>&nbsp;</td><td>当前内容串</td><td>&nbsp;</td></tr>
+<tr><td colspan=5>备注：在输入过程中，输入内容并不会立即更新到单元格中</td></tr>
+
+<tr><td>Checked</td><td>鼠标选了Checkbox</td><td>行号</td><td>列号</td><td>Checkbox的值(1/0)</td><td>&nbsp;</td></tr>
+<tr><td>Saved</td><td>报表已保存</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Exported</td><td>报表已转换输出</td><td>全文件名<br>(多个文件以逗号分隔)</td><td>文件类型<br>(即后缀)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td rowspan=2>MenuBeforePopup</td><td>右键菜单即将弹出<br>(单元格)</td><td>行号</td><td>列号</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>右键菜单即将弹出<br>(文本框/统计图/图片等)</td><td>别名，多个别名间以逗号分隔</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>MenuClicked</td><td>右键菜单的自定义部分被选中</td><td>功能号</td><td>行号</td><td>列号</td><td>&nbsp;</td></tr>
+<tr><td>Toolbar</td><td>鼠标点击了工具条中的某按钮.<br>注:你可以通过全局函数 CancelEvent 去阻止功能的执行</td><td>功能号</td><td>参数，和功能号有关</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<tr><td>RowInserted<br>BeforeRowInserted<br>RowDeleted<br>BeforeRowDeleted</td><td>行已插入<br>行插入前<br>行已删除<br>行删除前</td><td>行号</td><td>数量</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>ColInserted<br>BeforeColInserted<br>ColDeleted<br>BeforeColDeleted</td><td>列已插入<br>列插入前<br>列已删除<br>列删除前</td><td>列号</td><td>数量</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>WorkSheetSelChanged</td><td>当前工作表已切换</td><td>工作表序号</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>HotKey</td><td>触发了快捷键</td><td>快捷键</td><td>如果当前选中的是单元格，为所在行号; <br>如果是内嵌对象，则为它的别名</td><td>当前单元格的列号, 如果有单元格选中的话</td><td>&nbsp;</td></tr>
+<tr><td>BeforePrint</td><td>正准备要打印.<br>注:可在事件中执行全局函数 CancelEvent 去阻止打印.</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Printed</td><td>已打印</td><td>已打印次数</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>PrintSetupBeforeUpdate</td><td>打印参数设置对话框已经按下"确认", 但尚未更新到报表.<br>注:可在事件中执行全局函数 CancelEvent 去阻止确认</td><td>即将要更新的新的配置串(XML串)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>PrintSetupUpdated</td><td>打印参数设置对话框已经按"确认"关闭, 并且已经更新到报表.</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Calced</td><td>已执行计算</td><td>0 - 执行了工具条上的“重新计算”;<br>1 - 执行了"除数据源外，重新计算";<br>2 - API执行了计算函数;<br>3 - API执行了当前工作表的计算</td><td>0 - 是同步计算<br>1 - 是异步计算<br><br>注：工具条上的“计算”按钮是异步计算</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<tr><td>UserEvent</td><td>全局函数 PostMessage 发出的自定义事件</td><td>自定义</td><td>自定义</td><td>自定义</td><td>自定义</td></tr>
+<tr><td>树列表别名.树列表事件名</td><td>内嵌树列表的事件</td><td>参见树列表</td><td>参见树列表</td><td>参见树列表</td><td>参见树列表</td></tr>
+</table>
+<b>备注1</b>：行列增删“前”的4个事件(BeforeRowInserted、BeforeColInserted、BeforeRowDeleted、BeforeColDeleted)，是用户交互过程中触发的，增删行列的函数是不会触发该事件的；<br>
+<b>备注2</b>：在行列增删“前”事件中，你可以通过全局函数 CancelEvent 去阻止下一步的行列增删动作，如下例：<br>
+<pre class='cpp'>
+function OnEvent(id, Event, p1, p2, p3, p4)
+{
+ if(Event == "BeforeRowInserted") {
+  AF.func("CancelEvent", "");  //阻止插入行
+ }
+}</pre>
+<b>备注3</b>：<font color=red>SelChanged、Clicked、DblClicked 和 EditChanged、Editing</font>事件需要SubscribeEvent( )预订才会生效, 事件的js用法可参见下例：<br>
+<pre class='cpp'>
+function OnReady( id )
+{
+ AF.func( 'ReadXML', 'index.XML' );　　　　　//加载报表
+ AF.func("SubscribeEvent", "SelChanged, EditChanged");　　//预订事件
+}
+function OnEvent(id, Event, p1, p2, p3, p4)
+{
+ if( Event == "SelChanged" ) {
+  //...略
+ }
+}</pre>
+<b>备注4</b>：Checked事件必须要先预订 Clicked 事件才能生效；<br>
+<br>
+
+
+<div id="Tag310"/><br><br><br>
+　　<font style='font-size:15pt'>11.其它</font><hr color=#2266ee size=1>
+<b>11.1 异步计算</b><br>
+　　通过API函数Calc( )，或者工具条上的“计算”按钮，可以触发报表的填数计算。如果计算过程比较漫长(例如后端计算性能、数据量等因素导致)，浏览器表现为锁死, 甚至无法切换Tab选项卡，必须要等到整个计算过程结束才能恢复可操作。<br>
+<br>
+　　硕正报表从1.0.66.0版开始，增加了异步计算功能，解决了计算过程中的浏览器僵死问题。<br>
+　　如果Calc( )函数的参数设为 "mode=asynch", 就表示采用异步计算模式，计算过程被安排在另一个线程中，而该函数则立即返回，当计算真正结束时，报表组件会通过“Calced”事件通知浏览器。<br>
+　　从启动异步计算，到发出“Calced”事件之间，你不应该调用该控件的任何API函数，否则异步将无意义。<br>
+<img src='glass.jpg'><font color="552222">工具条上的计算按钮(<img src='../../res/calc.bmp'>)，也是采用异步计算的.</font><br>
+<br><br>
+
+<b>11.2 内嵌树列表(Treelist)</b><br>
+　　从1.0.72.0版开始，工具条中增加了树列表的图标，您可以把一个树列表直接加入到报表中。在上报模式中，树列表也能够以“指标”的方式被预先定义在指标库中。<br>
+　　内嵌树列表只有在运行时(RunTime)才是真正可用的。 而在设计时(DesignTime), 树列表始终处于不活动的状态，您看到的树列表只是一幅图，供您拖拽布局：<br>
+<center><img src='report7.jpg'></center><br>
+　　内嵌树列表 和 普通的页面中的树列表，完全是同一种东西，但是访问报表中的内嵌树列表，其方法和访问页面中树列表略有差别：必须先获得树列表的句柄，然后以扩展函数方式调用，如下例：<br>
+<pre class='cpp'>
+//先获得树列表的句柄 (注："m010" 是树列表的别名)
+var h = AF.func("GetHandle", "m010");
+ 
+//以扩展方式执行该树列表的函数
+var xml = AF.func(h + "GetChangedXML", "level=0;isIgnoreChange=true");</pre>
+　　通过上述的扩展方式，您可以访问树列表的几乎所有函数。<br>
+　　在运行时(RunTime), 报表内嵌的树列表能向页面抛出 OnEvent(id, Event, p1, p2, p3, p4) 事件，但是和普通的页面树列表有一个差别：Event(事件名)前面带有树列表的别名，例如:<br>
+<pre class='cpp'>
+function OnEvent(id, Event, p1, p2, p3, p4)
+{
+ if(id=='AF') { 	//id不变
+   //树列表的双击事件，其中 "m010" 是触发了事件的树列表的别名
+   if(Event == "m010.DblClicked") {
+    ...
+   }
+ }
+}</pre>
+<br>
+
+<br><br><br><br><br><br>
+<script type='text/javascript' src='nstd.js'></script>
+</body></html>

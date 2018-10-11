@@ -1,0 +1,56 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script>
+	$('#img1')[0].src='$contextpath/workflow/WfProcessDefinitionController/getWorkflowImage.do?instanceid=$wfid&sno='+Math.random();
+</script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="messageListForm" method="post">
+	
+	<div id="tt" class="easyui-tabs" >
+		 <div title="流程图示信息" >
+    		<img id="img1" src=""/>
+         </div>
+		  <div title="流程明细信息">
+			<table class="list">
+				<tr>
+        			<td style="width:40px;height:35px;align:center">序号</td>
+        			<td style="width:60px;height:35px;align:center">处理节点</td>
+        			<td style="width:100px;height:35px;align:center">处理类型</td>
+        			<td style="width:120px;height:35px;align:center">处理人</td>
+					<td style="width:120px;height:35px;align:center">处理时间</td>
+					<td style="width:100px;height:35px;align:center">处理意见</td>
+        		</tr>
+    			#if($wfList.size() != 0 )
+    				#foreach($i in $wfList)	
+						<tr>
+                			<td  style="width:40px;height:35px">
+            			   $!{velocityCount}
+            			   </td>
+                			<td  style="width:100px;height:35px">
+            				$!{i.actiName}
+            			   </td>
+                			<td  style="width:100px;height:35px">
+            				$!{i.transition}
+            			   </td>
+                			<td  style="width:80px;height:35px">
+            				$!{i.authorName}
+            			   </td>
+                			<td  style="width:80px;height:35px">
+            				$!{i.enddate}
+            			   </td>
+                			<td  style="width:100px;height:35px">
+            				$!{i.opinion}
+            			   </td>
+                		</tr>
+    				#end
+    			#end
+            </table>
+          </div>
+    </div>	 
+</form>

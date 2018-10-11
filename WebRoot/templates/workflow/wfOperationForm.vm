@@ -1,0 +1,36 @@
+<form id='operform' method='POST'>
+	<table class='list'>
+		<tr>
+			<th>操作编码：</th>
+			<td>
+				<input id='opcode' name='code' type='text' class='easyui-textbox'
+					 data-options='required:true,missingMessage:"请输入操作编码"'  style='width:435px' />
+				<input id="opkey" name="key" type="hidden" />
+				<input id="opid" name="id" type="hidden" />
+			</td>
+		</tr>
+		<tr>
+			<th>操作名称：</th>
+			<td>
+				<input id='opname' name='name' type='text' class='easyui-textbox'
+					 data-options='required:true,missingMessage:"请输入操作名称"'  style='width:435px' />
+			</td>
+		</tr>
+		<tr>
+			<th>类名：</th>
+			</th>
+			<td>
+				<input id='classname' name='classname' type='text' class='easyui-textbox' 
+					data-options='required:true,missingMessage:"请输入类名"' style='width:435px' />
+			</td>
+		</tr>
+		<tr>
+			<th>方法名：</th>
+			<td>
+				<input id='methodname' name='methodname' type='text' class='easyui-textbox'   style='width:435px'
+					data-options='required:true,missingMessage:"请输入方法名"' />
+			</td>
+		</tr>
+	</table>
+</form>
+

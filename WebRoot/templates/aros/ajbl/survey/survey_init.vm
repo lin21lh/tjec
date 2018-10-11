@@ -1,0 +1,121 @@
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+
+</style>
+<body>
+<div id="surveyDiv" >
+
+<div style="float:left;width:100%;">
+  <div style="width:63%;float:left;">
+		<table id = 'surveyTable'></table>
+  </div>
+  <div style="width:2%; float:left;text-align:center">
+		&nbsp;
+  </div>
+  <div style="width:35%;float:left;">
+		<div id="toolbar_menu"  class="linkbutton_group  datagrid-toolbar">
+			<a id="linkbutton_save" href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true">保存</a>
+			<span class='xian' ></span>
+			<a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  iconCls="icon-undo" plain="true">取消</a>
+		</div>
+		<div id="survey_win" class="easyui-panel" style="width: 100%; height: 511px;">
+			<form id="surveyForm" method="post">
+				<input type="hidden" name="srid" id="srid" />
+				<input type="hidden" name="caseid" id="caseid" />
+				
+				<table class="list" >
+					<tr >
+						<th >调查时间：</th>
+						<td>
+						  <input id="investtime" class="easyui-datebox" name="investtime" required="true" 
+                            style="width:200px" missingMessage="请输入调查时间" editable="false" /><font color='red'>*</font>
+						</td>
+						
+					</tr>
+					<tr >
+						<th >调查地点：</th>
+						<td>
+							<input id="place" name="place" class="easyui-textbox" data-options="validType:{length:[0,30]}"  style="width:200px"
+								missingMessage="请输入调查地点" required="true"/><font color='red'>*</font>
+						</td>
+                    </tr>
+					<tr>
+						<th>调查人名称：</th>
+						<td>
+							<input id="invester" name="invester" class="easyui-textbox" data-options="validType:{length:[0,26]}" style="width:200px"
+								missingMessage="请输入调查人名称" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr >
+						<th>记录人名称：</th>
+						<td>
+							<input id="recorder" name="recorder" class="easyui-textbox" data-options="validType:{length:[0,26]}"  style="width:200px"/>
+						</td>
+					</tr>
+					<tr>
+						<th >被调查人名称：</th>
+						<td>
+							<input id="efinvester" name="efinvester" class="easyui-textbox" data-options="validType:{length:[0,26]}" style="width:200px" 
+								missingMessage="请输入被调查人名称" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr >
+						<th>被调查人性别：</th>
+						<td>
+							<select id="sex" name="sex"  class="easyui-textbox" style="width:200px" />
+						</td>
+					</tr>
+					<tr>
+						<th>被调查人联系电话：</th>
+						<td > 
+							<input id="phone" name="phone" class="easyui-textbox" data-options="validType:{length:[0,13]}" style="width:200px"
+								missingMessage="请输入被调查人联系电话" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					
+					<tr>
+						<th >被调查事项：</th>
+						<td >
+							<input id="item" name="item" class="easyui-textbox" multiline="true" data-options="prompt:'最多可输入160个汉字',validType:{length:[0,160]}" style="width:200px;height:70px;"
+								missingMessage="请输入被调查事项" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+					<tr>
+						<th >告知权利与义务：</th>
+						<td >
+							<input id="obligrights" name="obligrights"  class="easyui-textbox" multiline="true" data-options="prompt:'最多可输入160个汉字',validType:{length:[0,160]}" style="width:200px;height:70px;" />
+						</td>
+					</tr>
+					<tr>
+						<th >调查情况：</th>
+						<td >
+							<input id="remark" name="remark" class="easyui-textbox" multiline="true"  data-options="prompt:'最多可输入300个汉字',validType:{length:[0,300]}" style="width:200px;height:70px;"
+								missingMessage="请输入调查情况" required="true"/><font color='red'>*</font>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+  </div>
+</div>
+
+		
+	
+</div>
+</body>

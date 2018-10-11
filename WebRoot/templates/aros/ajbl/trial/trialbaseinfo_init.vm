@@ -1,0 +1,133 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/ajbl/trial/js/trialbaseinfo_form.js"></script>
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    .cs-west{
+        width: 160px;
+        padding: 0;
+    }
+    
+    .linkbutton_group{
+        border-bottom: 1px solid #95B8E7;
+        background-color:#eee;
+    }
+    
+    input {
+        line-height:20px;
+        border:1px solid #95B8E7;
+    }
+
+</style>
+
+<div id="trialDiv" >
+	<div style="float:left;width:100%;">
+	  <div style="width:63%;float:left;">
+	        <table id = 'trialTable'></table>
+	  </div>
+	  <div style="width:2%; float:left;text-align:center">
+	        &nbsp;
+	  </div>
+	  <div style="width:35%;float:left;">
+	        <div id="toolbar_menu"  class="linkbutton_group  datagrid-toolbar">
+	            <a id="linkbutton_save" href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true">保存</a>
+	            <span class='xian' ></span>
+	            <a id="linkbutton_cancel" href="#" class="easyui-linkbutton"  iconCls="icon-undo" plain="true">取消</a>
+	        </div>
+	        <div id="trial_win" class="easyui-panel" style="width: 100%; height: 511px;">
+	            <form id="trialForm" method="post">
+	                <input type="hidden" name="trialid" id="trialid" />
+	                <input type="hidden" name="caseid" id="caseid" />
+	                <input type="hidden" name="fjkeyid" id="fjkeyid" value="$!{fjkeyid}"/>
+	                
+	                <table class="list" >
+	                    <tr >
+	                        <th >审议类型：</th>
+	                        <td>
+	                            <input id="trialtype" name="trialtype" class="easyui-combobox" 
+	                                missingMessage="请选择审议类型" style="width:200px;" required="true" />
+                                <font color='red'>*</font>
+	                        </td>
+	                    </tr>
+	                    <tr show="1" style="display:none">
+	                        <th >听证类型：</th>
+	                        <td >
+	                            <input id="htype" name="htype" class="easyui-combobox" 
+                                missingMessage="请选择听证类型" style="width:200px;" required="true" />
+	                            <font color='red'>*</font>
+	                        </td>
+	                    </tr>                    
+	                    <tr show="1" style="display:none">
+	                        <th >主持人：</th>
+	                        <td>
+	                            <input id="moderator" name="moderator" class="easyui-textbox"  
+                                missingMessage="请输入主持人" style="width:200px;" required="true" />
+                                <font color='red'>*</font>
+	                        </td>
+	                    </tr>
+	                    <tr >
+	                        <th><span content="1"></span>时间：</th>
+	                        <td>
+	                            <input id="trialtime" name="trialtime" class="easyui-datebox" editable="false" 
+	                            missingMessage="请输入时间" style="width:200px" required="true" />
+	                            <font color='red'>*</font>
+	                        </td>
+	                    </tr>
+	                    <tr >
+	                        <th><span content="1"></span>地点：</th>
+	                        <td>
+	                            <input id="trialplace" name="trialplace" class="easyui-textbox" 
+	                            missingMessage="请输入地点" style="width:200px" required="true" />
+	                            <font color='red'>*</font>
+	                        </td>
+	                    </tr>                    
+	                    <tr >
+	                        <th>记录人：</th>
+	                        <td>
+	                            <input id="recorder" name="recorder"  class="easyui-textbox" 
+	                            missingMessage="请输入记录人" style="width:200px" required="true" />
+	                            <font color='red'>*</font>
+	                        </td>
+	                    </tr>                    
+	                    <tr >
+	                        <th>参加人：</th>
+	                        <td>
+	                            <input id="joiner" name="joiner"  class="easyui-textbox" 
+	                            missingMessage="请输入参见人" style="width:200px" required="true" />
+	                            <font color='red'>*</font>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <th><span content="1"></span>事项：</th>
+	                        <td >
+	                            <input id="matters" name="matters" class="easyui-textbox" multiline="true"  data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" 
+                                missingMessage="请输入事项" style="width:200px;height:120px;" required="true" />
+                                <font color='red'>*</font>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <th><span content="1"></span>内容：</th>
+	                        <td >
+	                            <input id="contents" name="contents" class="easyui-textbox" multiline="true"  data-options="prompt:'最多可输入2000个汉字',validType:{length:[0,2000]}"
+                                missingMessage="请输入内容" style="width:200px;height:160px;" required="true" />
+                                <font color='red'>*</font>
+	                        </td>
+	                        
+	                    </tr>
+			            <tr>
+			                <th>附件：</th>
+			                <td colspan="3" valign='top' style="height:40px" id="files">
+			                    <img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="clickUploadDiv('TSJL', 'files')"/>
+			                </td>
+			            </tr>
+	                </table>
+	            </form>
+	        </div>
+	  </div>
+	</div>
+</div>
+
+<!--上传附件层-->
+<div id='uploadifydiv'></div>
+

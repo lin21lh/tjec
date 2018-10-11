@@ -1,0 +1,31 @@
+#parse("common/extensions-v14.vm")
+<div>
+    <table class="list">
+        
+        #if(${info.contype}=="02" || ${info.contype}=="03")
+        <tr>
+            <th>名称：</th>
+            <td><span>$!{info.title}</span></td>
+        </tr>
+        <tr>
+            <th>类型：</th>
+            <td><span>$!{typename}</span></td>
+        </tr>
+        #end
+        #if(${info.contype} != "02" && ${info.contype} != "03")
+        <tr>
+            <th>标题：</th>
+            <td><span>$!{info.title}</span></td>
+        </tr>
+        <tr>
+            <th>接收人：</th>
+            <td><span>$!{info.receiveusername}</span></td>
+        </tr>
+        #end
+        <tr>
+            <th>内容：</th>
+            <td><div id="content"></div></td>
+        </tr>
+    </table>
+</div>
+

@@ -1,0 +1,6 @@
+##工作流节点操作类型选择对话框
+
+<div class="easyui-panel" fit="true" border='false' >
+	<table id='oper_select_grid'>
+	</table>
+</div>

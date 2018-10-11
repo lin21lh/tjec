@@ -1,0 +1,23 @@
+<!DOCTYPE>
+<html>
+<head>
+	  <link rel="stylesheet" type="text/css" href="$contextpath/templates/aros/xzfy/js/xzfypro.css">
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/xzfyCompose.js"></script>
+
+</head>
+<body>
+<!--复议调解-->
+<div id="flowDiv" class="easyui-panel" title="案件流程进度" style="width:100%;height:20%;" >
+		<table id="fyComposeTable" class="ancestors" border="0">
+			<tbody>
+				<tr >
+					<th id="compose_jd" style="display:none" onclick="fyCompose()">复议调解</th>
+				</tr>
+				<tr id="cmpstr"></tr>
+			</tbody>
+		</table>
+</div> 
+
+</body>
+
+</html>

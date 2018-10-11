@@ -1,0 +1,69 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<script type="text/javascript">
+var messageContent = "$messageContent";
+$(function(){
+addLockDiv($("#messagePanel"));
+});
+function addLockDiv(panel) {
+	$("<div class=\"window-mask\"></div>").css({ display: "block", width: panel.width()+15, height: panel.height()}).appendTo(panel);
+}
+</script>
+<style type='text/css'>
+    input {
+    line-height:20px;
+    border:1px solid #95B8E7;
+    }
+</style>
+<div class="easyui-layout" fit="true">
+	<input type="hidden" id="messageContent" name="messageContent" value="$messageContent" />
+    <div region="center" >
+        <table class="list">
+            <tr>
+                <th style='width:15%'>审批意见</th>
+                <td style='width:85%'>
+                    <input id="opinionDialog" class="easyui-textbox" name="opinionDialog" multiline="true"  required="true"  missingMessage="请输入审批意见" data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}" style="width:100%;height:113px;" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div region="south" border="false"  style="height:59%" id='noRevoke'>
+        <div  style="border-bottom: 1px solid #95B8E7;background-color:#ECF3FF;">
+            <input  type="checkbox" id="isSendMesssage" text="123" onclick="checkFunc('isSendMesssage')" value="isalluser">短信通知</input>
+		</div>
+            <div class="easyui-layout" data-options="fit:true">
+                <div id="messagePanel" class="easyui-panel"  fit="true" >
+                    <table class="list" id='tableChange'>
+                        <tr id='test'>
+                            <th style='width:15%'>手机号</th>
+                            <td style='width:85%'>
+                                <select  id="singlePhonenumbersDialog" class="easyui-combobox" style=" width:100%;" multiple ="true" editable='false' >
+								 #foreach($i in $phonenumbers)
+									#if($!{velocityCount}==1)
+										#if($i.get('phone')=="#")
+											<option value="$!{velocityCount}-$i.get('phone')" selected='selected'>$i.get('name')<未设置手机号></option>
+										#else
+											<option value="$!{velocityCount}-$i.get('phone')" selected='selected'>$i.get('name')<$i.get('phone')></option>
+										#end
+									#else 
+										#if($i.get('phone')=="#")
+											<option value="$!{velocityCount}-$i.get('phone')">$i.get('name')<未设置手机号></option> 
+										#else
+											<option value="$!{velocityCount}-$i.get('phone')">$i.get('name')<$i.get('phone')></option> 
+										#end
+									#end
+								 #end
+								</select>
+							</td>
+                        </tr>
+                        <tr>
+                            <th style='width:15%'>短信内容</th>
+                            <td style='width:85%'>
+                                <input id="singleMessageDialog" class="easyui-textbox" name="singleMessageDialog" multiline="true"  missingMessage="请输入短信内容" data-options="prompt:'最多可输入200个汉字',validType:{length:[0,200]}" style="width:100%;height:113px;" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

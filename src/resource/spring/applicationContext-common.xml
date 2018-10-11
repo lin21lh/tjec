@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="    
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
+	<!-- 加载配置文件 -->
+	<bean id="propertyCfg" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">  
+         		<list>
+         			<!--  -->
+         			<value>classpath:resource/hibernate/hibernate.properties</value>
+         			<!--  -->
+             		<value>classpath:resource/system/system.properties</value>
+           	</list>  
+       	</property>
+	</bean>
+	<!-- -->
+	<bean id="systemCfg" class="com.jbf.sys.systemConfiguration.SystemCfg" >
+		<property name="multiDataSourceEnabled"  value="${system.multiDataSourceEnabled}" />
+		<property name="verificationcodeEnabled" value="${system.verificationcodeEnabled}" />
+		<property name="weatherEnable" value="${system.weatherEnable}" />
+	</bean>
+
+	<!--配置component-scan 扫描annotation类 -->
+	<context:component-scan
+	base-package="com.jbf.**.dao,com.jbf.**.component,com.jbf.**.service,com.jbf.base.dic.util,com.jbf.**.eventlistener,com.jbf.common.security.datasource.service,com.jbf.common.datascope,
+		,com.jbf.base.excel.outexcel.exceute,com.jbf.common.dao"
+	use-default-filters="true" />
+	<!-- 业务扫描类配置  2015年4月3日10:46:43 xinpeng -->
+	<context:component-scan base-package="com.wfzcx.**.dao,com.wfzcx.**.service,com.wfzcx" use-default-filters="true" />
+
+<!-- 	<context:component-scan -->
+<!-- 		base-package="com.jbf.base,com.jbf.sys,com.jbf.common,com.jbf.workflow" -->
+<!-- 		use-default-filters="true" /> -->
+
+	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+	<!--国际化信息，包含报错信息 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:resource/i18n/appErrMsg</value>
+				<value>classpath:resource/i18n/workflowErrMsg</value>
+				<value>classpath:resource/i18n/workflowGlobalConfig</value>
+			</list>
+		</property>
+	</bean>
+	<bean class="com.jbf.common.util.WebContextFactoryUtil" />
+
+	<bean class="com.jbf.common.exception.JbfMappingExceptionResolver" >
+		<property name="statusCodes">
+		 	<props>
+	     		<prop key="/base/error/errorPage">404</prop>
+			</props>
+		</property>
+		<property name="exceptionMappings">   
+        	<props>
+          		<prop key="com.jbf.common.exception.AppException">/base/error/errorPage</prop>
+          		<prop key="java.sql.SQLException">/base/error/errorPage</prop>
+          		<prop key="javax.servlet.ServletException">/base/error/errorPage</prop>
+          		<prop key="java.lang.Exception">/base/error/errorPage</prop>
+       		</props>   
+       	</property> 
+	</bean>
+	<!-- 文件上传 2016年9月19日 -->
+	<bean id="multipartResolver" class="com.jbf.common.uploadfile.MyMultipartResolver" p:defaultEncoding="utf-8">
+	<!-- 以字节为单位的最大上传文件的大小 -->
+	<!--  <property name="maxUploadSize" value="1000000" />-->
+		<property name="includeUrls" value=""/> 
+    </bean>
+</beans> 

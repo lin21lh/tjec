@@ -1,0 +1,35 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppms/wdjg/js/wdzs_detail.js"></script>
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+    
+	#zs_div {
+    	
+    	margin-right: auto;
+    	margin-left: auto;
+    	margin-top: 30px;
+    	font-size: 14px;
+    	font-weight: bold;
+		text-align : center;
+    }
+</style>
+<script >
+	var wd_projectid = "$!wd_projectid";
+</script>
+<div id="zs_div">
+	<input id="wd_projectid" type="hidden" value="$!wd_projectid"/>
+	<table id="wdzsTable" width="90%" border="0" style="margin:auto;">
+		<tr bgcolor="#AFD9E7">
+           <td width="20%" height="40" align="center">项目识别</td>
+           <td width="20%" height="40" align="center">环节分类</td>
+           <td width="40%" height="40" align="center">相关文档</td>
+           <td width="20%" height="40" align="center">下载</td>
+        </tr>
+	</table>
+</div>

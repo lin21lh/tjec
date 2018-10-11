@@ -1,0 +1,59 @@
+#parse("common/extensions-v14.vm")
+<link rel="stylesheet" type="text/css" href="$contextpath/css/print.css">
+<form id="noticeForm" method="post" style="background:#fff">
+    <input type="hidden" id="noticeid" name="noticeid" value="$!{info.noticeid}" />
+    <div align="center">
+        <table width="90%">
+            <tr>
+                <td>
+                    <div>
+                        <div align="center"><h3>被申请人答复书</h3></div>
+                        <div align="right"><h5>[<input id="code" name="code" class="css_span" style="width:100px;" type="text" value="$!{info.code}"/>]号</h5></div>
+                    </div>
+                    <table rules="none">
+                        <tr> 
+                            <td>
+                            <div>
+                                                                被申请人：<input id="defName" name="defName" class="css_span" style="width: 250px;" type="text" value="$!{info.defName}" />
+                                                               （住所）<input id="defAddress" name="defAddress" class="css_span" style="width: 300px;" type="text" value="$!{info.defAddress}" /><br />
+                                                               法定代表人：<input id="defCorporation" name ="defCorporation" class="css_span" style="width: 250px;" value="$!{info.defCorporation}" />
+                                                               （住所）<input id="defCorAddress" name="defCorAddress" class="css_span" style="width: 283px;" value="$!{info.defCorAddress}" /><br />
+                            </div>
+                            <p>
+                                <input id="appName" name="appName" class="css_span" style="width: 410px;" type="text" value="$!{info.appName}" />
+                                                                 对本机关于
+                                <input id="year" name="year" class="css_span" style="width: 40px;" value="$!{info.year}" />年
+                                <input id="month" name="month" class="css_span" style="width: 20px;" value="$!{info.month}" />月
+                                <input id="day" name="day" class="css_span" style="width: 20px;" value="$!{info.day}" />日
+                                                                 作出的
+                                <input id="appCase" name="appCase" class="css_span" style="width: 300px;" type="text" value="$!{info.appCase}" />
+                                                                 不服提出行政复议申请，根据你机关行政复议答复通知书（文号
+                                <input id="otherCode" name="otherCode" class="css_span" style="width: 100px;" type="text" value="$!{info.otherCode}" />
+                                                                 ）的要求，现答复如下：
+                                <input id="defReply" name="defReply" class="css_span" style="width: 700px;" value="$!{info.defReply}" />
+                                <p>此 &emsp;致</p>
+                                <input id="agencyName" name="agencyName" class="css_span" style="width: 200px;" type="text" value="$!{info.agencyName}" />
+                                <p>
+                                                                                                          附件：1．被申请人答复书一式三份<br/>
+                                    &emsp;&emsp;&emsp;2．证据目录清单及相关证据<br/>
+                                    &emsp;&emsp;&emsp;3．授权委托书（有委托代理人的）<br/>
+                                </p>
+                              </p>
+                          </td>
+                        </tr>
+                        <tr> 
+                            <td>
+                                <div align="right" style="line-height: 2em;">
+                                                                         被申请人：（印章）<br/>
+                                    <input id="systemYear" name="systemYear" readonly="readonly" style="width:40px;border:none;" value="$!{info.systemYear}"/>年
+                                    <input id="systemMonth" name="systemMonth" readonly="readonly" style="width:20px;border:none;" value="$!{info.systemMonth}"/>月
+                                    <input id="systemDay" name="systemDay" readonly="readonly" style="width:20px;border:none;" value="$!{info.systemDay}"/>日 <br />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

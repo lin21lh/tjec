@@ -1,0 +1,64 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="advanceAddForm" method="post">
+	<table class="list">
+        		<!--隐藏属性start
+        			-->
+				<input type="hidden" id="workflowflag" name="workflowflag" /><!--区分保存还是保存并发送-->
+				<input type="hidden" id="advanceorgan" name="advanceorgan" /><!--报名单位-->
+				<input type="hidden" id="projectid" name="projectid" /><!--项目id-->
+				<input type="hidden" id="advanceid" name="advanceid" /><!--advanceid-->
+				<input type="hidden" id="menuid" name="menuid" /><!--菜单id-->
+				<input type="hidden" id="wfid" name="wfid" /><!--工作流id-->
+				<input type="hidden" id="activityId" name="activityId" /><!--工作流节点id-->
+        		<!--隐藏属性end
+        		-->
+        		<tr>
+        			<th  >公告发布时间</th>
+        			<td  >
+        				<input id="noticeTime" name="noticeTime" class="easyui-datebox" editable="false" required="true" missingMessage="请选择公告发布时间"  style='width:250px' />
+        			</td >
+        			<th >公告发布媒体</th>
+        			<td  >
+        				<input id="publishMedia" class="easyui-textbox" name="publishMedia"  data-options="validType:{length:[0,100]}"  required="true" missingMessage="请输入公告发布媒体" style='width:250px' />
+        			</td>
+        		</tr>
+        		<tr >
+        			<th>预审结果</th>
+        			<td >
+        				<input id="inquiryResult" name="inquiryResult"   required="true" missingMessage="请选择预审结果"   class="easyui-textbox" style='width:250px' />
+        			</td>	
+        			<th  >资格预审时间</th>
+        			<td  >
+        				<input id="inquiryTime" name="inquiryTime" class="easyui-datebox" editable="false" required="true" missingMessage="请选择资格预审时间"  style='width:250px' />
+        			</td >
+                </tr>
+        		<tr>
+        			<th>相关附件</th>
+					<td  id="ysjg" style="height:31px" > 
+        				<input id="inquiryDeclarePath" type="hidden" name="inquiryDeclarePath"/>
+						<img src="component/jquery-easyui-1.4/themes/icons/files.png" style="float:right;cursor:pointer" onClick="uploadFile('ysjg','inquiryDeclarePath',24)"/>
+					</td>
+					<td colspan="2">
+                    </td>
+				</tr>
+				<tr>
+					<th >预审结果说明</th>
+					<td colspan="3">
+						<input id="inquiryDeclare" class="easyui-textbox" name="inquiryDeclare" multiline="true" required="true" missingMessage="请输入预审结果说明" data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:695px;height:65px;" />
+					</td>
+				</tr>	
+        </table>
+		<table id="advanceAddGrid"></table>
+		<table id="advanceExpert"><input type="hidden" id="advanceExpertData" name="advanceExpertData" /></table>
+</form>
+<!--上传附件层-->
+<div id='uploadifydiv'></div>

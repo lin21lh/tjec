@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<html>
+#parse("common/extensions-v14.vm")
+<head>
+	<meta charset="UTF-8">
+    <title></title>
+	<link rel="stylesheet" type="text/css" href="$contextpath/templates/aros/xzfy/js/xzfypro.css">
+    <script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/xzfydetail.js"></script>
+
+</head>
+
+<body>
+<!--复议审批-->
+ <div id="flowDiv" class="easyui-panel" title="案件流程进度" style="width:100%;height:22%;" >
+		<table id="flowTable" class="ancestors" border="0">
+			<tbody>
+				<tr >
+					<th id="td_jd"  class="ancestorstd" onclick="jiedai()">&nbsp;接 待 阶 段&nbsp;</th>
+					<th id="td_la"  class="ancestorstd" onclick="lian()">&nbsp;立 案 阶 段&nbsp;</th>
+					<th id="td_sl"  class="ancestorstd" onclick="shenli()">&nbsp;审 理 阶 段&nbsp;</th>
+					<th id="td_jy"  class="ancestorstd" onclick="jueding()">&nbsp;决 定 阶 段&nbsp;</th>
+				</tr>
+				<tr id="nodetr"></tr>
+			</tbody>
+		</table>
+</div> 
+ 
+</body>
+
+</html>

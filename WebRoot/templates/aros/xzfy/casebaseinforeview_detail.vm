@@ -1,0 +1,80 @@
+#parse("common/extensions-v14.vm")
+<form id="xzfyReviewForm" method="post">
+	<table class="list">
+		<!--隐藏属性start-->
+		<input type="hidden" id="caseid" name="caseid" value="${caseid}" />
+		<!--案件ID-->
+		<!--隐藏属性end-->
+		<tr>
+			<th>案件编号：</th>
+			<td><span>$!{casebaseinfo.csaecode}</span></td>
+		</tr>
+		<tr>
+			<th>申请事项：</th>
+			<td><span>$!{casebaseinfo.appcase}</span></td>
+		</tr>
+		<tr>
+			<th>申请人：</th>
+			<td><span>$!{casebaseinfo.appname}</span></td>
+		</tr>
+		<tr>
+			<th>被申请人：</th>
+			<td><span>$!{casebaseinfo.defname}</span></td>
+		</tr>
+		<tr>
+			<th>第三人：</th>
+			<td><span>$!{thirdbaseinfo.thname}</span></td>
+		</tr>
+		<tr>
+			<th>审结结果：</th>
+			<td>
+			    <span>$!{result_mc}</span>
+			</td>
+		</tr>
+		<tr id="stop" style="display:none">
+			<th>中止原因：</th>
+			<td>
+				<!-- 中止原因 --> 
+				<span>$!{stopReason_mc}</span>
+			</td>
+		</tr>
+		<tr id="end" style="display:none">
+			<th>终止原因：</th>
+			<td>
+				<!-- 终止原因 -->
+				<span>$!{endReason_mc}</span>
+			</td>
+		</tr>
+		<tr id="delay" style="display:none">
+			<th>延期天数：</th>
+			<td>
+				<!-- 延期天数 -->
+				<span>$!{casebaseinfo.delaydays}</span>（天）
+			</td>
+		</tr>
+		<tr>
+			<th>承办人意见：</th>
+			<td>
+				<span>$!{agentRemark}</span>
+			</td>
+		</tr>
+		<tr>
+			<th>科室负责人意见：</th>
+			<td>
+				<span>$!{sectionRemark}</span>
+	        </td>
+		</tr>
+		<tr>
+			<th>机构负责人意见：</th>
+			<td>
+				<span>$!{organRemark}</span>
+			</td>
+		</tr>
+		<tr>
+			<th>机关负责人意见：</th>
+			<td>
+				<span>$!{officeRemark}</span>
+	        </td>
+		</tr>
+	</table>
+</form>

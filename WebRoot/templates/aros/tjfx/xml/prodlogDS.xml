@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+<project text="产品使用日志" tip="产品使用日志">
+<ds id="100000041" tip="信用报告-评级信息X" dataURL="http://127.0.0.1:8080/aros/aros/tjfx/controller/query.do" descURL="http://127.0.0.1:8080/aros/templates/aros/tjfx/xml/prodlogStat.desc.xml">产品使用日志</ds>
+</project>
+</data>

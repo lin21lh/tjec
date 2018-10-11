@@ -1,0 +1,69 @@
+#parse("common/extensions-v14.vm")
+<link rel="stylesheet" type="text/css" href="$contextpath/css/print.css">
+<form id="noticeForm" method="post" style="background:#fff">
+    <input type="hidden" id="noticeid" name="noticeid" value="$!{info.noticeid}" />
+    <div align="center">
+        <table width="90%">
+            <tr>
+                <td>
+                    <div>
+                        <div align="center"><h3>不予受理行政复议申请决定书</h3></div>
+                        <div align="right"><h5>[<input id="code" name="code" class="css_span" style="width:100px;" type="text" value="$!{info.code}"/>]号</h5></div>
+                    </div>
+                    <table rules="none">
+                        <tr> 
+                            <td>
+                            <div>
+                                                                申请人：<input id="appName" name="appName" class="css_span" style="width: 250px;" value="$!{info.appName}"/>
+                                                                性别<input id="appSex" name="appSex" class="css_span" style="width: 100px;" value="$!{info.appSex}"/>
+                                                                出生年月<input id="appBirthday" name="appBirthday" class="css_span" style="width: 170px;" value="$!{info.appBirthday}"/>
+                                <br />
+                                                                住所<input id="appAddress" name="appAddress" class="css_span" style="width:655px;" value="$!{info.appAddress}"/>
+                                <br />
+                               <!--  [（法人或者其他组织）<input id="appCorName" name="otherApp" class="css_span" style="width:425px;" value="$!{info.otherApp}"/>
+                                <br />
+                                                                  住所<input id="appCorAddress" name="otherAppAddress" class="css_span" style="width:560px;" value="$!{info.otherAppAddress}"/>
+                                ]<br />    -->
+                                                                 法定代表人或者主要负责人<input id="appCorporation" name="appCorporation" class="css_span" style="width: 210px;"  value="$!{info.appCorporation}"/>
+                                                                 职务<input id="appCorJob" name="appCorJob" class="css_span" style="width:250px;" value="$!{info.appCorJob}"/>
+                                <br />
+                                                                被申请人：<input id="defName" name="defName" class="css_span" style="width:610px;" type="text" value="$!{info.defName}"/>
+                                <br />                   
+                                                                住所<input id="defAddress" name="defAddress" class="css_span" style="width:655px;" type="text" value="$!{info.defAddress}"/>
+                                <br />
+                                                               法定代表人或者主要负责人<input id="defCorporation" name="defCorporation" class="css_span" style="width: 210px;" value="$!{info.defCorporation}"/>
+                                                               职务<input id="defCorJob" name="defCorJob" class="css_span" style="width:250px;" value="$!{info.defCorJob}"/>
+                            </div>
+                                <p>
+                                                                申请人对被申请人
+                                <input id="appCase" name="appCase" class="css_span" style="width: 300px;" type="text" value="$!{info.appCase}"/>
+                                                                不服，于
+                                <input id="appYear" name="appYear" class="css_span" style="width: 40px;" type="text" value="$!{info.appYear}"/>年
+                                <input id="appMonth" name="appMonth" class="css_span" style="width: 20px;" type="text" value="$!{info.appMonth}"/>月
+                                <input id="appDay" name="appDay" class="css_span" style="width: 20px;" type="text" value="$!{info.appDay}"/>日
+                                                                向本机关提出行政复 议申请。经审查，本机关认为：（不予受理的事实和理 由）
+                                <input id="overruleCause" name="overruleCause" class="css_span" style="width:600px;" type="text" value="$!{info.overruleCause}"/>。
+                                                                根据《中华人民共和 国行政复议法》第
+                                <input id="num" name="num" class="css_span" style="width: 60px;" type="text" value="$!{info.num}"/>
+                                                                条、第十七条的规定，决定不予受理。
+                                <br />
+                                <br />
+                              </p>
+                          </td>
+                        </tr>
+                        <tr> 
+                            <td>
+                                <div align="right" style="line-height: 2em;">
+                                    <input id="systemYear" name="systemYear" readonly="readonly" style="width:40px;border:none;" value="${info.systemYear}"/>年
+                                    <input id="systemMonth" name="systemMonth" readonly="readonly" style="width:20px;border:none;" value="${info.systemMonth}"/>月
+                                    <input id="systemDay" name="systemDay" readonly="readonly" style="width:20px;border:none;" value="${info.systemDay}"/>日 <br />
+                                                                       （行政复议机关印章或者行政复议专用章）
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

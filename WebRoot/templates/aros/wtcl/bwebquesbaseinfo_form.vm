@@ -1,0 +1,41 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/wtcl/js/bwebquesbaseinfo_form.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+
+
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="projectAddForm" method="post">
+	<table class="list">
+    		<tr>
+    			<th >提问人：</th>
+    			<td>
+    				<input id="askername" class="easyui-textbox" name="askername"  required="true" missingMessage="请输入提问人名称"
+						 data-options="validType:{length:[0,25]}" style='width:250px'/>
+                         <span style="color:red;">*</span>
+    			</td >
+    			<th >联系方式：</th>
+    			<td >
+    				<input id="phone" class="easyui-textbox" name="phone" validType="phone" required="true" missingMessage="请输入联系方式" style='width:250px' />
+                    <span style="color:red;">*</span>
+    			</td>
+    		</tr>    		
+			<tr>
+    			<th >问题描述：</th>
+    			<td colspan="3">
+    				<input id="quesdesc" class="easyui-textbox" name="quesdesc"  required="true" missingMessage="请填写问题描述"
+						 data-options="validType:{length:[0,300]}" style='width:645px;height:69px;' multiline="true"/>
+    			     <span style="color:red;">*</span>
+                </td >    			
+    		</tr>
+			
+			
+    </table>
+</form>
+

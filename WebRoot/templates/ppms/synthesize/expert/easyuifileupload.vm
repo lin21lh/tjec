@@ -1,0 +1,23 @@
+#parse("common/extensions-v14.vm")
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="file_upload_form" method="post" enctype="multipart/form-data" >
+		<input id="maxSize" name="maxSize" hidden="true" value="5">
+		<input id="fileType" name="fileType" hidden="true" value="jpg">
+        <table class='list'>
+            <tr >
+				<td style='height:30px'></td>
+			</tr>
+            <tr>
+                <td><input class="easyui-filebox" buttonText="浏览" id="file_content" name="file_content" style="width:350px"></td>
+			</tr>
+			
+		</table>
+		<p>上传说明：</p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件最大不能超过5MB<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件格式必须是：jpg</p>
+</form>

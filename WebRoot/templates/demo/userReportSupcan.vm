@@ -1,0 +1,6 @@
+#parse("common/common-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/demo/userReport.js"></script>
+<script type="text/javascript" src="$contextpath/component/supcan/binary/dynaload.js?22"></script>
+<div style="position:relative;width:100%">
+	<script>insertReport('AF', '', '${modelMap.cookie}')</script>
+</div>

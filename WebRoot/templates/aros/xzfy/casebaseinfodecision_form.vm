@@ -1,0 +1,118 @@
+#parse("common/extensions-v14.vm")
+<form id="xzfyDecisionForm" method="post">
+    <div id="tt" class="easyui-tabs" style="height:auto;">
+        <div id="tab_1" title="行政复议(决定)审批表" style="width:98%;">
+		<table class="list">
+		      <!--隐藏属性start-->
+		          <input type="hidden" id="caseid" name="caseid" value="${caseid}" /><!--案件ID-->
+		      <!--隐藏属性end-->
+		      <tr>
+		          <th>案件编号：</th>
+		          <td><span>$!{casebaseinfo.csaecode}</span></td>
+		      </tr>
+		      <tr>
+		          <th>申请事项：</th>
+		          <td><span>$!{casebaseinfo.appcase}</span></td>
+		      </tr>
+		      <tr>
+		          <th>申请人：</th>
+		          <td><span>$!{casebaseinfo.appname}</span></td>
+		      </tr>
+		      <tr>
+		          <th>被申请人：</th>
+		          <td><span>$!{casebaseinfo.defname}</span></td>
+		      </tr>   
+		      <tr>
+		          <th>第三人：</th>
+		          <td><span>$!{thirdnames}</span></td>
+		      </tr>
+		     <!--  <tr>
+		          <th>审结结果：</th>
+		          <td>
+		              <span>$!{result_mc}</span>
+		          </td>
+		      </tr>
+              <tr id="stop" style="display:none">
+                  <th>中止原因：</th>
+                  <td>
+                      <span>$!{stopReason_mc}</span>
+                  </td>
+              </tr>
+              <tr id="end" style="display:none">
+                  <th>终止原因：</th>
+                  <td>
+                      <span>$!{endReason_mc}</span>
+                  </td>
+              </tr>
+              <tr id="delay" style="display:none">
+                  <th>延期天数：</th>
+                  <td>
+                      <span >$!{casebaseinfo.delaydays}</span>
+                  </td>
+              </tr> -->
+               <tr>
+		          <th>基本案情：</th>
+		          <td><span>$!{casebaseinfo.appcase}</span></td>
+      		  </tr>
+		      <tr>
+		          <th>承办人意见：</th>
+		          <td>
+		               <span>$!{agentRemark}</span>
+		          </td>
+		      </tr>
+		      <tr>
+		          <th>科室负责人意见：</th>
+		          <td>
+		              <span>$!{sectionRemark}</span>
+		          </td>
+		      </tr>
+		      <tr>
+		          <th>机构负责人意见：</th>
+		          <td>
+		              <span>$!{organRemark}</span>
+		          </td>
+		      </tr>
+		      <tr>
+		          <th>机关负责人意见：</th>
+		          <td>
+		              <span>$!{officeRemark}</span>
+		          </td>
+		      </tr>       
+		  </table>
+        </div>
+        <div id="tab_2" title="审理结果"  data-options="selected:true" style="width:100%;">
+            <table class="list">
+                <tr>
+                    <th>审结结果：</th>
+                    #if($protype == "01")
+                    <td>
+                        <input id="result01" name="result" class="easyui-textbox"  required="true" missingMessage="请选择审结结果" style="width:250px"
+                            value="$!{result}"/>
+                        <font color=red>*</font>
+                    </td>
+                    #end
+                    #if($protype != "01")
+                    <td>
+                        <input id="result02" name="result" class="easyui-textbox"  required="true" missingMessage="请选择审结结果" style="width:250px"
+                            value="$!{result}"/>
+                        <font color=red>*</font>
+                    </td>
+                    #end
+                    <th>重大案件备案：</th>
+                    <td>
+                        <input id="isgreat" class="easyui-combobox" name="isgreat" value="$!{casebaseinfo.isgreat}" style="width:250px"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>说明：</th>
+                    <td colspan="3">
+                        <input id="remark" class="easyui-textbox" name="remark" multiline="true" required="true" missingMessage="请输入说明" 
+                            data-options="prompt:'最多可输入500个汉字',validType:{length:[0,500]}" style="width:695px;height:65px;" 
+                            value="$!{remark}"/>
+                        <font color=red>*</font>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>

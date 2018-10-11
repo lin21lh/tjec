@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--By Supcan Report -->
+<Report>
+	<WorkSheet name="Sheet" isDefaultPrint="true">
+		<Properties>
+			<BackGround bgColor="#FFFFFF" arrange="tile" alpha="255"/>
+			<DefaultTD>
+				<TD fontIndex="0" textColor="#000000" transparent="true" leftBorder="1" topBorder="1" leftBorderColor="#C0C0C0" leftBorderStyle="solid" topBorderColor="#C0C0C0" topBorderStyle="solid" decimal="2" align="left" vAlign="middle" isProtected="false" isThousandSeparat="true" isRound="true" isPrint="true"/>
+			</DefaultTD>
+			<Other isShowZero="true" isRefOriPrecision="true" LineDistance="0" isRowHeightAutoExtendAble="true"/>
+		</Properties>
+		<Fonts>
+			<Font faceName="微软雅黑" charSet="134" height="-14" weight="400"/>
+			<Font faceName="微软雅黑" charSet="134" height="-16" weight="700"/>
+			<Font faceName="微软雅黑" charSet="134" height="-13" weight="700"/>
+		</Fonts>
+		<Table>
+			<Col width="104"/>
+			<Col width="41"/>
+			<Col width="34"/>
+			<Col width="35"/>
+			<Col width="24"/>
+			<Col width="29"/>
+			<Col width="29"/>
+			<Col width="27"/>
+			<Col width="30"/>
+			<Col width="27"/>
+			<Col width="25"/>
+			<Col width="23"/>
+			<Col width="23"/>
+			<Col width="25"/>
+			<Col width="26"/>
+			<Col width="29"/>
+			<Col width="28"/>
+			<Col width="28"/>
+			<Col width="29"/>
+			<Col width="27"/>
+			<Col width="29"/>
+			<Col width="30"/>
+			<Col width="26"/>
+			<Col width="23"/>
+			<Col width="27"/>
+			<Col width="28"/>
+			<Col width="26"/>
+			<Col width="30"/>
+			<Col width="31"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="140"/>
+			<Col width="15"/>
+			<TR height="24" sequence="0">
+				<TD col="0"  leftBorder="0" align="center" datatype="1" isVerticalText="true">统计类型</TD>
+				<TD col="1"  bgColor="#C8E8FF" align="center" datatype="1" isVerticalText="true">申请人总数</TD>
+				<TD col="2" bgColor="#F6F6F6" align="center" datatype="1" isVerticalText="true">已受理总数</TD>
+				<TD col="3"  bgColor="#C8E8FF" align="center" datatype="1" isVerticalText="true">已审结总数</TD>
+				<TD col="4"  bgColor="#F6F6F6" align="center" datatype="1">被申请人机构类型</TD>
+				<TD col="5" datatype="1"/>
+				<TD col="6" datatype="1"/>
+				<TD col="7" datatype="1"/>
+				<TD col="8" datatype="1"/>
+				<TD col="9" datatype="1"/>
+				<TD col="10" datatype="1"/>
+				<TD col="11" datatype="1"/>
+				<TD col="12"  bgColor="#C8E8FF" align="center" datatype="1">复议事项类型</TD>
+				<TD col="13" datatype="1"/>
+				<TD col="14" datatype="1"/>
+				<TD col="15" datatype="1"/>
+				<TD col="16" datatype="1"/>
+				<TD col="17" datatype="1"/>
+				<TD col="18" datatype="1"/>
+				<TD col="19" datatype="1"/>
+				<TD col="20" datatype="1"/>
+				<TD col="21" datatype="1"/>
+				<TD col="22"  bgColor="#F6F6F6" align="center" datatype="1">复议审结结果</TD>
+				<TD col="23" datatype="1"/>
+				<TD col="24" datatype="1"/>
+				<TD col="25" datatype="1"/>
+				<TD col="26" datatype="1"/>
+				<TD col="27"  bgColor="#C8E8FF" align="center" datatype="1">行政赔偿</TD>
+				<TD col="28" datatype="1"/>
+			</TR>
+			<TR height="189" sequence="1">
+				<TD col="0" leftBorder="0" align="center">数量</TD>
+				<TD col="1" fontIndex="1"/>
+				<TD col="2" fontIndex="1"/>
+				<TD col="3" fontIndex="1"/>
+				<TD col="4"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">省级行政机关</TD>
+				<TD col="5"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">省级政府部门</TD>
+				<TD col="6"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">市（地）级政府</TD>
+				<TD col="7"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">市（地）级政府部门</TD>
+				<TD col="8"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">县级政府</TD>
+				<TD col="9"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">县级政府部门</TD>
+				<TD col="10"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">乡镇政府</TD>
+				<TD col="11"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">其他</TD>
+				<TD col="12"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">行政处罚</TD>
+				<TD col="13"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">行政强制措施</TD>
+				<TD col="14"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">行政征收</TD>
+				<TD col="15"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">行政许可</TD>
+				<TD col="16"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">行政确权</TD>
+				<TD col="17"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">行政确认</TD>
+				<TD col="18"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">信息公开</TD>
+				<TD col="19"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">举报投诉处理</TD>
+				<TD col="20"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">行政不作为</TD>
+				<TD col="21"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">其他</TD>
+				<TD col="22"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">维持</TD>
+				<TD col="23"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">变更</TD>
+				<TD col="24"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">撤销</TD>
+				<TD col="25"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">确认违法</TD>
+				<TD col="26"  bgColor="#F6F6F6" align="center" vAlign="top" isVerticalText="true">责令履行</TD>
+				<TD col="27"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">案件总数</TD>
+				<TD col="28"  bgColor="#C8E8FF" align="center" vAlign="top" isVerticalText="true">赔偿金额（元）</TD>
+			</TR>
+			<TR height="24" sequence="2">
+				<TD col="0" leftBorder="0">日照市</TD>
+				<TD col="1" bgColor="#C8E8FF" >10</TD>
+				<TD col="2" bgColor="#F6F6F6" >8</TD>
+				<TD col="3" bgColor="#C8E8FF">8</TD>
+				<TD col="4" bgColor="#F6F6F6" transparent="false">2</TD>
+				<TD col="5" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="6" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="7" bgColor="#F6F6F6" transparent="false">4</TD>
+				<TD col="8" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="9" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="10" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="11" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="12" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="13" bgColor="#C8E8FF" transparent="false">2</TD>
+				<TD col="14" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="15" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="16" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="17" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="18" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="19" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="20" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="21" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="22" bgColor="#F6F6F6">0</TD>
+				<TD col="23" bgColor="#F6F6F6">0</TD>
+				<TD col="24" bgColor="#F6F6F6">0</TD>
+				<TD col="25" bgColor="#F6F6F6">0</TD>
+				<TD col="26" bgColor="#F6F6F6">0</TD>
+				<TD col="27" bgColor="#C8E8FF">0</TD>
+				<TD col="28" bgColor="#C8E8FF">0</TD>
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="3">
+				<TD col="0">潍坊市</TD>
+				<TD col="1" bgColor="#C8E8FF">0</TD>
+				<TD col="2" bgColor="#F6F6F6">0</TD>
+				<TD col="3" bgColor="#C8E8FF">0</TD>
+				<TD col="4" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="5" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="6" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="7" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="8" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="9" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="10" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="11" bgColor="#F6F6F6" transparent="false">0</TD>
+				<TD col="12" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="13" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="14" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="15" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="16" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="17" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="18" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="19" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="20" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="21" bgColor="#C8E8FF" transparent="false">0</TD>
+				<TD col="22" bgColor="#F6F6F6">0</TD>
+				<TD col="23" bgColor="#F6F6F6">0</TD>
+				<TD col="24" bgColor="#F6F6F6">0</TD>
+				<TD col="25" bgColor="#F6F6F6">0</TD>
+				<TD col="26" bgColor="#F6F6F6">0</TD>
+				<TD col="27" bgColor="#C8E8FF">0</TD>
+				<TD col="28" bgColor="#C8E8FF">0</TD>
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="4">
+				<TD col="0" datatype="1">东营市</TD>
+				<TD col="1" bgColor="#C8E8FF"  datatype="1">12</TD>
+				<TD col="2"  bgColor="#F6F6F6" datatype="1">12</TD>
+				<TD col="3" bgColor="#C8E8FF" datatype="1">8</TD>
+				<TD col="4" bgColor="#F6F6F6" datatype="1">3</TD>
+				<TD col="5" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="6" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="7" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="8" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="9" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="10" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="11" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="12" bgColor="#C8E8FF" datatype="1">0</TD>
+				<TD col="13" bgColor="#C8E8FF" datatype="1">0</TD>
+				<TD col="14" bgColor="#C8E8FF" datatype="1">0</TD>
+				<TD col="15" bgColor="#C8E8FF" datatype="1">0</TD>
+				<TD col="16" bgColor="#C8E8FF" datatype="1">0</TD>
+				<TD col="17" bgColor="#C8E8FF" datatype="1">0</TD>
+				<TD col="18" bgColor="#C8E8FF" datatype="1">0</TD>
+				<TD col="19" bgColor="#C8E8FF" datatype="1">0</TD>
+				<TD col="20" bgColor="#C8E8FF" datatype="1">0</TD>
+				<TD col="21" bgColor="#C8E8FF" datatype="1">0</TD>
+				<TD col="22" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="23" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="24" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="25" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="26" bgColor="#F6F6F6" datatype="1">0</TD>
+				<TD col="27" bgColor="#C8E8FF" datatype="1">0</TD>
+				<TD col="28" bgColor="#C8E8FF" datatype="1">0</TD>
+				
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="5">
+				<TD col="0">淄博市</TD>
+				<TD col="1"  bgColor="#C8E8FF">10</TD>
+				<TD col="2" bgColor="#F6F6F6">6</TD>
+				<TD col="3" bgColor="#C8E8FF">5</TD>
+				<TD col="4" bgColor="#F6F6F6">0</TD>
+				<TD col="5" bgColor="#F6F6F6">0</TD>
+				<TD col="6" bgColor="#F6F6F6">0</TD>
+				<TD col="7" bgColor="#F6F6F6">0</TD>
+				<TD col="8" bgColor="#F6F6F6">0</TD>
+				<TD col="9" bgColor="#F6F6F6">0</TD>
+				<TD col="10" bgColor="#F6F6F6">0</TD>
+				<TD col="11" bgColor="#F6F6F6">0</TD>
+				<TD col="12" bgColor="#C8E8FF">0</TD>
+				<TD col="13" bgColor="#C8E8FF">0</TD>
+				<TD col="14" bgColor="#C8E8FF">0</TD>
+				<TD col="15" bgColor="#C8E8FF">0</TD>
+				<TD col="16" bgColor="#C8E8FF">0</TD>
+				<TD col="17" bgColor="#C8E8FF">0</TD>
+				<TD col="18" bgColor="#C8E8FF">0</TD>
+				<TD col="19" bgColor="#C8E8FF">0</TD>
+				<TD col="20" bgColor="#C8E8FF">0</TD>
+				<TD col="21" bgColor="#C8E8FF">0</TD>
+				<TD col="22" bgColor="#F6F6F6">0</TD>
+				<TD col="23" bgColor="#F6F6F6">0</TD>
+				<TD col="24" bgColor="#F6F6F6">0</TD>
+				<TD col="25" bgColor="#F6F6F6">0</TD>
+				<TD col="26" bgColor="#F6F6F6">0</TD>
+				<TD col="27" bgColor="#C8E8FF">0</TD>
+				<TD col="28" bgColor="#C8E8FF">0</TD>
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="6">
+				<TD col="0">枣庄市</TD>
+				<TD col="1" bgColor="#C8E8FF">5</TD>
+				<TD col="2" bgColor="#F6F6F6">2</TD>
+				<TD col="3" bgColor="#C8E8FF">2</TD>
+				<TD col="4" bgColor="#F6F6F6">0</TD>
+				<TD col="5" bgColor="#F6F6F6">0</TD>
+				<TD col="6" bgColor="#F6F6F6">0</TD>
+				<TD col="7" bgColor="#F6F6F6">0</TD>
+				<TD col="8" bgColor="#F6F6F6">0</TD>
+				<TD col="9" bgColor="#F6F6F6">0</TD>
+				<TD col="10" bgColor="#F6F6F6">0</TD>
+				<TD col="11" bgColor="#F6F6F6">0</TD>
+				<TD col="12" bgColor="#C8E8FF">0</TD>
+				<TD col="13" bgColor="#C8E8FF">0</TD>
+				<TD col="14" bgColor="#C8E8FF">0</TD>
+				<TD col="15" bgColor="#C8E8FF">0</TD>
+				<TD col="16" bgColor="#C8E8FF">0</TD>
+				<TD col="17" bgColor="#C8E8FF">0</TD>
+				<TD col="18" bgColor="#C8E8FF">0</TD>
+				<TD col="19" bgColor="#C8E8FF">0</TD>
+				<TD col="20" bgColor="#C8E8FF">0</TD>
+				<TD col="21" bgColor="#C8E8FF">0</TD>
+				<TD col="22" bgColor="#F6F6F6">0</TD>
+				<TD col="23" bgColor="#F6F6F6">0</TD>
+				<TD col="24" bgColor="#F6F6F6">0</TD>
+				<TD col="25" bgColor="#F6F6F6">0</TD>
+				<TD col="26" bgColor="#F6F6F6">0</TD>
+				<TD col="27" bgColor="#C8E8FF">0</TD>
+				<TD col="28" bgColor="#C8E8FF">0</TD>
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="7">
+				<TD col="0">合计</TD>
+				<TD col="1" bgColor="#C8E8FF">37</TD>
+				<TD col="2" bgColor="#F6F6F6">28</TD>
+				<TD col="3" bgColor="#C8E8FF">23</TD>
+				<TD col="4" bgColor="#F6F6F6">5</TD>
+				<TD col="5" bgColor="#F6F6F6">0</TD>
+				<TD col="6" bgColor="#F6F6F6">0</TD>
+				<TD col="7" bgColor="#F6F6F6">4</TD>
+				<TD col="8" bgColor="#F6F6F6">0</TD>
+				<TD col="9" bgColor="#F6F6F6">0</TD>
+				<TD col="10" bgColor="#F6F6F6">0</TD>
+				<TD col="11" bgColor="#F6F6F6">0</TD>
+				<TD col="12" bgColor="#C8E8FF">0</TD>
+				<TD col="13" bgColor="#C8E8FF">2</TD>
+				<TD col="14" bgColor="#C8E8FF">0</TD>
+				<TD col="15" bgColor="#C8E8FF">0</TD>
+				<TD col="16" bgColor="#C8E8FF">0</TD>
+				<TD col="17" bgColor="#C8E8FF">0</TD>
+				<TD col="18" bgColor="#C8E8FF">0</TD>
+				<TD col="19" bgColor="#C8E8FF">0</TD>
+				<TD col="20" bgColor="#C8E8FF">0</TD>
+				<TD col="21" bgColor="#C8E8FF">0</TD>
+				<TD col="22" bgColor="#F6F6F6">0</TD>
+				<TD col="23" bgColor="#F6F6F6">0</TD>
+				<TD col="24" bgColor="#F6F6F6">0</TD>
+				<TD col="25" bgColor="#F6F6F6">0</TD>
+				<TD col="26" bgColor="#F6F6F6">0</TD>
+				<TD col="27" bgColor="#C8E8FF">0</TD>
+				<TD col="28" bgColor="#C8E8FF">0</TD>
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="8">
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="9">
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="10">
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="11">
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="12">
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="13">
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="14">
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="15">
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="16">
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="17">
+				<TD col="52" topBorder="0"/>
+			</TR>
+			<TR height="24" sequence="18">
+				<TD col="52" topBorder="0"/>
+			</TR>
+		</Table>
+		<Merges>
+			<Range row1="0" col1="12" row2="0" col2="21"/>
+			<Range row1="0" col1="1" row2="1" col2="1"/>
+			<Range row1="0" col1="3" row2="1" col2="3"/>
+			<Range row1="0" col1="0" row2="1" col2="0"/>
+			<Range row1="0" col1="2" row2="1" col2="2"/>
+			<Range row1="0" col1="4" row2="0" col2="11"/>
+			<Range row1="0" col1="22" row2="0" col2="26"/>
+			<Range row1="0" col1="27" row2="0" col2="28"/>
+		</Merges>
+		<PrintPage>
+			<Paper>
+				<Margin left="19" top="25" right="19" bottom="25"/>
+			</Paper>
+			<Page>
+				<PageCode>
+					<Font faceName="宋体" charSet="134" height="-14" weight="400"/>
+				</PageCode>
+			</Page>
+		</PrintPage>
+	</WorkSheet>
+</Report>

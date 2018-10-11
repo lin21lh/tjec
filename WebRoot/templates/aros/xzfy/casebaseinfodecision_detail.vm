@@ -1,0 +1,14 @@
+<table class="list">
+    <tr>
+        <th>审结结果：</th>
+        <td><span>$!{result_mc}</span></td>
+        <th>重大案件备案：</th>
+        <td>
+            <span>$!{isgreat_mc}</span>
+        </td>
+    </tr>
+    <tr>
+        <th>说明：</th>
+        <td colspan="3"><span>$!{remark}</span></td>
+    </tr>
+</table>

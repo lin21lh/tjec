@@ -1,0 +1,4 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/user_list.js"></script>
+<input type="hidden" id="rolecode" value="$rolecode" />
+<table id="datalist"></table>

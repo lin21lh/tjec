@@ -1,0 +1,70 @@
+<!--imlplan_audit.vm-->
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<script type="text/javascript" src="$contextpath/templates/ppms/prepare/ssfa/js/preparessfa_init.js"></script>
+<script type="text/javascript" src="$contextpath/templates/ppms/common/common.js"></script>
+<title>方案审批</title>
+<script type="text/javascript">
+var menuid = "$menuid";
+var firstNode = "$firstNode";
+var lastNode = "$lastNode";
+var activityId = "$activityId";
+</script>
+<style type="text/css">
+	.linkbutton_group {
+        border-bottom: 1px solid #95B8E7;
+        background-color: #eee;
+    }
+</style>
+</head>
+
+<body id="layout" class="easyui-layout">
+	<div data-options="region:'center',split:false" >
+		<div id="toolbar_imlplan" class="toolbar_group">
+			<input type="hidden" id="menuid" name="menuid" value="$menuid" />
+			<div class="toolbar_buttons">
+				<!--<a id="openclose" onClick="javascript:panelctlForFam(0);" class="easyui-linkbutton" iconCls="icon-collapse" plain="true" ></a>-->
+				<span class='xian' ></span>
+				<a id="btn_query" href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="qryImlPlan()">查询</a>
+				<span class='xian' ></span>
+				<a id="btn_send" href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onClick="sendWF()">审核</a>
+				<span class='xian' ></span>
+				<a id="btn_back" href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onClick="backWorkFlow()">退回</a>
+				<span class='xian' ></span>
+				<a id="btn_detail" href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="showDetail()">详情</a>
+				<span class='xian' ></span>
+				<a id="btn_flow" href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">流程信息</a>
+			</div>
+			<div id="qpanel1" class="easyui-panel collapsable-toolbar " collapsible="true" style="width:100%;padding:1px">
+				<table style='width:100%'>
+                    <tr>
+        				<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap' >处理状态</td>
+        				<td style='font-size:12px;width:10%' ><input id="dealStatus" panelheight = "auto" class="easyui-combobox" style="width:97%;" /></td>
+						<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>项目名称</td>
+        				<td style='font-size:12px;width:17%'><input id="proName" class="easyui-textbox" style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>所属行业</td>
+        				<td style='font-size:12px;width:17%'><input id="proTrade" class="easyui-textbox"  style="width:97%" /></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>项目运作方式</td>
+        				<td style='font-size:12px;width:22%'><input id="proPerate" class="easyui-combobox"  style="width:97%"  multiple="true" /></td>
+    				</tr>      
+                    <tr> 
+						<td style='font-size:12px;text-align:end;width:7%;white-space: nowrap'>回报机制</td>
+        				<td style='font-size:12px;width:10%'> <input id="proReturn" class="easyui-combobox"  style="width:97%"  multiple="true"/></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>项目发起类型</td>
+        				<td style='font-size:12px;width:17%'> <input id="proSendtype" class="easyui-combobox"  style="width:97%"  multiple="true"/></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>项目类型 </td>
+        				<td style='font-size:12px;width:17%'> <input id="proType" class="easyui-combobox"  style="width:97%"  multiple="true"/></td>
+        				<td style='font-size:12px;text-align:end;width:8%;white-space: nowrap'>项目联系人</td>
+                        <td style='font-size:12px;width:22%'><input id="proPerson" class="easyui-textbox"  style="width:97%" /></td>
+    				</tr>      
+				</table>
+			</div>
+		</div>
+		<table id="datagrid_imlplan"></table>
+	</div>
+	
+</body>
+</html>

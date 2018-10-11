@@ -1,0 +1,30 @@
+#parse("common/extensions-v14.vm")
+<style type="text/css">
+	.cs-west{
+		width: 160px;
+		padding: 0;
+	}
+	
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+		background-color:#eee;
+	}
+	
+	input {
+		line-height:20px;
+		border:1px solid #95B8E7;
+	}
+
+</style>
+<div id="div">
+	<form id="thyjform">
+		<table class="list" >
+			<tr>
+				<th >回退意见：</th>
+				<td>
+					<input id="htyj" name="htyj" multiline="true" class="easyui-textbox" missingMessage="请录入回退意见" required="true" data-options="validType:{length:[0,160]}" style="width:400px;height:60px;"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

@@ -1,0 +1,43 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<style type='text/css'>
+    input {
+    	line-height:20px;
+    	border:1px solid #95B8E7;
+    }
+</style>
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<form id="detailForm" method="post">
+	<table class="list">
+		<!--隐藏属性start-->
+			<input type="hidden" id="standid" name="standid" value="$!{po.standid}"/>
+		<!--隐藏属性end-->
+		<tr>
+			<th width="15%">指标名称：</th>
+			<td colspan="3">
+				<span>$!{po.standardname}</span>
+			</td>
+		</tr>
+		<tr>
+			<th width="15%">阶段类型：</th>
+			<td width="35%">
+				<span>$!{po.stagetypeMc}</span>
+			</td>
+			<th width="15%">指标类型：</th>
+			<td width="35%">
+				<span>$!{po.inditypeMc}</span>
+			</td>
+		</tr>
+		<tr>
+			<th>分值：</th>
+			<td>
+				<span>$!{po.score}</span>
+			</td>
+			<th>展示顺序：</th>
+			<td>
+				<span>$!{po.seqno}</span>
+			</td>
+		</tr>
+    </table>
+</form>

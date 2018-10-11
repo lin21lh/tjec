@@ -1,0 +1,7 @@
+#parse("common/extensions-v14.vm")
+<title>选择案件</title>
+<body>
+    <div style="height: 526px;">
+        <table id="xzfyReqDataGrid"></table>
+    </div>
+</body>

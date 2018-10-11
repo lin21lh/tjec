@@ -1,0 +1,139 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="projectViewForm" method="post">
+	<table class="list">
+            <tr>
+                <th>案件编号</th>
+                <td colspan="3">
+                    <input id="casecode" name="casecode" class="easyui-textbox" style='width:675px' />
+                </td >
+            </tr>
+    		<tr>
+    			<th >结转状态</th>
+    			<td>
+    				<input id="carriedstatusname" class="easyui-textbox" name="carriedstatusname" readonly="true"  style='width:250px'/>
+    			</td >
+    			<th >登记类型</th>
+    			<td >
+    				<input id="regtypename" class="easyui-textbox" name="regtypename"  readonly="true" style='width:250px' />
+    			</td>
+    		</tr>
+    		<tr>
+    			<th >收案日期</th>
+    			<td>
+    				<input id="recdate" class="easyui-textbox" name="recdate" readonly="true"   style='width:250px'/>
+    			</td >
+    			<th >起诉方式</th>
+    			<td >
+    				<input id="suetypename" class="easyui-textbox" name="suetypename"  readonly="true" style='width:250px' />
+    			</td>
+    		</tr>
+    		<tr>
+    			<th >案件流水号</th>
+    			<td>
+    				<input id="caseseqno" class="easyui-textbox" name="caseseqno" readonly="true"  
+						  style='width:250px'/>
+    			</td >
+    			<th >案件法院编号</th>
+    			<td >
+    				<input id="lawid" class="easyui-textbox" name="lawid"  readonly="true" style='width:250px' />
+    			</td>
+    		</tr>
+    		<tr>
+    			<th >案件内部分类编号</th>
+    			<td>
+    				<input id="caseinnerid" class="easyui-textbox" name="caseinnerid" readonly="true"  
+						  style='width:250px'/>
+    			</td >
+    			<th >管辖法院</th>
+    			<td >
+    				<input id="jurilawname" class="easyui-textbox" name="jurilawname"  readonly="true" style='width:250px' />
+    			</td>
+    		</tr>
+    		<tr>
+    			<th >递送公司</th>
+    			<td>
+    				<input id="expresscom" class="easyui-textbox" name="expresscom" readonly="true"  style='width:250px'/>
+    			</td >
+    			<th >递送单号</th>
+    			<td>
+    				<input id="expressid" class="easyui-textbox" name="expressid" readonly="true"  style='width:250px'/>
+    			</td >
+    			
+    		</tr>
+    		<tr>
+    			<th >应诉机关</th>
+    			<td >
+    				<input id="resdeptname" class="easyui-textbox" name="resdeptname" readonly="true" style='width:250px'/>
+    			</td >
+    			<th >应诉机关级别</th>
+    			<td>
+    				<input id="deptlevelname" class="easyui-textbox" name="deptlevelname" readonly="true"  style='width:250px'/>
+    			</td >
+    			
+    		</tr>
+    		<tr>
+    			<th >应诉机关名称</th>
+    			<td>
+    				<input id="deptname" class="easyui-textbox" name="deptname" readonly="true" style='width:250px'/>
+    			</td >
+    			<th >行政管理类别</th>
+    			<td>
+    				<input id="adminlevelname" class="easyui-textbox" name="adminlevelname" readonly="true"  style='width:250px'/>
+    			</td >
+    		</tr>
+    		<tr>
+    			<th >行政行为</th>
+    			<td>
+    				<input id="adminbehaviorname" class="easyui-textbox" name="adminbehaviorname" readonly="true" style='width:250px'/>
+    			</td >
+    			<th >地域类别</th>
+    			<td>
+    				<input id="regiontypename" class="easyui-textbox" name="regiontypename" readonly="true"  style='width:250px'/>
+    			</td >
+    			
+    		</tr>
+    		<tr>
+    			<th >附带请求</th>
+    			<td>
+    				<input id="fringereq" class="easyui-textbox" name="fringereq" readonly="true"  style='width:250px'/>
+    			</td >
+    			<th >诉讼请求</th>
+    			<td>
+    				<input id="suerequest" class="easyui-textbox" name="suerequest" readonly="true" style='width:250px'/>
+    			</td >
+    		</tr>
+    		<tr>
+    			<th >审结状态</th>
+    			<td>
+    				<input id="constatusname" class="easyui-textbox" name="constatusname" readonly="true" style='width:250px'/>
+    			</td >
+                <th >行政机关负责人是否出庭</th>
+                <td>
+                    <input id="ifincourtname" class="easyui-textbox" name="ifincourtname" readonly="true" style='width:250px'/>
+                </td >
+    		</tr>
+            <tr>
+                <th>备案管理</th>
+                <td colspan="3">
+                    <input id="recmanage" class="easyui-textbox" name="recmanage" style='width:675px'/>
+                </td >
+            </tr>
+            <tr>
+                <th>相关附件</th>
+                <td colspan="3" valign='top' style="height:40px" id="files">
+                </td>
+            </tr>
+    </table>		 
+</form>
+
+<!--上传附件层-->
+<div id="uploadifydiv"></div>

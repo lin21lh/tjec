@@ -1,0 +1,102 @@
+<!DOCTYPE>
+<html>
+<head>
+#parse("common/common-v14.vm")
+#parse("common/extensions-v14.vm")
+<title>账户开立</title>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/register/js/registerEntry.js"></script>
+<script type="text/javascript" src="$contextpath/templates/fam/manage/common/accountCommon.js"></script>
+<script type="text/javascript">
+var menuid = "$menuid";
+var activityId = "$activityId";
+var type = "$type";
+var allbdgagency ="$allbdgagency";
+var userid ="$userid";
+</script>
+<style type="text/css">
+	.cs-west{
+		width: 50%;
+		padding: 0;
+	}
+	.linkbutton_group{
+		border-bottom: 1px solid #95B8E7;
+	}
+</style>
+</head>
+<body id="layout" class="easyui-layout">
+	<div region="center" split="false">
+        <div id="toolbar_account" class="toolbar_group">
+			<div class="toolbar_buttons">
+				<a id="openclose" onClick="javascript:panelctlForFam(0);" class="easyui-linkbutton" iconCls="icon-collapse" plain="true" ></a>
+				<span class='xian' ></span>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="doQuery()" >查询</a>
+				<span class='xian' ></span>
+    			<a id="addBtn" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="add()">新增</a>
+				<span class='xian' ></span>
+				<a id="editBtn" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="edit()">修改</a>
+				<span class='xian' ></span>
+				<a id="delBtn" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="del()">删除</a>
+				<span class='xian' ></span>
+				<a id="sendBtn" href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true" onClick="sendWf()">送审</a>
+				<span class='xian' ></span>
+				<a id="backBtn" href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" style="disable:true" onClick="backWf()">撤回</a>
+				<span class='xian' ></span>
+				<a id="viewBtn" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="view()">详情</a>
+				<span class='xian' ></span>
+    			<a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onClick="workflowMessage()">流程信息</a>
+				<span class='xian' ></span>
+    			<a href="#" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onClick="outRegisterApplicationform()">开立申请表</a>
+            </div>
+    		<div id="qpanel1" class="easyui-panel collapsable-toolbar-w" collapsible="true" style="width:100%;border:0px;">
+				<!--&nbsp;<input id="status" class="easyui-combobox" style="width:80px;" />
+					处理类型 <input id="processedStatus" class="easyui-combobox" style="width:80px;" />
+					预算单位 <input id="topBdgagency" class="easyui-textbox"  style="width:150px;" />
+					账户类型 <input id="topAccountType" class="easyui-textbox"  style="width:100px;" />
+					账户性质 <input id="topAccountType02" class="easyui-textbox"  style="width:100px;" />
+					银行账号 <input id="topAccountNumber" class="easyui-textbox"  style="width:100px;" />
+					账户名称 <input id="topAccountName" class="easyui-textbox"  style="width:100px;" />-->
+				<table  class="list" style='border:0px'>
+                    <tr>
+        				<th style='font-size:12px;border: 0px;text-align:right'>处理状态</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="status" class="easyui-combobox" style='width:100px'>
+						</th>
+						<th style='border: 0px;text-align:right' align="right">处理类型</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="processedStatus" class="easyui-combobox"  style='width:100px'>
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>账户名称</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="topAccountName" class="easyui-textbox"  style='width:180px' >
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right' >预算单位</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="topBdgagency" class="easyui-textbox" style='width:210px'>
+						</th>
+    				</tr>      
+                    <tr> 
+						<th style='font-size:12px;border: 0px;text-align:right'>账户性质</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="topAccountType02" class="easyui-textbox" style='width:100px'>
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>账户类型</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'>
+							<input id="topAccountType" class="easyui-textbox" style='width:100px' >
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>银行账号</th>
+        				<th style='font-size:12px;border: 0px;text-align:left'> 
+							<input id="topAccountNumber" class="easyui-textbox" style='width:180px' >
+						</th>
+        				<th style='font-size:12px;border: 0px;text-align:right'>申请时间</th>
+                        <th style='font-size:12px;border: 0px;text-align:left'>
+						<input id="starttime" class="easyui-datebox" style='width:100px' />至<input id="endtime" class="easyui-datebox" style='width:100px'  />
+						</th>
+    				</tr>      
+				</table>
+    		</div>
+		</div>
+		<!-- 数据列表 -->
+		<table id="accRegDatagrid"></table>
+    </div>
+</body>
+</html>

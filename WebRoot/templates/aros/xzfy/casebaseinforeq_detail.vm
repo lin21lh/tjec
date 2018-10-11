@@ -1,0 +1,252 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+</script>
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/casebaseinforeq_form.js"></script>
+	<div class="easyui-tabs" style="width:98%;height:auto;">
+    	<div title="案件信息">
+        	<table class="list">
+			<input type="hidden" id="caseid" name="caseid" value="$casebaseinfo.caseid"/><!--案件ID-->
+    		<!--隐藏属性start-->
+    		<!--隐藏属性end-->
+				<tr><td colspan="4" style="font-size: 13px;font-weight: bold;text-align: center;background-color:#EEF4FF;">申请人信息 </td></tr>
+        		<tr>
+					<th>申请人类型：</th>
+					 <td><span>$!{casebaseinfo.apptypename}</span></td>
+					<th>申请人数：</th>
+					 <td><span>$!{casebaseinfo.reqmansum}</span></td>
+        		</tr>
+				<tr>
+					<th>申请人：</th>
+					 <td><span>$!{casebaseinfo.appname}</span></td>
+					<th>工作单位：</th>
+					 <td><span>$!{casebaseinfo.workunits}</span></td>
+				</tr>
+        		<tr>
+        			<th>证件类型：</th>
+        			 <td><span>$!{casebaseinfo.idtypename}</span></td>
+        			<th>证件号码：</th>
+        			 <td><span>$!{casebaseinfo.idcode}</span></td>
+        		</tr>
+    			<tr>
+        			<th>联系电话：</th>
+        			 <td><span>$!{casebaseinfo.phone}</span></td>
+        			<th>联系手机：</th>
+        			 <td><span>$!{casebaseinfo.mobile}</span></td>
+        		</tr>
+				<tr>
+        			<th>通讯地址：</th>
+        			 <td colspan="3"><span>$!{casebaseinfo.address}</span></td>
+                </tr>
+    			<tr>
+        			<th>邮寄地址：</th>
+        			 <td colspan="3"><span>$!{casebaseinfo.mailaddress}</span></td>
+                </tr>
+        		<tr>
+        			<th>邮箱：</th>
+        			 <td><span>$!{casebaseinfo.email}</span></td>
+        			<th>邮政编码：</th>
+        			 <td><span>$!{casebaseinfo.postcode}</span></td>
+        		</tr>
+				<tr>
+					<th>性别：</th>
+					 <td><span>$!{casebaseinfo.sexname}</span></td>
+					<th>年龄：</th>
+					 <td><span>$!{casebaseinfo.age}</span></td>
+				</tr>
+				<tr>
+					<th>生日：</th>
+					 <td colspan="3"><span>$!{casebaseinfo.birth}</span></td>
+				</tr>
+				<tr>
+					<th>法定代表人：</th>
+					 <td><span>$!{casebaseinfo.legalperson}</span></td>
+					<th>职务：</th>
+					 <td><span>$!{casebaseinfo.position}</span></td>
+				</tr>
+				<tr>
+					<th>委托代理人：</th>
+					 <td><span>$!{casebaseinfo.proxyman}</span></td>
+					<th>委托代理人电话：</th>
+					 <td><span>$!{casebaseinfo.position}</span></td>
+				</tr>
+				<tr><td colspan="4" style="font-size: 13px;font-weight: bold;text-align: center;background-color:#EEF4FF;">被申请人信息 </td></tr>
+        		<tr>
+					<th>被申请人类型：</th>
+					 <td><span>$!{casebaseinfo.deftypename}</span></td>
+        			<th>被申请人：</th>
+        			 <td><span>$!{casebaseinfo.defname}</span></td>
+        		</tr>
+    			<tr>
+					<th>联系手机：</th>
+					 <td><span>$!{casebaseinfo.defmobile}</span></td>
+        			<th>联系电话：</th>
+        			 <td><span>$!{casebaseinfo.defphone}</span></td>
+        		</tr>
+				<tr>
+        			<th>通讯地址：</th>
+        			 <td colspan="3"><span>$!{casebaseinfo.defaddress}</span></td>
+                </tr>
+    			<tr>
+        			<th>邮寄地址：</th>
+        			 <td colspan="3"><span>$!{casebaseinfo.defmailaddress}</span></td>
+                </tr>
+        		<tr>
+        			<th>邮箱：</th>
+        			 <td><span>$!{casebaseinfo.defemail}</span></td>
+        			<th>邮政编码：</th>
+        			 <td><span>$!{casebaseinfo.defpostcode}</span></td>
+        		</tr>
+				<tr>
+					<th>法定代表人：</th>
+					 <td><span>$!{casebaseinfo.deflegalman}</span></td>
+					<th>法定代表人职务：</th>
+					 <td><span>$!{casebaseinfo.deflegalduty}</span></td>
+				</tr>
+				<tr>
+					<th>委托代理人：</th>
+					 <td><span>$!{casebaseinfo.appliedman}</span></td>
+					<th>委托代理人电话：</th>
+					 <td><span>$!{casebaseinfo.appliedphone}</span></td>
+				</tr>
+				<tr><td colspan="4" style="font-size: 13px;font-weight: bold;text-align: center;background-color:#EEF4FF;">复议案件信息 </td></tr>
+				<tr>
+				 <th>查询码：</th>
+		   		 <td><span>$!{casebaseinfo.key}</span></td>
+        			<th>申请日期：</th>
+        			<td><span>$!{casebaseinfo.appdate}</span></td>
+        		</tr>
+				<tr>
+        			<th>收到申请日期：</th>
+        			 <td><span>$!{casebaseinfo.receivedate}</span></td>
+        			<th>收到申请方式：</th>
+        			 <td><span>$!{casebaseinfo.receivewayname}</span></td>
+        		</tr>
+				<tr>
+                    <th>案件名称：</th>
+                     <td colspan="3"><span>$!{casebaseinfo.intro}</span></td>
+                </tr>
+    			<tr>
+        			<th>递送公司：</th>
+        			 <td><span>$!{casebaseinfo.expresscom}</span></td>
+        			<th>递送单号：</th>
+        			 <td><span>$!{casebaseinfo.apptype}</span></td>
+        		</tr>
+				<tr>
+        			<th>案由分类：</th>
+        			 <td colspan="3"><span>$!{casebaseinfo.typename}</span></td>
+        		</tr>
+				<tr>
+        			<th>行政管理类型：</th>
+        			 <td><span>$!{casebaseinfo.admtypename}</span></td>
+        			<th>行政行为类型：</th>
+        			 <td><span>$!{casebaseinfo.casetypename}</span></td>
+        		</tr>
+				<tr>
+        			<th>是否附带行政赔偿：</th>
+        			 <td><span>$!{casebaseinfo.ifcompensationname}</span></td>
+        			<th>赔偿金额：</th>
+        			 <td><span>$!{casebaseinfo.amountstr}</span></td>
+        		</tr>
+				<tr>
+                    <th>具体行政行为：</th>
+                     <td colspan="3"><span>$!{casebaseinfo.administratif}</span></td>
+                </tr>
+				<tr>
+        			<th>行政复议请求：</th>
+        			 <td colspan="3"><span>$!{casebaseinfo.appcase}</span></td>
+                </tr>
+        		<tr>
+        			<th>事实和理由：</th>
+        			<td colspan="3">
+        			<span>$!{casebaseinfo.factreason}</span>
+        			</td>
+                </tr>
+            </table>
+    	</div>
+		</form>	
+		<div title="第三人信息" style="width:100%;height:400px;">
+			<div style="width:60%;height:400px;float:left;">
+				<table id="thirdbaseinfoTable"></table>
+			</div>
+			<div style="width:40%;float:left;;height:400px">
+    			<div id="thidDiv" class="easyui-panel">
+    				<form id="thidForm" method="post">
+    					<input type="hidden" name="thid" id="thid" />
+        				<table class="list" >
+        					<tr>
+                    			<th>第三人名称：</th>
+                    			<td>
+                    				<input id="thname" class="easyui-textbox" name="thname" missingMessage="请输入名称"
+                    					 data-options="validType:{length:[0, 65]}" style="width:200px" />
+                    			</td>
+                    		</tr>
+							<tr>
+								<th>第三人类型：</th>
+                    			<td>
+                    				<input id="thtype" class="easyui-combobox" name="thtype" missingMessage="请选择类型"
+                    					style="width:200px" />
+                    			</td>
+							</tr>
+                    		<tr>
+                    			<th>第三人证件类型：</th>
+                    			<td>
+                    				<input id="thidtype" class="easyui-combobox" name="thidtype"  missingMessage="请选择证件类型"
+                    					style="width:200px" />
+                    			</td>
+                    		</tr>
+							<tr>
+								<th>第三人证件号码：</th>
+                    			<td>
+                    				<input id="thidcode" class="easyui-textbox" name="thidcode" data-options="validType:{length:[0, 50]}" 
+                    					 validType="idcard" style="width:200px" />
+                    			</td>
+							</tr>
+                    		<tr>
+                    			<th>第三人联系电话：</th>
+                    			<td>
+                    				<input id="thphone" class="easyui-textbox" name="thphone" data-options="validType:{length:[0, 20]}" 
+                    					  validType="mobile" style="width:200px" />
+                    			</td>
+                    		</tr>
+							<tr>
+								<th>第三人邮政编码：</th>
+                    			<td>
+                    				<input id="thpostcode" class="easyui-textbox" name="thpostcode"  missingMessage="请输入正确的邮政编码"
+                    					 validType="zip" style="width:200px" />
+                    			</td>
+							</tr>
+                    		<tr>
+                    			<th>第三人通讯地址：</th>
+                    			<td colspan="3">
+                    				<input id="thaddress" class="easyui-textbox" name="thaddress"
+            							data-options="prompt:'最多可输入100个汉字',validType:{length:[0,100]}"
+                    					style="width:200px;" />
+                    			</td>
+                            </tr>
+							<tr>
+                    			<th>委托代理人：</th>
+                    			<td>
+                    				<input id="thidproxyman" class="easyui-textbox" name="thidproxyman"
+                    					 data-options="validType:{length:[0, 20]}" style="width:200px" />
+                    			</td>
+                    		</tr>
+							<tr>
+								<th>委托代理人电话：</th>
+                    			<td>
+                    				<input id="thidproxyphone" class="easyui-textbox" name="thidproxyphone" 
+                    					validType="mobile" data-options="validType:{length:[0, 15]}" style="width:200px" />
+                    			</td>
+							</tr>
+							<tr>
+                    			<th>委托代理人地址：</th>
+                    			<td colspan="3">
+                    				<input id="thidproxyaddress" class="easyui-textbox" name="thidproxyaddress" 
+            							data-options="prompt:'最多可输入100个汉字',validType:{length:[0,200]}" 
+                    					style="width:200px;" />
+                    			</td>
+                            </tr>
+        				</table>
+    			</div>
+			</div>
+		</div>
+	</div>

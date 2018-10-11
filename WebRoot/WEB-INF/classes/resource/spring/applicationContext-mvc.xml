@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="    
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+	http://www.springframework.org/schema/jee 
+	http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer"> 
+		<property name="resourceLoaderPath" value="templates" /> 
+		<property name="configLocation" value="classpath:resource/velocity/velocity.properties" /> 
+	</bean>
+	
+	<bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver"> 
+		<property name="suffix" value=".vm" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="exposeSpringMacroHelpers" value="true"/>
+		<property name="requestContextAttribute" value="rc"/>
+	</bean> 
+	
+	<!-- bean id="viewResolver"
+			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="viewClass"
+				value="org.springframework.web.servlet.view.JstlView" />
+			<property name="prefix" value="/jsp/" />
+			<property name="suffix" value=".jsp" />
+		</bean -->
+
+	<!--配置component-scan 扫描annotation类 -->
+	<context:component-scan base-package="com.jbf.**.controller" use-default-filters="true" />
+	<!-- 业务扫描类配置  2015年4月3日10:46:43 xinpeng -->
+	<context:component-scan base-package="com.wfzcx.**.controller" use-default-filters="true" />
+	<context:component-scan base-package="com.freework.**.control" use-default-filters="true" />
+	
+	<!-- 配置fastjson，用于转换json数据给客户端 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean id="fastJsonHttpMessageConverter"
+					class="com.jbf.common.web.MappingFastJsonHttpMessageConverter">
+					<property name="supportedMediaTypes" value="application/json" />
+					<property name="serializerFeature">
+						<array>
+							<value>WriteMapNullValue</value>
+							<value>QuoteFieldNames</value>
+							<value>WriteTabAsSpecial</value>
+						</array>
+					</property>
+				</bean>
+			</list>
+		</property>
+		<property name="webBindingInitializer">  
+			<bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">  
+				<property name="conversionService">  
+					<bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean"></bean>  
+				</property>  
+			</bean>  
+		</property> 
+	</bean>
+</beans> 

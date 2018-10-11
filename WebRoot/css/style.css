@@ -1,0 +1,197 @@
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-decoration:none;
+	list-style:none;
+	color: #000;
+}
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	outline:0;
+	vertical-align:baseline;
+	/*text-align: center;*/
+}
+.box {
+	height: 768px;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.header {
+	height: 132px;
+	width: 1200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.header .top {
+	height: 119px;
+	width: 100%;
+	background-image: url(../images/top1.jpg);
+	background-repeat: no-repeat;
+	margin-right: auto;
+	margin-left: auto;
+}
+.header .edge {
+	background-color: #387dd8;
+	height: 13px;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.section {
+	height: 580px;
+	width: 1200px;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(../images/top2.jpg);
+	background-repeat: no-repeat;
+}
+.footer {
+	height: 56px;
+	width: 1200px;
+	background-color: #387dd8;
+	margin-right: auto;
+	margin-left: auto;
+}
+.section .directory {
+	height: 100%;
+	width: 840px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.section .directory .row {
+	height: 141px;
+	width: 726px;
+	margin-bottom: 58px;
+}
+.directory .row .button {
+	height: 141px;
+	width: 141px;
+	margin-right: 50px;
+	margin-left: 50px;
+	_margin-right: 40px;
+	_margin-left: 40px;
+	float: left;
+}
+.footer p {
+	font-family: "宋体";
+	font-size: 14px;
+	color: #FFF;
+	padding-top: 20px;
+	text-align: center;
+}
+.article_box .form {
+	height: 450px;
+	width: 980px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.query {
+	background-color: #0CF;
+	height: 500px;
+	width: 1000px;
+}
+.directory .login {
+	height: 31px;
+	width: 840px;
+}
+.directory .login .ann {
+	float: right;
+	height: 30px;
+	width: 134px;
+}
+.section .contact {
+	float: left;
+	height: 173px;
+	width: 54px;
+	margin-left: 20px;
+	margin-top: 75px;
+}
+.directory .area_box {
+	height: 383px;
+	width: 840px;
+	margin-top: 45px;
+}
+.area_box .zuo {
+	background-image: url(../images/zuobian.png);
+	background-repeat: no-repeat;
+	height: 383px;
+	width: 390px;
+	float: left;
+}
+.area_box .you {
+	background-image: url(../images/youbian.png);
+	background-repeat: no-repeat;
+	float: right;
+	height: 383px;
+	width: 390px;
+}
+.section .code {
+	float: right;
+	height: 340px;
+	width: 129px;
+	margin-top: 75px;
+	margin-right: 20px;
+}
+.code .shang {
+	height: 159px;
+	width: 129px;
+	margin-bottom: 20px;
+	background-image: url(../images/tupan_03.jpg);
+	background-repeat: no-repeat;
+}
+.code .xia {
+	height: 159px;
+	width: 129px;
+	background-image: url(../images/tupan_13.jpg);
+	background-repeat: no-repeat;
+}
+.zuo .Button_box {
+	height: 292px;
+	width: 313px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 90px;
+}
+.zuo .Button_box .ann {
+	height: 72px;
+	width: 312px;
+	margin-bottom: 26px;
+}
+.you .Button_box {
+	height: 292px;
+	width: 313px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 90px;
+}
+.you .Button_box .ann {
+	height: 72px;
+	width: 312px;
+	margin-bottom: 26px;
+}
+.directory .link_box {
+	height: 30px;
+	width: 840px;
+	margin-top: 90px;
+	text-align: left;
+	font-family: "宋体";
+	font-size: 14px;
+}
+.link_box a {
+	color: #387DD8;
+}

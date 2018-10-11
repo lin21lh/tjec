@@ -1,0 +1,43 @@
+#parse("common/extensions-v14.vm")
+<script type="text/javascript">
+var showFile = "$showFile";
+var nodeid = "$nodeid";
+</script>
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/xzfy/js/casebaseinforeceive_form.js"></script>
+<script type="text/javascript" src="$contextpath/templates/aros/common/arosCommon.js"></script>
+<form id="xzfyReceiveForm" method="post">
+	<input id="caseid" name="caseid" type="hidden" value="$!{caseid}"/>
+	<table class="list">
+		<tr>
+			<th>案件编号：</th>
+			<td>
+			     <input id="csaecode" class="easyui-textbox" name="csaecode" value="$!{csaecode}"
+                    style="width: 300px;" required="true" missingMessage="请输入案件编号"
+                    data-options="validType:{length:[0,50]}" />
+                    <font color="red">*</font>
+			</td>
+			<th>笔录信息：</th>
+			<td>
+			     <input id="arid" hidden="hidden" name="arid" value="$!{arid}"/>
+			     
+			     <a href="#" onClick="viewSqbl()" id="linkbl">
+			     	#if($arid =="")
+			     		未关联
+			     	#end
+			     	#if($arid != "")
+			     	已关联
+			     	#end
+			     </a>
+				 <a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onClick="choiseSqbl()"></a>
+			</td>
+		</tr>
+	</table>
+</form>
+<!-- 附件管理 -->
+<div style="width:100%;height:83%;">
+     <table id="fileDataGrid"></table>
+</div>
+<!--上传附件层-->
+<div id="uploadifydiv"></div>

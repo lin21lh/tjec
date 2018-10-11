@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<!-- 启用 方法安全表达式 @PreAuthorize, @PreFilter, @PostAuthorize 和 @PostFilter -->
+	<global-method-security pre-post-annotations="enabled" />
+	<!-- 登录验证器 -->
+	<b:bean id="loginFilter" class="com.jbf.common.security.filter.JbfLoginAuthenticationFilter">
+		<!-- 处理登录的 do -->
+		<b:property name="filterProcessesUrl" value="/j_spring_security_login.do" />
+		<!-- 验证成功后的处理 -->
+		<b:property name="authenticationSuccessHandler" ref="authenticationSuccessHandler" />
+		<!-- 验证失败后的处理 -->
+		<b:property name="authenticationFailureHandler" ref="authenticationFailureHandler" />
+		<!-- 登陆凭证管理 -->
+		<b:property name="authenticationManager" ref="jbfAuthenticationManager" />
+		<b:property name="dataSourceService" ref="datasourceService" />
+	</b:bean>
+
+	<b:bean id="authenticationSuccessHandler"
+		class="com.jbf.common.security.JbfAuthenticationSuccessHandler">
+		<b:property name="defaultTargetUrl" value="/successLogin.do" />
+		<b:property name="targetUrlParameter" value="forward" />
+	</b:bean>
+
+	<b:bean id="authenticationFailureHandler"
+		class="com.jbf.common.security.JbfAuthenticationFailureHandler">
+		<!-- 可以配置相应的跳转方式。属性forwardToDestination为true采用forward false为sendRedirect -->
+		<b:property name="defaultFailureUrl" value="/login.do" />
+	</b:bean>
+
+	<!-- 认证过滤器 -->
+	<b:bean id="securityFilter" class="com.jbf.common.security.filter.JbfSecurityFilter">
+		<!-- 用户拥有的权限 -->
+		<b:property name="authenticationManager" ref="jbfAuthenticationManager" />
+		<!-- 用户是否拥有所请求资源的权限 -->
+		<b:property name="accessDecisionManager" ref="jbfAccessDecisionManager" />
+		<!-- 资源与权限对应关系 -->
+		<b:property name="securityMetadataSource" ref="jbfSecurityMetadataSource">
+		</b:property>
+	</b:bean>
+	<!-- 实现了UserDetailsService的Bean -->
+	<authentication-manager alias="jbfAuthenticationManager">
+		<authentication-provider user-service-ref="jbfUserDetailServiceImpl">
+			<!-- 用户名加密码md5加密 -->
+			<password-encoder hash="md5">
+				<salt-source user-property="username" />
+			</password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+	
+	<b:bean id="jbfAccessDecisionManager"
+		class="com.jbf.common.security.manager.JbfAccessDecisionManager" />
+
+	<b:bean id="jbfSecurityMetadataSource"
+		class="com.jbf.common.security.manager.JbfSecurityMetadataSource">
+		<b:property name="resourceDao" ref="sysResourceDaoImpl" />
+	</b:bean>
+
+	<b:bean id="jbfUserDetailServiceImpl"
+		class="com.jbf.common.security.service.JbfUserDetailsServiceImpl" />
+
+	<b:bean id="loginUrlAuthenticationEntryPoint"
+		class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<b:property name="loginFormUrl" value="/login.do" />
+	</b:bean>
+	<!-- 不需要验证登录 -->
+	<http pattern="/login.do" security="none" />
+	<http pattern="/regist.do" security="none" />
+	<http pattern="/subRegistInfo.do" security="none" />
+	<http pattern="/VerifyUniqueness.do" security="none" />
+	<http pattern="/timeout.do" security="none" />
+	<http pattern="/exclude/*" security="none" />
+	
+	<!-- app相关 -->
+	<http pattern="/queryData/generalQuery.do" security="none" />
+	<http pattern="/app/**" security="none" />
+	
+	
+	<!-- 网上答疑 -->
+	<http pattern="/BWebquesbaseinfoController_init.do" security="none" />
+	<http pattern="/BWebquesbaseinfoController_queryList.do" security="none" />
+	<http pattern="/BWebquesbaseinfoController_add.do" security="none" />
+	<http pattern="/BWebquesbaseinfoController_save.do" security="none" />
+	<http pattern="/BWebquesbaseinfoController_view.do" security="none" />
+	<!-- 网上答疑 -->
+	
+	<!-- 案件查询 -->
+	<http pattern="/CbiWebController_init.do" security="none" />
+	<http pattern="/CbiWebController_queryList.do" security="none" />
+	<http pattern="/CbiWebController_addNoticeInit.do" security="none" />
+	<http pattern="/CbiWebController_addInit.do" security="none" />
+	<http pattern="/CbiWebController_detail.do" security="none" />
+	<http pattern="/queryCbByElementcode.do" security="none" />
+	<http pattern="/CbiWebController_add.do" security="none" />
+	<http pattern="/CbiWebController_updateIframeInit.do" security="none" />
+	<http pattern="/CbiWebController_updateInit.do" security="none" />
+	<http pattern="/CbiWebController_update.do" security="none" />
+	<http pattern="/CbiWebController_cancelInit.do" security="none" />
+	<http pattern="/CbiWebController_cancel.do" security="none" />
+	<http pattern="/CbiWebController_view.do" security="none" />
+	<http pattern="/CbiWebController_noticeInit.do" security="none" />
+	<http pattern="/CbiWebController_queryNoticeList.do" security="none" />
+	<http pattern="/CbiWebController_downLoadFile.do" security="none" />
+	<http pattern="/CbiWebController_flow.do" security="none" />
+	<http pattern="/yjfk_web_init.do" security="none" />
+	<http pattern="/yjfk_queryList.do" security="none" />
+	<http pattern="/yjfk_web_save.do" security="none" />
+	<http pattern="/aros/yjfk_web_del.do" security="none" />
+	<!-- 案件查询 -->
+	
+	<!-- 附件上传 -->
+	<http pattern="/FileManageController_uploadify.do" security="none"/>
+	<http pattern="/FileManageController_add.do" security="none" />
+	<http pattern="/FileManageController_delete.do" security="none" />
+	<http pattern="/FileManageController_download.do" security="none" />
+	<http pattern="/FileManageController_showFile.do" security="none" />
+	<http pattern="/FileManageController_queryFiles.do" security="none" />
+	<!-- 附件上传  -->
+	
+    <!-- 文件下载 -->
+    <http pattern="/FileDownController_init.do" security="none" />
+    <http pattern="/FileDownController_queryDocList.do" security="none" />
+    <http pattern="/FileDownController_download.do" security="none" />
+    <!-- 文件下载 -->
+    
+    <!-- 信息公开 -->
+    <http pattern="/CasePublishController_init.do" security="none" />
+    <http pattern="/CasePublishController_query.do" security="none" />
+    <http pattern="/CasePublishController_noticeContent.do" security="none" />
+    <http pattern="/CasePublishController_showFile.do" security="none" />
+    
+    <http pattern="/CasePubWebController_query.do" security="none" />
+    <http pattern="/CasePubWebController_init.do" security="none" />
+    <http pattern="/CasePubWebController_view.do" security="none" />
+    <http pattern="/CasePubWebController_getClobContentVal.do" security="none" />
+    <!-- 信息公开 -->
+	
+	<!-- 典型案例 -->
+	 <http pattern="/DxalWebController_init.do" security="none" />
+	 <http pattern="/DxalWebController_queryList.do" security="none" />
+	 <http pattern="/DxalWebController_view.do" security="none" />
+	 <http pattern="/DxalWebController_getClobContentVal.do" security="none" />
+	<!-- 典型案例 -->
+	
+	
+	<!-- 联系方式-->
+	 <http pattern="/LxfsWebController_init.do" security="none" />
+	 <http pattern="/LxfsWebController_queryList.do" security="none" />
+	<!-- 联系方式 -->
+	
+	<!-- CA登录验证使用 -->
+	<http pattern="/loginCA.do" security="none" />
+	<http pattern="/caLoginValidation.do" security="none" />
+	<http pattern="/getWaitWorkInfo.do" security="none" />
+	<!-- 不需要验证登录 -->
+	<!-- 未登录的切入点 -->
+	<http auto-config="false" use-expressions="true"
+		access-denied-page="/login.do" entry-point-ref="loginUrlAuthenticationEntryPoint">
+		<intercept-url pattern="verifyCode.do" access="ROLE_ANONYMOUS" />
+		<intercept-url pattern="*.do" access="isAuthenticated()" />
+		<intercept-url pattern="*.jsp" access="isAuthenticated()" />
+		<!-- session超时跳转页面 以及每用户可拥有的session最大个数 如果每次退出后，必须要求用户必须重开浏览器才能登录，可以将 invalid-session-url="/login.jsp"， -->
+		<session-management invalid-session-url="/timeout.do"><!-- " session-fixation-protection="migrateSession" -->
+			<concurrency-control max-sessions="1"
+				error-if-maximum-exceeded="true" />
+		</session-management>
+		<!-- 登出管理 logout-url 属性:这个指定的URL会触发注销操作，默认是 /j_spring_security_logout invalidate-session 
+			属性：如果为true，在注销的时候会销毁会话 delete-cookies 属性：以逗号分隔的cookies名称，在用户注销时删除指定的cookies 
+			logout-success-url success-handler-ref 只能使用一个 success-handler-ref="successLogoutHandler" -->
+		<logout logout-success-url="/login.do" logout-url="/j_spring_security_logout.do"
+			invalidate-session="true" delete-cookies="JSESSIONID" />
+		<custom-filter ref="securityFilter" before="FILTER_SECURITY_INTERCEPTOR" />
+		<custom-filter ref="loginFilter" position="FORM_LOGIN_FILTER" />
+		<!-- <custom-filter ref="logoutFilter" position="LOGOUT_FILTER" /> -->
+	</http>
+	<!-- <b:bean id="successLogoutHandler" class="com.jbf.base.security.ScuessLogoutHandler" 
+		> <b:property name=""></b:property> </b:bean> -->
+</b:beans> 

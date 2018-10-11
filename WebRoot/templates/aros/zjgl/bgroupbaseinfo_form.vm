@@ -1,0 +1,44 @@
+#parse("common/extensions-v14.vm")
+<link href="$contextpath/component/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="$contextpath/component/uploadify/jquery.uploadify-3.1.min.js"></script>	
+<script type="text/javascript" src="$contextpath/templates/aros/zjgl/js/bgroupbaseinfo_form.js"></script>
+
+<style type='text/css'>
+input {
+	line-height:20px;
+	border:1px solid #95B8E7;
+}
+</style>
+<form id="projectAddForm" method="post">
+	<table class="list">
+    		<!--隐藏属性start-->
+			<input type="hidden" id="groupid" name="groupid" /><!--委员id-->
+    		<!--隐藏属性end-->
+    		<tr>
+    			<th >小组名称：</th>
+    			<td>
+    				<input id="groupname" class="easyui-textbox" name="groupname" required="true" missingMessage="请输入小组名称"
+						 data-options="validType:{length:[0,25]}" style='width:250px'/><font color=red> *</font>
+    			</td >  
+    			<th >是否允许查看案件：</th>
+    			<td>
+    				<input id="ifcheck" class="easyui-textbox" name="ifcheck" missingMessage="请选择是否允许查看案件" required="true" data-options="validType:{length:[0,50]}" style='width:250px'/><font color=red> *</font>
+    			</td >  			
+    		</tr>
+    		<tr>    			
+    			<th >案件描述：</th>
+    			<td colspan="3">
+					<input id="casedesc" class="easyui-textbox" name="casedesc" multiline="true" 
+					required="true" missingMessage="请输入案件描述" data-options="prompt:'最多可输入300个汉字',validType:{length:[0,300]}" style="width:695px;height:65px;" /><font color=red> *</font>
+    			</td>   				
+    		</tr>
+    		<tr>    			
+    			<th >咨询问题：</th>
+    			<td colspan="3">
+					<input id="question" class="easyui-textbox" name="question" multiline="true" 
+					required="true" missingMessage="请输入咨询问题" data-options="prompt:'最多可输入300个汉字',validType:{length:[0,300]}" style="width:695px;height:65px;" /><font color=red> *</font>
+    			</td>   				
+    		</tr>    		
+    </table>
+</form>
+
